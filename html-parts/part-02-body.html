@@ -1,0 +1,173 @@
+<body class="bg-slate-100 text-slate-800 antialiased">
+
+<!-- ================================================== VISTA: INICIO DE SESIÓN ================================================== -->
+<div id="loginView" class="login-bg relative min-h-screen flex items-center justify-center p-4 overflow-hidden">
+  <div class="relative z-10 w-full max-w-5xl grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+
+    <!-- Panel institucional -->
+    <div class="hidden lg:flex flex-col gap-7 text-white pl-6">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-white grid place-items-center shadow-lg shadow-black/20">
+          <span class="font-black text-brand-700 text-2xl leading-none tracking-tight">F</span>
+        </div>
+        <div>
+          <div class="text-[26px] font-extrabold tracking-tight lowercase leading-none">falabella</div>
+          <div class="text-white/60 text-[13px] font-medium mt-1">Sistema de ventas</div>
+        </div>
+      </div>
+      <div>
+        <h1 class="text-4xl xl:text-[42px] font-extrabold leading-[1.12] tracking-tight">Gestión comercial<br>integrada y centralizada</h1>
+        <p class="text-white/70 max-w-md leading-relaxed mt-4 text-[15px]">Ventas, clientes, productos e inventario en un solo lugar: pedidos, pagos, cambios, devoluciones, reportes, auditoría y atención al cliente con chatbot.</p>
+      </div>
+      <ul class="space-y-2.5 text-white/80 text-sm">
+        <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-brand-400/20 grid place-items-center text-brand-300 text-[11px] font-bold">✓</span> Control de acceso por roles y permisos (RN-01, RN-02)</li>
+        <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-brand-400/20 grid place-items-center text-brand-300 text-[11px] font-bold">✓</span> Venta con validación de stock y pagos (RN-06, RN-10)</li>
+        <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-brand-400/20 grid place-items-center text-brand-300 text-[11px] font-bold">✓</span> Pedidos con seguimiento de estados (HU-26, HU-27)</li>
+        <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-brand-400/20 grid place-items-center text-brand-300 text-[11px] font-bold">✓</span> Reportes de ventas y stock en tiempo real (EP-08)</li>
+        <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-brand-400/20 grid place-items-center text-brand-300 text-[11px] font-bold">✓</span> Chatbot de preguntas frecuentes (HU-36, RN-27)</li>
+      </ul>
+      <div class="text-[11px] text-white/40 pt-2">Propuesta de sistema basada en un proceso empresarial · Tecnología de Información II · USMP — COMAS</div>
+    </div>
+
+    <!-- Tarjeta de login -->
+    <div class="bg-white rounded-2xl shadow-2xl shadow-black/30 p-7 sm:p-9 w-full max-w-md mx-auto">
+      <div class="flex lg:hidden items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-brand-700 grid place-items-center">
+          <span class="font-black text-white text-xl leading-none">F</span>
+        </div>
+        <div>
+          <div class="text-xl font-extrabold tracking-tight lowercase leading-none">falabella</div>
+          <div class="text-slate-500 text-[11px] font-medium mt-0.5">Sistema de ventas</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-slate-900">Iniciar sesión</h2>
+      <p class="text-[13px] text-slate-500 mt-1 mb-5">Ingresa tus credenciales para acceder al sistema según tu rol.</p>
+
+      <div id="loginError" class="hidden err-box mb-4 flex items-start gap-2.5" role="alert">
+        <span id="loginErrorIcon" class="mt-0.5 w-4 h-4 text-rose-600 flex-shrink-0"></span>
+        <span id="loginErrorMsg"></span>
+      </div>
+
+      <form id="loginForm" onsubmit="return handleLogin(event)" novalidate>
+        <div class="mb-4">
+          <label class="label" for="loginUser">Usuario</label>
+          <input class="input" id="loginUser" name="usuario" type="text" autocomplete="username" placeholder="ej. admin" />
+        </div>
+        <div class="mb-5">
+          <label class="label" for="loginPass">Contraseña</label>
+          <input class="input" id="loginPass" name="contrasena" type="password" autocomplete="current-password" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn btn-primary w-full !py-2.5 !text-sm">Iniciar sesión</button>
+      </form>
+
+      <div class="mt-6">
+        <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Cuentas demo — clic para completar</div>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" class="demo-chip" onclick="fillLogin('admin','admin123')" data-username="admin">
+            <span class="u">admin / admin123</span><span class="r">Administrador</span>
+          </button>
+          <button type="button" class="demo-chip" onclick="fillLogin('vendedor','venta123')" data-username="vendedor">
+            <span class="u">vendedor / venta123</span><span class="r">Vendedor</span>
+          </button>
+          <button type="button" class="demo-chip" onclick="fillLogin('inventario','inv123')" data-username="inventario">
+            <span class="u">inventario / inv123</span><span class="r">Encargado de inventario</span>
+          </button>
+          <button type="button" class="demo-chip" onclick="fillLogin('atencion','aten123')" data-username="atencion">
+            <span class="u">atencion / aten123</span><span class="r">Atención al cliente</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="mt-6 pt-4 border-t border-slate-100 text-[11px] leading-relaxed text-slate-400">
+        Demo académica con autenticación simulada en el navegador: no se almacenan contraseñas reales.
+        Un sistema en producción requiere backend, cifrado de credenciales, HTTPS y autenticación segura (RN-01).
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================== VISTA: APLICACIÓN ================================================== -->
+<div id="appView" class="hidden">
+
+  <!-- Fondo oscuro para sidebar en móvil -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/55 z-40 hidden lg:hidden" onclick="toggleSidebar(false)"></div>
+
+  <!-- Barra lateral -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-brand-950 flex flex-col -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none" aria-label="Navegación principal">
+    <div class="px-5 pt-6 pb-3 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-white grid place-items-center flex-shrink-0">
+        <span class="font-black text-brand-700 text-xl leading-none">F</span>
+      </div>
+      <div class="min-w-0">
+        <div class="text-white text-lg font-extrabold tracking-tight lowercase leading-none">falabella</div>
+        <div class="text-white/50 text-[11px] font-medium mt-0.5">Sistema de ventas</div>
+      </div>
+      <button class="ml-auto lg:hidden text-white/60 hover:text-white p-1.5" onclick="toggleSidebar(false)" aria-label="Cerrar menú" id="sbCloseBtn"></button>
+    </div>
+
+    <nav id="navMenu" class="flex-1 overflow-y-auto scroll-styled py-2 pb-6"></nav>
+
+    <div class="p-4 border-t border-white/10 flex items-center gap-3">
+      <div class="avatar w-9 h-9 text-[13px]" id="sbUserInit">?</div>
+      <div class="min-w-0 flex-1">
+        <div class="text-white text-[13px] font-semibold truncate" id="sbUserName">—</div>
+        <div class="text-white/50 text-[11px] truncate" id="sbUserRole">—</div>
+      </div>
+      <button onclick="logout()" title="Cerrar sesión (HU-01)" aria-label="Cerrar sesión" class="text-white/50 hover:text-rose-300 p-2 rounded-lg hover:bg-white/10 transition" id="sbLogoutBtn"></button>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <div class="lg:pl-64 min-h-screen flex flex-col">
+
+    <!-- Encabezado -->
+    <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-slate-200">
+      <div class="flex items-center gap-3 px-4 sm:px-6 lg:px-8 h-16">
+        <button id="btnMenu" class="lg:hidden btn btn-outline btn-icon" onclick="toggleSidebar()" aria-label="Abrir menú"></button>
+        <div class="min-w-0">
+          <h1 class="text-[15px] sm:text-lg font-bold text-slate-900 leading-tight truncate">Gestión comercial</h1>
+          <p class="hidden sm:block text-[11px] text-slate-500 leading-tight">Ventas, clientes, productos e inventario</p>
+        </div>
+
+        <div class="ml-auto flex items-center gap-2 sm:gap-3">
+          <div class="hidden md:flex items-center gap-2.5 pr-2 sm:pr-3 mr-1 border-r border-slate-200">
+            <div class="avatar w-8 h-8 text-[12px]" id="hdUserInit">?</div>
+            <div class="min-w-0 leading-tight">
+              <div class="text-[13px] font-semibold text-slate-800 truncate max-w-[150px]" id="hdUserName">—</div>
+              <div class="text-[10.5px] text-slate-500 truncate max-w-[150px]" id="hdUserRole">—</div>
+            </div>
+          </div>
+          <button onclick="confirmReset()" class="btn btn-outline btn-sm" title="Restablecer los datos demo (con confirmación)">
+            <span id="btnResetIcon"></span><span class="hidden sm:inline">Restablecer demo</span>
+          </button>
+          <button id="btnNewSale" onclick="openSale()" class="btn btn-primary btn-sm" title="Registrar una nueva venta">
+            <span id="btnNewSaleIcon"></span><span class="hidden sm:inline">Nueva venta</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenido dinámico -->
+    <main id="content" class="flex-1 w-full max-w-[1400px] mx-auto p-4 sm:p-6 lg:p-8"></main>
+
+    <!-- Pie de página (fijo al fondo) -->
+    <footer class="mt-auto border-t border-slate-200 bg-white/70">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] text-slate-400">
+        <span>Falabella · Sistema de Ventas — Demo académica (USMP · Tecnología de Información II · Grupo 4)</span>
+        <span>Datos simulados en el navegador · localStorage <code class="text-slate-500 bg-slate-100 rounded px-1.5 py-0.5">falabella_demo_v1</code></span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ================================================== CHATBOT (lógica aislada del login) ================================================== -->
+<button id="chatFab" class="hidden fixed bottom-5 right-5 z-[70] w-14 h-14 rounded-full bg-brand-700 text-white shadow-xl shadow-brand-950/40 grid place-items-center" aria-label="Abrir chatbot de atención al cliente" title="Chatbot de preguntas frecuentes (HU-36)">
+  <span class="fab-dot"></span>
+  <span id="chatFabIcon"></span>
+</button>
+<div id="chatPanel" class="hidden fixed bottom-[88px] right-5 z-[70] w-[min(384px,calc(100vw-40px))] h-[min(560px,calc(100dvh-120px))] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/25 overflow-hidden flex-col" role="dialog" aria-label="Chatbot de Falabella"></div>
+
+<!-- Raíces de modales y notificaciones -->
+<div id="modalRoot"></div>
+<div id="toastRoot" class="fixed top-4 right-4 z-[100] flex flex-col gap-2 items-end pointer-events-none"></div>
