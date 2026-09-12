@@ -105,3 +105,24 @@ Work Log:
 
 Stage Summary:
 - Entrega final: UN SOLO ARCHIVO Sistema_Ventas_Falabella.html autocontenido (Tailwind CDN + CSS/JS inline), preview en el panel derecho vía iframe y botón «Descargar HTML»
+
+---
+Task ID: 7
+Agent: main (Z.ai Code)
+Task: Diagnosticar y corregir fallo de login al abrir el HTML localmente (file://) — "no funciona en mi PC pero sí en la vista previa"
+
+Work Log:
+- Reproducido el escenario del usuario con agent-browser sobre file:///home/z/my-project/Sistema_Ventas_Falabella.html: con red disponible el login funciona; con cdn.tailwindcss.com bloqueado (sin internet/proxy/antivirus) la pantalla de login se congela visualmente (loginView nunca se oculta porque .hidden no existe sin Tailwind) y la app queda apilada detrás → parece que "el login no funciona"
+- Causa raíz: el archivo tenía UNA sola dependencia externa (https://cdn.tailwindcss.com + tailwind.config en runtime). Verificado con grep: cero fuentes externas, cero url(), iconos SVG inline
+- Solución: compilado Tailwind v3.4.17 con bunx (config con paleta brand y shadow-card, content = el propio HTML) → compiled.css minificado de 26 KB
+- Incrustado el CSS compilado como <style> reemplazando el <script src CDN> y el bloque tailwind.config (evita ReferenceError). Archivo pasa de 225 KB a 250 KB, 100% sin dependencias externas
+- Verificación de integridad: CSS compilado == CSS incrustado byte a byte (Python), selectores críticos presentes (.hidden, [hidden] preflight, lg:pl-64, brand colors), UTF-8 válido, sin clases dinámicas no compilables (grep) y sin sintaxis JS moderna incompatible (sin ?./??/replaceAll)
+- Prueba offline total (todas las rutas de red abortadas, file://): login admin/admin123 OK, appView visible/loginView oculto, navegación por módulos (Clientes, Productos, Reportes) OK, viewport móvil 390x844 con sidebar responsive OK, CERO errores de JavaScript
+- Validación visual con VLM de capturas offline: "interfaz profesional y bien estilizada, sin glitches" (sidebar, header, KPIs, tablas correctas)
+- Vista previa localhost:3000 re-verificada (iframe + píldora Descargar HTML OK, GET / 200 en dev.log)
+- Sincronizado public/Sistema_Ventas_Falabella.html con la versión corregida y regenerado Sistema_Ventas_Falabella.tar (256 KB) para descarga
+
+Stage Summary:
+- El HTML ahora funciona con doble clic en cualquier computadora CON o SIN internet (CSS de Tailwind compilado e incrustado; ya no usa cdn.tailwindcss.com)
+- El login "congelado" local se debía a la dependencia del CDN; eliminada de raíz
+- Entregables actualizados: /Sistema_Ventas_Falabella.html (250 KB), /public/Sistema_Ventas_Falabella.html (preview), /Sistema_Ventas_Falabella.tar (descarga)
