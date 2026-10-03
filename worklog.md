@@ -126,3 +126,34 @@ Stage Summary:
 - El HTML ahora funciona con doble clic en cualquier computadora CON o SIN internet (CSS de Tailwind compilado e incrustado; ya no usa cdn.tailwindcss.com)
 - El login "congelado" local se debía a la dependencia del CDN; eliminada de raíz
 - Entregables actualizados: /Sistema_Ventas_Falabella.html (250 KB), /public/Sistema_Ventas_Falabella.html (preview), /Sistema_Ventas_Falabella.tar (descarga)
+
+---
+Task ID: 8
+Agent: main (Z.ai Code)
+Task: Corregir todas las incidencias reportadas por el equipo QA (documento USMP_GRUPO_04_FALABELLA (1).doc, 16 incidencias de Mantis) + validar teléfono de exactamente 9 dígitos
+
+Work Log:
+- Extraído el .doc (HTML disfrazado) a texto: 16 incidencias (24797, 24796, 24795, 22627, 22626, 22624, 22614, 22613, 22612, 22603, 22595, 22593, 22591, 22590, 22582, 22575)
+- 24797 (chatbot): (a) historial aislado por sesión → Chatbot.resetFloating() en login/logout/acceso de cliente; (b) tolerancia a errores de escritura → matching difuso con Levenshtein (tol 1-2 según longitud); (c) clientes ahora acceden al chatbot vía portal
+- 22603/22590/24797/HU-27: NUEVO Portal de Clientes — pestaña en el login ("Portal de clientes"), acceso con DNI (8 dígitos), vista de pedidos con timeline Preparando→Enviado→Entregado, items, pagos, totales, chatbot disponible; sesión en sessionStorage (falabella_session_client); auditoría con operaciones 'Acceso de cliente'/'Salida de cliente'
+- 22613: credenciales retiradas de la pantalla de login → pestañas Personal/Cliente + enlace discreto "Credenciales de demostración" que abre modal con cuentas y botones "Usar"
+- 22614: updateVuelto(soft) — mientras se escribe muestra guía neutral gris ("Monto parcial"); el error rojo solo al salir del campo o confirmar
+- 22627: selector de cliente en Nueva Venta convertido en combobox con búsqueda por DNI/nombre/email + "+ Registrar nuevo cliente" (formulario inline sin cerrar la venta, con validaciones)
+- 22591: chips de categorías (Todas + 5) sobre el listado de productos de la venta (setSaleCategory)
+- 22593: campo "Correo para enviar el comprobante" en la venta (pre-rellenado con el email del cliente) + botón "Enviar por correo" en el comprobante (envío simulado, audit 'Comprobante enviado', receipt.emailedAt); receipts del seed con email
+- 22624: reevaluación de cambios/devoluciones — botón "Reevaluar" en solicitudes decididas; modal con banner de decisión anterior; processEvaluate revierte automáticamente los efectos (stock, reembolso) con ajustes de compensación y auditoría 'Devolución/Cambio reevaluado'
+- 22595: confirmLogout() con modal "¿Estás seguro…?" Sí/Cancelar
+- 24796: Productos — banner automático (sin stock/próximos a agotarse) + chips de filtro Todos/Sin stock/Próximos a agotarse; Reporte de stock — secciones dedicadas "Productos sin stock" y "Próximos a agotarse"
+- 24795: reporte por vendedor con buscador + tarjetas clicables (avatar, ventas, ingresos, barra) + filas de tabla clicables y filtro visible
+- 22626: btnMenu siempre visible y funcional en escritorio (colapsa/expande sidebar con sb-collapsed + padding del main); en móvil mantiene overlay
+- 22582: píldora "Descargar HTML" movida a pestaña vertical en el borde derecho (page.tsx) — ya no tapa el perfil del sidebar ni el chatbot
+- 22612/22575: verificado que el módulo "Cambios y devoluciones" existe y funciona con rol atencion, y que asignar rol NO regresa al inicio (vista se mantiene)
+- Teléfono (petición del usuario): filterDigits() global en inputs (DNI 8, teléfono 9) — cfPhone, qcfPhone, payPhone, clientDni; validación exactamente 9 dígitos sin letras/símbolos en addClient y saveQuickClient
+- Extra: helpers jsStr() para onclick con nombres; icono 'box'; audit con fallback a cliente; restoreClientSession al iniciar
+- Tailwind recompilado (29 KB) y re-incrustado; sintaxis JS validada con node --check (1 script OK); bun run lint limpio
+- Pruebas E2E con agent-browser (file:// y localhost:3000): login con tabs ✓, modal credenciales ✓, colapso de sidebar ✓, chips/filtros de stock ✓ (1 de 8 sin stock), tarjetas de vendedor + búsqueda ✓, venta completa V-0005 (combobox "ana"→Ana Torres, email auto, categorías, vuelto soft/hard, stock 12→10, PD-0005, C-0005 con email, envío por correo auditado) ✓, logout con confirmación ✓, portal de cliente (DNI 45871236, 3 pedidos, chat FAB) ✓, chatbot con typos ("peddo"→Pedidos, "devolucino"→Devoluciones, "produtos"→Productos) e historial aislado entre perfiles ✓, reevaluación bidireccional (Aprobada→Rechazada→Aprobada, stock 25→24→25) ✓, teléfono filtra letras/símbolos y rechaza ≠9 dígitos ✓, móvil 390px ✓, VLM confirma diseño profesional sin solapamientos ✓
+
+Stage Summary:
+- 16/16 incidencias del documento de QA corregidas + validación de teléfono de 9 dígitos implementada
+- Entregables: Sistema_Ventas_Falabella.html (301 KB, sin dependencias externas), public/ sincronizado, Sistema_Ventas_Falabella.tar (307 KB)
+- Cambios en page.tsx: pestaña vertical de descarga en borde derecho (lint OK)

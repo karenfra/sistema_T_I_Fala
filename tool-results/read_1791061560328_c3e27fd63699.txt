@@ -1,0 +1,897 @@
+     1→Ver detalles de la incidencia |
+     2→Id.: |
+     3→Categoría: |
+     4→Gravedad: |
+     5→Reproducibilidad: |
+     6→Fecha de envío: |
+     7→Última actualización: |
+     8→24797 |
+     9→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+    10→mayor |
+    11→siempre |
+    12→2026-10-03 11:47 |
+    13→2026-10-03 11:47 |
+    14→Informador: |
+    15→USMP_JANTEZANA_G1 |
+    16→Plataforma: |
+    17→Brave |
+    18→Asignada a: |
+    19→USMP_VGUERRERO_G4 |
+    20→SO: |
+    21→WINDOWS |
+    22→Prioridad: |
+    23→urgente |
+    24→Versión de SO: |
+    25→11 |
+    26→Estado: |
+    27→nueva |
+    28→Versión del producto: |
+    29→Compilación del Producto: |
+    30→Resolución: |
+    31→abierta |
+    32→Proyección: |
+    33→ninguna |
+    34→Tiempo estimado: |
+    35→ninguno |
+    36→Resuelta en versión: |
+    37→Prevista para versión: |
+    38→UNIVERSIDAD: |
+    39→USMP |
+    40→Resumen: |
+    41→El chatbot no cuenta con acceso para clientes y comparte el historial de conversación entre perfiles |
+    42→Descripción: |
+    43→Al realizar la prueba correspondiente a la historia de usuario “Como cliente, quiero utilizar un chatbot para consultar preguntas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones”, se identificaron problemas relacionados con el acceso y la gestión de las conversaciones.
+    44→Actualmente, el chatbot se encuentra disponible únicamente en los perfiles de administrador, vendedor, encargado de inventario y atención al cliente. No existe un apartado o perfil destinado al cliente/usuario, por lo que el cliente no puede acceder directamente al chatbot para realizar sus consultas.
+    45→Adicionalmente, se verificó que la conversación realizada con el chatbot permanece disponible al ingresar desde diferentes perfiles. Esto provoca que el historial de conversación no se encuentre aislado por usuario o sesión y puede generar que un perfil pueda visualizar conversaciones realizadas anteriormente desde otro perfil.
+    46→También se identificó una limitación en el reconocimiento de las consultas. Cuando el usuario comete un error mínimo de escritura, como cambiar u omitir una sola letra de una palabra, el chatbot no logra identificar correctamente la consulta ni determinar a qué información se refiere.
+    47→Estas situaciones afectan la accesibilidad, privacidad y facilidad de uso esperadas para el chatbot. |
+    48→Pasos para reproducir: |
+    49→Problema 1: No existe acceso para clientes
+    50→1. Ingresar al sistema.
+    51→2. Revisar los perfiles disponibles.
+    52→3. Ingresar a los perfiles de administrador, vendedor, encargado de inventario y atención al cliente.
+    53→4. Verificar que cada uno de estos perfiles dispone de acceso al chatbot.
+    54→5. Buscar una opción o perfil correspondiente a cliente/usuario.
+    55→6. Verificar que no existe un apartado desde el cual un cliente pueda acceder al chatbot.
+    56→Problema 2: La conversación permanece entre perfiles
+    57→1. Ingresar al sistema con uno de los perfiles que tenga acceso al chatbot.
+    58→2. Realizar una consulta al chatbot.
+    59→3. Enviar uno o varios mensajes.
+    60→4. Cerrar la sesión o cambiar de perfil.
+    61→5. Ingresar al sistema con otro perfil.
+    62→6. Abrir nuevamente el chatbot.
+    63→7. Verificar que la conversación realizada anteriormente continúa disponible.
+    64→Resultado: El historial de conversación no se encuentra aislado entre perfiles.
+    65→Problema 3: Baja tolereancia a errores de escritura
+    66→1.Abrir el chatbot.
+    67→2. Realizar una consulta relacionada con alguno de los temas configurados.
+    68→3. Escribir nuevamente la misma consulta introduciendo un pequeño error ortográfico, como omitir, cambiar o 4. 5. agregar una letra.
+    69→4.Enviar la consulta.
+    70→5.Verificar que el chatbot no reconoce correctamente la intención de la consulta.
+    71→Información adicional: |
+    72→Descripción del Sistema |
+    73→Archivos adjuntos: |
+    74→image.png (42,481 bytes) 2026-10-03 11:47
+    75→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7628&type=bug |
+    76→No hay notas asociadas a esta incidencia. |
+    77→Ver detalles de la incidencia |
+    78→Id.: |
+    79→Categoría: |
+    80→Gravedad: |
+    81→Reproducibilidad: |
+    82→Fecha de envío: |
+    83→Última actualización: |
+    84→24796 |
+    85→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+    86→menor |
+    87→siempre |
+    88→2026-10-03 11:19 |
+    89→2026-10-03 11:19 |
+    90→Informador: |
+    91→USMP_JANTEZANA_G1 |
+    92→Plataforma: |
+    93→Brave |
+    94→Asignada a: |
+    95→USMP_VGUERRERO_G4 |
+    96→SO: |
+    97→WINDOWS |
+    98→Prioridad: |
+    99→normal |
+   100→Versión de SO: |
+   101→11 |
+   102→Estado: |
+   103→nueva |
+   104→Versión del producto: |
+   105→Compilación del Producto: |
+   106→Resolución: |
+   107→abierta |
+   108→Proyección: |
+   109→ninguna |
+   110→Tiempo estimado: |
+   111→ninguno |
+   112→Resuelta en versión: |
+   113→Prevista para versión: |
+   114→UNIVERSIDAD: |
+   115→USMP |
+   116→Resumen: |
+   117→Incorporar una vista de productos sin stock y alertas de productos próximos a agotarse |
+   118→Descripción: |
+   119→Al realizar la prueba correspondiente a la historia de usuario “Como encargado de inventario, quiero generar un reporte del stock disponible, para controlar los productos existentes”, se verificó que el sistema permite consultar los productos registrados, visualizar la cantidad de stock disponible y utilizar un buscador para localizar productos.
+   120→Asimismo, la funcionalidad actual permite consultar la información del inventario de acuerdo con los criterios establecidos.
+   121→Sin embargo, como mejora de funcionalidad y usabilidad, sería conveniente que el sistema permita identificar automáticamente los productos que se encuentran sin stock, sin que el encargado tenga que buscarlos individualmente.
+   122→De igual manera, sería útil incorporar una sección o alerta que permita identificar los productos próximos a agotarse, de manera que el encargado pueda tomar acciones preventivas, como solicitar reposición de stock. |
+   123→Pasos para reproducir: |
+   124→1. Ingresar al sistema con el perfil de encargado de inventario.
+   125→2. Acceder al módulo de reporte o consulta de inventario.
+   126→3. Revisar el listado de productos y las cantidades de stock disponibles.
+   127→4. Utilizar el buscador para localizar productos específicos.
+   128→5. Observar que actualmente se puede consultar el stock mediante búsqueda.
+   129→6. Verificar que no existe una sección independiente que muestre automáticamente todos los productos que tienen stock 0.
+   130→7. Verificar que tampoco existe una alerta o sección específica que identifique los productos cuyo stock se encuentra próximo a agotarse. |
+   131→Información adicional: |
+   132→Descripción del Sistema |
+   133→Archivos adjuntos: |
+   134→image.png (85,097 bytes) 2026-10-03 11:19
+   135→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7627&type=bug |
+   136→No hay notas asociadas a esta incidencia. |
+   137→Ver detalles de la incidencia |
+   138→Id.: |
+   139→Categoría: |
+   140→Gravedad: |
+   141→Reproducibilidad: |
+   142→Fecha de envío: |
+   143→Última actualización: |
+   144→24795 |
+   145→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   146→menor |
+   147→siempre |
+   148→2026-10-03 11:10 |
+   149→2026-10-03 11:10 |
+   150→Informador: |
+   151→USMP_JANTEZANA_G1 |
+   152→Plataforma: |
+   153→Brave |
+   154→Asignada a: |
+   155→USMP_VGUERRERO_G4 |
+   156→SO: |
+   157→WINDOWS |
+   158→Prioridad: |
+   159→baja |
+   160→Versión de SO: |
+   161→11 |
+   162→Estado: |
+   163→nueva |
+   164→Versión del producto: |
+   165→Compilación del Producto: |
+   166→Resolución: |
+   167→abierta |
+   168→Proyección: |
+   169→ninguna |
+   170→Tiempo estimado: |
+   171→ninguno |
+   172→Resuelta en versión: |
+   173→Prevista para versión: |
+   174→UNIVERSIDAD: |
+   175→USMP |
+   176→Resumen: |
+   177→Mejorar la selección de vendedores mediante búsqueda o selección directa |
+   178→Descripción: |
+   179→En el módulo de consulta de ventas por vendedor, el sistema permite al administrador seleccionar un vendedor mediante un selector ubicado en una casilla.
+   180→La funcionalidad actual permite cumplir con el criterio de aceptación que indica que “el administrador debe poder seleccionar un vendedor”. Sin embargo, cuando existe una cantidad considerable de vendedores, la selección mediante una lista desplegable puede resultar poco práctica y aumentar el tiempo necesario para localizar al vendedor requerido.
+   181→Como mejora de usabilidad, sería conveniente incorporar una alternativa que permita buscar directamente al vendedor mediante un campo de búsqueda o seleccionarlo haciendo clic sobre el recuadro/tarjeta correspondiente al vendedor.
+   182→Esta mejora facilitaría la consulta de las ventas realizadas por un vendedor específico y permitiría una interacción más rápida con el sistema. |
+   183→Pasos para reproducir: |
+   184→1. Ingresar al sistema como administrador.
+   185→2. Ingresar al módulo de consulta de ventas por vendedor.
+   186→3. Seleccionar la opción para consultar las ventas de un vendedor.
+   187→4. Abrir el selector de vendedores.
+   188→5. Observar que la selección se realiza mediante una lista desplegable dentro de una casilla.
+   189→6. En caso de existir una cantidad elevada de vendedores, intentar localizar un vendedor específico.
+   190→7. Verificar que actualmente no se dispone de un buscador directo para localizar al vendedor. |
+   191→Información adicional: |
+   192→Descripción del Sistema |
+   193→Archivos adjuntos: |
+   194→image.png (34,050 bytes) 2026-10-03 11:10
+   195→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7626&type=bug |
+   196→No hay notas asociadas a esta incidencia. |
+   197→Ver detalles de la incidencia |
+   198→Id.: |
+   199→Categoría: |
+   200→Gravedad: |
+   201→Reproducibilidad: |
+   202→Fecha de envío: |
+   203→Última actualización: |
+   204→22627 |
+   205→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   206→menor |
+   207→siempre |
+   208→2026-09-26 18:13 |
+   209→2026-09-27 19:41 |
+   210→Informador: |
+   211→USMP_ABARDALES_G1 |
+   212→Plataforma: |
+   213→Firo fox |
+   214→Asignada a: |
+   215→USMP_VGUERRERO_G4 |
+   216→SO: |
+   217→WINDOWS 11 |
+   218→Prioridad: |
+   219→normal |
+   220→Versión de SO: |
+   221→Estado: |
+   222→nueva |
+   223→Versión del producto: |
+   224→Compilación del Producto: |
+   225→Resolución: |
+   226→abierta |
+   227→Proyección: |
+   228→ninguna |
+   229→Tiempo estimado: |
+   230→ninguno |
+   231→Resuelta en versión: |
+   232→Prevista para versión: |
+   233→UNIVERSIDAD: |
+   234→USMP |
+   235→Resumen: |
+   236→Selector de Cliente (HU-16) carece de función de búsqueda/filtro y opción de registro rápido |
+   237→Descripción: |
+   238→En la ventana de "Nueva Venta" (EP-05), la selección del cliente (HU-16) se limita a un campo desplegable simple (<select>). Esto dificulta la ubicación de un cliente cuando la lista es extensa (no permite digitar DNI o nombre para filtrar). Además, no existe un acceso directo para registrar a un cliente nuevo dentro de la misma pantalla de venta. |
+   239→Pasos para reproducir: |
+   240→1. Iniciar sesión como Vendedor y hacer clic en "+ Nueva venta".
+   241→2. Intentar buscar a un cliente específico digitando su número de DNI o nombre en el campo "Cliente (HU-16)".
+   242→3. Resultado esperado: El campo debe permitir escribir para filtrar automáticamente las coincidencias por DNI o nombre, o incluir un botón "+ Nuevo cliente".
+   243→4. Resultado obtenido: Solo despliega una lista estática donde el usuario debe buscar manualmente desplazándose hacia abajo. |
+   244→Información adicional: |
+   245→- Módulo afectado: EP-05 (Gestión de ventas - HU-16).
+   246→- Mejora de UX requerida: Convertir el selector en un autocompletado (combobox) con búsqueda rápida. |
+   247→Archivos adjuntos: |
+   248→Captura de pantalla 2026-09-26 171315.png (7,192 bytes) 2026-09-26 18:13
+   249→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6928&type=bug |
+   250→No hay notas asociadas a esta incidencia. |
+   251→Ver detalles de la incidencia |
+   252→Id.: |
+   253→Categoría: |
+   254→Gravedad: |
+   255→Reproducibilidad: |
+   256→Fecha de envío: |
+   257→Última actualización: |
+   258→22626 |
+   259→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   260→funcionalidad |
+   261→siempre |
+   262→2026-09-26 18:12 |
+   263→2026-09-27 19:41 |
+   264→Informador: |
+   265→USMP_DCASTRO_G1 |
+   266→Plataforma: |
+   267→chrome |
+   268→Asignada a: |
+   269→USMP_RMATOS_G4 |
+   270→SO: |
+   271→WINDOWS |
+   272→Prioridad: |
+   273→baja |
+   274→Versión de SO: |
+   275→11 |
+   276→Estado: |
+   277→nueva |
+   278→Versión del producto: |
+   279→Compilación del Producto: |
+   280→Resolución: |
+   281→abierta |
+   282→Proyección: |
+   283→ninguna |
+   284→Tiempo estimado: |
+   285→ninguno |
+   286→Resuelta en versión: |
+   287→Prevista para versión: |
+   288→UNIVERSIDAD: |
+   289→USMP |
+   290→Resumen: |
+   291→EXISTE UN BOTON QUE NO TIENE NINGUNA FUNCIONALIDAD |
+   292→Descripción: |
+   293→EXISTE UN BOTON EN LA PARTE DERECHA DEL TEXTO QUE DICE "Gestion comercial " que no tiene ninguna funcionalidad , da la sensacion que sirve para mostrar o ocultar una barra de navegacion pero no hace nada |
+   294→Pasos para reproducir: |
+   295→ingresar con cualquiera de las credenciales y aparece en la parte superior izquierda |
+   296→Información adicional: |
+   297→Archivos adjuntos: |
+   298→Captura de pantalla 2026-09-26 170903.png (19,197 bytes) 2026-09-26 18:12
+   299→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6927&type=bug |
+   300→No hay notas asociadas a esta incidencia. |
+   301→Ver detalles de la incidencia |
+   302→Id.: |
+   303→Categoría: |
+   304→Gravedad: |
+   305→Reproducibilidad: |
+   306→Fecha de envío: |
+   307→Última actualización: |
+   308→22624 |
+   309→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   310→funcionalidad |
+   311→siempre |
+   312→2026-09-26 18:11 |
+   313→2026-09-27 19:41 |
+   314→Informador: |
+   315→USMP_JANTEZANA_G1 |
+   316→Plataforma: |
+   317→Brave |
+   318→Asignada a: |
+   319→USMP_VGUERRERO_G4 |
+   320→SO: |
+   321→WINDOWS |
+   322→Prioridad: |
+   323→normal |
+   324→Versión de SO: |
+   325→11 |
+   326→Estado: |
+   327→nueva |
+   328→Versión del producto: |
+   329→Compilación del Producto: |
+   330→Resolución: |
+   331→abierta |
+   332→Proyección: |
+   333→ninguna |
+   334→Tiempo estimado: |
+   335→ninguno |
+   336→Resuelta en versión: |
+   337→Prevista para versión: |
+   338→UNIVERSIDAD: |
+   339→USMP |
+   340→Resumen: |
+   341→No es posible corregir o reevaluar una solicitud de cambio o devolución después de aprobarla o rechazarla |
+   342→Descripción: |
+   343→Al realizar la evaluación de una solicitud de cambio o devolución, el sistema permite revisar la solicitud y determinar si corresponde aprobarla o rechazarla.
+   344→Sin embargo, una vez registrada la evaluación, el sistema no proporciona una opción que permita corregir la decisión o realizar una nueva evaluación en caso de que se haya seleccionado incorrectamente la opción de aprobación o rechazo.
+   345→Esto genera una limitación en la gestión de las solicitudes, ya que una decisión registrada incorrectamente no puede ser modificada posteriormente.
+   346→La situación afecta el proceso definido en la historia de usuario, debido a que, aunque el sistema permite realizar la evaluación y registrar el estado correspondiente, no permite corregir una evaluación realizada de manera incorrecta. |
+   347→Pasos para reproducir: |
+   348→1. Ingresar al sistema como trabajador de atención al cliente.
+   349→2. Ingresar al apartado de Cambios y Devoluciones.
+   350→3. Buscar una solicitud de cambio o devolución asociada a una venta.
+   351→4. Seleccionar la solicitud para realizar su evaluación.
+   352→5. Revisar la información y las condiciones de la solicitud.
+   353→6. Seleccionar una decisión de Aprobar o Rechazar.
+   354→7. Registrar/guardar la evaluación.
+   355→8. Volver a ingresar a la solicitud evaluada.
+   356→9. Intentar modificar la decisión registrada o realizar nuevamente la evaluación.
+   357→10. Verificar que no existe una opción que permita corregir o reevaluar la solicitud. |
+   358→Información adicional: |
+   359→Una vez realizada la evaluación, el sistema debería permitir, bajo las condiciones y permisos correspondientes, corregir la decisión o volver a evaluar la solicitud cuando se haya registrado una aprobación o rechazo incorrecto. Asimismo, debería mantener un registro actualizado del estado de la solicitud. |
+   360→Archivos adjuntos: |
+   361→Captura de pantalla 2026-09-26 171111.png (70,738 bytes) 2026-09-26 18:11
+   362→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6923&type=bug |
+   363→No hay notas asociadas a esta incidencia. |
+   364→Ver detalles de la incidencia |
+   365→Id.: |
+   366→Categoría: |
+   367→Gravedad: |
+   368→Reproducibilidad: |
+   369→Fecha de envío: |
+   370→Última actualización: |
+   371→22614 |
+   372→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   373→mayor |
+   374→siempre |
+   375→2026-09-26 17:57 |
+   376→2026-09-27 19:41 |
+   377→Informador: |
+   378→USMP_ABARDALES_G1 |
+   379→Plataforma: |
+   380→Firofox |
+   381→Asignada a: |
+   382→USMP_JHERRERA_G4 |
+   383→SO: |
+   384→windows 11 |
+   385→Prioridad: |
+   386→alta |
+   387→Versión de SO: |
+   388→Estado: |
+   389→nueva |
+   390→Versión del producto: |
+   391→Compilación del Producto: |
+   392→Resolución: |
+   393→abierta |
+   394→Proyección: |
+   395→ninguna |
+   396→Tiempo estimado: |
+   397→ninguno |
+   398→Resuelta en versión: |
+   399→Prevista para versión: |
+   400→UNIVERSIDAD: |
+   401→USMP |
+   402→Resumen: |
+   403→Alerta prematura RN-11/EX-06 se activa automáticamente antes de digitar el "Monto recibido" |
+   404→Descripción: |
+   405→En la pantalla de "Nueva Venta" (EP-05), al seleccionar productos que incluyen promociones (descuentos correctamente aplicados), el sistema activa de manera inmediata el mensaje de error en rojo "Monto en efectivo insuficiente: falta S/ 170.82". Esto sucede teniendo el campo "Monto recibido" en 0.00 de forma predeterminada, sin dar la oportunidad al vendedor de ingresar el efectivo entregado por el cliente. |
+   406→Pasos para reproducir: |
+   407→1. Iniciar sesión como Vendedor y abrir el modal "Nueva venta".
+   408→2. Seleccionar cliente (ej. Ana Torres) y agregar productos con promoción (ej. Audífonos Bluetooth JBL y Camisa básica).
+   409→3. Observar la sección inferior del modal antes de interactuar con el campo "Monto recibido (S/)".
+   410→4. Resultado esperado: El campo "Monto recibido" debe estar libre para edición sin mostrar mensajes de error iniciales.
+   411→5. Resultado obtenido: Aparece automáticamente la alerta roja de error "Monto en efectivo insuficiente" bloqueando o entorpeciendo la experiencia de usuario. |
+   412→Información adicional: |
+   413→- Módulo afectado: EP-05 (Gestión de ventas - HU-18, HU-19, HU-20).
+   414→- Estado del cálculo: Los subtotales y promociones automáticas (RN-08) se calculan y desglosan correctamente. |
+   415→Archivos adjuntos: |
+   416→Captura de pantalla 2026-09-26 165528.png (107,630 bytes) 2026-09-26 17:57
+   417→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6921&type=bug |
+   418→No hay notas asociadas a esta incidencia. |
+   419→Ver detalles de la incidencia |
+   420→Id.: |
+   421→Categoría: |
+   422→Gravedad: |
+   423→Reproducibilidad: |
+   424→Fecha de envío: |
+   425→Última actualización: |
+   426→22613 |
+   427→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   428→mayor |
+   429→siempre |
+   430→2026-09-26 17:56 |
+   431→2026-09-27 19:41 |
+   432→Informador: |
+   433→USMP_DCASTRO_G1 |
+   434→Plataforma: |
+   435→chrome |
+   436→Asignada a: |
+   437→USMP_VGUERRERO_G4 |
+   438→SO: |
+   439→WINDOWS |
+   440→Prioridad: |
+   441→inmediata |
+   442→Versión de SO: |
+   443→11 |
+   444→Estado: |
+   445→nueva |
+   446→Versión del producto: |
+   447→Compilación del Producto: |
+   448→Resolución: |
+   449→abierta |
+   450→Proyección: |
+   451→ninguna |
+   452→Tiempo estimado: |
+   453→ninguno |
+   454→Resuelta en versión: |
+   455→Prevista para versión: |
+   456→UNIVERSIDAD: |
+   457→USMP |
+   458→Resumen: |
+   459→crendenciales aparecen en la seccion del login |
+   460→Descripción: |
+   461→las credenciales de ingreso para las distinitas secciones aparecen en la interfaz del login, por lo que se debe de retirar de inmediato por cuestiones de seguridad evidentes. |
+   462→Pasos para reproducir: |
+   463→interfaz de login |
+   464→Información adicional: |
+   465→Archivos adjuntos: |
+   466→Captura de pantalla 2026-09-26 165332.png (121,633 bytes) 2026-09-26 17:56
+   467→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6920&type=bug |
+   468→No hay notas asociadas a esta incidencia. |
+   469→Ver detalles de la incidencia |
+   470→Id.: |
+   471→Categoría: |
+   472→Gravedad: |
+   473→Reproducibilidad: |
+   474→Fecha de envío: |
+   475→Última actualización: |
+   476→22612 |
+   477→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   478→mayor |
+   479→siempre |
+   480→2026-09-26 17:56 |
+   481→2026-09-27 19:41 |
+   482→Informador: |
+   483→USMP_JANTEZANA_G1 |
+   484→Plataforma: |
+   485→Brave |
+   486→Asignada a: |
+   487→USMP_VGUERRERO_G4 |
+   488→SO: |
+   489→WINDOWS |
+   490→Prioridad: |
+   491→alta |
+   492→Versión de SO: |
+   493→11 |
+   494→Estado: |
+   495→nueva |
+   496→Versión del producto: |
+   497→Compilación del Producto: |
+   498→Resolución: |
+   499→abierta |
+   500→Proyección: |
+   501→ninguna |
+   502→Tiempo estimado: |
+   503→ninguno |
+   504→Resuelta en versión: |
+   505→Prevista para versión: |
+   506→UNIVERSIDAD: |
+   507→USMP |
+   508→Resumen: |
+   509→El sistema no permite validar y registrar correctamente una devolución asociada a una venta |
+   510→Descripción: |
+   511→Al revisar el sistema para validar la historia de usuario “Como trabajador de atención al cliente, quiero registrar y validar una solicitud de devolución asociada a una compra”, se identificó que el sistema no cuenta con un apartado o módulo visible que permita gestionar solicitudes de devolución.
+   512→Debido a la ausencia de esta funcionalidad, no es posible iniciar el proceso para localizar una venta, seleccionar un producto y validar las condiciones necesarias para solicitar una devolución.
+   513→La ausencia del módulo impide comprobar los criterios de aceptación relacionados con la validación de la venta, pertenencia del producto, plazo permitido, condiciones aplicables, vendedor y registro de la solicitud. |
+   514→Pasos para reproducir: |
+   515→1. Ingresar al sistema web con un usuario de atención al cliente.
+   516→2. Revisar las opciones y módulos disponibles en el sistema.
+   517→3. Buscar una opción relacionada con Devoluciones, Solicitudes de devolución o una funcionalidad equivalente.
+   518→4. Verificar las opciones disponibles para gestionar una compra.
+   519→5. Intentar iniciar una solicitud de devolución utilizando como referencia la venta V-0004 del comprobante C-0004.
+   520→6. Verificar que no existe un apartado desde el cual se pueda iniciar y registrar la solicitud de devolución. |
+   521→Información adicional: |
+   522→El sistema debería contar con una opción que permita al trabajador localizar la venta, seleccionar el producto y comenzar el proceso de solicitud de devolución, realizando las validaciones establecidas en la historia de usuario. |
+   523→Archivos adjuntos: |
+   524→Captura de pantalla 2026-09-26 165606.png (96,295 bytes) 2026-09-26 17:56
+   525→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6919&type=bug |
+   526→No hay notas asociadas a esta incidencia. |
+   527→Ver detalles de la incidencia |
+   528→Id.: |
+   529→Categoría: |
+   530→Gravedad: |
+   531→Reproducibilidad: |
+   532→Fecha de envío: |
+   533→Última actualización: |
+   534→22603 |
+   535→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   536→fallo |
+   537→siempre |
+   538→2026-09-26 17:49 |
+   539→2026-09-27 19:41 |
+   540→Informador: |
+   541→USMP_DCASTRO_G1 |
+   542→Plataforma: |
+   543→chrome |
+   544→Asignada a: |
+   545→USMP_JHERRERA_G4 |
+   546→SO: |
+   547→WINDOWS |
+   548→Prioridad: |
+   549→inmediata |
+   550→Versión de SO: |
+   551→11 |
+   552→Estado: |
+   553→nueva |
+   554→Versión del producto: |
+   555→Compilación del Producto: |
+   556→Resolución: |
+   557→abierta |
+   558→Proyección: |
+   559→ninguna |
+   560→Tiempo estimado: |
+   561→ninguno |
+   562→Resuelta en versión: |
+   563→Prevista para versión: |
+   564→UNIVERSIDAD: |
+   565→USMP |
+   566→Resumen: |
+   567→no existen credenciales para que el cliente ingrese |
+   568→Descripción: |
+   569→no existen credenciales definidas para que el usuario pueda ver por su cuenta el estado de su pedido |
+   570→Pasos para reproducir: |
+   571→problema identificado en el login de la pagina |
+   572→Información adicional: |
+   573→Archivos adjuntos: |
+   574→Captura de pantalla 2026-09-26 164756.png (129,713 bytes) 2026-09-26 17:49
+   575→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6915&type=bug |
+   576→No hay notas asociadas a esta incidencia. |
+   577→Ver detalles de la incidencia |
+   578→Id.: |
+   579→Categoría: |
+   580→Gravedad: |
+   581→Reproducibilidad: |
+   582→Fecha de envío: |
+   583→Última actualización: |
+   584→22595 |
+   585→[USMP_GRUPO_04_FALABELLA] HISTORIA DE USUARIO |
+   586→menor |
+   587→siempre |
+   588→2026-09-26 17:45 |
+   589→2026-09-27 19:41 |
+   590→Informador: |
+   591→USMP_KMORALES_G1 |
+   592→Plataforma: |
+   593→EDGE |
+   594→Asignada a: |
+   595→USMP_KFRANCO_G4 |
+   596→SO: |
+   597→WINDOWS |
+   598→Prioridad: |
+   599→alta |
+   600→Versión de SO: |
+   601→11 |
+   602→Estado: |
+   603→nueva |
+   604→Versión del producto: |
+   605→Compilación del Producto: |
+   606→Resolución: |
+   607→abierta |
+   608→Proyección: |
+   609→ninguna |
+   610→Tiempo estimado: |
+   611→ninguno |
+   612→Resuelta en versión: |
+   613→Prevista para versión: |
+   614→UNIVERSIDAD: |
+   615→USMP |
+   616→Resumen: |
+   617→Cierre de sesión no elimina correctamente la sesión del usuario. |
+   618→Descripción: |
+   619→Al seleccionar la opción "Cerrar sesión", el sistema finaliza la sesión inmediatamente sin mostrar una ventana de confirmación al usuario.
+   620→Esto puede provocar un cierre de sesión accidental si el usuario selecciona la opción por error.
+   621→Pasos para reproducir: |
+   622→1.Ingresar al sistema.
+   623→2.Iniciar sesión con credenciales válidas.
+   624→4.Seleccionar la opción "Cerrar sesión".
+   625→5.Observar el comportamiento del sistema.
+   626→6.Verificar que la sesión se cierre inmediatamente sin mostrar una ventana de confirmación. |
+   627→Información adicional: |
+   628→Se recomienda implementar un mensaje de confirmación (“¿Está seguro de que desea cerrar sesión?”) con las opciones Sí y Cancelar para evitar cierres accidentales. |
+   629→Descripción del Sistema |
+   630→Archivos adjuntos: |
+   631→Captura de pantalla 2026-09-26 164027.png (39,839 bytes) 2026-09-26 17:45
+   632→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6911&type=bug |
+   633→No hay notas asociadas a esta incidencia. |
+   634→Ver detalles de la incidencia |
+   635→Id.: |
+   636→Categoría: |
+   637→Gravedad: |
+   638→Reproducibilidad: |
+   639→Fecha de envío: |
+   640→Última actualización: |
+   641→22593 |
+   642→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   643→ajuste |
+   644→siempre |
+   645→2026-09-26 17:43 |
+   646→2026-09-27 19:41 |
+   647→Informador: |
+   648→USMP_DCASTRO_G1 |
+   649→Plataforma: |
+   650→chrome |
+   651→Asignada a: |
+   652→USMP_VGUERRERO_G4 |
+   653→SO: |
+   654→WINDOWS |
+   655→Prioridad: |
+   656→normal |
+   657→Versión de SO: |
+   658→11 |
+   659→Estado: |
+   660→nueva |
+   661→Versión del producto: |
+   662→Compilación del Producto: |
+   663→Resolución: |
+   664→abierta |
+   665→Proyección: |
+   666→ninguna |
+   667→Tiempo estimado: |
+   668→ninguno |
+   669→Resuelta en versión: |
+   670→Prevista para versión: |
+   671→UNIVERSIDAD: |
+   672→USMP |
+   673→Resumen: |
+   674→agregar seccion para introducir correo del cliente |
+   675→Descripción: |
+   676→en este caso agregar un input para colocar el correo del cliente y poder enviar el comprobante de pago de manera mas sencilla |
+   677→Pasos para reproducir: |
+   678→entrar como vendedor y agregar nueva venta |
+   679→Información adicional: |
+   680→Archivos adjuntos: |
+   681→Captura de pantalla 2026-09-26 164327.png (94,654 bytes) 2026-09-26 17:43
+   682→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6910&type=bug |
+   683→No hay notas asociadas a esta incidencia. |
+   684→Ver detalles de la incidencia |
+   685→Id.: |
+   686→Categoría: |
+   687→Gravedad: |
+   688→Reproducibilidad: |
+   689→Fecha de envío: |
+   690→Última actualización: |
+   691→22591 |
+   692→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   693→ajuste |
+   694→siempre |
+   695→2026-09-26 17:39 |
+   696→2026-09-27 19:41 |
+   697→Informador: |
+   698→USMP_DCASTRO_G1 |
+   699→Plataforma: |
+   700→chrome |
+   701→Asignada a: |
+   702→USMP_KFRANCO_G4 |
+   703→SO: |
+   704→WINDOWS |
+   705→Prioridad: |
+   706→normal |
+   707→Versión de SO: |
+   708→11 |
+   709→Estado: |
+   710→nueva |
+   711→Versión del producto: |
+   712→Compilación del Producto: |
+   713→Resolución: |
+   714→abierta |
+   715→Proyección: |
+   716→ninguna |
+   717→Tiempo estimado: |
+   718→ninguno |
+   719→Resuelta en versión: |
+   720→Prevista para versión: |
+   721→UNIVERSIDAD: |
+   722→USMP |
+   723→Resumen: |
+   724→agregar botones de categoria en sección de nueva venta |
+   725→Descripción: |
+   726→en este caso la sugerencia en la seccion de nueva venta agregar botones de de categorias para poder encontrar los productos de manera mas sencilla |
+   727→Pasos para reproducir: |
+   728→ingresar como vendedor y luego agregar nueva venta |
+   729→Información adicional: |
+   730→Archivos adjuntos: |
+   731→Captura de pantalla 2026-09-26 163905.png (46,151 bytes) 2026-09-26 17:39
+   732→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6907&type=bug |
+   733→No hay notas asociadas a esta incidencia. |
+   734→Ver detalles de la incidencia |
+   735→Id.: |
+   736→Categoría: |
+   737→Gravedad: |
+   738→Reproducibilidad: |
+   739→Fecha de envío: |
+   740→Última actualización: |
+   741→22590 |
+   742→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   743→mayor |
+   744→siempre |
+   745→2026-09-26 17:37 |
+   746→2026-09-27 19:41 |
+   747→Informador: |
+   748→USMP_JANTEZANA_G1 |
+   749→Plataforma: |
+   750→Brave |
+   751→Asignada a: |
+   752→USMP_VGUERRERO_G4 |
+   753→SO: |
+   754→WINDOWS |
+   755→Prioridad: |
+   756→urgente |
+   757→Versión de SO: |
+   758→11 |
+   759→Estado: |
+   760→nueva |
+   761→Versión del producto: |
+   762→Compilación del Producto: |
+   763→Resolución: |
+   764→abierta |
+   765→Proyección: |
+   766→ninguna |
+   767→Tiempo estimado: |
+   768→ninguno |
+   769→Resuelta en versión: |
+   770→Prevista para versión: |
+   771→UNIVERSIDAD: |
+   772→USMP |
+   773→Resumen: |
+   774→No existe apartado para clientes |
+   775→Descripción: |
+   776→Según la historia de usuario HU-27 – Consulta del estado del pedido, el cliente debe poder consultar un pedido asociado a su compra y visualizar su estado actual, por ejemplo, si se encuentra en preparación, despacho o entregado.
+   777→Al ingresar al sistema, se observa que la página presenta únicamente opciones de acceso para perfiles como administrador, vendedor, inventario y atención al cliente. No se encuentra disponible un perfil, apartado o funcionalidad destinada al cliente que permita consultar directamente el estado de su pedido.
+   778→Por lo tanto, el requisito indicado en la HU-27 no puede ser validado desde la interfaz disponible para el cliente. |
+   779→Pasos para reproducir: |
+   780→1. Ingresar a la página del sistema.
+   781→2. Revisar la pantalla de inicio de sesión.
+   782→3. Verificar los perfiles/cuentas disponibles.
+   783→4. Observar que no existe una opción de acceso para cliente. |
+   784→Información adicional: |
+   785→Debe existir un apartado o funcionalidad para que el cliente pueda consultar un pedido asociado a su compra y visualizar su estado actual. |
+   786→Archivos adjuntos: |
+   787→Captura de pantalla 2026-09-26 163659.png (126,020 bytes) 2026-09-26 17:37
+   788→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6905&type=bug
+   789→TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-FALABELLA_V4.0_CHATBOT.docx (276,160 bytes) 2026-09-26 17:37
+   790→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6906&type=bug |
+   791→No hay notas asociadas a esta incidencia. |
+   792→Ver detalles de la incidencia |
+   793→Id.: |
+   794→Categoría: |
+   795→Gravedad: |
+   796→Reproducibilidad: |
+   797→Fecha de envío: |
+   798→Última actualización: |
+   799→22582 |
+   800→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   801→texto |
+   802→siempre |
+   803→2026-09-26 17:28 |
+   804→2026-09-27 19:41 |
+   805→Informador: |
+   806→USMP_DCASTRO_G1 |
+   807→Plataforma: |
+   808→chrome |
+   809→Asignada a: |
+   810→USMP_RMATOS_G4 |
+   811→SO: |
+   812→WINDOWS |
+   813→Prioridad: |
+   814→baja |
+   815→Versión de SO: |
+   816→11 |
+   817→Estado: |
+   818→nueva |
+   819→Versión del producto: |
+   820→Compilación del Producto: |
+   821→Resolución: |
+   822→abierta |
+   823→Proyección: |
+   824→ninguna |
+   825→Tiempo estimado: |
+   826→ninguno |
+   827→Resuelta en versión: |
+   828→Prevista para versión: |
+   829→UNIVERSIDAD: |
+   830→USMP |
+   831→Resumen: |
+   832→En la parte inferior sale un boton de descargar html que impide ver el nombre de usuario |
+   833→Descripción: |
+   834→un error de diseño minimo pero que tapa el nombre de usuario del cliente, el nombre tambien aparece en la parte de arriba por eso lo considere como prioridad baja |
+   835→Pasos para reproducir: |
+   836→Información adicional: |
+   837→Archivos adjuntos: |
+   838→Captura de pantalla 2026-09-26 162210.png (35,395 bytes) 2026-09-26 17:28
+   839→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6902&type=bug |
+   840→No hay notas asociadas a esta incidencia. |
+   841→Ver detalles de la incidencia |
+   842→Id.: |
+   843→Categoría: |
+   844→Gravedad: |
+   845→Reproducibilidad: |
+   846→Fecha de envío: |
+   847→Última actualización: |
+   848→22575 |
+   849→[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA |
+   850→fallo |
+   851→siempre |
+   852→2026-09-26 17:11 |
+   853→2026-09-27 19:41 |
+   854→Informador: |
+   855→DOCENTE |
+   856→Plataforma: |
+   857→CHROME |
+   858→Asignada a: |
+   859→USMP_VGUERRERO_G4 |
+   860→SO: |
+   861→WINDOWS |
+   862→Prioridad: |
+   863→inmediata |
+   864→Versión de SO: |
+   865→11 |
+   866→Estado: |
+   867→resuelta |
+   868→Versión del producto: |
+   869→Compilación del Producto: |
+   870→Resolución: |
+   871→corregida |
+   872→Proyección: |
+   873→ninguna |
+   874→Tiempo estimado: |
+   875→ninguno |
+   876→Resuelta en versión: |
+   877→Prevista para versión: |
+   878→UNIVERSIDAD: |
+   879→USMP |
+   880→Resumen: |
+   881→ERROR EN CREACION DE USUARIO |
+   882→Descripción: |
+   883→CUANDO SE ACTUALIZA DATOS DEL USUARIO, LA PANTALLA REGRESA AL INICIO |
+   884→Pasos para reproducir: |
+   885→Información adicional: |
+   886→Archivos adjuntos: |
+   887→image.png (75,187 bytes) 2026-09-26 17:11
+   888→https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6901&type=bug |
+   889→Notas |
+   890→(0012275)
+   891→DOCENTE
+   892→2026-09-26 18:32
+   893→Se resolvievo y se enviara nuevo aplicativo |
+   894→(0012424)
+   895→DOCENTE
+   896→2026-09-27 19:22
+   897→Los alumnos TP2 no pueden cerrar la incidencia, solo RESOLVER |

@@ -1,0 +1,3120 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+		xmlns:w="urn:schemas-microsoft-com:office:word"
+		xmlns="http://www.w3.org/TR/REC-html40">
+		<head><meta charset="utf-8"></head><body><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		24797	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		mayor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-10-03 11:47	</td>
+	<td>
+		2026-10-03 11:47	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		urgente	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		El chatbot no cuenta con acceso para clientes y comparte el historial de conversación entre perfiles	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Al realizar la prueba correspondiente a la historia de usuario “Como cliente, quiero utilizar un chatbot para consultar preguntas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones”, se identificaron problemas relacionados con el acceso y la gestión de las conversaciones.<br />
+<br />
+Actualmente, el chatbot se encuentra disponible únicamente en los perfiles de administrador, vendedor, encargado de inventario y atención al cliente. No existe un apartado o perfil destinado al cliente/usuario, por lo que el cliente no puede acceder directamente al chatbot para realizar sus consultas.<br />
+<br />
+Adicionalmente, se verificó que la conversación realizada con el chatbot permanece disponible al ingresar desde diferentes perfiles. Esto provoca que el historial de conversación no se encuentre aislado por usuario o sesión y puede generar que un perfil pueda visualizar conversaciones realizadas anteriormente desde otro perfil.<br />
+<br />
+También se identificó una limitación en el reconocimiento de las consultas. Cuando el usuario comete un error mínimo de escritura, como cambiar u omitir una sola letra de una palabra, el chatbot no logra identificar correctamente la consulta ni determinar a qué información se refiere.<br />
+<br />
+Estas situaciones afectan la accesibilidad, privacidad y facilidad de uso esperadas para el chatbot.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		Problema 1: No existe acceso para clientes<br />
+1. Ingresar al sistema.<br />
+2. Revisar los perfiles disponibles.<br />
+3. Ingresar a los perfiles de administrador, vendedor, encargado de inventario y atención al cliente.<br />
+4. Verificar que cada uno de estos perfiles dispone de acceso al chatbot.<br />
+5. Buscar una opción o perfil correspondiente a cliente/usuario.<br />
+6. Verificar que no existe un apartado desde el cual un cliente pueda acceder al chatbot.<br />
+Problema 2: La conversación permanece entre perfiles<br />
+1. Ingresar al sistema con uno de los perfiles que tenga acceso al chatbot.<br />
+2. Realizar una consulta al chatbot.<br />
+3. Enviar uno o varios mensajes.<br />
+4. Cerrar la sesión o cambiar de perfil.<br />
+5. Ingresar al sistema con otro perfil.<br />
+6. Abrir nuevamente el chatbot.<br />
+7. Verificar que la conversación realizada anteriormente continúa disponible.<br />
+<br />
+Resultado: El historial de conversación no se encuentra aislado entre perfiles.<br />
+Problema 3: Baja tolereancia a errores de escritura<br />
+1.Abrir el chatbot.<br />
+2. Realizar una consulta relacionada con alguno de los temas configurados.<br />
+3. Escribir nuevamente la misma consulta introduciendo un pequeño error ortográfico, como omitir, cambiar o 4. 5. agregar una letra.<br />
+4.Enviar la consulta.<br />
+5.Verificar que el chatbot no reconoce correctamente la intención de la consulta.<br />
+	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción del Sistema	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		image.png (42,481 bytes) <span class="italic-small">2026-10-03 11:47</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7628&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7628&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		24796	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		menor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-10-03 11:19	</td>
+	<td>
+		2026-10-03 11:19	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		normal	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		Incorporar una vista de productos sin stock y alertas de productos próximos a agotarse	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Al realizar la prueba correspondiente a la historia de usuario “Como encargado de inventario, quiero generar un reporte del stock disponible, para controlar los productos existentes”, se verificó que el sistema permite consultar los productos registrados, visualizar la cantidad de stock disponible y utilizar un buscador para localizar productos.<br />
+<br />
+Asimismo, la funcionalidad actual permite consultar la información del inventario de acuerdo con los criterios establecidos.<br />
+<br />
+Sin embargo, como mejora de funcionalidad y usabilidad, sería conveniente que el sistema permita identificar automáticamente los productos que se encuentran sin stock, sin que el encargado tenga que buscarlos individualmente.<br />
+<br />
+De igual manera, sería útil incorporar una sección o alerta que permita identificar los productos próximos a agotarse, de manera que el encargado pueda tomar acciones preventivas, como solicitar reposición de stock.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Ingresar al sistema con el perfil de encargado de inventario.<br />
+2. Acceder al módulo de reporte o consulta de inventario.<br />
+3. Revisar el listado de productos y las cantidades de stock disponibles.<br />
+4. Utilizar el buscador para localizar productos específicos.<br />
+5. Observar que actualmente se puede consultar el stock mediante búsqueda.<br />
+6. Verificar que no existe una sección independiente que muestre automáticamente todos los productos que tienen stock 0.<br />
+7. Verificar que tampoco existe una alerta o sección específica que identifique los productos cuyo stock se encuentra próximo a agotarse.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción del Sistema	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		image.png (85,097 bytes) <span class="italic-small">2026-10-03 11:19</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7627&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7627&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		24795	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		menor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-10-03 11:10	</td>
+	<td>
+		2026-10-03 11:10	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		baja	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		Mejorar la selección de vendedores mediante búsqueda o selección directa	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		En el módulo de consulta de ventas por vendedor, el sistema permite al administrador seleccionar un vendedor mediante un selector ubicado en una casilla.<br />
+<br />
+La funcionalidad actual permite cumplir con el criterio de aceptación que indica que “el administrador debe poder seleccionar un vendedor”. Sin embargo, cuando existe una cantidad considerable de vendedores, la selección mediante una lista desplegable puede resultar poco práctica y aumentar el tiempo necesario para localizar al vendedor requerido.<br />
+<br />
+Como mejora de usabilidad, sería conveniente incorporar una alternativa que permita buscar directamente al vendedor mediante un campo de búsqueda o seleccionarlo haciendo clic sobre el recuadro/tarjeta correspondiente al vendedor.<br />
+<br />
+Esta mejora facilitaría la consulta de las ventas realizadas por un vendedor específico y permitiría una interacción más rápida con el sistema.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Ingresar al sistema como administrador.<br />
+2. Ingresar al módulo de consulta de ventas por vendedor.<br />
+3. Seleccionar la opción para consultar las ventas de un vendedor.<br />
+4. Abrir el selector de vendedores.<br />
+5. Observar que la selección se realiza mediante una lista desplegable dentro de una casilla.<br />
+6.  En caso de existir una cantidad elevada de vendedores, intentar localizar un vendedor específico.<br />
+7. Verificar que actualmente no se dispone de un buscador directo para localizar al vendedor.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción del Sistema	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		image.png (34,050 bytes) <span class="italic-small">2026-10-03 11:10</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7626&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=7626&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22627	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		menor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 18:13	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_ABARDALES_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Firo fox	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS 11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		normal	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		Selector de Cliente (HU-16) carece de función de búsqueda/filtro y opción de registro rápido	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		En la ventana de &quot;Nueva Venta&quot; (EP-05), la selección del cliente (HU-16) se limita a un campo desplegable simple (&lt;select&gt;). Esto dificulta la ubicación de un cliente cuando la lista es extensa (no permite digitar DNI o nombre para filtrar). Además, no existe un acceso directo para registrar a un cliente nuevo dentro de la misma pantalla de venta.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Iniciar sesión como Vendedor y hacer clic en &quot;+ Nueva venta&quot;.<br />
+2. Intentar buscar a un cliente específico digitando su número de DNI o nombre en el campo &quot;Cliente (HU-16)&quot;.<br />
+3. Resultado esperado: El campo debe permitir escribir para filtrar automáticamente las coincidencias por DNI o nombre, o incluir un botón &quot;+ Nuevo cliente&quot;.<br />
+4. Resultado obtenido: Solo despliega una lista estática donde el usuario debe buscar manualmente desplazándose hacia abajo.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		- Módulo afectado: EP-05 (Gestión de ventas - HU-16).<br />
+- Mejora de UX requerida: Convertir el selector en un autocompletado (combobox) con búsqueda rápida.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 171315.png (7,192 bytes) <span class="italic-small">2026-09-26 18:13</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6928&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6928&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22626	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		funcionalidad	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 18:12	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_RMATOS_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		baja	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		EXISTE UN BOTON QUE NO TIENE NINGUNA FUNCIONALIDAD	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		EXISTE UN BOTON EN LA PARTE DERECHA DEL TEXTO QUE DICE &quot;Gestion comercial &quot; que no tiene ninguna funcionalidad , da la sensacion que sirve para mostrar o ocultar una barra de navegacion pero no hace nada	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		ingresar con cualquiera de las credenciales y aparece en la parte superior izquierda	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 170903.png (19,197 bytes) <span class="italic-small">2026-09-26 18:12</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6927&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6927&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22624	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		funcionalidad	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 18:11	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		normal	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		No es posible corregir o reevaluar una solicitud de cambio o devolución después de aprobarla o rechazarla	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Al realizar la evaluación de una solicitud de cambio o devolución, el sistema permite revisar la solicitud y determinar si corresponde aprobarla o rechazarla.<br />
+<br />
+Sin embargo, una vez registrada la evaluación, el sistema no proporciona una opción que permita corregir la decisión o realizar una nueva evaluación en caso de que se haya seleccionado incorrectamente la opción de aprobación o rechazo.<br />
+<br />
+Esto genera una limitación en la gestión de las solicitudes, ya que una decisión registrada incorrectamente no puede ser modificada posteriormente.<br />
+<br />
+La situación afecta el proceso definido en la historia de usuario, debido a que, aunque el sistema permite realizar la evaluación y registrar el estado correspondiente, no permite corregir una evaluación realizada de manera incorrecta.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Ingresar al sistema como trabajador de atención al cliente.<br />
+2. Ingresar al apartado de Cambios y Devoluciones.<br />
+3. Buscar una solicitud de cambio o devolución asociada a una venta.<br />
+4. Seleccionar la solicitud para realizar su evaluación.<br />
+5. Revisar la información y las condiciones de la solicitud.<br />
+6. Seleccionar una decisión de Aprobar o Rechazar.<br />
+7. Registrar/guardar la evaluación.<br />
+8. Volver a ingresar a la solicitud evaluada.<br />
+9. Intentar modificar la decisión registrada o realizar nuevamente la evaluación.<br />
+10. Verificar que no existe una opción que permita corregir o reevaluar la solicitud.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		Una vez realizada la evaluación, el sistema debería permitir, bajo las condiciones y permisos correspondientes, corregir la decisión o volver a evaluar la solicitud cuando se haya registrado una aprobación o rechazo incorrecto. Asimismo, debería mantener un registro actualizado del estado de la solicitud.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 171111.png (70,738 bytes) <span class="italic-small">2026-09-26 18:11</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6923&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6923&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22614	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		mayor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:57	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_ABARDALES_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Firofox	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_JHERRERA_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		windows 11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		alta	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		Alerta prematura RN-11/EX-06 se activa automáticamente antes de digitar el &quot;Monto recibido&quot;	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		En la pantalla de &quot;Nueva Venta&quot; (EP-05), al seleccionar productos que incluyen promociones (descuentos correctamente aplicados), el sistema activa de manera inmediata el mensaje de error en rojo &quot;Monto en efectivo insuficiente: falta S/ 170.82&quot;. Esto sucede teniendo el campo &quot;Monto recibido&quot; en 0.00 de forma predeterminada, sin dar la oportunidad al vendedor de ingresar el efectivo entregado por el cliente.  	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Iniciar sesión como Vendedor y abrir el modal &quot;Nueva venta&quot;.<br />
+2. Seleccionar cliente (ej. Ana Torres) y agregar productos con promoción (ej. Audífonos Bluetooth JBL y Camisa básica).<br />
+3. Observar la sección inferior del modal antes de interactuar con el campo &quot;Monto recibido (S/)&quot;.<br />
+4. Resultado esperado: El campo &quot;Monto recibido&quot; debe estar libre para edición sin mostrar mensajes de error iniciales.<br />
+5. Resultado obtenido: Aparece automáticamente la alerta roja de error &quot;Monto en efectivo insuficiente&quot; bloqueando o entorpeciendo la experiencia de usuario.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		- Módulo afectado: EP-05 (Gestión de ventas - HU-18, HU-19, HU-20).<br />
+- Estado del cálculo: Los subtotales y promociones automáticas (RN-08) se calculan y desglosan correctamente.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 165528.png (107,630 bytes) <span class="italic-small">2026-09-26 17:57</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6921&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6921&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22613	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		mayor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:56	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		inmediata	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		crendenciales aparecen en la seccion del login	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		las credenciales de ingreso para las distinitas secciones aparecen en la interfaz del login, por lo que se debe de retirar de inmediato por cuestiones de seguridad evidentes.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		interfaz de login	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 165332.png (121,633 bytes) <span class="italic-small">2026-09-26 17:56</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6920&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6920&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22612	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		mayor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:56	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		alta	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		El sistema no permite validar y registrar correctamente una devolución asociada a una venta	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Al revisar el sistema para validar la historia de usuario “Como trabajador de atención al cliente, quiero registrar y validar una solicitud de devolución asociada a una compra”, se identificó que el sistema no cuenta con un apartado o módulo visible que permita gestionar solicitudes de devolución.<br />
+<br />
+Debido a la ausencia de esta funcionalidad, no es posible iniciar el proceso para localizar una venta, seleccionar un producto y validar las condiciones necesarias para solicitar una devolución.<br />
+<br />
+La ausencia del módulo impide comprobar los criterios de aceptación relacionados con la validación de la venta, pertenencia del producto, plazo permitido, condiciones aplicables, vendedor y registro de la solicitud.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Ingresar al sistema web con un usuario de atención al cliente.<br />
+2. Revisar las opciones y módulos disponibles en el sistema.<br />
+3. Buscar una opción relacionada con Devoluciones, Solicitudes de devolución o una funcionalidad equivalente.<br />
+4. Verificar las opciones disponibles para gestionar una compra.<br />
+5. Intentar iniciar una solicitud de devolución utilizando como referencia la venta V-0004 del comprobante C-0004.<br />
+6. Verificar que no existe un apartado desde el cual se pueda iniciar y registrar la solicitud de devolución.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		El sistema debería contar con una opción que permita al trabajador localizar la venta, seleccionar el producto y comenzar el proceso de solicitud de devolución, realizando las validaciones establecidas en la historia de usuario.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 165606.png (96,295 bytes) <span class="italic-small">2026-09-26 17:56</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6919&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6919&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22603	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		fallo	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:49	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_JHERRERA_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		inmediata	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		no existen credenciales para que el cliente ingrese	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		no existen credenciales definidas para que el usuario pueda ver por su cuenta el estado de su pedido 	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		problema identificado en el login de la pagina 	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 164756.png (129,713 bytes) <span class="italic-small">2026-09-26 17:49</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6915&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6915&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22595	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] HISTORIA DE USUARIO	</td>
+	<td>
+		menor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:45	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_KMORALES_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		EDGE	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_KFRANCO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		alta	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		Cierre de sesión no elimina correctamente la sesión del usuario.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Al seleccionar la opción &quot;Cerrar sesión&quot;, el sistema finaliza la sesión inmediatamente sin mostrar una ventana de confirmación al usuario.<br />
+Esto puede provocar un cierre de sesión accidental si el usuario selecciona la opción por error.<br />
+	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1.Ingresar al sistema.<br />
+2.Iniciar sesión con credenciales válidas.<br />
+4.Seleccionar la opción &quot;Cerrar sesión&quot;.<br />
+5.Observar el comportamiento del sistema.<br />
+6.Verificar que la sesión se cierre inmediatamente sin mostrar una ventana de confirmación.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		Se recomienda implementar un mensaje de confirmación (“¿Está seguro de que desea cerrar sesión?”) con las opciones Sí y Cancelar para evitar cierres accidentales.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción del Sistema	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 164027.png (39,839 bytes) <span class="italic-small">2026-09-26 17:45</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6911&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6911&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22593	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		ajuste	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:43	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		normal	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		agregar seccion para introducir correo del cliente	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		en este caso agregar un input para colocar el correo del cliente y poder enviar el comprobante de pago de manera mas sencilla 	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		entrar como vendedor y agregar nueva venta	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 164327.png (94,654 bytes) <span class="italic-small">2026-09-26 17:43</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6910&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6910&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22591	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		ajuste	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:39	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_KFRANCO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		normal	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		agregar botones de categoria en sección de nueva venta	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		en este caso la sugerencia en la seccion de nueva venta agregar botones de de categorias para poder encontrar los productos de manera mas sencilla 	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		ingresar como vendedor y luego agregar nueva venta	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 163905.png (46,151 bytes) <span class="italic-small">2026-09-26 17:39</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6907&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6907&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22590	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		mayor	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:37	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_JANTEZANA_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		Brave	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		urgente	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		No existe apartado para clientes	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		Según la historia de usuario HU-27 – Consulta del estado del pedido, el cliente debe poder consultar un pedido asociado a su compra y visualizar su estado actual, por ejemplo, si se encuentra en preparación, despacho o entregado.<br />
+<br />
+Al ingresar al sistema, se observa que la página presenta únicamente opciones de acceso para perfiles como administrador, vendedor, inventario y atención al cliente. No se encuentra disponible un perfil, apartado o funcionalidad destinada al cliente que permita consultar directamente el estado de su pedido.<br />
+<br />
+Por lo tanto, el requisito indicado en la HU-27 no puede ser validado desde la interfaz disponible para el cliente.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+		1. Ingresar a la página del sistema.<br />
+2. Revisar la pantalla de inicio de sesión.<br />
+3. Verificar los perfiles/cuentas disponibles.<br />
+4. Observar que no existe una opción de acceso para cliente.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+		Debe existir un apartado o funcionalidad para que el cliente pueda consultar un pedido asociado a su compra y visualizar su estado actual.	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 163659.png (126,020 bytes) <span class="italic-small">2026-09-26 17:37</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6905&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6905&amp;type=bug</a><br />TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-FALABELLA_V4.0_CHATBOT.docx (276,160 bytes) <span class="italic-small">2026-09-26 17:37</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6906&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6906&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22582	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		texto	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:28	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >USMP_DCASTRO_G1</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		chrome	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_RMATOS_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		baja	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		nueva	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		abierta	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		En la parte inferior sale un boton de descargar html que impide ver el nombre de usuario	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		un error de diseño minimo pero que tapa el nombre de usuario del cliente, el nombre tambien aparece en la parte de arriba por eso lo considere como prioridad baja 	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		Captura de pantalla 2026-09-26 162210.png (35,395 bytes) <span class="italic-small">2026-09-26 17:28</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6902&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6902&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+		No hay notas asociadas a esta incidencia.	</td>
+</tr>
+</table>
+
+
+
+<hr><br style="mso-special-character: line-break; page-break-before: always" /><table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="6">
+		Ver detalles de la incidencia	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr class="bold">
+	<td width="16%">
+		Id.:	</td>
+	<td width="16%">
+		Categoría:	</td>
+	<td width="16%">
+		Gravedad:	</td>
+	<td width="16%">
+		Reproducibilidad:	</td>
+	<td width="16%">
+		Fecha de envío:	</td>
+	<td width="16%">
+		Última actualización:	</td>
+</tr>
+<tr>
+	<td>
+		22575	</td>
+	<td>
+		[USMP_GRUPO_04_FALABELLA] CASOS DE PRUEBA	</td>
+	<td>
+		fallo	</td>
+	<td>
+		siempre	</td>
+	<td>
+		2026-09-26 17:11	</td>
+	<td>
+		2026-09-27 19:41	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Informador:	</td>
+	<td>
+		<span >DOCENTE</span>	</td>
+	<td class="bold">
+		Plataforma:	</td>
+	<td>
+		CHROME	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Asignada a:	</td>
+	<td>
+		<span >USMP_VGUERRERO_G4</span>	</td>
+	<td class="bold">
+		SO:	</td>
+	<td>
+		WINDOWS	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Prioridad:	</td>
+	<td>
+		inmediata	</td>
+	<td class="bold">
+		Versión de SO:	</td>
+	<td>
+		11	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Estado:	</td>
+	<td>
+		resuelta	</td>
+	<td class="bold">
+		Versión del producto:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Compilación del Producto:	</td>
+	<td>
+			</td>
+	<td class="bold">
+		Resolución:	</td>
+	<td>
+		corregida	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Proyección:	</td>
+	<td>
+		ninguna	</td>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		Tiempo estimado:	</td>
+	<td>
+		ninguno	</td>
+	<td class="bold">
+		Resuelta en versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+
+</tr>
+<tr>
+	<td class="bold">
+		&#160;
+	</td>
+	<td>
+		&#160;
+	</td>
+	<td class="bold">
+		Prevista para versión:	</td>
+	<td>
+			</td>
+	<td colspan="2">&#160;</td>
+</tr>
+<tr>
+	<td class="bold">
+		UNIVERSIDAD:	</td>
+	<td colspan="5">
+		USMP	</td>
+</tr>
+<tr class="spacer" >
+	<td colspan="6"></td>
+</tr>
+<tr>
+	<td class="bold">
+		Resumen:	</td>
+	<td colspan="5">
+		ERROR EN CREACION DE USUARIO	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Descripción:	</td>
+	<td colspan="5">
+		CUANDO SE ACTUALIZA DATOS DEL USUARIO, LA PANTALLA REGRESA AL INICIO	</td>
+</tr>
+<tr>
+	<td class="bold">
+		Pasos para reproducir:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Información adicional:	</td>
+	<td colspan="5">
+			</td>
+</tr>
+<tr>
+	<td class="bold">
+		Archivos adjuntos:	</td>
+	<td colspan="5">
+		image.png (75,187 bytes) <span class="italic-small">2026-09-26 17:11</span><br /><a href="https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6901&amp;type=bug" rel="noopener">https://advanced-technology.pe/mantis_rcerda20242/file_download.php?file_id=6901&amp;type=bug</a>	</td>
+</tr>
+
+<tr class="spacer"><td colspan="6"></td></tr>
+</table>
+
+
+<table class="table table-striped table-bordered table-condensed no-margin small">
+<tr>
+	<td class="bold" colspan="2">
+			Notas	</td>
+</tr>
+	<tr>
+	<td width="12%">
+				(0012275)
+			<br />
+				<span >DOCENTE</span>&#160;&#160;&#160;
+			<br />
+				2026-09-26 18:32&#160;&#160;&#160;
+							</td>
+	<td>
+Se resolvievo y se enviara nuevo aplicativo			</td>
+		</tr>
+		<tr class="spacer"><td colspan="2"></td></tr>
+<tr>
+	<td width="12%">
+				(0012424)
+			<br />
+				<span >DOCENTE</span>&#160;&#160;&#160;
+			<br />
+				2026-09-27 19:22&#160;&#160;&#160;
+							</td>
+	<td>
+Los alumnos TP2 no pueden cerrar la incidencia, solo RESOLVER			</td>
+		</tr>
+		<tr class="spacer"><td colspan="2"></td></tr>
+</table>
+
+
+
+<hr>	<script type="text/javascript" src="/mantis_rcerda20242/js/bootstrap-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/mantis_rcerda20242/js/moment-with-locales-2.29.4.min.js"></script>
+	<script type="text/javascript" src="/mantis_rcerda20242/js/bootstrap-datetimepicker-4.17.47.min.js"></script>
+	<script type="text/javascript" src="/mantis_rcerda20242/js/typeahead.jquery-1.3.4.min.js"></script>
+	<script type="text/javascript" src="/mantis_rcerda20242/js/list-2.3.1.min.js"></script>
+	<script type="text/javascript" src="/mantis_rcerda20242/js/ace.min.js"></script>
+</body>
+</html>
