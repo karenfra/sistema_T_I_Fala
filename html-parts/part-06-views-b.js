@@ -154,8 +154,14 @@ function reportPeriodFilter(){
   '</div>';
 }
 function applyReportPeriod(){
-  UI.reportFrom = document.getElementById('reportFrom').value;
-  UI.reportTo = document.getElementById('reportTo').value;
+  const from = document.getElementById('reportFrom').value;
+  const to = document.getElementById('reportTo').value;
+  if(from && to && from > to){
+    toast('error', 'Rango de fechas inválido: la fecha «Desde» no puede ser posterior a la fecha «Hasta». Corrige el rango para continuar.');
+    return;
+  }
+  UI.reportFrom = from;
+  UI.reportTo = to;
   document.getElementById('reportBody').innerHTML = reportBody();
 }
 function clearReportPeriod(){ UI.reportFrom = ''; UI.reportTo = ''; UI.reportSeller = ''; renderCurrentView(); }

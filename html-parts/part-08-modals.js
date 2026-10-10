@@ -54,7 +54,8 @@ function openClientForm(id){                                 /* Formulario de re
       '<div id="cfErrors" class="hidden err-box mb-4"></div>' +
       '<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">' +
         '<div><label class="label" for="cfDni">DNI (8 dígitos) *</label><input class="input" id="cfDni" maxlength="8" inputmode="numeric" placeholder="12345678" value="' + escapeHtml(c ? c.dni : '') + '" /></div>' +
-        '<div><label class="label" for="cfName">Nombre completo *</label><input class="input" id="cfName" placeholder="Nombres y apellidos" value="' + escapeHtml(c ? c.name : '') + '" /></div>' +
+        '<div><label class="label" for="cfName">Nombre completo *</label><input class="input" id="cfName" placeholder="Nombres y apellidos" value="' + escapeHtml(c ? c.name : '') + '" />' +
+          '<p class="hint mt-1">Solo se aceptan letras y espacios, sin números ni caracteres especiales.</p></div>' +
         '<div><label class="label" for="cfEmail">Correo electrónico *</label><input class="input" id="cfEmail" type="email" placeholder="cliente@correo.com" value="' + escapeHtml(c ? c.email : '') + '" /></div>' +
         '<div><label class="label" for="cfPhone">Teléfono (opcional)</label><input class="input" id="cfPhone" maxlength="9" inputmode="numeric" placeholder="987654321" value="' + escapeHtml(c ? (c.phone||'') : '') + '" /></div>' +
       '</div>' +
@@ -72,6 +73,7 @@ function addClient(){                                        /* Valida y guarda 
   if(!/^\d{8}$/.test(dni)) errors.push('El DNI es obligatorio y debe tener exactamente 8 dígitos.');
   else if(DB.clients.some(c => c.dni === dni && c.id !== CLIENT_EDIT)) errors.push('El DNI ' + dni + ' ya se encuentra registrado (HU-04).');
   if(!name) errors.push('El nombre del cliente es obligatorio.');
+  else if(!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(name)) errors.push('El nombre del cliente solo debe contener letras y espacios, sin números ni caracteres especiales.');
   if(!EMAIL_RE.test(email)) errors.push('El correo electrónico no es válido (ejemplo: nombre@correo.com).');
   if(phone && !/^\d{7,9}$/.test(phone)) errors.push('El teléfono debe tener entre 7 y 9 dígitos.');
   if(errors.length){

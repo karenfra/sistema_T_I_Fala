@@ -253,7 +253,7 @@
         <form id="loginForm" onsubmit="return handleLogin(event)" novalidate>
           <div class="mb-4">
             <label class="label" for="loginUser">Usuario</label>
-            <input class="input" id="loginUser" name="usuario" type="text" autocomplete="username" placeholder="ej. admin" />
+            <input class="input" id="loginUser" name="usuario" type="text" autocomplete="username" placeholder="ej. usuario.falabella" />
           </div>
           <div class="mb-5">
             <label class="label" for="loginPass">Contraseña</label>
@@ -278,18 +278,20 @@
             <label class="label" for="clientDni">DNI del cliente</label>
             <input class="input font-mono" id="clientDni" name="dni" type="text" inputmode="numeric" maxlength="8" autocomplete="off"
                    placeholder="12345678" oninput="filterDigits(this, 8)" />
-            <p class="hint mt-1.5">Solo 8 dígitos, sin letras ni caracteres especiales.</p>
+            <p class="hint mt-1.5">Solo 8 dígitos numéricos, sin letras ni caracteres especiales.</p>
           </div>
           <button type="submit" class="btn btn-primary w-full !py-2.5 !text-sm">Consultar mis pedidos</button>
         </form>
       </div>
 
       <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 flex-wrap">
-        <button type="button" class="cred-link" onclick="showDemoCredentials()" title="Ver cuentas de la demostración">
+        <button type="button" class="cred-link" onclick="showDemoCredentials()" title="Ver tabla completa de credenciales">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Credenciales de demostración
+          Tabla de credenciales
         </button>
-        <span class="text-[11px] text-slate-400">Demo académica</span>
+        <button type="button" class="btn btn-outline btn-sm !py-1 !px-2.5 text-[11px] text-slate-600 hover:text-rose-600" onclick="resetDemoFromLogin()" title="Restablecer datos demo iniciales">
+          ↺ Restablecer demo
+        </button>
       </div>
 
       <p class="mt-6 pt-4 border-t border-slate-100 text-[11px] leading-relaxed text-slate-400">
@@ -486,9 +488,9 @@ const RETURN_MAX_DAYS = 30;          // Plazo para devoluciones/cambios (RN-20)
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /* ============ Estado global ============ */
-let DB = null;            // "Base de datos" local (entidades del sistema)
-let session = null;       // Usuario autenticado {userId, username, fullName, roleId, roleName}
-let clientSession = null; // Cliente autenticado en el portal {clientId, dni, name} (HU-27)
+var DB = null;            // "Base de datos" local (entidades del sistema)
+var session = null;       // Usuario autenticado {userId, username, fullName, roleId, roleName}
+var clientSession = null; // Cliente autenticado en el portal {clientId, dni, name} (HU-27)
 let currentView = 'dashboard';
 const UI = {              // Estado de filtros/búsquedas por vista
   clientSearch:'', productSearch:'', productCategory:'', productStockFilter:'', salesSearch:'', orderSearch:'',
@@ -572,10 +574,11 @@ function seedState(){
   ];
 
   const clients = [
-    { id:1, dni:'45871236', name:'Ana Torres',    email:'ana.torres@gmail.com',   phone:'987654321', createdAt:d(20) },
+    { id:1, dni:'45879632', name:'Ana Torres',    email:'ana.torres@gmail.com',   phone:'987654321', createdAt:d(20) },
     { id:2, dni:'40219577', name:'Luis Mendoza',  email:'luis.mendoza@hotmail.com', phone:'912345678', createdAt:d(15) },
     { id:3, dni:'71203455', name:'Carmen Flores', email:'carmen.flores@outlook.com', phone:'945678123', createdAt:d(9) },
-    { id:4, dni:'09456782', name:'Diego Salazar', email:'diego.salazar@gmail.com', phone:'956123478', createdAt:d(4) }
+    { id:4, dni:'09456782', name:'Diego Salazar', email:'diego.salazar@gmail.com', phone:'956123478', createdAt:d(4) },
+    { id:5, dni:'45871236', name:'Ana Torres (DNI Alt)', email:'ana.alt@gmail.com', phone:'987654320', createdAt:d(20) }
   ];
 
   const categories = [
@@ -769,10 +772,29 @@ function loadState(){
     const raw = localStorage.getItem(STORE_KEY);
     if(!raw) return null;
     const data = JSON.parse(raw);
-    if(data && Array.isArray(data.products) && Array.isArray(data.sales)) return data;
+    if(data &&
+       Array.isArray(data.users) && data.users.length > 0 &&
+       Array.isArray(data.clients) && data.clients.length > 0 &&
+       Array.isArray(data.roles) &&
+       Array.isArray(data.products) &&
+       Array.isArray(data.sales)) {
+      return data;
+    }
   }catch(e){ console.warn('Estado guardado corrupto; se regenerará la demo.', e); }
   return null;
 }
+function ensureDB(){
+  if(!DB || !Array.isArray(DB.users) || DB.users.length === 0 || !Array.isArray(DB.clients) || DB.clients.length === 0){
+    DB = loadState();
+    if(!DB || !Array.isArray(DB.users) || DB.users.length === 0 || !Array.isArray(DB.clients) || DB.clients.length === 0){
+      DB = seedState();
+      save();
+    }
+  }
+  if(typeof window !== 'undefined') window.DB = DB;
+  return DB;
+}
+ensureDB(); // Inicialización inmediata para que DB nunca sea null
 
 /* ---------- Búsquedas / relaciones entre entidades ---------- */
 function byId(arr, id){ return arr.find(x => x.id === id) || null; }
@@ -915,10 +937,13 @@ function handleLogin(ev){
   return false;
 }
 function doLogin(username, password){
+  ensureDB();
   hideLoginError();
-  if(!username || !password){ showLoginError('Ingresa tu usuario y contraseña para continuar.'); return false; }
-  const user = DB.users.find(u => normalizeText(u.username) === normalizeText(username));
-  if(!user || user.password !== password){
+  const uClean = String(username || '').trim();
+  const pClean = String(password || '').trim();
+  if(!uClean || !pClean){ showLoginError('Ingresa tu usuario y contraseña para continuar.'); return false; }
+  const user = DB.users.find(u => normalizeText(u.username) === normalizeText(uClean));
+  if(!user || user.password !== pClean){
     showLoginError('Usuario o contraseña incorrectos (EX-01). Verifica tus credenciales e inténtalo de nuevo.');
     return false;
   }
@@ -937,6 +962,7 @@ function doLogin(username, password){
 /* ---------- Acceso del CLIENTE al portal (HU-27 · incidencias 22603 / 22590 / 24797) ---------- */
 function handleClientLogin(ev){
   if(ev) ev.preventDefault();
+  ensureDB();
   const dni = parseDigits(document.getElementById('clientDni').value);
   if(!/^\d{8}$/.test(dni)){
     showClientLoginError('El DNI debe tener exactamente 8 dígitos, sin letras ni caracteres especiales.');
@@ -944,7 +970,7 @@ function handleClientLogin(ev){
   }
   const client = DB.clients.find(c => c.dni === dni);
   if(!client){
-    showClientLoginError('No encontramos un cliente registrado con el DNI ' + dni + ' (EX-01). Verifica el número o acude a tienda para registrarte.');
+    showClientLoginError('No encontramos un cliente registrado con el DNI ' + dni + ' (EX-01). Verifica el número o haz clic en uno de los DNIs de prueba.');
     return false;
   }
   if(session) logout(true);
@@ -1088,38 +1114,62 @@ function requirePerm(code, msg){
   return false;
 }
 function fillLogin(u, p){
-  document.getElementById('loginUser').value = u;
-  document.getElementById('loginPass').value = p;
+  switchLoginTab('personal');
+  const uEl = document.getElementById('loginUser');
+  const pEl = document.getElementById('loginPass');
+  if(uEl) uEl.value = u;
+  if(pEl) pEl.value = p;
   hideLoginError();
-  document.getElementById('loginPass').focus();
+  if(pEl) pEl.focus();
+}
+function fillClientDni(dni){
+  switchLoginTab('client');
+  const el = document.getElementById('clientDni');
+  if(el){
+    el.value = dni;
+    hideClientLoginError();
+    el.focus();
+  }
+}
+function resetDemoFromLogin(){
+  try {
+    localStorage.removeItem(STORE_KEY);
+    sessionStorage.clear();
+  } catch(e){}
+  DB = seedState();
+  save();
+  hideLoginError();
+  hideClientLoginError();
+  toast('success', 'Base de datos demo restablecida a su estado original.');
 }
 
-/* ---------- Credenciales demo: fuera de la pantalla de login (incidencia 22613) ---------- */
+/* ---------- Credenciales demo: disponibles para evaluar el sistema ---------- */
 function showDemoCredentials(){
+  ensureDB();
   const rows = DB.users.filter(u => u.active).map(u => {
     const role = roleById(u.roleId);
     return '<tr>' +
       '<td><div class="flex items-center gap-2"><div class="avatar w-7 h-7 text-[10px]">' + initials(u.fullName) + '</div><span class="font-mono font-semibold">' + escapeHtml(u.username) + '</span></div></td>' +
       '<td class="text-slate-600">' + escapeHtml(u.fullName) + '</td>' +
       '<td><span class="badge b-teal">' + escapeHtml(role ? role.name : '—') + '</span></td>' +
-      '<td class="num"><button class="btn btn-outline btn-sm" onclick="closeModal(); switchLoginTab(\'personal\'); fillLogin(\'' + escapeHtml(u.username) + '\',\'' + escapeHtml(u.password) + '\')">Usar</button></td></tr>';
+      '<td class="num"><button class="btn btn-outline btn-sm" onclick="closeModal(); fillLogin(\'' + escapeHtml(u.username) + '\',\'' + escapeHtml(u.password) + '\')">Usar</button></td></tr>';
   }).join('');
-  const dniRows = DB.clients.slice(0, 4).map(c =>
+  const dniRows = DB.clients.slice(0, 6).map(c =>
     '<tr><td class="font-mono font-semibold">' + escapeHtml(c.dni) + '</td><td class="text-slate-600">' + escapeHtml(c.name) + '</td>' +
     '<td><span class="badge b-violet">Portal de clientes</span></td>' +
-    '<td class="num"><button class="btn btn-outline btn-sm" onclick="closeModal(); switchLoginTab(\'client\'); document.getElementById(\'clientDni\').value=\'' + escapeHtml(c.dni) + '\'; document.getElementById(\'clientDni\').focus()">Usar</button></td></tr>').join('');
+    '<td class="num"><button class="btn btn-outline btn-sm" onclick="closeModal(); fillClientDni(\'' + escapeHtml(c.dni) + '\')">Usar</button></td></tr>').join('');
   openModal(modalHead('Credenciales de demostración', 'Cuentas disponibles para evaluar el sistema') +
     '<div class="modal-body">' +
-      '<div class="rounded-xl border border-amber-100 bg-amber-50/70 p-3.5 mb-4 flex items-start gap-2.5">' +
-        '<span class="text-amber-600 mt-0.5">' + icon('shield','w-4 h-4') + '</span>' +
-        '<p class="text-[12px] text-slate-600 leading-relaxed">Las credenciales ya <b>no se muestran en la pantalla de login</b> (incidencia 22613). En un sistema real estas cuentas no existirían aquí: la autenticación se gestiona en el backend (RN-01).</p>' +
+      '<div class="rounded-xl border border-teal-100 bg-teal-50/70 p-3.5 mb-4 flex items-start gap-2.5">' +
+        '<span class="text-teal-700 mt-0.5">' + icon('shield','w-4 h-4') + '</span>' +
+        '<p class="text-[12px] text-slate-600 leading-relaxed">Cuentas configuradas para la demostración académica del sistema de ventas Falabella. Puedes hacer clic en «Usar» en cualquier fila para autocompletar el acceso.</p>' +
       '</div>' +
       '<h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-400 mb-2">Personal interno</h4>' +
       '<div class="tblwrap mb-4"><table class="tbl"><thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th class="num"></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-400 mb-2">Clientes (portal HU-27 — ingreso con DNI)</h4>' +
       '<div class="tblwrap"><table class="tbl"><thead><tr><th>DNI</th><th>Cliente</th><th>Acceso</th><th class="num"></th></tr></thead><tbody>' + dniRows + '</tbody></table></div>' +
     '</div>' +
-    '<div class="modal-foot"><button class="btn btn-primary" onclick="closeModal()">Entendido</button></div>',
+    '<div class="modal-foot"><button class="btn btn-primary" onclick="closeModal()">Cerrar</button></div>',
     { maxWidth:'560px' });
 }
 function showLoginError(msg){
@@ -1741,8 +1791,14 @@ function reportPeriodFilter(){
   '</div>';
 }
 function applyReportPeriod(){
-  UI.reportFrom = document.getElementById('reportFrom').value;
-  UI.reportTo = document.getElementById('reportTo').value;
+  const from = document.getElementById('reportFrom').value;
+  const to = document.getElementById('reportTo').value;
+  if(from && to && from > to){
+    toast('error', 'Rango de fechas inválido: la fecha «Desde» no puede ser posterior a la fecha «Hasta». Corrige el rango para continuar.');
+    return;
+  }
+  UI.reportFrom = from;
+  UI.reportTo = to;
   document.getElementById('reportBody').innerHTML = reportBody();
 }
 function clearReportPeriod(){ UI.reportFrom = ''; UI.reportTo = ''; UI.reportSeller = ''; renderCurrentView(); }
@@ -2394,7 +2450,8 @@ function openClientForm(id){                                 /* Formulario de re
       '<div id="cfErrors" class="hidden err-box mb-4"></div>' +
       '<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">' +
         '<div><label class="label" for="cfDni">DNI (8 dígitos) *</label><input class="input font-mono" id="cfDni" maxlength="8" inputmode="numeric" placeholder="12345678" value="' + escapeHtml(c ? c.dni : '') + '" oninput="filterDigits(this, 8)" /></div>' +
-        '<div><label class="label" for="cfName">Nombre completo *</label><input class="input" id="cfName" placeholder="Nombres y apellidos" value="' + escapeHtml(c ? c.name : '') + '" /></div>' +
+        '<div><label class="label" for="cfName">Nombre completo *</label><input class="input" id="cfName" placeholder="Nombres y apellidos" value="' + escapeHtml(c ? c.name : '') + '" />' +
+          '<p class="hint mt-1">Solo se aceptan letras y espacios, sin números ni caracteres especiales.</p></div>' +
         '<div><label class="label" for="cfEmail">Correo electrónico *</label><input class="input" id="cfEmail" type="email" placeholder="cliente@correo.com" value="' + escapeHtml(c ? c.email : '') + '" /></div>' +
         '<div><label class="label" for="cfPhone">Teléfono (opcional)</label><input class="input font-mono" id="cfPhone" maxlength="9" inputmode="numeric" placeholder="987654321" value="' + escapeHtml(c ? (c.phone||'') : '') + '" oninput="filterDigits(this, 9)" />' +
           '<p class="hint mt-1">9 dígitos — solo se aceptan números, sin letras ni caracteres especiales.</p></div>' +
@@ -2413,6 +2470,7 @@ function addClient(){                                        /* Valida y guarda 
   if(!/^\d{8}$/.test(dni)) errors.push('El DNI es obligatorio y debe tener exactamente 8 dígitos.');
   else if(DB.clients.some(c => c.dni === dni && c.id !== CLIENT_EDIT)) errors.push('El DNI ' + dni + ' ya se encuentra registrado (HU-04).');
   if(!name) errors.push('El nombre del cliente es obligatorio.');
+  else if(!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(name)) errors.push('El nombre del cliente solo debe contener letras y espacios, sin números ni caracteres especiales.');
   if(!EMAIL_RE.test(email)) errors.push('El correo electrónico no es válido (ejemplo: nombre@correo.com).');
   if(phone && !/^\d{9}$/.test(phone)) errors.push('El teléfono debe tener exactamente 9 dígitos (celular), sin letras ni caracteres especiales.');
   if(errors.length){
@@ -2726,7 +2784,8 @@ function showQuickClientForm(){
       '<div class="text-[12.5px] font-bold text-emerald-800 mb-2.5">' + icon('plus','w-4 h-4 inline') + ' Registrar nuevo cliente (sin cerrar la venta)</div>' +
       '<div id="qcfErrors" class="hidden err-box mb-3"></div>' +
       '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">' +
-        '<div><label class="label" for="qcfName">Nombre completo *</label><input class="input" id="qcfName" placeholder="Nombres y apellidos" /></div>' +
+        '<div><label class="label" for="qcfName">Nombre completo *</label><input class="input" id="qcfName" placeholder="Nombres y apellidos" />' +
+          '<p class="hint mt-1">Solo se aceptan letras y espacios, sin números ni caracteres especiales.</p></div>' +
         '<div><label class="label" for="qcfDni">DNI (8 dígitos) *</label><input class="input font-mono" id="qcfDni" maxlength="8" inputmode="numeric" placeholder="12345678" oninput="filterDigits(this, 8)" /></div>' +
         '<div><label class="label" for="qcfEmail">Correo electrónico *</label><input class="input" id="qcfEmail" type="email" placeholder="cliente@correo.com" /></div>' +
         '<div><label class="label" for="qcfPhone">Teléfono (9 dígitos)</label><input class="input font-mono" id="qcfPhone" maxlength="9" inputmode="numeric" placeholder="987654321" oninput="filterDigits(this, 9)" /></div>' +
@@ -2745,6 +2804,7 @@ function saveQuickClient(){
   const phone = parseDigits(document.getElementById('qcfPhone').value);
   const errors = [];
   if(!name) errors.push('El nombre del cliente es obligatorio.');
+  else if(!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(name)) errors.push('El nombre del cliente solo debe contener letras y espacios, sin números ni caracteres especiales.');
   if(!/^\d{8}$/.test(dni)) errors.push('El DNI debe tener exactamente 8 dígitos.');
   else if(DB.clients.some(c => c.dni === dni)) errors.push('El DNI ' + dni + ' ya está registrado: búscalo en el selector.');
   if(!EMAIL_RE.test(email)) errors.push('El correo electrónico no es válido.');
@@ -3876,29 +3936,43 @@ var Chatbot = (function(){
 /* =====================================================================================================
    INICIALIZACIÓN DE LA APLICACIÓN
    ===================================================================================================== */
-document.addEventListener('DOMContentLoaded', function(){
-  /* Iconos estáticos de la plantilla */
-  document.getElementById('btnMenu').innerHTML = icon('menu','w-4 h-4');
-  document.getElementById('sbCloseBtn').innerHTML = icon('x','w-4 h-4');
-  document.getElementById('sbLogoutBtn').innerHTML = icon('logout','w-4 h-4');
-  document.getElementById('btnResetIcon').innerHTML = icon('refresh','w-3.5 h-3.5');
-  document.getElementById('btnNewSaleIcon').innerHTML = icon('plus','w-3.5 h-3.5');
+function initApp(){
+  if(window.__APP_BOOTED__) return;
+  window.__APP_BOOTED__ = true;
 
-  /* 1) Cargar / inicializar la "base de datos" local (localStorage · falabella_demo_v1) */
-  DB = loadState();
-  if(!DB){ DB = seedState(); save(); }
+  /* 1) Asegurar base de datos inicializada de inmediato */
+  ensureDB();
 
-  /* 2) Chatbot: se inicializa SIN interferir con la pantalla de login (solo bindea su propio FAB) */
-  Chatbot.init();
+  /* 2) Iconos estáticos de la plantilla con guardias de existencia */
+  const setInner = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
+  setInner('btnMenu', icon('menu','w-4 h-4'));
+  setInner('sbCloseBtn', icon('x','w-4 h-4'));
+  setInner('sbLogoutBtn', icon('logout','w-4 h-4'));
+  setInner('btnResetIcon', icon('refresh','w-3.5 h-3.5'));
+  setInner('btnNewSaleIcon', icon('plus','w-3.5 h-3.5'));
 
-  /* 3) Restaurar sesión previa (sessionStorage): personal o cliente del portal (HU-27) */
-  session = restoreSession();
-  if(session){ enterApp(); }
-  else{
-    clientSession = restoreClientSession();
-    if(clientSession){ enterClientPortal(); }
+  /* 3) Chatbot: inicialización segura sin interferir con login */
+  try { if(typeof Chatbot !== 'undefined' && Chatbot.init) Chatbot.init(); }
+  catch(e){ console.error('Error al inicializar chatbot:', e); }
+
+  /* 4) Restaurar sesión previa si existía en sessionStorage */
+  try {
+    session = restoreSession();
+    if(session){ enterApp(); }
+    else{
+      clientSession = restoreClientSession();
+      if(clientSession){ enterClientPortal(); }
+    }
+  } catch(e){
+    console.error('Error restaurando sesión:', e);
   }
-});
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 </script>
 </body>
 </html>
