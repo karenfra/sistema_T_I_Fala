@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laptops y Computadoras | falabella.com</title>
+  <meta name="description" content="Encuentra las mejores Laptops Lenovo, Asus, HP, Acer y más en falabella.com. Precios exclusivos con Tarjeta CMR, envío rápido y retiro en tienda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f8fafc; color: #0f172a; }
+    
+    /* Header */
+    .store-header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .store-subbar { background: #ffffff; border-bottom: 1px solid #f1f5f9; font-size: 11.5px; color: #475569; }
+    .store-search-wrap { position: relative; width: 100%; display: flex; align-items: center; }
+    .store-search-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 46px 0 18px;
+      border-radius: 9999px;
+      border: 1px solid #cbd5e1;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #ffffff;
+    }
+    .store-search-input:focus { border-color: #0f172a; box-shadow: 0 0 0 1px #0f172a; }
+    .store-search-btn {
+      position: absolute;
+      right: 4px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9999px;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .store-search-btn:hover { background: #0f172a; }
+    
+    /* Brand Cards Row */
+    .brand-card-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .brand-card-box {
+      width: 96px;
+      height: 96px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .brand-card-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .brand-card-item:hover .brand-card-box {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .brand-card-item.active .brand-card-box {
+      border-color: #0284c7;
+      border-width: 2px;
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+    .brand-card-title {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #334155;
+      text-align: center;
+    }
+    .brand-card-item.active .brand-card-title {
+      font-weight: 700;
+      color: #0284c7;
+    }
+
+    /* Product Card */
+    .p-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .p-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+    .cmr-pill {
+      background-color: #e11d48;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .green-badge {
+      background-color: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .btn-add-cart {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 8px;
+      width: 100%;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-add-cart:hover {
+      background-color: #aad500;
+      color: #0f172a;
+    }
+
+    /* Filter Tag */
+    .filter-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #334155;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .filter-tag-pill:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- HEADER OFICIAL EXACTO -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
+      
+      <!-- Logo Oficial Falabella & Menú -->
+      <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+          <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+        </a>
+
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda central en forma de píldora con botón circular -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="laptopSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" oninput="handleSearch(this.value)" />
+          <button type="button" class="store-search-btn" title="Buscar en falabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de Usuario -->
+      <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión -->
+        <a href="#" onclick="alert('Módulo de autenticación en línea.'); return false;" class="flex flex-col text-left text-xs text-slate-700 hover:text-black no-underline">
+          <span class="text-[11px] text-slate-500 leading-tight">Hola,</span>
+          <span class="font-bold flex items-center gap-0.5 leading-tight">Inicia sesión <svg class="w-3 h-3 text-slate-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+        </a>
+
+        <!-- Mi cuenta -->
+        <a href="#" onclick="alert('Módulo de Mi Cuenta Falabella.'); return false;" class="hidden md:block text-xs font-bold text-slate-700 hover:text-black no-underline">
+          Mi cuenta
+        </a>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="openWishlistModal()" class="p-1.5 text-slate-700 hover:text-red-500 relative transition" title="Mis Favoritos">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+        </button>
+
+        <!-- Carrito de Compras Oficial -->
+        <button type="button" onclick="toggleCartDrawer()" class="flex items-center gap-1.5 text-slate-800 hover:text-[#0f766e] relative px-2 py-1 rounded-lg transition" title="Ver bolsa de compras">
+          <div class="relative">
+            <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span id="storeCartBadge" class="absolute -top-1 -right-2 bg-[#aad500] text-slate-900 text-[11px] font-black rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border border-white">0</span>
+          </div>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SUB-BARRA DE UBICACIÓN OFICIAL FALABELLA -->
+  <div class="store-subbar py-1.5">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div class="flex items-center gap-1.5 cursor-pointer hover:text-black">
+        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span>Ingresa tu ubicación para ver los tiempos de entrega.</span>
+        <span class="font-bold underline ml-1 text-slate-800">Ingresa tu ubicación</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-slate-500">
+        <a href="tecnologia.html" class="hover:text-black font-semibold text-slate-700">← Volver a Tecnología</a>
+        <a href="index.html" class="hover:text-black">Inicio</a>
+        <a href="tablets.html" class="hover:text-black">Tablets</a>
+        <a href="#" class="hover:text-black">Ayuda</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+    
+    <!-- Breadcrumbs -->
+    <nav class="text-xs text-slate-500 flex items-center gap-2 mb-4 overflow-x-auto whitespace-nowrap">
+      <a href="index.html" class="hover:text-slate-800">Home</a>
+      <span>&gt;</span>
+      <a href="tecnologia.html" class="hover:text-slate-800">Tecnología - Computadoras</a>
+      <span>&gt;</span>
+      <span class="text-slate-800 font-bold">Laptops</span>
+    </nav>
+
+    <!-- FILA DE MARCAS DESTACADAS (CARRUSEL / SELECTOR SUPERIOR) -->
+    <section class="mb-6">
+      <div class="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none" id="brandsContainer">
+        
+        <!-- Lenovo -->
+        <div class="brand-card-item" id="brandCard-lenovo" onclick="selectBrand('lenovo')">
+          <div class="brand-card-box">
+            <img src="assets/laptops/brand_lenovo_card.png" alt="Lenovo" />
+          </div>
+          <span class="brand-card-title">Lenovo</span>
+        </div>
+
+        <!-- Asus -->
+        <div class="brand-card-item" id="brandCard-asus" onclick="selectBrand('asus')">
+          <div class="brand-card-box">
+            <img src="assets/laptops/brand_asus_card.png" alt="Asus" />
+          </div>
+          <span class="brand-card-title">Asus</span>
+        </div>
+
+        <!-- HP -->
+        <div class="brand-card-item" id="brandCard-hp" onclick="selectBrand('hp')">
+          <div class="brand-card-box">
+            <img src="assets/laptops/brand_hp_card.png" alt="HP" />
+          </div>
+          <span class="brand-card-title">HP</span>
+        </div>
+
+        <!-- Acer -->
+        <div class="brand-card-item" id="brandCard-acer" onclick="selectBrand('acer')">
+          <div class="brand-card-box">
+            <img src="assets/laptops/brand_acer_card.png" alt="Acer" />
+          </div>
+          <span class="brand-card-title">Acer</span>
+        </div>
+
+        <!-- Más marcas -->
+        <div class="brand-card-item" id="brandCard-all" onclick="selectBrand('all')">
+          <div class="brand-card-box">
+            <img src="assets/laptops/brand_mas_card.png" alt="Más marcas" />
+          </div>
+          <span class="brand-card-title">Más marcas</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LAYOUT CATÁLOGO: SIDEBAR FILTROS + GRID DE PRODUCTOS -->
+    <div class="flex flex-col lg:flex-row gap-6 items-start">
+      
+      <!-- SIDEBAR FILTROS (IZQUIERDA) -->
+      <aside class="w-full lg:w-[260px] flex-shrink-0 bg-white p-4 rounded-xl border border-slate-200 space-y-5 text-sm">
+        
+        <!-- Encabezado de Categoría -->
+        <div>
+          <span class="text-xs text-slate-500 font-medium">Computadoras</span>
+          <h1 id="categoryHeading" class="text-lg font-bold text-slate-900 leading-tight mt-0.5">Laptops</h1>
+          <span id="resultsCountText" class="text-xs text-slate-500 mt-1 block">Resultados (8)</span>
+        </div>
+
+        <!-- Filtros Seleccionados (Chips) -->
+        <div id="selectedFiltersSection" class="pt-3 border-t border-slate-100">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-2">
+            <span>Filtros seleccionados</span>
+            <button type="button" onclick="clearAllFilters()" class="text-slate-400 hover:text-slate-700 text-[11px] font-normal">Limpiar todo</button>
+          </div>
+          <div class="flex flex-wrap gap-2" id="activeFilterChips">
+            <span class="filter-tag-pill" onclick="removeSellerFilter()">
+              <span>FALABELLA</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+            <span class="filter-tag-pill" id="chipProcessorR7" onclick="toggleProcessorFilter('ryzen7')">
+              <span>amd ryzen 7</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+            <span class="filter-tag-pill" id="chipProcessorR5" onclick="toggleProcessorFilter('ryzen5')">
+              <span>amd ryzen 5</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+            <span class="filter-tag-pill" id="chipProcessorR9" onclick="toggleProcessorFilter('ryzen9')">
+              <span>amd ryzen 9</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- 1. Tipo de Entrega -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-entrega')">
+            <span>Tipo de Entrega</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-entrega" class="space-y-2 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600 flex items-center gap-1.5"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg> Envío a domicilio</span>
+              <button type="button" class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold hover:bg-slate-200">Llega mañana</button>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600 flex items-center gap-1.5"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Retiro en un punto</span>
+              <button type="button" class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold hover:bg-slate-200">Retira hoy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Marca -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-marca')">
+            <span>Marca</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-marca" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-lenovo" onchange="toggleBrandCheckbox('lenovo', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> Lenovo</span>
+              <span class="text-slate-400">(2)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-asus" onchange="toggleBrandCheckbox('asus', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> Asus</span>
+              <span class="text-slate-400">(3)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-hp" onchange="toggleBrandCheckbox('hp', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> HP</span>
+              <span class="text-slate-400">(2)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-acer" onchange="toggleBrandCheckbox('acer', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> Acer</span>
+              <span class="text-slate-400">(1)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 3. Procesador -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-proc')">
+            <span>Procesador</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-proc" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="proc-r7" checked onchange="toggleProcessorCheckbox('ryzen7', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> AMD Ryzen 7</span>
+              <span class="text-slate-400">(5)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="proc-r5" checked onchange="toggleProcessorCheckbox('ryzen5', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> AMD Ryzen 5</span>
+              <span class="text-slate-400">(2)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="proc-r9" checked onchange="toggleProcessorCheckbox('ryzen9', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> AMD Ryzen 9</span>
+              <span class="text-slate-400">(1)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Memoria RAM -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-ram')">
+            <span>Memoria RAM</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-ram" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterByRam('8GB', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> 8 GB</span>
+              <span class="text-slate-400">(2)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterByRam('16GB', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> 16 GB</span>
+              <span class="text-slate-400">(5)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterByRam('32GB', this.checked)" class="rounded text-[#0284c7] focus:ring-0"> 32 GB</span>
+              <span class="text-slate-400">(1)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. Rango de Precio -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2">Precio</div>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <input type="number" id="minPriceInput" placeholder="Min" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+              <span class="text-slate-400">-</span>
+              <input type="number" id="maxPriceInput" placeholder="Max" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+            </div>
+            <button type="button" onclick="applyPriceFilter()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-1.5 rounded text-xs font-semibold">Aplicar</button>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- CATÁLOGO PRINCIPAL (DERECHA) -->
+      <section class="flex-1 min-w-0 w-full">
+        
+        <!-- BARRA SUPERIOR DE RESULTADOS Y ORDEN -->
+        <div class="bg-white p-3 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-800">Laptops</span>
+            <span class="text-xs text-slate-400" id="badgeTopCount">(8 productos)</span>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs">
+            <label for="sortSelector" class="text-slate-500 font-medium">Ordenar por:</label>
+            <select id="sortSelector" onchange="handleSort(this.value)" class="border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900">
+              <option value="recommended">Recomendados</option>
+              <option value="price_asc">Menor precio</option>
+              <option value="price_desc">Mayor precio</option>
+              <option value="rating">Calificación</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- GRID DE PRODUCTOS (4 COLUMNAS COMO EN FALABELLA OFICIAL) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4" id="laptopGrid">
+          <!-- Renderizado dinámicamente con JavaScript -->
+        </div>
+
+        <!-- MENSAJE DE SIN RESULTADOS -->
+        <div id="noResultsMessage" class="hidden text-center py-16 bg-white rounded-xl border border-slate-200 p-8">
+          <svg class="w-12 h-12 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 class="text-base font-bold text-slate-800">No encontramos laptops con esos filtros</h3>
+          <p class="text-xs text-slate-500 mt-1">Prueba quitando algunos filtros o restableciendo la búsqueda.</p>
+          <button type="button" onclick="clearAllFilters()" class="mt-4 px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-lg hover:bg-slate-800">Limpiar todos los filtros</button>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- DRAWER OFICIAL: CARRITO DE COMPRAS -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+    <div id="cartDrawerPanel" class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 pointer-events-auto">
+      
+      <!-- Encabezado Drawer -->
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="font-black text-slate-900 text-sm">Bolsa de Compras</h3>
+        </div>
+        <button type="button" onclick="toggleCartDrawer()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Items del Carrito -->
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3 divide-y divide-slate-100">
+        <!-- Renderizado dinámicamente -->
+      </div>
+
+      <!-- Footer Drawer con Subtotal y Checkout -->
+      <div class="p-4 border-t border-slate-200 bg-white space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-500 font-medium">Subtotal estimado:</span>
+          <span id="cartSubtotalText" class="font-black text-slate-900 text-base">S/ 0.00</span>
+        </div>
+        <div class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          ¡Envío gratis en miles de productos seleccionados!
+        </div>
+        <button type="button" onclick="goToCheckout()" class="w-full bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black py-3 rounded-xl transition text-sm flex items-center justify-center gap-2 shadow-sm">
+          <span>Ir a pagar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <button type="button" onclick="toggleCartDrawer()" class="w-full text-slate-600 hover:text-slate-900 py-1.5 text-xs font-semibold">
+          Seguir comprando
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DRAWER OFICIAL: MENÚ DE CATEGORÍAS -->
+  <div id="techCategoriesDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleCategoriesDrawer()"></div>
+    <div id="techCategoriesPanel" class="absolute top-0 left-0 h-full w-full max-w-xs bg-white shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 pointer-events-auto">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
+        <span class="font-black text-sm">Categorías Falabella</span>
+        <button type="button" onclick="toggleCategoriesDrawer()" class="text-white hover:text-slate-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 space-y-1 text-xs">
+        <a href="index.html" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-medium">← Inicio Principal</a>
+        <a href="tecnologia.html" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-semibold text-[#0284c7]">⚡ Tecnología</a>
+        <a href="laptops.html" class="block py-2.5 px-3 rounded bg-sky-50 text-[#0284c7] font-bold pl-6">💻 Laptops</a>
+        <a href="tablets.html" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-medium pl-6">📱 Tablets</a>
+        <a href="tecnologia.html#seccion-televisores" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-medium pl-6">📺 Televisores y Smart TV</a>
+        <a href="tecnologia.html#seccion-audio" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-medium pl-6">🎧 Audio y Audífonos</a>
+        <a href="tecnologia.html#seccion-fotografia" class="block py-2.5 px-3 rounded hover:bg-slate-100 text-slate-800 font-medium pl-6">📷 Fotografía Profesional</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN -->
+  <div id="toastNotification" class="toast-msg">
+    <svg class="w-5 h-5 text-[#aad500] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span id="toastNotificationText">Producto agregado a tu bolsa de compras.</span>
+  </div>
+
+  <!-- SCRIPT DE INTERACTIVIDAD COMPLETA -->
+  <script>
+    /* -------------------------------------------------------------
+       1. SINCRONIZACIÓN DE CARRITO CON FALABELLA PRINCIPAL
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    function getStoreCart() {
+      try {
+        const raw = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch(e) { return []; }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch(e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('storeCartBadge');
+      if(badge) {
+        badge.textContent = count;
+      }
+    }
+
+    function addToCart(productId) {
+      const p = LAPTOP_PRODUCTS.find(item => item.id === productId);
+      if(!p) return;
+
+      const cart = getStoreCart();
+      const existing = cart.find(item => item.id === p.id);
+      const effectivePrice = p.priceCmr || p.priceNormal;
+
+      if(existing) {
+        existing.qty = (existing.qty || existing.quantity || 1) + 1;
+      } else {
+        cart.push({
+          id: p.id,
+          name: p.name,
+          price: effectivePrice,
+          originalPrice: p.priceList || p.priceNormal,
+          image: p.image,
+          brand: p.brand,
+          qty: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡Se agregó ${p.name.substring(0, 30)}... a tu bolsa!`);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastNotificationText');
+      if(!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const panel = document.getElementById('cartDrawerPanel') || drawer?.querySelector('.pointer-events-auto') || drawer?.children[1];
+      if(!drawer || !panel) return;
+      const isClosed = drawer.classList.contains('pointer-events-none') || drawer.classList.contains('opacity-0');
+      if(isClosed) {
+        renderCartItems();
+        drawer.classList.remove('pointer-events-none', 'opacity-0');
+        panel.style.transform = 'translateX(0)';
+      } else {
+        drawer.classList.add('opacity-0');
+        panel.style.transform = 'translateX(100%)';
+        setTimeout(() => drawer.classList.add('pointer-events-none'), 300);
+      }
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cartItemsContainer');
+      const subtotalEl = document.getElementById('cartSubtotalText');
+      if(!container) return;
+
+      const cart = getStoreCart();
+      if(!cart.length) {
+        container.innerHTML = '<div class="text-center py-10 text-slate-400 text-xs">Tu bolsa está vacía.</div>';
+        if(subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const qty = item.qty || item.quantity || 1;
+        const totalItem = (item.price || 0) * qty;
+        subtotal += totalItem;
+        return `
+          <div class="py-3 flex items-center gap-3">
+            <img src="${item.image || 'assets/laptops/laptop_lenovo_loq.png'}" class="w-12 h-12 object-contain rounded border border-slate-100 flex-shrink-0" />
+            <div class="flex-1 min-w-0">
+              <div class="text-xs font-bold text-slate-800 truncate">${item.name}</div>
+              <div class="text-xs text-rose-600 font-extrabold">S/ ${Number(item.price).toLocaleString('es-PE', {minimumFractionDigits: 2})}</div>
+              <div class="flex items-center gap-2 mt-1">
+                <button type="button" onclick="updateCartItemQty(${item.id}, -1)" class="w-5 h-5 bg-slate-100 rounded flex items-center justify-center font-bold text-xs hover:bg-slate-200">-</button>
+                <span class="text-xs font-bold">${qty}</span>
+                <button type="button" onclick="updateCartItemQty(${item.id}, 1)" class="w-5 h-5 bg-slate-100 rounded flex items-center justify-center font-bold text-xs hover:bg-slate-200">+</button>
+              </div>
+            </div>
+            <button type="button" onclick="removeCartItem(${item.id})" class="text-slate-400 hover:text-rose-500 p-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      if(subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', {minimumFractionDigits: 2})}`;
+      }
+    }
+
+    function updateCartItemQty(id, delta) {
+      const cart = getStoreCart();
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      const current = item.qty || item.quantity || 1;
+      const next = current + delta;
+      if(next <= 0) {
+        removeCartItem(id);
+      } else {
+        item.qty = next;
+        saveStoreCart(cart);
+        renderCartItems();
+      }
+    }
+
+    function removeCartItem(id) {
+      let cart = getStoreCart();
+      cart = cart.filter(i => i.id !== id);
+      saveStoreCart(cart);
+      renderCartItems();
+    }
+
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('techCategoriesDrawer');
+      const panel = document.getElementById('techCategoriesPanel') || drawer?.querySelector('.pointer-events-auto') || drawer?.children[1];
+      if(!drawer || !panel) return;
+      const isClosed = drawer.classList.contains('pointer-events-none') || drawer.classList.contains('opacity-0');
+      if(isClosed) {
+        drawer.classList.remove('pointer-events-none', 'opacity-0');
+        panel.style.transform = 'translateX(0)';
+      } else {
+        drawer.classList.add('opacity-0');
+        panel.style.transform = 'translateX(-100%)';
+        setTimeout(() => drawer.classList.add('pointer-events-none'), 300);
+      }
+    }
+
+    function goToCheckout() {
+      const cart = getStoreCart();
+      if(!cart.length) {
+        alert('Tu bolsa de compras está vacía.');
+        return;
+      }
+      window.location.href = 'index.html#carrito';
+    }
+
+    /* -------------------------------------------------------------
+       2. BASE DE DATOS DE LAPTOPS (EXACTA A LAS CAPTURAS)
+       ------------------------------------------------------------- */
+    const LAPTOP_PRODUCTS = [
+      {
+        id: 301,
+        name: 'Laptop Gamer LOQ Essential Serie 7000 AMD Ryzen 7 7735HS RTX 4050 6GB 15.6" FHD 144Hz',
+        brand: 'Lenovo',
+        brandKey: 'lenovo',
+        processor: 'ryzen7',
+        ram: '16GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_lenovo_loq.png',
+        priceCmr: 4299,
+        discountCmr: '-36%',
+        priceNormal: 4599,
+        priceList: 6699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 4.8,
+        reviews: 8
+      },
+      {
+        id: 302,
+        name: 'Laptop 15-fc0287la, AMD Ryzen 7, 8 GB RAM, 512 GB SSD, 15.6" FHD',
+        brand: 'HP',
+        brandKey: 'hp',
+        processor: 'ryzen7',
+        ram: '8GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_hp_15.png',
+        priceCmr: null,
+        discountCmr: null,
+        priceNormal: 2799,
+        discountNormal: '-20%',
+        priceList: 3499,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 4.6,
+        reviews: 12
+      },
+      {
+        id: 303,
+        name: 'Laptop Gamer Nitro V AMD Ryzen 7-170 32GB 32GB 15.6" 180Hz FHD RTX 4050',
+        brand: 'Acer',
+        brandKey: 'acer',
+        processor: 'ryzen7',
+        ram: '32GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_acer_nitro.png',
+        priceCmr: null,
+        discountCmr: null,
+        priceNormal: 10599,
+        discountNormal: null,
+        priceList: null,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 5.0,
+        reviews: 3
+      },
+      {
+        id: 304,
+        name: 'Vivobook Go 15 AMD Ryzen 5 40 8GB 512SSD 15.6" FHD',
+        brand: 'Asus',
+        brandKey: 'asus',
+        processor: 'ryzen5',
+        ram: '8GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_asus_vivobook.png',
+        priceCmr: 1999,
+        discountCmr: '-46%',
+        priceNormal: 2099,
+        priceList: 3699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 4.7,
+        reviews: 25
+      },
+      {
+        id: 305,
+        name: 'Laptop Ideapad 5 2 en 1 serie 300 AMD Ryzen AI 7 350 16GB RAM 512 GB SSD 14" Touch',
+        brand: 'Lenovo',
+        brandKey: 'lenovo',
+        processor: 'ryzen7',
+        ram: '16GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_lenovo_ideapad.png',
+        priceCmr: 3899,
+        discountCmr: '-33%',
+        priceNormal: 3999,
+        priceList: 5799,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 4.8,
+        reviews: 4
+      },
+      {
+        id: 306,
+        name: 'Laptop TUF Gaming A16 AMD Ryzen 7 260 16GB 512SSD RTX5060 16" QHD 165Hz',
+        brand: 'Asus',
+        brandKey: 'asus',
+        processor: 'ryzen7',
+        ram: '16GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_asus_tuf.png',
+        priceCmr: 5899,
+        discountCmr: '-26%',
+        priceNormal: 5999,
+        priceList: 7999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 4.9,
+        reviews: 14
+      },
+      {
+        id: 307,
+        name: 'Laptop Gamer Rog Strix G16 Amd Ryzen 9 9955hx Rtx5070 16gb Ram 1tb SSD 16" 240Hz',
+        brand: 'Asus',
+        brandKey: 'asus',
+        processor: 'ryzen9',
+        ram: '16GB',
+        storage: '1TB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_asus_rog.png',
+        priceCmr: 9199,
+        discountCmr: '-43%',
+        priceNormal: 9299,
+        priceList: 16099,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 5.0,
+        reviews: 7
+      },
+      {
+        id: 308,
+        name: 'Laptop Gamer Victus by 15-fb3021la, AMD Ryzen 7, 16 GB RAM, NVIDIA RTX 3050 512GB SSD',
+        brand: 'HP',
+        brandKey: 'hp',
+        processor: 'ryzen7',
+        ram: '16GB',
+        storage: '512GB',
+        seller: 'Falabella',
+        image: 'assets/laptops/laptop_hp_victus.png',
+        priceCmr: 4499,
+        discountCmr: '-21%',
+        priceNormal: 4599,
+        priceList: 5699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira hoy',
+        rating: 5.0,
+        reviews: 1
+      }
+    ];
+
+    /* -------------------------------------------------------------
+       3. ESTADO DE FILTROS Y RENDERIZADO
+       ------------------------------------------------------------- */
+    const ALL_BRANDS = ['lenovo', 'asus', 'hp', 'acer'];
+    let selectedBrands = new Set(ALL_BRANDS);
+    let currentProcessors = ['ryzen7', 'ryzen5', 'ryzen9'];
+    let currentRam = [];
+    let currentSearch = '';
+    let currentSort = 'recommended';
+    let minPrice = null;
+    let maxPrice = null;
+
+    function renderProducts() {
+      const grid = document.getElementById('laptopGrid');
+      const noResults = document.getElementById('noResultsMessage');
+      const countText = document.getElementById('resultsCountText');
+      const badgeTopCount = document.getElementById('badgeTopCount');
+      if(!grid) return;
+
+      let filtered = LAPTOP_PRODUCTS.filter(item => {
+        // Brand filter: filtra según marcas seleccionadas independientemente
+        if(selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+          if(!selectedBrands.has(item.brandKey)) return false;
+        } else if(selectedBrands.size === 0) {
+          return false;
+        }
+
+        // Processor filter
+        if(currentProcessors.length > 0 && !currentProcessors.includes(item.processor)) return false;
+
+        // RAM filter
+        if(currentRam.length > 0 && !currentRam.includes(item.ram)) return false;
+
+        // Search text
+        if(currentSearch.trim()) {
+          const q = currentSearch.toLowerCase();
+          const match = item.name.toLowerCase().includes(q) || item.brand.toLowerCase().includes(q);
+          if(!match) return false;
+        }
+
+        // Price range
+        const effPrice = item.priceCmr || item.priceNormal;
+        if(minPrice !== null && effPrice < minPrice) return false;
+        if(maxPrice !== null && effPrice > maxPrice) return false;
+
+        return true;
+      });
+
+      // Sorting
+      if(currentSort === 'price_asc') {
+        filtered.sort((a,b) => (a.priceCmr || a.priceNormal) - (b.priceCmr || b.priceNormal));
+      } else if(currentSort === 'price_desc') {
+        filtered.sort((a,b) => (b.priceCmr || b.priceNormal) - (a.priceCmr || a.priceNormal));
+      } else if(currentSort === 'rating') {
+        filtered.sort((a,b) => b.rating - a.rating);
+      }
+
+      // Update counters
+      const totalCount = filtered.length;
+      if(countText) countText.textContent = `Resultados (${totalCount})`;
+      if(badgeTopCount) badgeTopCount.textContent = `(${totalCount} productos)`;
+
+      if(filtered.length === 0) {
+        grid.innerHTML = '';
+        if(noResults) noResults.classList.remove('hidden');
+        return;
+      }
+
+      if(noResults) noResults.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(p => {
+        const hasCmr = Boolean(p.priceCmr);
+        const cmrPriceStr = hasCmr ? `S/ ${p.priceCmr.toLocaleString('es-PE')}` : '';
+        const normalPriceStr = `S/ ${p.priceNormal.toLocaleString('es-PE')}`;
+        const listPriceStr = p.priceList ? `S/ ${p.priceList.toLocaleString('es-PE')}` : '';
+
+        return `
+          <div class="p-card group">
+            
+            <!-- Wishlist Heart Button -->
+            <button type="button" onclick="toggleWishlist(${p.id}, this)" class="absolute top-3 right-3 text-slate-300 hover:text-red-500 p-1.5 transition z-10" title="Añadir a favoritos">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+
+            <!-- Product Image -->
+            <div class="w-full h-44 flex items-center justify-center p-2 mb-2 bg-white relative">
+              <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+
+            <!-- Brand & Seller -->
+            <div class="text-[11px] font-bold text-slate-500 tracking-wider uppercase mb-1">${p.brand}</div>
+            
+            <!-- Title -->
+            <h3 class="text-xs font-semibold text-slate-800 line-clamp-2 h-8 leading-snug mb-1" title="${p.name}">
+              ${p.name}
+            </h3>
+
+            <!-- Por Falabella Badge -->
+            <div class="mb-2">
+              <span class="text-[11px] text-slate-500 font-medium">Por <span class="text-slate-800 font-bold">Falabella</span></span>
+              <span class="inline-block w-2.5 h-2.5 bg-[#aad500] rounded-sm ml-0.5"></span>
+            </div>
+
+            <!-- Precios y Descuentos Oficiales -->
+            <div class="mt-auto space-y-1 pt-2 border-t border-slate-50">
+              ${hasCmr ? `
+                <div class="flex items-center gap-2">
+                  <span class="cmr-pill"><span class="text-[9px]">CMR</span></span>
+                  <span class="text-base font-extrabold text-rose-600">${cmrPriceStr}</span>
+                  <span class="text-xs font-bold text-rose-600">${p.discountCmr}</span>
+                </div>
+                <div class="text-xs text-slate-700 font-semibold">${normalPriceStr}</div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              ` : `
+                <div class="flex items-center gap-2">
+                  <span class="text-base font-extrabold text-slate-900">${normalPriceStr}</span>
+                  ${p.discountNormal ? `<span class="text-xs font-bold text-rose-600 bg-rose-50 px-1 rounded">${p.discountNormal}</span>` : ''}
+                </div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              `}
+
+              <!-- Badges de Entrega -->
+              <div class="flex flex-wrap gap-1.5 pt-1.5">
+                <span class="green-badge text-[10px]">${p.delivery}</span>
+                <span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-1.5 py-0.5 rounded">${p.pickup}</span>
+              </div>
+
+              <!-- Ratings -->
+              <div class="flex items-center gap-1 pt-1.5 text-amber-400 text-xs">
+                ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5 - Math.floor(p.rating))}
+                <span class="text-[11px] text-slate-400 font-normal">(${p.reviews})</span>
+              </div>
+
+              <!-- Botón Agregar a la Bolsa -->
+              <div class="pt-3">
+                <button type="button" onclick="addToCart(${p.id})" class="btn-add-cart">
+                  Agregar a la bolsa
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       4. CONTROLADORES DE FILTROS Y EVENTOS
+       ------------------------------------------------------------- */
+    function selectBrand(brand) {
+      if(brand === 'all') {
+        selectedBrands = new Set(ALL_BRANDS);
+      } else {
+        selectedBrands = new Set([brand]);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function toggleBrandCheckbox(brand, checked) {
+      if(checked) {
+        selectedBrands.add(brand);
+      } else {
+        selectedBrands.delete(brand);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function syncBrandUI() {
+      // 1. Checkboxes en sidebar
+      ALL_BRANDS.forEach(b => {
+        const cb = document.getElementById(`cb-${b}`);
+        if(cb) {
+          cb.checked = selectedBrands.has(b);
+        }
+      });
+
+      // 2. Tarjetas superiores
+      document.querySelectorAll('.brand-card-item').forEach(el => el.classList.remove('active'));
+      if(selectedBrands.size === 1) {
+        const singleBrand = [...selectedBrands][0];
+        const activeCard = document.getElementById(`brandCard-${singleBrand}`);
+        if(activeCard) activeCard.classList.add('active');
+      } else if(selectedBrands.size === ALL_BRANDS.length) {
+        const allCard = document.getElementById('brandCard-all');
+        if(allCard) allCard.classList.add('active');
+      }
+
+      // 3. Título de categoría
+      const headingEl = document.getElementById('categoryHeading');
+      if(headingEl) {
+        if(selectedBrands.size === 1) {
+          const singleBrand = [...selectedBrands][0];
+          const cap = singleBrand.charAt(0).toUpperCase() + singleBrand.slice(1);
+          headingEl.textContent = `Laptops - ${cap}`;
+        } else if(selectedBrands.size === ALL_BRANDS.length) {
+          headingEl.textContent = 'Laptops';
+        } else if(selectedBrands.size === 0) {
+          headingEl.textContent = 'Laptops (Sin marcas seleccionadas)';
+        } else {
+          headingEl.textContent = `Laptops (${selectedBrands.size} marcas)`;
+        }
+      }
+
+      // 4. Chips activos
+      updateBrandFilterChips();
+    }
+
+    function updateBrandFilterChips() {
+      let brandChipsWrap = document.getElementById('brandChipsContainer');
+      const activeFilterChips = document.getElementById('activeFilterChips');
+      if(!brandChipsWrap && activeFilterChips) {
+        brandChipsWrap = document.createElement('div');
+        brandChipsWrap.id = 'brandChipsContainer';
+        brandChipsWrap.className = 'flex flex-wrap gap-2';
+        activeFilterChips.insertBefore(brandChipsWrap, activeFilterChips.firstChild);
+      }
+
+      if(brandChipsWrap) {
+        if(selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+          brandChipsWrap.innerHTML = [...selectedBrands].map(b => {
+            const cap = b.charAt(0).toUpperCase() + b.slice(1);
+            return `
+              <span class="filter-tag-pill" onclick="toggleBrandCheckbox('${b}', false)">
+                <span>${cap}</span>
+                <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </span>
+            `;
+          }).join('');
+        } else {
+          brandChipsWrap.innerHTML = '';
+        }
+      }
+    }
+
+    function toggleProcessorFilter(proc) {
+      if(currentProcessors.includes(proc)) {
+        currentProcessors = currentProcessors.filter(p => p !== proc);
+      } else {
+        currentProcessors.push(proc);
+      }
+      syncProcessorUI();
+      renderProducts();
+    }
+
+    function toggleProcessorCheckbox(proc, checked) {
+      if(checked && !currentProcessors.includes(proc)) {
+        currentProcessors.push(proc);
+      } else if(!checked) {
+        currentProcessors = currentProcessors.filter(p => p !== proc);
+      }
+      syncProcessorUI();
+      renderProducts();
+    }
+
+    function syncProcessorUI() {
+      const chipR7 = document.getElementById('chipProcessorR7');
+      const chipR5 = document.getElementById('chipProcessorR5');
+      const chipR9 = document.getElementById('chipProcessorR9');
+      if(chipR7) chipR7.style.display = currentProcessors.includes('ryzen7') ? 'inline-flex' : 'none';
+      if(chipR5) chipR5.style.display = currentProcessors.includes('ryzen5') ? 'inline-flex' : 'none';
+      if(chipR9) chipR9.style.display = currentProcessors.includes('ryzen9') ? 'inline-flex' : 'none';
+
+      const cbR7 = document.getElementById('proc-r7');
+      const cbR5 = document.getElementById('proc-r5');
+      const cbR9 = document.getElementById('proc-r9');
+      if(cbR7) cbR7.checked = currentProcessors.includes('ryzen7');
+      if(cbR5) cbR5.checked = currentProcessors.includes('ryzen5');
+      if(cbR9) cbR9.checked = currentProcessors.includes('ryzen9');
+    }
+
+    function filterByRam(ram, checked) {
+      if(checked && !currentRam.includes(ram)) {
+        currentRam.push(ram);
+      } else if(!checked) {
+        currentRam = currentRam.filter(r => r !== ram);
+      }
+      renderProducts();
+    }
+
+    function handleSearch(val) {
+      currentSearch = val;
+      renderProducts();
+    }
+
+    function handleSort(val) {
+      currentSort = val;
+      renderProducts();
+    }
+
+    function applyPriceFilter() {
+      const minEl = document.getElementById('minPriceInput');
+      const maxEl = document.getElementById('maxPriceInput');
+      minPrice = minEl && minEl.value ? parseFloat(minEl.value) : null;
+      maxPrice = maxEl && maxEl.value ? parseFloat(maxEl.value) : null;
+      renderProducts();
+    }
+
+    function clearAllFilters() {
+      selectedBrands = new Set(ALL_BRANDS);
+      currentProcessors = ['ryzen7', 'ryzen5', 'ryzen9'];
+      currentRam = [];
+      currentSearch = '';
+      minPrice = null;
+      maxPrice = null;
+      const sInput = document.getElementById('laptopSearchInput');
+      if(sInput) sInput.value = '';
+      const minEl = document.getElementById('minPriceInput');
+      if(minEl) minEl.value = '';
+      const maxEl = document.getElementById('maxPriceInput');
+      if(maxEl) maxEl.value = '';
+
+      syncBrandUI();
+      syncProcessorUI();
+      renderProducts();
+    }
+
+    function removeSellerFilter() {
+      showToast('Filtro Falabella activo por defecto.');
+    }
+
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.classList.toggle('hidden');
+    }
+
+    function toggleWishlist(id, btn) {
+      btn.classList.toggle('text-red-500');
+      btn.classList.toggle('text-slate-300');
+      showToast('Actualizado en tu lista de deseos.');
+    }
+
+    function openWishlistModal() {
+      alert('Tienes 0 productos en tu lista de favoritos.');
+    }
+
+    // Inicialización al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      
+      // Parse query params (e.g. ?brand=lenovo or ?filter=2en1)
+      const params = new URLSearchParams(window.location.search);
+      const brandParam = params.get('brand');
+      const filterParam = params.get('filter');
+
+      if(brandParam && ['lenovo', 'asus', 'hp', 'acer'].includes(brandParam.toLowerCase())) {
+        selectBrand(brandParam.toLowerCase());
+      } else if(filterParam === '2en1') {
+        currentSearch = '2 en 1';
+        renderProducts();
+      } else {
+        selectBrand('all');
+
+  toggleCategoriesDrawer();
+
+      }
+    });
+  </script>
+</body>
+</html>

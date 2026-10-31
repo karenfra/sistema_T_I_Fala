@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Libro de Reclamaciones Virtual de Falabella Perú - Formulario oficial conforme a la Ley N° 29571 y D.S. N° 011-2011-PCM.">
+<title>Libro de Reclamaciones | Falabella Perú</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          falabella: {
+            lime: '#aad500',
+            dark: '#1e364b',
+            accent: '#0f766e',
+            subtle: '#f4f6f8'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .pill-channel-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pill-channel-btn:hover {
+    border-color: #aad500;
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .pill-channel-btn:active {
+    transform: translateY(0);
+  }
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    .print-only {
+      display: block !important;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    .hoja-reclamacion {
+      border: 1px solid #000 !important;
+      box-shadow: none !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 15px !important;
+    }
+  }
+</style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col justify-between selection:bg-[#aad500] selection:text-black">
+
+  <!-- ========================================== -->
+  <!-- BARRA SUPERIOR DE NAVEGACIÓN FALABELLA     -->
+  <!-- ========================================== -->
+  <header class="no-print bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2 group text-decoration-none">
+          <div class="w-9 h-9 rounded-lg bg-[#aad500] flex items-center justify-center font-black text-white text-xl shadow-xs group-hover:brightness-105 transition">
+            f
+          </div>
+          <div class="leading-none">
+            <span class="text-xl font-black text-slate-900 tracking-tight">falabella<span class="text-[#84cc16]">.com</span></span>
+            <span class="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">Perú</span>
+          </div>
+        </a>
+        <div class="h-6 w-px bg-slate-200 mx-2 hidden sm:block"></div>
+        <div class="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">
+          <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
+          <span>Libro de Reclamaciones Virtual</span>
+        </div>
+      </div>
+
+      <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Volver a la tienda</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- CONTENEDOR PRINCIPAL DINÁMICO              -->
+  <!-- ========================================== -->
+  <main class="max-w-4xl w-full mx-auto px-4 py-8 sm:py-12 flex-1 flex flex-col justify-center">
+
+    <!-- ---------------------------------------------------- -->
+    <!-- PASO 1: SELECTOR DE CANAL (IDÉNTICO A LA IMAGEN 2)   -->
+    <!-- ---------------------------------------------------- -->
+    <div id="stepChannel" class="w-full max-w-md mx-auto bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm transition-all duration-300">
+      
+      <!-- Cabecera idéntica a la Imagen 2 -->
+      <div class="flex items-center gap-2 pb-4 border-b border-slate-200">
+        <a href="index.html" class="text-slate-700 hover:text-black font-bold p-1 rounded-full hover:bg-slate-100 transition flex items-center justify-center" title="Volver a la tienda">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        </a>
+        <h1 class="text-[17px] font-bold text-slate-900 leading-none">Formulario de reclamos</h1>
+      </div>
+
+      <!-- Texto guía -->
+      <p class="text-[13.5px] text-slate-700 font-medium mt-5 mb-5">
+        Selecciona dónde realizaste la compra.
+      </p>
+
+      <!-- Botones en forma de píldora idénticos a la Imagen 2 -->
+      <div class="space-y-3.5">
+        <button type="button" onclick="selectChannel('online')" class="pill-channel-btn w-full py-3.5 px-6 rounded-full border border-slate-800 text-slate-900 font-semibold text-[14px] text-center cursor-pointer select-none">
+          Sitio web
+        </button>
+        <button type="button" onclick="selectChannel('fisica')" class="pill-channel-btn w-full py-3.5 px-6 rounded-full border border-slate-800 text-slate-900 font-semibold text-[14px] text-center cursor-pointer select-none">
+          Tienda física
+        </button>
+      </div>
+
+      <!-- Razón Social y Pie Informativo Legal -->
+      <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+        <span>Saga Falabella S.A. &bull; RUC: 20100128056</span>
+        <span class="text-emerald-700 font-semibold">Ley N° 29571</span>
+      </div>
+    </div>
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- PASO 2: FORMULARIO COMPLETO SEGÚN CANAL              -->
+    <!-- ---------------------------------------------------- -->
+    <div id="stepForm" class="hidden w-full max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden transition-all duration-300">
+      
+      <!-- Barra superior del formulario con botón de retorno al Paso 1 -->
+      <div class="bg-slate-50 border-b border-slate-200 px-5 sm:px-7 py-4 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-2.5">
+          <button type="button" onclick="showStep1()" class="text-slate-700 hover:text-black font-bold p-1 rounded-full hover:bg-slate-200/70 transition flex items-center justify-center cursor-pointer" title="Cambiar canal de compra">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Formulario de reclamos</h2>
+            <p id="formChannelSubtitle" class="text-xs text-slate-500 font-medium"></p>
+          </div>
+        </div>
+
+        <span id="channelBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"></span>
+      </div>
+
+      <form id="reclamacionForm" onsubmit="submitForm(event)" class="p-5 sm:p-7 space-y-6">
+        
+        <!-- SECCIÓN 1: DATOS DEL CONSUMIDOR RECLAMANTE -->
+        <section class="space-y-4">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="w-6 h-6 rounded-full bg-[#1e364b] text-white text-xs font-bold flex items-center justify-center">1</span>
+            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wide">Identificación del Consumidor Reclamante</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="docType">Tipo de Documento *</label>
+              <select id="docType" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required onchange="handleDocTypeChange()">
+                <option value="DNI">DNI (8 dígitos)</option>
+                <option value="CE">Carné de Extranjería</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="RUC">RUC</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="docNumber">Número de Documento *</label>
+              <input type="text" id="docNumber" maxlength="8" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent font-mono" placeholder="Ej: 74839201" required />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="firstName">Nombres completos *</label>
+              <input type="text" id="firstName" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" placeholder="Nombres" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="lastName">Apellidos completos *</label>
+              <input type="text" id="lastName" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" placeholder="Apellidos" required />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="userPhone">Teléfono o Celular *</label>
+              <input type="tel" id="userPhone" maxlength="9" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" placeholder="Ej: 987654321" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="userEmail">Correo Electrónico *</label>
+              <input type="email" id="userEmail" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" placeholder="ejemplo@correo.com" required />
+              <p class="text-[11px] text-slate-400 mt-1">Aquí te enviaremos la copia de tu hoja y respuesta oficial.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="userDep">Departamento *</label>
+              <input type="text" id="userDep" value="Lima" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="userProv">Provincia *</label>
+              <input type="text" id="userProv" value="Lima" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="userDist">Distrito *</label>
+              <input type="text" id="userDist" placeholder="Ej: Miraflores" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="userAddress">Dirección de Domicilio *</label>
+            <input type="text" id="userAddress" placeholder="Av. / Calle, N°, Urb." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required />
+          </div>
+
+          <!-- Checkbox Menor de edad -->
+          <div class="pt-1">
+            <label class="inline-flex items-center gap-2 cursor-pointer text-xs font-medium text-slate-700">
+              <input type="checkbox" id="isMinor" onchange="toggleMinorFields()" class="rounded border-slate-300 text-[#0f766e] focus:ring-[#aad500] w-4 h-4">
+              <span>El consumidor reclamante es menor de edad (representado por apoderado o tutor)</span>
+            </label>
+            <div id="minorFields" class="hidden mt-3 p-3.5 bg-slate-50 border border-slate-200 rounded-lg space-y-3">
+              <p class="text-[11.5px] font-semibold text-slate-700">Datos del padre, madre o tutor legal:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input type="text" id="parentName" placeholder="Nombre completo del apoderado" class="w-full bg-white border border-slate-300 rounded px-3 py-1.5 text-xs text-slate-800">
+                <input type="text" id="parentDoc" placeholder="DNI del apoderado" class="w-full bg-white border border-slate-300 rounded px-3 py-1.5 text-xs text-slate-800">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 2: IDENTIFICACIÓN DEL BIEN CONTRATADO (SEGÚN CANAL) -->
+        <section class="space-y-4 pt-2">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="w-6 h-6 rounded-full bg-[#1e364b] text-white text-xs font-bold flex items-center justify-center">2</span>
+            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wide">Identificación del Bien Contratado</h3>
+          </div>
+
+          <!-- Campos dinámicos según sea Sitio Web o Tienda física -->
+          <div id="channelSpecificFields"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Tipo de Bien *</label>
+              <div class="flex items-center gap-3 mt-1.5">
+                <label class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 cursor-pointer">
+                  <input type="radio" name="goodType" value="Producto" checked class="text-[#0f766e] focus:ring-[#aad500]">
+                  <span>Producto</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 cursor-pointer">
+                  <input type="radio" name="goodType" value="Servicio" class="text-[#0f766e] focus:ring-[#aad500]">
+                  <span>Servicio</span>
+                </label>
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="claimAmount">Monto reclamado S/ (opcional)</label>
+              <input type="number" step="0.01" min="0" id="claimAmount" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" placeholder="Ej: 199.90" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="goodDescription">Descripción del producto o servicio contratado *</label>
+            <input type="text" id="goodDescription" placeholder="Ej: Celular Xiaomi Redmi Note 17 256GB / Servicio de armado" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent" required />
+          </div>
+        </section>
+
+        <!-- SECCIÓN 3: DETALLE DE LA RECLAMACIÓN -->
+        <section class="space-y-4 pt-2">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+            <span class="w-6 h-6 rounded-full bg-[#1e364b] text-white text-xs font-bold flex items-center justify-center">3</span>
+            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wide">Detalle de la Reclamación y Pedido</h3>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-2">Tipo de Disconformidad (INDECOPI) *</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:border-slate-400 cursor-pointer bg-slate-50/50 has-[:checked]:border-slate-800 has-[:checked]:bg-emerald-50/40 transition">
+                <input type="radio" name="claimKind" value="reclamo" checked class="mt-0.5 text-slate-900 focus:ring-[#aad500]">
+                <div>
+                  <span class="block text-xs font-bold text-slate-900">RECLAMO</span>
+                  <span class="block text-[11px] text-slate-500 leading-snug mt-0.5">Disconformidad relacionada a los productos o servicios adquiridos.</span>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 hover:border-slate-400 cursor-pointer bg-slate-50/50 has-[:checked]:border-slate-800 has-[:checked]:bg-emerald-50/40 transition">
+                <input type="radio" name="claimKind" value="queja" class="mt-0.5 text-slate-900 focus:ring-[#aad500]">
+                <div>
+                  <span class="block text-xs font-bold text-slate-900">QUEJA</span>
+                  <span class="block text-[11px] text-slate-500 leading-snug mt-0.5">Disconformidad no relacionada a los productos; malestar o descontento respecto a la atención al público.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="claimDetails">Detalle de los hechos / Reclamación *</label>
+            <textarea id="claimDetails" rows="4" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent leading-relaxed" placeholder="Describe claramente los hechos ocurridos, fechas, personal involucrado o defecto del producto..." required></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="claimRequest">Pedido concreto del consumidor *</label>
+            <textarea id="claimRequest" rows="2" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] focus:border-transparent leading-relaxed" placeholder="Indica concretamente lo que solicitas (ej: cambio de producto, devolución del dinero, reparación, etc.)..." required></textarea>
+          </div>
+        </section>
+
+        <!-- SECCIÓN 4: DECLARACIONES Y CONDICIONES LEGALES -->
+        <section class="space-y-4 pt-2">
+          <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-4 text-[11.5px] text-amber-900 leading-relaxed space-y-1.5">
+            <p class="font-bold flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-amber-700 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Base Legal INDECOPI (Ley N° 29571 y D.S. N° 011-2011-PCM)
+            </p>
+            <p>
+              La formulación del reclamo no excluye el acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. El proveedor deberá dar respuesta al reclamo en un plazo no mayor de quince (15) días hábiles improrrogables.
+            </p>
+          </div>
+
+          <div class="space-y-2 pt-1">
+            <label class="inline-flex items-start gap-2.5 cursor-pointer text-xs text-slate-700 select-none">
+              <input type="checkbox" id="legalConsent" required class="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-[#aad500] w-4 h-4">
+              <span>Declaro ser el titular del servicio/bien o representante acreditado y declaro bajo juramento que toda la información consignada en esta Hoja de Reclamación es verdadera y correcta. *</span>
+            </label>
+
+            <label class="inline-flex items-start gap-2.5 cursor-pointer text-xs text-slate-600 select-none">
+              <input type="checkbox" id="emailConsent" checked class="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-[#aad500] w-4 h-4">
+              <span>Autorizo a Saga Falabella S.A. a notificarme la respuesta a este reclamo o queja a la dirección de correo electrónico registrada.</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- BOTONES DE ACCIÓN -->
+        <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button type="button" onclick="showStep1()" class="w-full sm:w-auto px-5 py-2.5 rounded-full border border-slate-300 hover:bg-slate-100 text-xs font-bold text-slate-700 transition cursor-pointer">
+            &larr; Volver a seleccionar canal
+          </button>
+          
+          <button type="submit" id="btnSubmitClaim" class="w-full sm:w-auto px-8 py-3 rounded-full bg-[#1e364b] hover:bg-slate-900 text-white font-bold text-sm tracking-wide shadow-sm hover:shadow transition flex items-center justify-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4 text-[#aad500]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Enviar Reclamación</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- PASO 3: CONFIRMACIÓN Y HOJA DE RECLAMACIÓN OFICIAL   -->
+    <!-- ---------------------------------------------------- -->
+    <div id="stepSheet" class="hidden w-full max-w-3xl mx-auto space-y-6">
+
+      <!-- Alerta de éxito amigable (no-print) -->
+      <div class="no-print bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex items-start sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+            ✓
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-emerald-950">¡Hoja de Reclamación registrada exitosamente!</h3>
+            <p class="text-xs text-emerald-800">Hemos enviado una copia fiel a tu correo electrónico. Plazo legal de respuesta: 15 días hábiles.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button type="button" onclick="window.print()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Imprimir / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hoja formal INDECOPI (imprimible) -->
+      <div class="hoja-reclamacion bg-white rounded-2xl border border-slate-300 p-6 sm:p-9 shadow-sm text-xs text-slate-800 space-y-6">
+        
+        <!-- Encabezado de la Hoja -->
+        <div class="flex items-start justify-between border-b-2 border-slate-900 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded bg-[#aad500] text-white font-black text-lg flex items-center justify-center">f</span>
+              <span class="text-lg font-black tracking-tight text-slate-900">falabella.com</span>
+            </div>
+            <p class="text-[11px] text-slate-600 mt-1 font-semibold">SAGA FALABELLA S.A. &bull; RUC: 20100128056</p>
+            <p class="text-[10px] text-slate-500">Av. Paseo de la República N° 3220, San Isidro, Lima - Perú</p>
+          </div>
+          
+          <div class="text-right border-2 border-slate-900 rounded-lg p-2.5 bg-slate-50">
+            <p class="text-[10px] uppercase font-bold text-slate-600">Libro de Reclamaciones</p>
+            <p class="text-xs font-bold text-slate-900">HOJA DE RECLAMACIÓN</p>
+            <p id="outCode" class="text-base font-black text-rose-700 tracking-wider font-mono mt-0.5">REC-2026-00000</p>
+            <p id="outDate" class="text-[10px] text-slate-500 font-medium"></p>
+          </div>
+        </div>
+
+        <!-- Canal de Venta -->
+        <div class="bg-slate-100 rounded-lg p-2.5 flex items-center justify-between font-medium">
+          <span class="text-slate-600">Canal de procedencia de la compra:</span>
+          <span id="outChannelBadge" class="font-bold text-slate-900 uppercase"></span>
+        </div>
+
+        <!-- 1. Consumidor -->
+        <div>
+          <h4 class="font-bold text-slate-900 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">1. Identificación del Consumidor Reclamante</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div><span class="text-slate-500 block text-[10px]">Nombre:</span><span id="outName" class="font-semibold text-slate-800"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Documento:</span><span id="outDoc" class="font-semibold text-slate-800"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Teléfono:</span><span id="outPhone" class="font-semibold text-slate-800"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Email:</span><span id="outEmail" class="font-semibold text-slate-800 break-all"></span></div>
+            <div class="col-span-2 sm:col-span-4"><span class="text-slate-500 block text-[10px]">Domicilio:</span><span id="outAddress" class="font-semibold text-slate-800"></span></div>
+            <div id="outMinorWrap" class="col-span-2 sm:col-span-4 hidden"><span class="text-slate-500 block text-[10px]">Apoderado (Menor de edad):</span><span id="outParent" class="font-semibold text-slate-800"></span></div>
+          </div>
+        </div>
+
+        <!-- 2. Bien Contratado -->
+        <div>
+          <h4 class="font-bold text-slate-900 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">2. Identificación del Bien Contratado</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div><span class="text-slate-500 block text-[10px]">Tipo de Bien:</span><span id="outGoodType" class="font-semibold text-slate-800"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Comprobante / Pedido:</span><span id="outOrderOrReceipt" class="font-semibold text-slate-800 font-mono"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Monto Reclamado:</span><span id="outAmount" class="font-semibold text-slate-800"></span></div>
+            <div><span class="text-slate-500 block text-[10px]">Fecha de Compra:</span><span id="outBuyDate" class="font-semibold text-slate-800"></span></div>
+            <div class="col-span-2 sm:col-span-4"><span class="text-slate-500 block text-[10px]">Descripción:</span><span id="outDescription" class="font-semibold text-slate-800"></span></div>
+            <div id="outStoreWrap" class="col-span-2 sm:col-span-4 hidden"><span class="text-slate-500 block text-[10px]">Tienda Física:</span><span id="outStoreBranch" class="font-semibold text-slate-800"></span></div>
+          </div>
+        </div>
+
+        <!-- 3. Detalle de Reclamación -->
+        <div>
+          <h4 class="font-bold text-slate-900 uppercase tracking-wide border-b border-slate-200 pb-1 mb-2">3. Detalle de la Reclamación y Pedido</h4>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 text-[10px]">Tipo:</span>
+              <span id="outKindBadge" class="font-bold px-2 py-0.5 rounded text-[11px]"></span>
+            </div>
+            <div>
+              <span class="text-slate-500 block text-[10px]">Detalle de los hechos:</span>
+              <div id="outDetails" class="bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-slate-800 whitespace-pre-wrap leading-relaxed mt-0.5"></div>
+            </div>
+            <div>
+              <span class="text-slate-500 block text-[10px]">Pedido concreto del consumidor:</span>
+              <div id="outRequest" class="bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-slate-800 whitespace-pre-wrap leading-relaxed mt-0.5"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pie de página legal INDECOPI -->
+        <div class="pt-3 border-t border-slate-300 text-[10px] text-slate-500 leading-tight space-y-1">
+          <p>• <strong>Reclamo:</strong> Disconformidad relacionada a los productos o servicios adquiridos.</p>
+          <p>• <strong>Queja:</strong> Disconformidad no relacionada a los productos o servicios; malestar o descontento respecto a la atención al público.</p>
+          <p>• Conforme a la Ley N° 29571 y D.S. 011-2011-PCM, el proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles.</p>
+        </div>
+
+      </div>
+
+      <!-- Botones de salida (no-print) -->
+      <div class="no-print flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+        <button type="button" onclick="showStep1()" class="w-full sm:w-auto px-6 py-2.5 rounded-full border border-slate-300 hover:bg-slate-100 text-xs font-bold text-slate-700 transition cursor-pointer">
+          &larr; Ingresar otro reclamo
+        </button>
+        <a href="index.html" class="w-full sm:w-auto px-7 py-3 rounded-full bg-[#1e364b] hover:bg-slate-900 text-white font-bold text-xs tracking-wide text-center transition cursor-pointer shadow-xs">
+          Regresar a falabella.com
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- PIE DE PÁGINA                              -->
+  <!-- ========================================== -->
+  <footer class="no-print bg-[#1e364b] text-white py-6 border-t border-slate-700 mt-12 text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-[#aad500] flex items-center justify-center font-bold text-black text-xs">f</div>
+        <span class="font-bold text-slate-200">Falabella Perú</span>
+        <span class="text-slate-400">&bull; RUC: 20100128056</span>
+      </div>
+      <p class="text-slate-400 text-[11px] text-center sm:text-right">
+        Conforme al Código de Protección y Defensa del Consumidor (Ley N° 29571).
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT DE CONTROL Y VALIDACIÓN         -->
+  <!-- ========================================== -->
+  <script>
+    let currentChannel = null;
+
+    // Selector de canal inicial (Paso 1)
+    function selectChannel(channel) {
+      currentChannel = channel;
+      document.getElementById('stepChannel').classList.add('hidden');
+      document.getElementById('stepSheet').classList.add('hidden');
+      document.getElementById('stepForm').classList.remove('hidden');
+
+      const isOnline = (channel === 'online');
+      const badge = document.getElementById('channelBadge');
+      const sub = document.getElementById('formChannelSubtitle');
+      const specific = document.getElementById('channelSpecificFields');
+
+      const today = new Date().toISOString().split('T')[0];
+
+      if (isOnline) {
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-600"></span> Sitio web (falabella.com)';
+        sub.innerText = 'Compras realizadas a través de la tienda web o aplicación falabella.com';
+
+        specific.innerHTML = 
+          '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">' +
+            '<div>' +
+              '<label class="block text-xs font-semibold text-slate-700 mb-1" for="orderNumber">N° de Pedido u Orden Web (opcional)</label>' +
+              '<input type="text" id="orderNumber" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] font-mono uppercase" placeholder="Ej: ORD-2026-0001">' +
+              '<p class="text-[11px] text-slate-400 mt-1">Si dispones de tu número de pedido de falabella.com.</p>' +
+            '</div>' +
+            '<div>' +
+              '<label class="block text-xs font-semibold text-slate-700 mb-1" for="buyDate">Fecha de la compra web *</label>' +
+              '<input type="date" id="buyDate" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500]" value="' + today + '" max="' + today + '" required>' +
+            '</div>' +
+          '</div>';
+      } else {
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-100 text-sky-800';
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-sky-600"></span> Tienda física';
+        sub.innerText = 'Compras presenciales realizadas en tiendas y sucursales Falabella Perú';
+
+        specific.innerHTML = 
+          '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">' +
+            '<div class="sm:col-span-2">' +
+              '<label class="block text-xs font-semibold text-slate-700 mb-1" for="storeBranch">Tienda / Sucursal Falabella donde compraste *</label>' +
+              '<select id="storeBranch" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500]" required>' +
+                '<option value="">Selecciona la tienda física...</option>' +
+                '<option value="Falabella Jockey Plaza (Surco)">Falabella Jockey Plaza (Surco)</option>' +
+                '<option value="Falabella San Isidro (Las Begonias)">Falabella San Isidro (Las Begonias)</option>' +
+                '<option value="Falabella Miraflores (Av. Pardo)">Falabella Miraflores (Av. Pardo)</option>' +
+                '<option value="Falabella Plaza San Miguel">Falabella Plaza San Miguel</option>' +
+                '<option value="Falabella MegaPlaza (Independencia)">Falabella MegaPlaza (Independencia)</option>' +
+                '<option value="Falabella Mall del Sur (SJM)">Falabella Mall del Sur (SJM)</option>' +
+                '<option value="Falabella Plaza Norte">Falabella Plaza Norte</option>' +
+                '<option value="Falabella Mall Aventura Santa Anita">Falabella Santa Anita</option>' +
+                '<option value="Falabella Centro Cívico">Falabella Centro Cívico (Lima)</option>' +
+                '<option value="Falabella Mall Plaza Bellavista">Falabella Bellavista (Callao)</option>' +
+                '<option value="Falabella Trujillo (Mall Plaza)">Falabella Trujillo (Mall Plaza)</option>' +
+                '<option value="Falabella Arequipa (Mall Plaza Porongoche)">Falabella Arequipa</option>' +
+                '<option value="Falabella Piura (Open Plaza)">Falabella Piura</option>' +
+                '<option value="Falabella Chiclayo (Real Plaza)">Falabella Chiclayo</option>' +
+                '<option value="Falabella Cusco (Real Plaza)">Falabella Cusco</option>' +
+                '<option value="Falabella Huancayo (Real Plaza)">Falabella Huancayo</option>' +
+              '</select>' +
+            '</div>' +
+            '<div>' +
+              '<label class="block text-xs font-semibold text-slate-700 mb-1" for="receiptNumber">N° de Boleta o Factura Física (opcional)</label>' +
+              '<input type="text" id="receiptNumber" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500] font-mono uppercase" placeholder="Ej: B001-00049281">' +
+            '</div>' +
+            '<div>' +
+              '<label class="block text-xs font-semibold text-slate-700 mb-1" for="buyDate">Fecha de la compra en tienda *</label>' +
+              '<input type="date" id="buyDate" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#aad500]" value="' + today + '" max="' + today + '" required>' +
+            '</div>' +
+          '</div>';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showStep1() {
+      document.getElementById('stepForm').classList.add('hidden');
+      document.getElementById('stepSheet').classList.add('hidden');
+      document.getElementById('stepChannel').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleDocTypeChange() {
+      const type = document.getElementById('docType').value;
+      const docInput = document.getElementById('docNumber');
+      if (type === 'DNI') {
+        docInput.maxLength = 8;
+        docInput.placeholder = '8 dígitos numéricos';
+      } else if (type === 'RUC') {
+        docInput.maxLength = 11;
+        docInput.placeholder = '11 dígitos numéricos';
+      } else {
+        docInput.maxLength = 15;
+        docInput.placeholder = 'Número de documento';
+      }
+    }
+
+    function toggleMinorFields() {
+      const isMinor = document.getElementById('isMinor').checked;
+      const minorWrap = document.getElementById('minorFields');
+      if (isMinor) {
+        minorWrap.classList.remove('hidden');
+      } else {
+        minorWrap.classList.add('hidden');
+      }
+    }
+
+    // Procesar envío de reclamación
+    function submitForm(e) {
+      e.preventDefault();
+
+      const docType = document.getElementById('docType').value;
+      const docNum = document.getElementById('docNumber').value.trim();
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const phone = document.getElementById('userPhone').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      const dep = document.getElementById('userDep').value.trim();
+      const prov = document.getElementById('userProv').value.trim();
+      const dist = document.getElementById('userDist').value.trim();
+      const address = document.getElementById('userAddress').value.trim();
+
+      if (docType === 'DNI' && (!/^\d{8}$/.test(docNum))) {
+        alert('Por favor ingresa un número de DNI válido de 8 dígitos.');
+        document.getElementById('docNumber').focus();
+        return;
+      }
+      if (!/^\d{9}$/.test(phone)) {
+        alert('Por favor ingresa un número de teléfono o celular válido de 9 dígitos.');
+        document.getElementById('userPhone').focus();
+        return;
+      }
+
+      const isOnline = (currentChannel === 'online');
+      let orderOrReceipt = '';
+      let storeBranch = '';
+      if (isOnline) {
+        orderOrReceipt = (document.getElementById('orderNumber')?.value || '').trim() || 'N/A';
+      } else {
+        storeBranch = (document.getElementById('storeBranch')?.value || '').trim();
+        if (!storeBranch) {
+          alert('Por favor selecciona la sucursal Falabella donde realizaste la compra.');
+          document.getElementById('storeBranch')?.focus();
+          return;
+        }
+        orderOrReceipt = (document.getElementById('receiptNumber')?.value || '').trim() || 'N/A';
+      }
+
+      const buyDate = document.getElementById('buyDate').value;
+      const goodType = document.querySelector('input[name="goodType"]:checked').value;
+      const amountVal = parseFloat(document.getElementById('claimAmount').value || '0');
+      const goodDesc = document.getElementById('goodDescription').value.trim();
+
+      const claimKind = document.querySelector('input[name="claimKind"]:checked').value; // reclamo o queja
+      const details = document.getElementById('claimDetails').value.trim();
+      const request = document.getElementById('claimRequest').value.trim();
+
+      const isMinor = document.getElementById('isMinor').checked;
+      const parentName = isMinor ? (document.getElementById('parentName').value.trim() + ' (' + document.getElementById('parentDoc').value.trim() + ')') : '';
+
+      // Generar código correlativo oficial
+      const now = new Date();
+      const year = now.getFullYear();
+      const randomSeq = String(Math.floor(1000 + Math.random() * 9000));
+      const prefix = claimKind === 'queja' ? 'QUE' : 'REC';
+      const claimCode = prefix + '-' + year + '-' + randomSeq;
+
+      // Guardar en Base de Datos de Falabella (localStorage)
+      try {
+        const stored = localStorage.getItem('falabella_db_v1');
+        if (stored) {
+          const db = JSON.parse(stored);
+          if (!Array.isArray(db.reclamaciones)) db.reclamaciones = [];
+          db.reclamaciones.push({
+            code: claimCode,
+            date: now.toISOString(),
+            channel: isOnline ? 'Sitio Web' : 'Tienda Física',
+            storeBranch: storeBranch || 'falabella.com',
+            orderCode: orderOrReceipt,
+            consumer: {
+              fullName: firstName + ' ' + lastName,
+              docType: docType,
+              docNumber: docNum,
+              phone: phone,
+              email: email,
+              address: address + ', ' + dist + ', ' + prov + ', ' + dep,
+              isMinor: isMinor,
+              parent: parentName
+            },
+            contractedGood: {
+              type: goodType,
+              amount: amountVal,
+              description: goodDesc,
+              buyDate: buyDate
+            },
+            claimKind: claimKind,
+            details: details,
+            request: request,
+            status: 'PENDIENTE',
+            maxResponseDate: new Date(now.getTime() + 15*24*60*60*1000).toISOString().split('T')[0]
+          });
+          localStorage.setItem('falabella_db_v1', JSON.stringify(db));
+        }
+      } catch (err) {
+        console.warn('Could not sync to falabella_db_v1', err);
+      }
+
+      // Llenar Hoja Oficial de Reclamación para vista e impresión
+      document.getElementById('outCode').innerText = claimCode;
+      document.getElementById('outDate').innerText = now.toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
+      document.getElementById('outChannelBadge').innerText = isOnline ? 'Sitio Web (falabella.com)' : ('Tienda Física: ' + storeBranch);
+
+      document.getElementById('outName').innerText = firstName + ' ' + lastName;
+      document.getElementById('outDoc').innerText = docType + ': ' + docNum;
+      document.getElementById('outPhone').innerText = phone;
+      document.getElementById('outEmail').innerText = email;
+      document.getElementById('outAddress').innerText = address + ' - ' + dist + ', ' + prov + ', ' + dep;
+
+      const minorWrap = document.getElementById('outMinorWrap');
+      if (isMinor && parentName) {
+        minorWrap.classList.remove('hidden');
+        document.getElementById('outParent').innerText = parentName;
+      } else {
+        minorWrap.classList.add('hidden');
+      }
+
+      document.getElementById('outGoodType').innerText = goodType;
+      document.getElementById('outOrderOrReceipt').innerText = orderOrReceipt;
+      document.getElementById('outAmount').innerText = amountVal > 0 ? ('S/ ' + amountVal.toFixed(2)) : 'No especificado';
+      document.getElementById('outBuyDate').innerText = buyDate;
+      document.getElementById('outDescription').innerText = goodDesc;
+
+      const storeWrap = document.getElementById('outStoreWrap');
+      if (!isOnline && storeBranch) {
+        storeWrap.classList.remove('hidden');
+        document.getElementById('outStoreBranch').innerText = storeBranch;
+      } else {
+        storeWrap.classList.add('hidden');
+      }
+
+      const kindBadge = document.getElementById('outKindBadge');
+      if (claimKind === 'queja') {
+        kindBadge.className = 'font-bold px-2 py-0.5 rounded text-[11px] bg-amber-100 text-amber-900 border border-amber-300';
+        kindBadge.innerText = 'QUEJA (Atención / Trato)';
+      } else {
+        kindBadge.className = 'font-bold px-2 py-0.5 rounded text-[11px] bg-rose-100 text-rose-900 border border-rose-300';
+        kindBadge.innerText = 'RECLAMO (Producto / Servicio)';
+      }
+
+      document.getElementById('outDetails').innerText = details;
+      document.getElementById('outRequest').innerText = request;
+
+      // Mostrar Hoja de Reclamación
+      document.getElementById('stepForm').classList.add('hidden');
+      document.getElementById('stepSheet').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Auto-detect URL parameter (ej: libro-reclamaciones.html?canal=online o ?canal=fisica)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const canal = params.get('canal');
+      if (canal === 'online' || canal === 'fisica') {
+        selectChannel(canal);
+      }
+    });
+  </script>
+</body>
+</html>

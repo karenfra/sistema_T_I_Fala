@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tecnología en Falabella.com Perú - Laptops, Computadoras, Televisores, Fotografía, Audio y las mejores marcas: HP, Lenovo, ASUS, Acer, Samsung, LG, Sony.">
+  <title>Tecnología | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              teal: '#0f766e',
+              orange: '#f97316'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-input::placeholder {
+      color: #718096;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Hero Banner Carousel */
+    .tech-carousel-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000000;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+    }
+    @media (max-width: 768px) {
+      .tech-carousel-container {
+        height: 220px;
+        border-radius: 12px;
+      }
+    }
+    .tech-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      cursor: pointer;
+    }
+    .tech-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .tech-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Hero Nav Arrows */
+    .tech-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .tech-carousel-container:hover .tech-nav-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .tech-nav-arrow:hover {
+      background: #0f766e;
+      border-color: #aad500;
+      color: #aad500;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .tech-nav-prev { left: 14px; }
+    .tech-nav-next { right: 14px; }
+
+    /* Dots */
+    .tech-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+    .tech-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      padding: 0;
+    }
+    .tech-dot.active {
+      width: 28px;
+      border-radius: 9999px;
+      background: #aad500;
+      box-shadow: 0 0 8px rgba(170, 213, 0, 0.8);
+    }
+
+    /* Subcategories Bar */
+    .subcat-pills-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px 2px;
+    }
+    .subcat-pills-bar::-webkit-scrollbar { display: none; }
+    .subcat-pill {
+      flex-shrink: 0;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .subcat-pill:hover, .subcat-pill.active {
+      background: #0f766e;
+      color: #ffffff;
+      border-color: #0f766e;
+      box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Sección Las Mejores Marcas (Image 2 style) */
+    .brand-section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .brand-section-title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: #0f172a;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-section-title .arrows {
+      color: #06b6d4;
+      font-weight: 700;
+      letter-spacing: -0.1em;
+    }
+    .brand-card-box {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 2px solid #84cc16;
+      box-shadow: 0 4px 20px rgba(132, 204, 22, 0.15);
+      padding: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .brand-card-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -4px rgba(6, 182, 212, 0.25);
+      border-color: #06b6d4;
+    }
+    .brand-deco-dots {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .brand-deco-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      border: 1.5px solid #06b6d4;
+    }
+    .brand-card-box:hover .brand-deco-dot {
+      border-color: #84cc16;
+      background-color: #84cc16;
+    }
+    .brand-card-img-wrap {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .brand-card-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .brand-card-box:hover .brand-card-img-wrap img {
+      transform: scale(1.08);
+    }
+    .brand-card-logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+    }
+
+    /* Fotografía Section (Image 3 style) */
+    .section-title-bold {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+    }
+    .photo-grid-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .photo-grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .photo-card-left {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 380px;
+      background: #1e1b4b;
+      cursor: pointer;
+    }
+    .photo-card-left img, .photo-card-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-card-left:hover img, .photo-card-right:hover img {
+      transform: scale(1.06);
+    }
+    .photo-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: #ffffff;
+    }
+    .photo-card-right-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+    }
+    .photo-card-right {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 182px;
+      cursor: pointer;
+    }
+
+    /* Pill Button Ver Todo */
+    .btn-ver-todo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      color: #0f172a;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      width: fit-content;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-ver-todo:hover {
+      background: #aad500;
+      color: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(170, 213, 0, 0.4);
+    }
+
+    /* Televisores Section (Image 4 style) */
+    .tv-grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 768px) {
+      .tv-grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .tv-card-box {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      min-height: 340px;
+      background: #111827;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .tv-card-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .tv-card-box:hover img {
+      transform: scale(1.06);
+    }
+    .tv-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      width: 100%;
+    }
+
+    /* Audio Section (4 cards) */
+    .audio-grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 1024px) {
+      .audio-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .audio-grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .audio-card-box {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .audio-card-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(15, 118, 110, 0.2);
+      border-color: #0f766e;
+    }
+    .audio-card-img-wrap {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      background: #0f172a;
+    }
+    .audio-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .audio-card-box:hover .audio-card-img-wrap img {
+      transform: scale(1.08);
+    }
+    .audio-card-body {
+      padding: 18px 16px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    /* Product Card */
+    .product-card-tech {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .product-card-tech:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.12);
+      border-color: #0f766e;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 4px solid #aad500;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  
+    /* TV Section Brand Typography & Badges */
+    .tv-brand-pill {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tv-brand-pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #aad500;
+    }
+    .tv-brand-subtitle {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #aad500;
+      margin-bottom: 2px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+    .tv-brand-name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.1;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    }
+</style>
+</head>
+<body class="bg-slate-50 antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN ==================== -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
+      
+      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+          <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+        </a>
+
+        <!-- Botón Menú Hamburguesa -->
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="techSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" onkeydown="if(event.key==='Enter') executeTechSearch(this.value)" />
+          <button type="button" onclick="executeTechSearch(document.getElementById('techSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de cabecera: Hola, Inicia sesión ⌵ | Mi cuenta, Favoritos, Carrito -->
+      <div class="flex items-center gap-3 sm:gap-4 ml-auto flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión / Mi cuenta -->
+        <a href="index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1 no-underline text-inherit" title="Iniciar sesión / Mi cuenta">
+          <div class="flex flex-col text-[11px] leading-tight">
+            <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
+            <span class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5">
+              Inicia sesión
+              <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </div>
+          <div class="border-l border-slate-300 pl-2.5 ml-1 hidden sm:flex flex-col text-[11px] leading-tight">
+            <span class="font-bold text-slate-900">Mi</span>
+            <span class="font-bold text-slate-900">cuenta</span>
+          </div>
+        </a>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="showTechToast('❤️ Sección de Mis Favoritos guardados')" class="p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+          <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </button>
+
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
+        <button onclick="openTechCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
+          <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="techCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN -->
+    <div class="store-topbar">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap">
+        <button type="button" onclick="showTechToast('📍 Ubicación seleccionada: Lima Metropolitana')" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
+          <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Ingresa tu ubicación</span>
+        </button>
+
+        <div class="flex items-center gap-4 sm:gap-6 text-xs text-slate-600 ml-auto flex-wrap">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showTechToast('💳 Tarjeta CMR: Accede a beneficios exclusivos y cuotas sin intereses.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showTechToast('❓ Centro de Ayuda: Atención al cliente y estado de pedidos.')">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span class="hidden sm:inline">Rastrear</span>
+          </a>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline" title="Acceso al sistema administrativo">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Intranet</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ) ==================== -->
+  <div id="techCategoriesDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="toggleCategoriesDrawer()">
+    <div class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+        <span class="text-xl font-black text-slate-900">Categorías</span>
+        <button onclick="toggleCategoriesDrawer()" class="p-1 rounded-lg hover:bg-slate-100 text-slate-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <ul class="space-y-2 text-sm font-semibold text-slate-700">
+        <li>
+          <div class="rounded-xl bg-teal-50/70 border border-teal-100 p-2.5">
+            <a href="tecnologia.html" class="flex items-center justify-between text-[#0f766e] font-bold pb-1.5 mb-1.5 border-b border-teal-200">
+              <span class="flex items-center gap-1.5 text-sm">⚡ Tecnología</span>
+              <span class="text-[10px] bg-[#aad500] text-slate-900 px-2 py-0.5 rounded-full font-black">ACTUAL</span>
+            </a>
+            <div class="space-y-1 text-xs">
+              <a href="laptops.html" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f766e] transition">💻 Laptops y Computadoras</a>
+              <a href="tablets.html" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f766e] transition">📱 Tablets y iPads</a>
+              <a href="camaras.html" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f766e] transition">📷 Cámaras Profesionales</a>
+              <a href="televisores.html" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f766e] transition">📺 Televisores y Smart TV</a>
+              <a href="#sec-audio" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f766e] transition">🎧 Audio y Parlantes</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🛋️ Decohogar</a></li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="moda_hombre.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🧸 Infantil y Juguetes</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes y Fitness</a></li>
+      </ul>
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#0f766e] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 space-y-10">
+
+    <!-- BREADCRUMBS -->
+    <nav class="flex items-center gap-2 text-xs text-slate-500 py-1" aria-label="Migas de pan">
+      <a href="index.html" class="hover:text-[#0f766e] flex items-center gap-1 font-medium no-underline text-inherit">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span>Home</span>
+      </a>
+      <span>&gt;</span>
+      <span class="text-slate-900 font-bold">Productos Tecnológicos</span>
+    </nav>
+
+    <!-- ==================== 1. HERO BANNER (4 IMÁGENES) ==================== -->
+    <section class="tech-carousel-container" id="techHeroCarousel" aria-label="Banners de Tecnología">
+      
+      <!-- Slide 1: Laptops de Alta Gama & Inteligencia Artificial -->
+      <div class="tech-slide active" onclick="window.location.href='laptops.html'">
+        <a href="laptops.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Laptops Falabella">
+          <picture>
+            <source srcset="assets/tecnologia/banner_tech_laptops_ai.webp" type="image/webp">
+            <img src="assets/tecnologia/banner_tech_laptops_ai.webp" alt="Laptops de Alta Gama con Inteligencia Artificial Falabella" loading="eager" />
+          </picture>
+        </a>
+      </div>
+
+      <!-- Slide 2: Tablets Pro & Creatividad Digital (Enlace a Catálogo de Tablets) -->
+      <div class="tech-slide" onclick="window.location.href='tablets.html'">
+        <a href="tablets.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Tablets Falabella">
+          <picture>
+            <source srcset="assets/tecnologia/banner_tech_tablets_pro.webp" type="image/webp">
+            <img src="assets/tecnologia/banner_tech_tablets_pro.webp" alt="Tablets Pro y Stylus para Creatividad y Trabajo" loading="lazy" />
+          </picture>
+        </a>
+      </div>
+
+      <!-- Slide 3: Fotografía Profesional & Cámaras Mirrorless -->
+      <div class="tech-slide" onclick="window.location.href='camaras.html'">
+        <a href="camaras.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de cámaras y fotografía Falabella">
+          <picture>
+            <source srcset="assets/tecnologia/banner_tech_camaras_pro.webp" type="image/webp">
+            <img src="assets/tecnologia/banner_tech_camaras_pro.webp" alt="Cámaras Fotográficas Profesionales y Lentes de Alta Precisión" loading="lazy" />
+          </picture>
+        </a>
+      </div>
+
+      <!-- Slide 4: Laptops 2-en-1 Convertibles & Ecosistema Híbrido -->
+      <div class="tech-slide" onclick="window.location.href='laptops.html?filter=2en1'">
+        <a href="laptops.html?filter=2en1" class="block w-full h-full cursor-pointer" title="Ver catálogo de laptops 2-en-1 y convertibles">
+          <picture>
+            <source srcset="assets/tecnologia/banner_tech_hibridos_creativos.webp" type="image/webp">
+            <img src="assets/tecnologia/banner_tech_hibridos_creativos.webp" alt="Laptops 2-en-1 Convertibles y Ecosistema Portátil" loading="lazy" />
+          </picture>
+        </a>
+      </div>
+
+      <!-- Flechas -->
+      <button type="button" class="tech-nav-arrow tech-nav-prev" onclick="event.stopPropagation(); moveTechSlide(-1);" aria-label="Banner anterior">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="tech-nav-arrow tech-nav-next" onclick="event.stopPropagation(); moveTechSlide(1);" aria-label="Banner siguiente">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Indicadores Dots -->
+      <div class="tech-dots" id="techCarouselDots">
+        <button type="button" class="tech-dot active" onclick="event.stopPropagation(); setTechSlide(0);" aria-label="Slide 1"></button>
+        <button type="button" class="tech-dot" onclick="event.stopPropagation(); setTechSlide(1);" aria-label="Slide 2"></button>
+        <button type="button" class="tech-dot" onclick="event.stopPropagation(); setTechSlide(2);" aria-label="Slide 3"></button>
+        <button type="button" class="tech-dot" onclick="event.stopPropagation(); setTechSlide(3);" aria-label="Slide 4"></button>
+      </div>
+    </section>
+
+    <!-- BARRA DE SUBCATEGORÍAS -->
+    <nav class="subcat-pills-bar" aria-label="Subcategorías de tecnología">
+      <a href="laptops.html" class="subcat-pill active no-underline flex items-center gap-1 font-semibold text-slate-700 hover:text-black">Computadoras</a>
+      <a href="tablets.html" class="subcat-pill no-underline flex items-center gap-1 font-semibold text-slate-700 hover:text-black">Tablets</a>
+      <a href="celulares.html" class="subcat-pill no-underline flex items-center gap-1 font-semibold text-slate-700 hover:text-black">Celulares</a>
+      <a href="televisores.html" class="subcat-pill no-underline flex items-center gap-1 font-semibold text-slate-700 hover:text-black">Televisores</a>
+      <button type="button" class="subcat-pill" onclick="scrollToTechSection('audio')">Audio y Sonido</button>
+      <a href="camaras.html" class="subcat-pill no-underline flex items-center gap-1 font-semibold text-slate-700 hover:text-black">Fotografía</a>
+      <button type="button" class="subcat-pill" onclick="scrollToTechSection('catalogo')">Todos los Productos</button>
+    </nav>
+
+    <!-- ==================== 2. SECCIÓN: LAS MEJORES MARCAS (Image 2) ==================== -->
+    <section id="sec-marcas" class="pt-4 scroll-mt-24">
+      <div class="brand-section-header cursor-pointer" onclick="window.location.href='laptops.html'" title="Ver todo el catálogo de laptops Falabella">
+        <h2 class="brand-section-title">
+          <span class="arrows">&gt;&gt;&gt;</span>
+          <span>LAS MEJORES MARCAS</span>
+          <span class="arrows">&lt;&lt;&lt;</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Marca HP -->
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=hp'" title="Ver catálogo oficial de laptops HP en Falabella">
+          <div class="brand-deco-dots">
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+          </div>
+          <div class="brand-card-img-wrap" onclick="window.location.href='laptops.html?brand=hp'">
+            <img src="assets/tecnologia/marca_hp.webp" alt="Laptops HP Envy y Spectre" loading="lazy">
+          </div>
+          <div class="brand-card-logo">hp</div>
+        </article>
+
+        <!-- Marca Lenovo -->
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=lenovo'" title="Ver catálogo oficial de laptops Lenovo en Falabella">
+          <div class="brand-deco-dots">
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+          </div>
+          <div class="brand-card-img-wrap" onclick="window.location.href='laptops.html?brand=lenovo'">
+            <img src="assets/tecnologia/marca_lenovo.webp" alt="Laptops Lenovo Yoga e IdeaPad" loading="lazy">
+          </div>
+          <div class="brand-card-logo">Lenovo</div>
+        </article>
+
+        <!-- Marca ASUS -->
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=asus'" title="Ver catálogo oficial de laptops ASUS en Falabella">
+          <div class="brand-deco-dots">
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+          </div>
+          <div class="brand-card-img-wrap" onclick="window.location.href='laptops.html?brand=asus'">
+            <img src="assets/tecnologia/marca_asus.webp" alt="Laptops ASUS Zenbook y ROG" loading="lazy">
+          </div>
+          <div class="brand-card-logo">ASUS</div>
+        </article>
+
+        <!-- Marca Acer -->
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=acer'" title="Ver catálogo oficial de laptops Acer en Falabella">
+          <div class="brand-deco-dots">
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+            <span class="brand-deco-dot"></span>
+          </div>
+          <div class="brand-card-img-wrap" onclick="window.location.href='laptops.html?brand=acer'">
+            <img src="assets/tecnologia/marca_acer.webp" alt="Laptops Acer Swift y Nitro" loading="lazy">
+          </div>
+          <div class="brand-card-logo">acer</div>
+        </article>
+
+      </div>
+    </section>
+
+    
+    <!-- ==================== 2.5 SECCIÓN: TELÉFONOS Y TABLETS (Samsung Galaxy) ==================== -->
+    <section id="sec-telefonos-tablets" class="pt-6 scroll-mt-24">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <h2 class="section-title-bold mb-0">TELÉFONOS Y TABLETS</h2>
+          <span class="hidden sm:inline-block text-[11px] bg-slate-100 text-slate-700 font-bold px-2.5 py-0.5 rounded-full border border-slate-200">Samsung Galaxy</span>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3 text-xs font-bold text-[#0f766e]">
+          <a href="celulares.html" class="hover:text-[#0d5f58] hover:underline flex items-center gap-1">
+            Ver celulares <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <span class="text-slate-300">|</span>
+          <a href="tablets.html" class="hover:text-[#0d5f58] hover:underline flex items-center gap-1">
+            Ver tablets <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Banner Dual Split: Teléfonos (izq) y Tablets (der) -->
+      <div class="w-full rounded-2xl overflow-hidden shadow-md border border-slate-200 grid grid-cols-1 md:grid-cols-2 bg-[#d2dee7]">
+        
+        <!-- Mitad Izquierda: Teléfonos -> celulares.html -->
+        <a href="celulares.html" class="group relative block overflow-hidden md:border-r border-white/80 cursor-pointer no-underline" title="Ver catálogo de teléfonos y celulares en falabella.com">
+          <img src="assets/tecnologia/banner_telefonos_half.webp" alt="Teléfonos Samsung Galaxy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
+        </a>
+
+        <!-- Mitad Derecha: Tablets -> tablets.html -->
+        <a href="tablets.html" class="group relative block overflow-hidden cursor-pointer no-underline" title="Ver catálogo de tablets en falabella.com">
+          <img src="assets/tecnologia/banner_tablets_half.webp" alt="Tablets Samsung Galaxy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: FOTOGRAFÍA (Image 3) ==================== -->
+    <section id="sec-fotografia" class="pt-6 scroll-mt-24">
+      <h2 class="section-title-bold">FOTOGRAFÍA</h2>
+
+      <div class="photo-grid-container">
+        
+        <!-- Tarjeta Principal Izquierda: Cámaras Profesionales -->
+        <article class="photo-card-left" onclick="window.location.href='camaras.html'">
+          <img src="assets/tecnologia/camaras_profesionales.webp" alt="Cámaras Profesionales Sony Alpha" loading="lazy">
+          <div class="photo-card-overlay">
+            <h3 class="text-2xl sm:text-3xl font-black tracking-wide leading-tight">CÁMARAS<br><span class="font-light">Profesionales</span></h3>
+            <button type="button" class="btn-ver-todo" onclick="event.stopPropagation(); window.location.href='camaras.html'">¡VER TODO! &gt;</button>
+          </div>
+        </article>
+
+        <!-- Columna Derecha: Deportivas + Instantáneas -->
+        <div class="photo-card-right-stack">
+          
+          <!-- Cámaras Deportivas (GoPro) -->
+          <article class="photo-card-right" onclick="window.location.href='camaras.html?cat=combo'">
+            <img src="assets/tecnologia/camaras_deportivas.webp" alt="Cámaras Deportivas GoPro Hero" loading="lazy">
+            <div class="photo-card-overlay">
+              <h3 class="text-xl font-black tracking-wide leading-tight text-amber-400">CÁMARAS<br><span class="text-white font-light text-base">Deportivas</span></h3>
+              <button type="button" class="btn-ver-todo" onclick="event.stopPropagation(); window.location.href='camaras.html?cat=combo'">¡VER TODO! &gt;</button>
+            </div>
+          </article>
+
+          <!-- Cámaras Instantáneas (Instax) -->
+          <article class="photo-card-right" onclick="window.location.href='camaras.html?brand=kodak'">
+            <img src="assets/tecnologia/camaras_instantaneas.webp" alt="Cámaras Instantáneas Instax" loading="lazy">
+            <div class="photo-card-overlay">
+              <h3 class="text-xl font-black tracking-wide leading-tight text-yellow-300">CÁMARAS<br><span class="text-white font-light text-base">Instantáneas</span></h3>
+              <button type="button" class="btn-ver-todo" onclick="event.stopPropagation(); window.location.href='camaras.html?brand=kodak'">¡VER TODO! &gt;</button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. SECCIÓN: TELEVISORES (Image 4) ==================== -->
+    <section id="sec-televisores" class="pt-6 scroll-mt-24">
+      <div class="flex items-center justify-between mb-3">
+        <a href="televisores.html" class="no-underline group">
+          <h2 class="section-title-bold mb-0 group-hover:text-[#0f766e] transition-colors cursor-pointer">TELEVISORES</h2>
+        </a>
+        <a href="televisores.html" class="text-xs font-bold text-[#0f766e] hover:text-[#0d5f58] hover:underline flex items-center gap-1">
+          Ver todos los televisores 
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="tv-grid-container">
+        
+        <!-- TV Samsung -->
+        <a href="televisores.html?brand=samsung" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores Samsung en falabella.com">
+          <span class="tv-brand-pill">Samsung</span>
+          <img src="assets/tecnologia/tv_samsung.webp" alt="Smart TV Samsung QLED 4K" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
+          <div class="tv-card-content">
+            <span class="tv-brand-subtitle">Smart TV</span>
+            <h3 class="tv-brand-name">SAMSUNG</h3>
+            <span class="btn-ver-todo">¡VER TODO! &gt;</span>
+          </div>
+        </a>
+
+        <!-- TV LG -->
+        <a href="televisores.html?brand=lg" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores LG en falabella.com">
+          <span class="tv-brand-pill">LG</span>
+          <img src="assets/tecnologia/tv_lg.webp" alt="Smart TV LG OLED 4K" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
+          <div class="tv-card-content">
+            <span class="tv-brand-subtitle">Smart TV</span>
+            <h3 class="tv-brand-name">LG</h3>
+            <span class="btn-ver-todo">¡VER TODO! &gt;</span>
+          </div>
+        </a>
+
+        <!-- TV JVC -->
+        <a href="televisores.html?brand=jvc" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores JVC en falabella.com">
+          <span class="tv-brand-pill">JVC</span>
+          <img src="assets/tecnologia/tv_jvc.webp" alt="Smart TV JVC Ultra HD" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
+          <div class="tv-card-content">
+            <span class="tv-brand-subtitle">Smart TV</span>
+            <h3 class="tv-brand-name">JVC</h3>
+            <span class="btn-ver-todo">¡VER TODO! &gt;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. SECCIÓN: AUDIO Y SONIDO (4 Categorías Solicitadas) ==================== -->
+    <section id="sec-audio" class="pt-6 scroll-mt-24">
+      <h2 class="section-title-bold">AUDIO Y SONIDO</h2>
+
+      <div class="audio-grid-container">
+        
+        <!-- 1. Audífonos Over-Ear -->
+        <article class="audio-card-box" onclick="filterByTechSearch('Audífonos')">
+          <div class="audio-card-img-wrap">
+            <img src="assets/tecnologia/audio_audifonos.webp" alt="Audífonos Bluetooth Over-Ear" loading="lazy">
+          </div>
+          <div class="audio-card-body">
+            <div>
+              <span class="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">Cancelación de Ruido</span>
+              <h3 class="text-lg font-extrabold text-slate-900 mt-0.5">Audífonos Over-Ear</h3>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Alta fidelidad sonora, almohadillas ergonómicas y hasta 50h de batería.</p>
+            </div>
+            <button type="button" class="btn-ver-todo mt-4">¡VER TODO! &gt;</button>
+          </div>
+        </article>
+
+        <!-- 2. Parlantes Bluetooth -->
+        <article class="audio-card-box" onclick="filterByTechSearch('Parlante')">
+          <div class="audio-card-img-wrap">
+            <img src="assets/tecnologia/audio_parlantes.webp" alt="Parlantes Portátiles Bluetooth" loading="lazy">
+          </div>
+          <div class="audio-card-body">
+            <div>
+              <span class="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">Portátiles & Resistentes</span>
+              <h3 class="text-lg font-extrabold text-slate-900 mt-0.5">Parlantes Bluetooth</h3>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Sonido 360°, resistencia al agua IPX7 y conexión multipunto para tus reuniones.</p>
+            </div>
+            <button type="button" class="btn-ver-todo mt-4">¡VER TODO! &gt;</button>
+          </div>
+        </article>
+
+        <!-- 3. Equipos de Sonido y Soundbars -->
+        <article class="audio-card-box" onclick="filterByTechSearch('Equipo de Sonido')">
+          <div class="audio-card-img-wrap">
+            <img src="assets/tecnologia/audio_equipos_sonido.webp" alt="Equipos de Sonido y Soundbars" loading="lazy">
+          </div>
+          <div class="audio-card-body">
+            <div>
+              <span class="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">Potencia Inmersiva</span>
+              <h3 class="text-lg font-extrabold text-slate-900 mt-0.5">Equipos de Sonido</h3>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Torres de audio, soundbars Dolby Atmos y minicomponentes para tu sala.</p>
+            </div>
+            <button type="button" class="btn-ver-todo mt-4">¡VER TODO! &gt;</button>
+          </div>
+        </article>
+
+        <!-- 4. Auriculares In-Ear True Wireless -->
+        <article class="audio-card-box" onclick="filterByTechSearch('Auriculares')">
+          <div class="audio-card-img-wrap">
+            <img src="assets/tecnologia/audio_auriculares.webp" alt="Auriculares True Wireless In-Ear" loading="lazy">
+          </div>
+          <div class="audio-card-body">
+            <div>
+              <span class="text-[11px] font-bold text-[#0f766e] uppercase tracking-wider">True Wireless (TWS)</span>
+              <h3 class="text-lg font-extrabold text-slate-900 mt-0.5">Auriculares In-Ear</h3>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">Ultra compactos, estuche con carga inalámbrica y micrófonos con IA.</p>
+            </div>
+            <button type="button" class="btn-ver-todo mt-4">¡VER TODO! &gt;</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== CATÁLOGO DE PRODUCTOS TECNOLÓGICOS ==================== -->
+    <section id="sec-catalogo" class="pt-8 scroll-mt-24 border-t border-slate-200">
+      <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">Catálogo de Tecnología Destacada</h2>
+          <p class="text-xs text-slate-500">Ofertas exclusivas con despacho express y garantía Falabella</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="renderTechCatalogProducts('all')" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-[#0f766e] transition">Todos</button>
+          <button type="button" onclick="renderTechCatalogProducts('Laptops')" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Laptops</button>
+          <button type="button" onclick="renderTechCatalogProducts('TVs')" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Televisores</button>
+          <button type="button" onclick="renderTechCatalogProducts('Audio')" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Audio</button>
+          <button type="button" onclick="renderTechCatalogProducts('Cámaras')" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Fotografía</button>
+        </div>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="techProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Renderizado dinámicamente con JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL DE CARRITO DE COMPRAS SINCRONIZADO ==================== -->
+  <div id="techCartModalOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden" onclick="closeTechCartModal()">
+    <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+      <!-- Header -->
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-[#0f766e] flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-base">Mi Carrito de Compras</h3>
+            <span class="text-[11px] text-slate-500">Sincronizado con falabella.com</span>
+          </div>
+        </div>
+        <button onclick="closeTechCartModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Body: Items List -->
+      <div id="techCartModalList" class="p-4 overflow-y-auto flex-1 divide-y divide-slate-100">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- Footer: Subtotal and Checkout -->
+      <div class="p-4 border-t border-slate-100 bg-slate-50/80 flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <span class="text-xs text-slate-500 block">Total estimado:</span>
+          <span id="techCartModalTotal" class="text-xl font-black text-rose-600">S/ 0.00</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="closeTechCartModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-200 transition">Seguir comprando</button>
+          <a href="index.html" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#0f766e] hover:bg-emerald-800 text-white shadow-md transition flex items-center gap-1.5 no-underline">
+            <span>Ir a Pagar en Tienda</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER OFICIAL ==================== -->
+  <footer class="bg-slate-900 text-white mt-20 border-t border-slate-800">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <span style="color:#aad500; font-size:28px; font-weight:900; letter-spacing:-0.5px; line-height:1;">falabella</span>
+          <span style="color:#aad500; font-size:20px; font-weight:900; letter-spacing:-0.5px; line-height:1;">.com</span>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">Líder en retail y tecnología en Perú. Calidad, garantía y envíos a todo el territorio nacional.</p>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Tecnología</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#sec-marcas" class="hover:text-[#aad500] transition">Laptops HP, Lenovo, ASUS, Acer</a></li>
+            <li><a href="#sec-televisores" class="hover:text-[#aad500] transition">Smart TVs Samsung, LG, JVC</a></li>
+            <li><a href="#sec-fotografia" class="hover:text-[#aad500] transition">Fotografía y Cámaras Sony</a></li>
+            <li><a href="#sec-audio" class="hover:text-[#aad500] transition">Audio, Parlantes y Audífonos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Servicio al Cliente</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="index.html" class="hover:text-[#aad500] transition">Rastreo de Pedidos con DNI</a></li>
+            <li><a href="index.html" class="hover:text-[#aad500] transition">Garantía de 30 Días (RN-20)</a></li>
+            <li><a href="libro-reclamaciones.html" class="hover:text-[#aad500] transition">📖 Libro de Reclamaciones Virtual</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Seguridad y Pagos</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">Transacciones 100% encriptadas y protegidas por protocolo SSL con validación bancaria.</p>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-1 bg-slate-800 text-slate-300 rounded text-[10px] font-bold">CMR</span>
+            <span class="px-2 py-1 bg-slate-800 text-slate-300 rounded text-[10px] font-bold">VISA</span>
+            <span class="px-2 py-1 bg-slate-800 text-slate-300 rounded text-[10px] font-bold">MASTERCARD</span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-8 pt-6 text-center text-xs text-slate-500">
+        © 2026 Falabella Perú S.A.A. Todos los derechos reservados. Sistema Académico USMP.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST NOTIFICACIÓN ==================== -->
+  <div id="techToast" class="toast-msg">
+    <svg class="w-5 h-5 text-[#aad500]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+    <span id="techToastText">Producto agregado al carrito</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    /* -------------------------------------------------------------
+       1. SINCRONIZACIÓN DE CARRITO CON FALABELLA PRINCIPAL
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    function getStoreCart() {
+      try {
+        const raw = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch(e) { return []; }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch(e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('techCartBadge');
+      if(badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
+    }
+
+    function addToTechCart(productId) {
+      const prod = TECH_PRODUCTS.find(p => p.id === productId);
+      if(!prod) return;
+
+      const cart = getStoreCart();
+      const existing = cart.find(item => item.productId === prod.id || item.id === prod.id);
+
+      if(existing) {
+        existing.qty = (existing.qty || existing.quantity || 1) + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          productId: prod.id,
+          id: prod.id,
+          qty: 1,
+          quantity: 1,
+          name: prod.name,
+          price: prod.cmrPrice,
+          regularPrice: prod.price,
+          image: prod.img,
+          img: prod.img,
+          brand: prod.brand
+        });
+      }
+
+      saveStoreCart(cart);
+      showTechToast('¡' + prod.name.substring(0, 32) + '... agregado al carrito!');
+    }
+
+    function updateCartItemQty(productId, delta) {
+      const cart = getStoreCart();
+      const item = cart.find(i => i.productId === productId || i.id === productId);
+      if(item) {
+        item.qty = (item.qty || item.quantity || 1) + delta;
+        item.quantity = item.qty;
+        if(item.qty <= 0) {
+          removeCartItem(productId);
+          return;
+        }
+      }
+      saveStoreCart(cart);
+      renderTechCartModalContent();
+    }
+
+    function removeCartItem(productId) {
+      let cart = getStoreCart();
+      cart = cart.filter(i => i.productId !== productId && i.id !== productId);
+      saveStoreCart(cart);
+      renderTechCartModalContent();
+      showTechToast('Producto eliminado del carrito');
+    }
+
+    function openTechCartModal() {
+      renderTechCartModalContent();
+      const overlay = document.getElementById('techCartModalOverlay');
+      if(overlay) overlay.classList.remove('hidden');
+    }
+
+    function closeTechCartModal() {
+      const overlay = document.getElementById('techCartModalOverlay');
+      if(overlay) overlay.classList.add('hidden');
+    }
+
+    function renderTechCartModalContent() {
+      const list = document.getElementById('techCartModalList');
+      const totalEl = document.getElementById('techCartModalTotal');
+      if(!list || !totalEl) return;
+
+      const cart = getStoreCart();
+
+      if(!cart.length) {
+        list.innerHTML = `
+          <div class="py-12 text-center">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-[#0f766e] grid place-items-center mx-auto mb-3">
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            </div>
+            <h4 class="text-base font-bold text-slate-800">Tu carrito está vacío</h4>
+            <p class="text-xs text-slate-500 mt-1">Explora nuestras ofertas y agrega los mejores productos a tu carrito.</p>
+          </div>
+        `;
+        totalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const itemQty = item.qty || item.quantity || 1;
+        const itemPrice = item.price || 0;
+        const lineTotal = itemPrice * itemQty;
+        subtotal += lineTotal;
+        const itemImg = item.image || item.img || 'assets/tecnologia/marca_lenovo.webp';
+        const itemName = item.name || 'Producto Tecnológico';
+
+        return `
+          <div class="py-3 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <img src="${itemImg}" alt="${itemName}" class="w-14 h-14 object-contain rounded-lg border border-slate-100 p-1 flex-shrink-0 bg-white">
+              <div class="min-w-0">
+                <h4 class="text-xs font-bold text-slate-800 truncate">${itemName}</h4>
+                <span class="text-xs font-black text-rose-600 block mt-0.5">S/ ${itemPrice.toLocaleString('es-PE', { minimumFractionDigits:2, maximumFractionDigits:2 })}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                <button type="button" onclick="updateCartItemQty(${item.productId || item.id}, -1)" class="px-2 py-1 text-slate-600 hover:bg-slate-200 text-xs font-bold">-</button>
+                <span class="px-2 text-xs font-bold text-slate-800">${itemQty}</span>
+                <button type="button" onclick="updateCartItemQty(${item.productId || item.id}, 1)" class="px-2 py-1 text-slate-600 hover:bg-slate-200 text-xs font-bold">+</button>
+              </div>
+              <button type="button" onclick="removeCartItem(${item.productId || item.id})" class="text-slate-400 hover:text-rose-500 p-1" title="Eliminar">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      totalEl.textContent = 'S/ ' + subtotal.toLocaleString('es-PE', { minimumFractionDigits:2, maximumFractionDigits:2 });
+    }
+
+    /* -------------------------------------------------------------
+       2. HERO BANNER CAROUSEL LOGIC
+       ------------------------------------------------------------- */
+    let currentTechSlide = 0;
+    let techSlideInterval = null;
+    const techSlides = document.querySelectorAll('.tech-slide');
+    const techDots = document.querySelectorAll('.tech-dot');
+
+    function showTechSlide(index) {
+      if(!techSlides.length) return;
+      if(index >= techSlides.length) currentTechSlide = 0;
+      else if(index < 0) currentTechSlide = techSlides.length - 1;
+      else currentTechSlide = index;
+
+      techSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentTechSlide);
+      });
+      techDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentTechSlide);
+      });
+    }
+
+    function moveTechSlide(step) {
+      showTechSlide(currentTechSlide + step);
+      resetTechSlideTimer();
+    }
+
+    function setTechSlide(index) {
+      showTechSlide(index);
+      resetTechSlideTimer();
+    }
+
+    function startTechSlideTimer() {
+      if(techSlideInterval) clearInterval(techSlideInterval);
+      techSlideInterval = setInterval(() => {
+        moveTechSlide(1);
+      }, 5000);
+    }
+
+    function resetTechSlideTimer() {
+      startTechSlideTimer();
+    }
+
+    const techCarouselEl = document.getElementById('techHeroCarousel');
+    if(techCarouselEl) {
+      techCarouselEl.addEventListener('mouseenter', () => clearInterval(techSlideInterval));
+      techCarouselEl.addEventListener('mouseleave', () => startTechSlideTimer());
+    }
+
+    startTechSlideTimer();
+
+    /* -------------------------------------------------------------
+       3. DRAWER MENÚ Y SCROLL A SECCIONES
+       ------------------------------------------------------------- */
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('techCategoriesDrawer');
+      if(!drawer) return;
+      const inner = drawer.firstElementChild;
+      if(drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          if(inner) inner.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        if(inner) inner.classList.add('-translate-x-full');
+        setTimeout(() => drawer.classList.add('hidden'), 300);
+      }
+    }
+
+    function scrollToTechSection(secKey) {
+      const el = document.getElementById('sec-' + secKey);
+      if(el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    /* -------------------------------------------------------------
+       4. CATÁLOGO DE PRODUCTOS TECNOLÓGICOS (Con IDs compatibles)
+       ------------------------------------------------------------- */
+    const TECH_PRODUCTS = [
+      {
+        id: 1, // Compatible con Laptop Lenovo en DB.products
+        name: 'Laptop Lenovo IdeaPad 3 15.6" AMD Ryzen 5 8GB 512GB SSD',
+        brand: 'Lenovo',
+        type: 'Laptops',
+        price: 2299,
+        cmrPrice: 1899,
+        badge: 'OFERTA TOP',
+        img: 'assets/tecnologia/marca_lenovo.webp'
+      },
+      {
+        id: 102,
+        name: 'Laptop HP Envy x360 2-en-1 Intel Core i7 16GB 512GB SSD',
+        brand: 'HP',
+        type: 'Laptops',
+        price: 3899,
+        cmrPrice: 3599,
+        badge: 'CMR EXCLUSIVO',
+        img: 'assets/tecnologia/marca_hp.webp'
+      },
+      {
+        id: 5, // Compatible con Smart TV Samsung en DB.products
+        name: 'Smart TV Samsung 50" Crystal UHD 4K Smart Hub Tizen',
+        brand: 'Samsung',
+        type: 'TVs',
+        price: 1899,
+        cmrPrice: 1499,
+        badge: 'MUNDIAL 4K',
+        img: 'assets/tecnologia/tv_samsung.webp'
+      },
+      {
+        id: 104,
+        name: 'Smart TV LG 65" OLED evo 4K Cinema HDR Dolby Atmos',
+        brand: 'LG',
+        type: 'TVs',
+        price: 4599,
+        cmrPrice: 4199,
+        badge: 'OLED PREMIUM',
+        img: 'assets/tecnologia/tv_lg.webp'
+      },
+      {
+        id: 2, // Compatible con Audífonos JBL en DB.products
+        name: 'Audífonos Inalámbricos JBL Wave 520 Bluetooth Bass',
+        brand: 'JBL',
+        type: 'Audio',
+        price: 179.90,
+        cmrPrice: 129.90,
+        badge: 'MÁS VENDIDO',
+        img: 'assets/tecnologia/audio_audifonos.webp'
+      },
+      {
+        id: 105,
+        name: 'Audífonos Sony WH-1000XM5 Noise Cancelling Premium',
+        brand: 'Sony',
+        type: 'Audio',
+        price: 1399,
+        cmrPrice: 1199,
+        badge: 'TOP AUDIO',
+        img: 'assets/tecnologia/audio_audifonos.webp'
+      },
+      {
+        id: 106,
+        name: 'Parlante Portátil Bluetooth JBL Charge 5 Resistente al Agua IP67',
+        brand: 'JBL',
+        type: 'Audio',
+        price: 649,
+        cmrPrice: 579,
+        badge: 'RESISTENTE',
+        img: 'assets/tecnologia/audio_parlantes.webp'
+      },
+      {
+        id: 107,
+        name: 'Cámara Profesional Sony Alpha 7 IV Mirrorless 4K Full-Frame',
+        brand: 'Sony',
+        type: 'Cámaras',
+        price: 8499,
+        cmrPrice: 7999,
+        badge: 'PRO FOTO',
+        img: 'assets/tecnologia/camaras_profesionales.webp'
+      },
+      {
+        id: 108,
+        name: 'Cámara Deportiva GoPro HERO13 Black 5.3K 60fps Sumergible',
+        brand: 'GoPro',
+        type: 'Cámaras',
+        price: 1999,
+        cmrPrice: 1799,
+        badge: 'ACCIÓN 4K',
+        img: 'assets/tecnologia/camaras_deportivas.webp'
+      }
+    ];
+
+    function renderTechCatalogProducts(filterType = 'all') {
+      const container = document.getElementById('techProductsGrid');
+      if(!container) return;
+
+      const filtered = filterType === 'all' 
+        ? TECH_PRODUCTS 
+        : TECH_PRODUCTS.filter(p => p.type.toLowerCase() === filterType.toLowerCase() || p.brand.toLowerCase() === filterType.toLowerCase());
+
+      container.innerHTML = filtered.map(p => `
+        <article class="product-card-tech">
+          <div>
+            <div class="relative w-full h-48 bg-slate-50 rounded-xl overflow-hidden mb-3 p-3 flex items-center justify-center">
+              <span class="absolute top-2 left-2 bg-slate-900 text-[#aad500] text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">${p.badge}</span>
+              <img src="${p.img}" alt="${p.name}" class="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy">
+            </div>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">${p.brand}</span>
+            <h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5 hover:text-[#0f766e] cursor-pointer">${p.name}</h3>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100">
+            <div class="flex items-baseline gap-2">
+              <span class="text-base font-black text-rose-600">S/ ${p.cmrPrice.toLocaleString('es-PE')}</span>
+              <span class="text-[10px] font-bold text-[#0f766e] bg-teal-50 px-1.5 py-0.5 rounded">Tarjeta CMR</span>
+            </div>
+            <div class="text-[11px] text-slate-400 line-through">S/ ${p.price.toLocaleString('es-PE')} (Regular)</div>
+
+            <button type="button" onclick="addToTechCart(${p.id})" 
+                    class="w-full mt-3 bg-[#0f172a] hover:bg-[#0f766e] text-white text-xs font-bold py-2 px-3 rounded-xl transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Agregar al carrito</span>
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    renderTechCatalogProducts('all');
+
+    function filterByTechBrand(brand) {
+      const bLower = String(brand).toLowerCase();
+      if(['hp', 'lenovo', 'asus', 'acer'].includes(bLower)) {
+        window.location.href = `laptops.html?brand=${bLower}`;
+        return;
+      }
+      if(['samsung', 'lg', 'jvc', 'caixun', 'tcl', 'hisense', 'xiaomi', 'hyundai'].includes(bLower)) {
+        window.location.href = `televisores.html?brand=${bLower}`;
+        return;
+      }
+      renderTechCatalogProducts(brand);
+      scrollToTechSection('catalogo');
+      showTechToast('Filtrando por marca: ' + brand);
+    }
+
+    function filterByTechSearch(term) {
+      const container = document.getElementById('techProductsGrid');
+      if(!container) return;
+      const lower = term.toLowerCase();
+      const filtered = TECH_PRODUCTS.filter(p => p.name.toLowerCase().includes(lower) || p.type.toLowerCase().includes(lower) || p.brand.toLowerCase().includes(lower));
+      
+      if(filtered.length > 0) {
+        container.innerHTML = filtered.map(p => `
+          <article class="product-card-tech">
+            <div>
+              <div class="relative w-full h-48 bg-slate-50 rounded-xl overflow-hidden mb-3 p-3 flex items-center justify-center">
+                <span class="absolute top-2 left-2 bg-slate-900 text-[#aad500] text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">${p.badge}</span>
+                <img src="${p.img}" alt="${p.name}" class="max-h-full max-w-full object-contain">
+              </div>
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">${p.brand}</span>
+              <h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">${p.name}</h3>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <span class="text-base font-black text-rose-600">S/ ${p.cmrPrice.toLocaleString('es-PE')}</span>
+              <button type="button" onclick="addToTechCart(${p.id})" class="w-full mt-3 bg-[#0f172a] hover:bg-[#0f766e] text-white text-xs font-bold py-2 px-3 rounded-xl transition">Agregar al carrito</button>
+            </div>
+          </article>
+        `).join('');
+      } else {
+        renderTechCatalogProducts('all');
+      }
+      scrollToTechSection('catalogo');
+      showTechToast('Filtrando: ' + term);
+    }
+
+    function executeTechSearch(val) {
+      if(!val) return renderTechCatalogProducts('all');
+      filterByTechSearch(val);
+    }
+
+    function showTechToast(msg) {
+      const toast = document.getElementById('techToast');
+      const text = document.getElementById('techToastText');
+      if(!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Inicializar badge de carrito y escuchar eventos de retorno de página
+    updateCartBadge();
+    window.addEventListener('pageshow', updateCartBadge);
+    window.addEventListener('focus', updateCartBadge);
+  
+    window.addEventListener('storage', function(e) {
+      if(e.key === STORE_CART_KEY) {
+        updateCartBadge();
+      }
+    });
+</script>
+</body>
+</html>

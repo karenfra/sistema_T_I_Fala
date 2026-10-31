@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moda Hombre en Falabella.com Perú - Ropa para hombres, camisas, polos, casacas, pantalones, jeans y las mejores marcas: Polo Ralph Lauren, La Martina, Mango Man, Levi's, Billabong.">
+  <title>Moda Hombre | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              navy: '#0f172a',
+              orange: '#f97316'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-input::placeholder {
+      color: #718096;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Hero Banner Carousel */
+    .moda-carousel-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1376 / 440;
+      min-height: 230px;
+      max-height: 440px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000000;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.15);
+    }
+    @media (max-width: 768px) {
+      .moda-carousel-container {
+        aspect-ratio: 16 / 9;
+        min-height: 190px;
+        border-radius: 6px;
+      }
+    }
+    .moda-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      cursor: pointer;
+    }
+    .moda-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .moda-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Hero Nav Arrows */
+    .moda-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .moda-carousel-container:hover .moda-nav-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .moda-nav-arrow:hover {
+      background: #aad500;
+      border-color: #aad500;
+      color: #0f172a;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .moda-nav-prev { left: 14px; }
+    .moda-nav-next { right: 14px; }
+
+    /* Carousel Dots */
+    .moda-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+    .moda-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      padding: 0;
+    }
+    .moda-dot.active {
+      background: #334155;
+      transform: scale(1.2);
+    }
+
+    /* Subcategories Bar (Image 1 replica) */
+    .subnav-tabs-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      background: #ffffff;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .subnav-tabs-bar::-webkit-scrollbar { display: none; }
+    .subnav-tab-item {
+      flex: 1;
+      min-width: 120px;
+      padding: 14px 18px;
+      text-align: center;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #334155;
+      border-right: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .subnav-tab-item:last-child {
+      border-right: none;
+    }
+    .subnav-tab-item:hover, .subnav-tab-item.active {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .subnav-arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #475569;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .subnav-arrow-btn:hover {
+      background: #1e293b;
+    }
+
+    /* Las Mejores Marcas Section (Image 2 replica) */
+    .brand-section-heading {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: #333f48;
+      text-transform: uppercase;
+      margin-top: 36px;
+      margin-bottom: 24px;
+    }
+    .brands-grid-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .brands-grid-moda {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 1024px) {
+      .brands-grid-moda {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .brands-grid-moda {
+        grid-template-columns: 1fr;
+      }
+    }
+    .brand-card-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 320 / 390;
+      background: #0f172a;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    .brand-card-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
+    }
+    .brand-card-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brand-card-item:hover img {
+      transform: scale(1.05);
+    }
+    .brand-carousel-next-btn {
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 48px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #334155;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.2s;
+    }
+    .brand-carousel-next-btn:hover {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    @media (max-width: 1024px) {
+      .brand-carousel-next-btn {
+        display: none;
+      }
+    }
+
+    /* Product Card */
+    .product-card-moda {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .product-card-moda:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.12);
+      border-color: #cbd5e1;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 4px solid #aad500;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN 1 ==================== -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-3 sm:gap-6 justify-between">
+      
+      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-4 sm:gap-6 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
+          <span style="color:#aad500; font-size:32px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+          <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+        </a>
+
+        <!-- Botón Menú Hamburguesa -->
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="modaSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" onkeydown="if(event.key==='Enter') executeModaSearch(this.value)" />
+          <button type="button" onclick="executeModaSearch(document.getElementById('modaSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de cabecera: Hola, Inicia sesión ⌵ | Mi cuenta, Favoritos, Carrito -->
+      <div class="flex items-center gap-4 sm:gap-6 ml-auto flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión / Mi cuenta -->
+        <a href="index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1 no-underline text-inherit" title="Iniciar sesión / Mi cuenta">
+          <div class="flex flex-col text-[11px] leading-tight">
+            <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
+            <span class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5">
+              Inicia sesión
+              <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </div>
+          <div class="border-l border-slate-300 pl-2.5 ml-1 hidden sm:flex flex-col text-[11px] leading-tight">
+            <span class="font-bold text-slate-900">Mi</span>
+            <span class="font-bold text-slate-900">cuenta</span>
+          </div>
+        </a>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="showToast('❤️ Sección de Mis Favoritos guardados')" class="p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+          <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </button>
+
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
+        <button onclick="openModaCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Bolsa de compras">
+          <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="modaCartBadge" style="background:#333f48; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-4px; right:-6px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN 1 -->
+    <div class="store-topbar">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 cursor-pointer text-xs" onclick="showToast('📍 Selección de ubicación de despacho activada.')">
+          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="font-medium text-slate-700">Ingresa tu ubicación</span>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-medium text-slate-600 flex-wrap">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('💳 Beneficios y promociones con Tarjeta CMR.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer hidden md:inline" onclick="showToast('💼 Programa Vende y Comisiona Falabella.')">Vende y comisiona</span>
+          <span class="hover:text-slate-900 cursor-pointer hidden sm:flex items-center gap-1" onclick="showToast('📞 Venta Telefónica Falabella: (01) 555-0000.')">Venta telefónica <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('ℹ️ Centro de Ayuda: Atención al cliente y devoluciones.')">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span class="hidden sm:inline">Rastrear</span>
+          </a>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline" title="Acceso al sistema administrativo">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Intranet</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ) ==================== -->
+  <div id="modaCategoriesDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="toggleCategoriesDrawer()">
+    <div class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+        <span class="text-xl font-black text-slate-900">Categorías</span>
+        <button onclick="toggleCategoriesDrawer()" class="p-1 rounded-lg hover:bg-slate-100 text-slate-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <ul class="space-y-2 text-sm font-semibold text-slate-700">
+        <li>
+          <div class="rounded-xl bg-slate-100/80 border border-slate-200 p-2.5">
+            <a href="moda_hombre.html" class="flex items-center justify-between text-slate-900 font-bold pb-1.5 mb-1.5 border-b border-slate-300">
+              <span class="flex items-center gap-1.5 text-sm">👔 Moda Hombre</span>
+              <span class="text-[10px] bg-[#aad500] text-slate-900 px-2 py-0.5 rounded-full font-black">ACTUAL</span>
+            </a>
+            <div class="space-y-1 text-xs">
+              <a href="#sec-marcas" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f172a] transition">⭐ Las Mejores Marcas</a>
+              <a href="#sec-estilos" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f172a] transition">🧥 Estilos y Outfits</a>
+              <a href="#sec-catalogo" onclick="filterByBrand('Levi\'s'); toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f172a] transition">👖 Mundo Jeans</a>
+              <a href="#sec-catalogo" onclick="filterByBrand('Billabong'); toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f172a] transition">🏄 Mundo Surf</a>
+              <a href="#sec-catalogo" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0f172a] transition">🛍️ Todos los Productos</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="tecnologia.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚡ Tecnología</a></li>
+        <li><a href="celulares.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📱 Telefonía y Celulares</a></li>
+        <li><a href="tablets.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📲 Tablets y iPads</a></li>
+        <li><a href="laptops.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Laptops</a></li>
+        <li><a href="televisores.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📺 Televisores</a></li>
+        <li><a href="camaras.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📷 Fotografía</a></li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+        <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🛋️ Decohogar</a></li>
+      </ul>
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#333f48] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 space-y-4">
+
+    <!-- BREADCRUMB EXACTO A LA IMAGEN 1 -->
+    <nav class="flex items-center gap-1.5 text-xs text-slate-500 select-none pb-1" aria-label="Breadcrumb">
+      <a href="index.html" class="hover:underline hover:text-slate-800 transition">Home</a>
+      <span class="text-slate-400 font-bold">&gt;</span>
+      <span class="text-slate-800 font-bold underline">Moda Hombre</span>
+    </nav>
+
+    <!-- ==================== 1. HERO CAROUSEL: 3 BANNERS DE MODA HOMBRE CON TEXTO EN ESPAÑOL ==================== -->
+    <section class="moda-carousel-container" id="modaHeroCarousel" onmouseenter="pauseModaCarousel()" onmouseleave="startModaCarousel()">
+      
+      <!-- Slide 1: Billabong - Marca Exclusiva en Falabella (Exacto de Imagen 1) -->
+      <div class="moda-slide active" onclick="filterByBrand('Billabong')">
+        <picture>
+          <source srcset="assets/moda_hombre/banner_moda_billabong.webp" type="image/webp">
+          <img src="assets/moda_hombre/banner_moda_billabong.png" alt="Billabong - Marca Exclusiva en Falabella" loading="eager" />
+        </picture>
+      </div>
+
+      <!-- Slide 2: Moda Urbana y Casual con letras en español (Generado para Falabella) -->
+      <div class="moda-slide" onclick="filterByBrand('Levi\'s')">
+        <picture>
+          <source srcset="assets/moda_hombre/banner_moda_urbana.webp" type="image/webp">
+          <img src="assets/moda_hombre/banner_moda_urbana.jpg" alt="Urbano & Casual - Hasta 40% de descuento en casacas, poleras y denim" loading="lazy" />
+        </picture>
+      </div>
+
+      <!-- Slide 3: Elegancia Formal con letras en español (Generado para Falabella) -->
+      <div class="moda-slide" onclick="filterByBrand('Mango Man')">
+        <picture>
+          <source srcset="assets/moda_hombre/banner_moda_formal.webp" type="image/webp">
+          <img src="assets/moda_hombre/banner_moda_formal.jpg" alt="Elegancia Formal - Nueva Colección de trajes, camisas y calzado" loading="lazy" />
+        </picture>
+      </div>
+
+      <!-- Flechas Prev / Next -->
+      <button type="button" class="moda-nav-arrow moda-nav-prev" onclick="event.stopPropagation(); moveModaSlide(-1);" aria-label="Banner anterior">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="moda-nav-arrow moda-nav-next" onclick="event.stopPropagation(); moveModaSlide(1);" aria-label="Banner siguiente">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </section>
+
+    <!-- Indicadores Dots del Carousel -->
+    <div class="moda-dots" id="modaCarouselDots">
+      <button type="button" class="moda-dot active" onclick="setModaSlide(0)" aria-label="Slide 1"></button>
+      <button type="button" class="moda-dot" onclick="setModaSlide(1)" aria-label="Slide 2"></button>
+      <button type="button" class="moda-dot" onclick="setModaSlide(2)" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- ==================== SUB-BARRA DE NAVEGACIÓN EXACTA A LA IMAGEN 1 ==================== -->
+    <nav class="subnav-tabs-bar" aria-label="Subnavegación de Moda Hombre">
+      <a href="#sec-estilos" class="subnav-tab-item active">Estilos</a>
+      <a href="#sec-marcas" class="subnav-tab-item">Mejores marcas</a>
+      <a href="#sec-outfit" class="subnav-tab-item">Arma tu outfit</a>
+      <a href="#sec-catalogo" onclick="filterByBrand('Levi\'s')" class="subnav-tab-item">Mundo jeans</a>
+      <a href="#sec-catalogo" onclick="filterByBrand('Billabong')" class="subnav-tab-item">Mundo Surf</a>
+      <a href="#sec-catalogo" onclick="filterByBrand('Todos')" class="subnav-tab-item">Categorías</a>
+      <div class="subnav-tab-item flex items-center justify-between !pr-2 !min-w-[140px] cursor-pointer" onclick="scrollToCatalog()">
+        <span>Comprar</span>
+        <div class="subnav-arrow-btn">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== 2. SECCIÓN: LAS MEJORES MARCAS (EXACTA A LA IMAGEN 2) ==================== -->
+    <section id="sec-marcas" class="pt-2 scroll-mt-24">
+      <h2 class="brand-section-heading">LAS MEJORES MARCAS</h2>
+      
+      <div class="brands-grid-wrapper">
+        <div class="brands-grid-moda">
+          
+          <!-- Marca 1: POLO RALPH LAUREN -->
+          <article class="brand-card-item" onclick="filterByBrand('Polo Ralph Lauren')" title="Explorar Polo Ralph Lauren en Falabella">
+            <picture>
+              <source srcset="assets/moda_hombre/marca_polo_ralph_lauren.webp" type="image/webp">
+              <img src="assets/moda_hombre/marca_polo_ralph_lauren.png" alt="Polo Ralph Lauren Moda Hombre" loading="lazy">
+            </picture>
+          </article>
+
+          <!-- Marca 2: LA MARTINA -->
+          <article class="brand-card-item" onclick="filterByBrand('La Martina')" title="Explorar La Martina en Falabella">
+            <picture>
+              <source srcset="assets/moda_hombre/marca_la_martina.webp" type="image/webp">
+              <img src="assets/moda_hombre/marca_la_martina.png" alt="La Martina Moda Hombre" loading="lazy">
+            </picture>
+          </article>
+
+          <!-- Marca 3: MANGO MAN -->
+          <article class="brand-card-item" onclick="filterByBrand('Mango Man')" title="Explorar Mango Man en Falabella">
+            <picture>
+              <source srcset="assets/moda_hombre/marca_mango_man.webp" type="image/webp">
+              <img src="assets/moda_hombre/marca_mango_man.png" alt="Mango Man Moda Hombre" loading="lazy">
+            </picture>
+          </article>
+
+          <!-- Marca 4: LEVI'S -->
+          <article class="brand-card-item" onclick="filterByBrand('Levi\'s')" title="Explorar Levi's en Falabella">
+            <picture>
+              <source srcset="assets/moda_hombre/marca_levis.webp" type="image/webp">
+              <img src="assets/moda_hombre/marca_levis.png" alt="Levi's Moda Hombre" loading="lazy">
+            </picture>
+          </article>
+
+        </div>
+
+        <!-- Botón flecha carrusel derecho exacto a la Imagen 2 -->
+        <button type="button" class="brand-carousel-next-btn" onclick="filterByBrand('Billabong')" title="Ver más marcas">
+          <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: ESTILOS Y ARMA TU OUTFIT ==================== -->
+    <section id="sec-estilos" class="pt-8 scroll-mt-24">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-xl font-black text-slate-900 tracking-tight">ESTILOS DESTACADOS & ARMA TU OUTFIT</h3>
+          <p class="text-xs text-slate-500">Inspírate con las tendencias de la temporada</p>
+        </div>
+        <button onclick="scrollToCatalog()" class="text-xs font-bold text-slate-700 hover:text-black underline">Ver catálogo completo &gt;</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="sec-outfit">
+        
+        <!-- Tarjeta Estilo 1 -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByBrand('Levi\'s')">
+          <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=800&auto=format&fit=crop&q=80" alt="Urbano & Streetwear" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Tendencia</span>
+            <h4 class="text-lg font-black leading-tight">Urbano & Streetwear</h4>
+            <p class="text-xs text-slate-300 mt-1">Casacas denim, poleras y zapatillas urbanas</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver outfit &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta Estilo 2 -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByBrand('Mango Man')">
+          <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=800&auto=format&fit=crop&q=80" alt="Smart Casual & Oficina" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Elegancia Diaria</span>
+            <h4 class="text-lg font-black leading-tight">Smart Casual</h4>
+            <p class="text-xs text-slate-300 mt-1">Blazers livianos, suéteres y pantalones chinos</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver outfit &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta Estilo 3 -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByBrand('Polo Ralph Lauren')">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80" alt="Clásico & Preppy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Atemporal</span>
+            <h4 class="text-lg font-black leading-tight">Clásico Premium</h4>
+            <p class="text-xs text-slate-300 mt-1">Polos piqué, camisas Oxford y mocasines</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver outfit &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta Estilo 4 -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByBrand('Billabong')">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80" alt="Surf & Aventura" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-85">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Mundo Surf</span>
+            <h4 class="text-lg font-black leading-tight">Outdoor & Beach</h4>
+            <p class="text-xs text-slate-300 mt-1">Boardshorts, poleras fleece y casacas térmicas</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver outfit &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. CATÁLOGO COMPLETO DE MODA HOMBRE ==================== -->
+    <section id="sec-catalogo" class="pt-10 scroll-mt-24">
+      <div class="border-b border-slate-200 pb-4 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - MODA HOMBRE</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Encuentra prendas exclusivas con descuentos CMR y despacho a domicilio</p>
+          </div>
+
+          <!-- Filtros de Marca en Botones Píldora -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" id="brandFilterPills">
+            <button type="button" onclick="filterByBrand('Todos')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition">Todos</button>
+            <button type="button" onclick="filterByBrand('Polo Ralph Lauren')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Polo Ralph Lauren</button>
+            <button type="button" onclick="filterByBrand('La Martina')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">La Martina</button>
+            <button type="button" onclick="filterByBrand('Mango Man')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">MANGO MAN</button>
+            <button type="button" onclick="filterByBrand('Levi\'s')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Levi's</button>
+            <button type="button" onclick="filterByBrand('Billabong')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Billabong</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="modaProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Renderizado dinámico vía JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL DE CARRITO GLOBAL (CONECTADO A FALABELLA_STORE_CART_V2) ==================== -->
+  <div id="modaCartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="closeModaCartModal()">
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      
+      <!-- Cabecera de la Bolsa -->
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <h3 class="text-base font-black text-slate-900">Bolsa de compras</h3>
+          <span id="cartModalItemCount" class="text-xs bg-[#333f48] text-white px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button onclick="closeModaCartModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Lista de Ítems del Carrito Global -->
+      <div id="modaCartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Pie de Carrito con Subtotal y Botón de Pago -->
+      <div class="p-4 border-t border-slate-200 bg-white">
+        <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+          <span>Envío</span>
+          <span class="text-emerald-600 font-bold">Gratis por compras &gt; S/ 199</span>
+        </div>
+        <div class="flex items-center justify-between text-base font-black text-slate-900 mb-4">
+          <span>Subtotal estimado</span>
+          <span id="modaCartSubtotal" class="text-rose-600 font-black text-lg">S/ 0.00</span>
+        </div>
+        <div class="space-y-2">
+          <button onclick="goToCheckout()" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-lg text-sm shadow-md transition text-center block select-none">
+            Continuar compra
+          </button>
+          <button onclick="closeModaCartModal()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs transition">
+            Seguir comprando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificaciones -->
+  <div id="toastNotification" class="toast-msg">
+    <span id="toastText">Producto añadido a tu bolsa</span>
+  </div>
+
+  <!-- ==================== SCRIPT DE MODA HOMBRE Y CARRITO GLOBAL ==================== -->
+  <script>
+    /* -------------------------------------------------------------
+       CONSTANTE DEL CARRITO GLOBAL UNIFICADO (FALABELLA STORE V2)
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    /* CATÁLOGO AUTÉNTICO DE MODA HOMBRE */
+    const MODA_PRODUCTS = [
+      {
+        id: 301,
+        code: 'MOD-PRL-01',
+        name: 'Polo Piqué Classic Fit Algodón Bordado',
+        brand: 'Polo Ralph Lauren',
+        category: 'Polos',
+        priceCmr: 299.00,
+        priceNormal: 389.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 142,
+        image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&auto=format&fit=crop&q=80',
+        badge: 'Exclusivo Falabella'
+      },
+      {
+        id: 302,
+        code: 'MOD-PRL-02',
+        name: 'Camisa Oxford Manga Larga Slim Fit Celeste',
+        brand: 'Polo Ralph Lauren',
+        category: 'Camisas',
+        priceCmr: 399.00,
+        priceNormal: 499.00,
+        discount: '-20%',
+        rating: 4.8,
+        reviews: 98,
+        image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=80',
+        badge: 'Lo más vendido'
+      },
+      {
+        id: 303,
+        code: 'MOD-LM-01',
+        name: 'Polo Guards Club Manga Corta Edición Especial',
+        brand: 'La Martina',
+        category: 'Polos',
+        priceCmr: 279.00,
+        priceNormal: 359.00,
+        discount: '-22%',
+        rating: 4.7,
+        reviews: 65,
+        image: 'https://images.unsplash.com/photo-1625910513413-5626359b02a9?w=600&auto=format&fit=crop&q=80',
+        badge: 'Nuevo'
+      },
+      {
+        id: 304,
+        code: 'MOD-LM-02',
+        name: 'Camisa Lino Regular Fit Rayas Casual',
+        brand: 'La Martina',
+        category: 'Camisas',
+        priceCmr: 319.00,
+        priceNormal: 419.00,
+        discount: '-24%',
+        rating: 4.8,
+        reviews: 52,
+        image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=80',
+        badge: 'Tendencia'
+      },
+      {
+        id: 305,
+        code: 'MOD-MM-01',
+        name: 'Suéter de Punto Trenzado Cuello Redondo Gris',
+        brand: 'Mango Man',
+        category: 'Chompas',
+        priceCmr: 189.90,
+        priceNormal: 259.00,
+        discount: '-27%',
+        rating: 4.7,
+        reviews: 73,
+        image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&auto=format&fit=crop&q=80',
+        badge: 'Otoño - Invierno'
+      },
+      {
+        id: 306,
+        code: 'MOD-MM-02',
+        name: 'Blazer Slim Fit Estructurado Azul Marino',
+        brand: 'Mango Man',
+        category: 'Blazers',
+        priceCmr: 379.00,
+        priceNormal: 499.00,
+        discount: '-24%',
+        rating: 4.9,
+        reviews: 84,
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=80',
+        badge: 'Smart Casual'
+      },
+      {
+        id: 307,
+        code: 'MOD-MM-03',
+        name: 'Pantalón Chino Slim Fit Stretch Algodón Beige',
+        brand: 'Mango Man',
+        category: 'Pantalones',
+        priceCmr: 169.90,
+        priceNormal: 229.00,
+        discount: '-26%',
+        rating: 4.6,
+        reviews: 112,
+        image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=80',
+        badge: 'Básico Esencial'
+      },
+      {
+        id: 308,
+        code: 'MOD-LEV-01',
+        name: 'Jean 501 Original Fit Denim Stonewash',
+        brand: "Levi's",
+        category: 'Jeans',
+        priceCmr: 249.00,
+        priceNormal: 329.00,
+        discount: '-24%',
+        rating: 4.9,
+        reviews: 310,
+        image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop&q=80',
+        badge: 'Ícono Mundial'
+      },
+      {
+        id: 309,
+        code: 'MOD-LEV-02',
+        name: 'Casaca Denim Sherpa Trucker Jacket Forro Polar',
+        brand: "Levi's",
+        category: 'Casacas',
+        priceCmr: 399.00,
+        priceNormal: 529.00,
+        discount: '-25%',
+        rating: 4.8,
+        reviews: 168,
+        image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80',
+        badge: 'Top Estilo'
+      },
+      {
+        id: 310,
+        code: 'MOD-LEV-03',
+        name: 'Polo Housemark Batwing Logo Algodón Premium',
+        brand: "Levi's",
+        category: 'Polos',
+        priceCmr: 89.90,
+        priceNormal: 119.00,
+        discount: '-24%',
+        rating: 4.6,
+        reviews: 215,
+        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop&q=80',
+        badge: 'Oferta CMR'
+      },
+      {
+        id: 311,
+        code: 'MOD-BIL-01',
+        name: 'Polera Canguro All Day Surf Hoodie Felpa',
+        brand: 'Billabong',
+        category: 'Poleras',
+        priceCmr: 199.90,
+        priceNormal: 269.00,
+        discount: '-26%',
+        rating: 4.8,
+        reviews: 94,
+        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop&q=80',
+        badge: 'Exclusivo'
+      },
+      {
+        id: 312,
+        code: 'MOD-BIL-02',
+        name: 'Casaca Puffer Journey Adventure Térmica',
+        brand: 'Billabong',
+        category: 'Casacas',
+        priceCmr: 349.00,
+        priceNormal: 469.00,
+        discount: '-26%',
+        rating: 4.7,
+        reviews: 78,
+        image: 'https://images.unsplash.com/photo-1544441893-675973e31985?w=600&auto=format&fit=crop&q=80',
+        badge: 'Outdoor'
+      }
+    ];
+
+    let currentBrandFilter = 'Todos';
+
+    /* -------------------------------------------------------------
+       FUNCIONES DEL CARRITO GLOBAL (FALABELLA STORE V2)
+       ------------------------------------------------------------- */
+    function getStoreCart() {
+      try {
+        const raw = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch (e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('modaCartBadge');
+      const countModal = document.getElementById('cartModalItemCount');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
+      if (countModal) {
+        countModal.textContent = count;
+      }
+    }
+
+    function addToCart(productId) {
+      const product = MODA_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = getStoreCart();
+      const existing = cart.find(item => (item.id === productId || item.productId === productId));
+      const effectivePrice = product.priceCmr || product.priceNormal;
+
+      if (existing) {
+        const currentQty = existing.qty || existing.quantity || 1;
+        existing.qty = currentQty + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          id: product.id,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          img: product.image,
+          price: effectivePrice,
+          originalPrice: product.priceNormal,
+          regularPrice: product.priceNormal,
+          qty: 1,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡${product.name.slice(0, 28)}... añadido a tu bolsa!`);
+      
+      // Abre el drawer de carrito
+      openModaCartModal();
+    }
+
+    function updateCartItemQty(productId, delta) {
+      let cart = getStoreCart();
+      const item = cart.find(i => (i.id === productId || i.productId === productId));
+      if (!item) return;
+
+      const currentQty = item.qty || item.quantity || 1;
+      const newQty = currentQty + delta;
+      if (newQty <= 0) {
+        cart = cart.filter(i => (i.id !== productId && i.productId !== productId));
+      } else {
+        item.qty = newQty;
+        item.quantity = newQty;
+      }
+      saveStoreCart(cart);
+      renderModaCartModalContent();
+    }
+
+    function removeCartItem(productId) {
+      let cart = getStoreCart().filter(i => (i.id !== productId && i.productId !== productId));
+      saveStoreCart(cart);
+      renderModaCartModalContent();
+      showToast('Producto eliminado de la bolsa');
+    }
+
+    function openModaCartModal() {
+      const modal = document.getElementById('modaCartModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      renderModaCartModalContent();
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const panel = modal.querySelector('div');
+        if (panel) panel.style.transform = 'translateX(0)';
+      }, 10);
+    }
+
+    function closeModaCartModal() {
+      const modal = document.getElementById('modaCartModal');
+      if (!modal) return;
+      modal.classList.add('opacity-0');
+      const panel = modal.querySelector('div');
+      if (panel) panel.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    function renderModaCartModalContent() {
+      const container = document.getElementById('modaCartItemsList');
+      const subtotalEl = document.getElementById('modaCartSubtotal');
+      if (!container) return;
+
+      const cart = getStoreCart();
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-14 text-center text-slate-400">
+            <svg class="w-14 h-14 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <h4 class="text-sm font-bold text-slate-800">Tu bolsa de compras está vacía</h4>
+            <p class="text-xs text-slate-500 mt-1">Explora nuestras colecciones y añade las mejores prendas a tu bolsa.</p>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const itemQty = item.qty || item.quantity || 1;
+        const itemPrice = item.price || 0;
+        const lineTotal = itemPrice * itemQty;
+        subtotal += lineTotal;
+        const itemId = item.id || item.productId;
+        const itemImg = item.image || item.img || 'assets/categories/cat_moda_hombre.webp';
+        const itemName = item.name || 'Prenda de Moda Hombre';
+        const itemBrand = item.brand || 'Falabella';
+
+        return `
+          <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+            <img src="${itemImg}" alt="${itemName}" class="w-14 h-14 object-cover bg-white rounded border border-slate-200 flex-shrink-0" onerror="this.src='assets/categories/cat_moda_hombre.webp'" />
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-black uppercase text-slate-500 tracking-wider block">${itemBrand}</span>
+              <h4 class="text-xs font-bold text-slate-900 truncate" title="${itemName}">${itemName}</h4>
+              <div class="text-xs font-black text-rose-600 mt-0.5">S/ ${itemPrice.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" onclick="updateCartItemQty(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, -1)" class="w-6 h-6 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center">-</button>
+                <span class="text-xs font-bold text-slate-800 px-1">${itemQty}</span>
+                <button type="button" onclick="updateCartItemQty(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, 1)" class="w-6 h-6 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center">+</button>
+                <button type="button" onclick="removeCartItem(${typeof itemId === 'string' ? `'${itemId}'` : itemId})" class="ml-auto text-rose-500 hover:text-rose-700 text-xs font-semibold p-1">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+    }
+
+    function goToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa está vacía. Agrega productos para continuar.');
+        return;
+      }
+      window.location.href = 'index.html#checkout';
+    }
+
+    /* -------------------------------------------------------------
+       HERO CAROUSEL CONTROL
+       ------------------------------------------------------------- */
+    let currentSlide = 0;
+    let carouselTimer = null;
+    const slides = document.querySelectorAll('.moda-slide');
+    const dots = document.querySelectorAll('.moda-dot');
+
+    function showSlide(index) {
+      if (!slides.length) return;
+      if (index >= slides.length) index = 0;
+      if (index < 0) index = slides.length - 1;
+      currentSlide = index;
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function moveModaSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    function setModaSlide(index) {
+      showSlide(index);
+    }
+
+    function startModaCarousel() {
+      stopModaCarousel();
+      carouselTimer = setInterval(() => {
+        moveModaSlide(1);
+      }, 5000);
+    }
+
+    function stopModaCarousel() {
+      if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+      }
+    }
+
+    function pauseModaCarousel() {
+      stopModaCarousel();
+    }
+
+    /* -------------------------------------------------------------
+       RENDERIZADO DE CATÁLOGO Y FILTROS
+       ------------------------------------------------------------- */
+    function renderModaProducts(productsToRender) {
+      const grid = document.getElementById('modaProductsGrid');
+      if (!grid) return;
+
+      if (!productsToRender.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500">
+            <p class="text-sm font-semibold">No se encontraron productos para esta marca.</p>
+            <button onclick="filterByBrand('Todos')" class="mt-3 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold">Ver todos los productos</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = productsToRender.map(p => `
+        <article class="product-card-moda group">
+          <div class="relative aspect-[3/4] overflow-hidden bg-slate-100 cursor-pointer" onclick="addToCart(${p.id})">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-0.5 rounded shadow">
+              ${p.badge}
+            </span>
+            <span class="absolute top-2 right-2 bg-rose-600 text-white text-[11px] font-black px-1.5 py-0.5 rounded">
+              ${p.discount}
+            </span>
+          </div>
+
+          <div class="p-3.5 flex flex-col flex-1 justify-between">
+            <div>
+              <div class="text-[11px] font-black uppercase text-slate-500 tracking-wider">${p.brand}</div>
+              <h4 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5 group-hover:text-black transition" title="${p.name}">
+                ${p.name}
+              </h4>
+              
+              <!-- Calificación -->
+              <div class="flex items-center gap-1.5 mt-1.5 text-xs text-amber-500">
+                <span>★</span>
+                <span class="font-bold text-slate-700 text-[11px]">${p.rating}</span>
+                <span class="text-slate-400 text-[10px]">(${p.reviews})</span>
+              </div>
+
+              <!-- Precios -->
+              <div class="mt-2.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] font-black bg-rose-50 text-rose-600 px-1 py-0.2 rounded border border-rose-200">CMR</span>
+                  <span class="text-base font-black text-rose-600">S/ ${p.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                </div>
+                <div class="text-[11px] text-slate-400 line-through">
+                  Regular: S/ ${p.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón Agregar -->
+            <button type="button" onclick="addToCart(${p.id})" class="mt-4 w-full py-2 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white font-bold text-xs rounded transition flex items-center justify-center gap-1.5 shadow-sm cursor-pointer select-none">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              Agregar a la bolsa
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterByBrand(brand) {
+      currentBrandFilter = brand;
+
+      // Actualizar estilo de pills
+      const pills = document.querySelectorAll('#brandFilterPills .filter-pill');
+      pills.forEach(p => {
+        const text = p.textContent.trim();
+        if ((brand === 'Todos' && text === 'Todos') || (text.toLowerCase() === brand.toLowerCase())) {
+          p.className = 'filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+
+      // Filtrar
+      let filtered = MODA_PRODUCTS;
+      if (brand !== 'Todos') {
+        filtered = MODA_PRODUCTS.filter(p => p.brand.toLowerCase().includes(brand.toLowerCase()) || brand.toLowerCase().includes(p.brand.toLowerCase()));
+      }
+      renderModaProducts(filtered);
+
+      // Scroll suave a catálogo si fue seleccionado desde las marcas
+      const catEl = document.getElementById('sec-catalogo');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function scrollToCatalog() {
+      const catEl = document.getElementById('sec-catalogo');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function executeModaSearch(query) {
+      if (!query || !query.trim()) {
+        renderModaProducts(MODA_PRODUCTS);
+        return;
+      }
+      const q = query.toLowerCase().trim();
+      const filtered = MODA_PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.brand.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q)
+      );
+      renderModaProducts(filtered);
+      scrollToCatalog();
+    }
+
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('modaCategoriesDrawer');
+      if (!drawer) return;
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          const panel = drawer.querySelector('div');
+          if (panel) panel.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        const panel = drawer.querySelector('div');
+        if (panel) panel.classList.add('-translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    /* -------------------------------------------------------------
+       SINCRONIZACIÓN AUTOMÁTICA DEL CARRITO ENTRE PÁGINAS Y PESTAÑAS
+       ------------------------------------------------------------- */
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORE_CART_KEY) {
+        updateCartBadge();
+        const modal = document.getElementById('modaCartModal');
+        if (modal && !modal.classList.contains('hidden')) {
+          renderModaCartModalContent();
+        }
+      }
+    });
+
+    // Iniciar al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      renderModaProducts(MODA_PRODUCTS);
+      updateCartBadge();
+      startModaCarousel();
+    });
+  </script>
+</body>
+</html>

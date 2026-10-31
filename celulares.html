@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celulares y Teléfonos Smartphones | falabella.com</title>
+  <meta name="description" content="Encuentra los mejores Celulares y Smartphones Samsung, iPhone Apple, Motorola y Xiaomi en falabella.com con entrega rápida y garantía oficial." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Brand Cards Carousel */
+    .brand-card-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .brand-card-box {
+      width: 96px;
+      height: 96px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .brand-card-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .brand-card-item:hover .brand-card-box {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .brand-card-item.active .brand-card-box {
+      border-color: #0284c7;
+      border-width: 2px;
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+    .brand-card-title {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #334155;
+      text-align: center;
+    }
+    .brand-card-item.active .brand-card-title {
+      font-weight: 700;
+      color: #0284c7;
+    }
+
+    /* Product Card */
+    .p-card {
+      background: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .p-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Precios CMR y etiquetas */
+    .cmr-pill {
+      background-color: #e11d48;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .green-badge {
+      background-color: #dcfce7;
+      color: #15803d;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+    .cuotas-badge {
+      background-color: #1e293b;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+    .btn-add-cart {
+      background-color: #ffffff;
+      color: #0f172a;
+      border: 1.5px solid #0f172a;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      width: 100%;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-add-cart:hover {
+      background-color: #0f172a;
+      color: #ffffff;
+    }
+
+    .filter-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .filter-tag-pill:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .category-chip-btn {
+      border: 1px solid #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+      background: #ffffff;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .category-chip-btn:hover {
+      border-color: #94a3b8;
+      background: #f8fafc;
+    }
+    .category-chip-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==========================================
+       BARRA SUPERIOR DE PROMOCIÓN
+       ========================================== -->
+  <div class="bg-[#15803d] text-white text-xs py-1.5 px-4 text-center font-medium tracking-wide">
+    <span>🔥 Hasta 50% de descuento en Celulares y Smartphones seleccionados. Envío gratis en miles de productos.</span>
+  </div>
+
+  <!-- ==========================================
+       HEADER PRINCIPAL DE FALABELLA
+       ========================================== -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Botón Menú + Logo Falabella -->
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="toggleTechMenuDrawer()" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition focus:outline-none" title="Abrir Menú de Categorías">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          
+          <a href="index.html" class="flex items-center gap-1.5 no-underline">
+            <span class="text-2xl font-black tracking-tight text-[#0f172a]">falabella<span class="text-[#008f39]">.com</span></span>
+          </a>
+        </div>
+
+        <!-- Barra de Búsqueda -->
+        <div class="flex-1 max-w-2xl hidden md:block">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="celSearchInput" 
+              placeholder="Buscar marcas (Apple, Samsung, Motorola, Xiaomi, etc.)"
+              class="w-full bg-slate-100 text-slate-800 text-xs sm:text-sm pl-4 pr-10 py-2.5 rounded-full border border-transparent focus:border-slate-300 focus:bg-white focus:outline-none transition"
+              oninput="handleSearch(this.value)"
+            />
+            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Acciones: Mi Cuenta, Deseos, Carrito -->
+        <div class="flex items-center gap-4">
+          <a href="tecnologia.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#008f39] transition">
+            <svg class="w-4 h-4 text-[#008f39]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Tecnología</span>
+          </a>
+
+          <button type="button" onclick="openWishlistModal()" class="p-2 text-slate-600 hover:text-red-500 transition relative" title="Favoritos">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </button>
+
+          <!-- Icono Bolsa de Compras con Badge -->
+          <button type="button" onclick="toggleCartDrawer()" class="p-2 text-slate-700 hover:text-[#008f39] transition relative" title="Ver Bolsa de Compras">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-[#008f39] text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       CONTENIDO PRINCIPAL
+       ========================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1 w-full">
+
+    <!-- BREADCRUMBS -->
+    <nav class="flex items-center gap-1.5 text-xs text-slate-500 mb-3" aria-label="Migas de pan">
+      <a href="index.html" class="hover:text-slate-800">Home</a>
+      <span>&gt;</span>
+      <a href="tecnologia.html" class="hover:text-slate-800">Tecnología</a>
+      <span>&gt;</span>
+      <span class="text-slate-500">Telefonía</span>
+      <span>&gt;</span>
+      <span class="text-slate-900 font-bold" id="breadcrumbCurrent">Celulares y Teléfonos</span>
+    </nav>
+
+    <!-- ENCABEZADO DE CATEGORÍA -->
+    <div class="mb-5">
+      <div class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Telefonía</div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900" id="categoryHeading">Celulares y Teléfonos</h1>
+      <p class="text-xs sm:text-sm text-slate-600 mt-1" id="categorySubheading">
+        Descubre los últimos modelos de Smartphones con la mejor tecnología, cámaras de alta resolución y procesadores de última generación.
+      </p>
+    </div>
+
+    <!-- ==========================================
+         CARRUSEL / FILTRO RÁPIDO DE MARCAS
+         ========================================== -->
+    <div class="bg-white p-4 rounded-xl border border-slate-200 mb-6 shadow-sm">
+      <div class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">Filtrar por Marca Destacada:</div>
+      
+      <div class="flex items-center gap-4 overflow-x-auto pb-2 scrollbar-none" id="brandCardsRow">
+        
+        <!-- Todas las marcas -->
+        <div class="brand-card-item active" id="brandCard-all" onclick="selectBrand('all')">
+          <div class="brand-card-box">
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider">Todas</span>
+          </div>
+          <span class="brand-card-title">Todas</span>
+        </div>
+
+        <!-- Samsung -->
+        <div class="brand-card-item" id="brandCard-samsung" onclick="selectBrand('samsung')">
+          <div class="brand-card-box">
+            <img src="assets/celulares/brand_samsung_card.png" alt="Samsung" />
+          </div>
+          <span class="brand-card-title">Samsung</span>
+        </div>
+
+        <!-- Apple -->
+        <div class="brand-card-item" id="brandCard-apple" onclick="selectBrand('apple')">
+          <div class="brand-card-box">
+            <img src="assets/celulares/brand_apple_card.png" alt="Apple" />
+          </div>
+          <span class="brand-card-title">Apple</span>
+        </div>
+
+        <!-- Motorola -->
+        <div class="brand-card-item" id="brandCard-motorola" onclick="selectBrand('motorola')">
+          <div class="brand-card-box">
+            <img src="assets/celulares/brand_motorola_card.png" alt="Motorola" />
+          </div>
+          <span class="brand-card-title">Motorola</span>
+        </div>
+
+        <!-- Xiaomi -->
+        <div class="brand-card-item" id="brandCard-xiaomi" onclick="selectBrand('xiaomi')">
+          <div class="brand-card-box">
+            <img src="assets/celulares/brand_xiaomi_card.png" alt="Xiaomi" />
+          </div>
+          <span class="brand-card-title">Xiaomi</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+         CONTENEDOR DE FILTROS LATERALES + CATÁLOGO
+         ========================================== -->
+    <div class="flex flex-col lg:flex-row gap-6 items-start">
+
+      <!-- BARRA LATERAL DE FILTROS (IZQUIERDA) -->
+      <aside class="w-full lg:w-64 bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex-shrink-0 space-y-4">
+        
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <span class="font-bold text-slate-900 text-sm">Filtros</span>
+          <button type="button" onclick="clearAllFilters()" class="text-xs text-rose-600 hover:text-rose-800 font-semibold">Limpiar todo</button>
+        </div>
+
+        <!-- 1. Tipo de Entrega -->
+        <div>
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-entrega')">
+            <span>Tipo de Entrega</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-entrega" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-domicilio" onchange="filterByDelivery(this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Envío a domicilio</span>
+              <span class="green-badge">Llega mañana</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-retiro" onchange="filterByPickup(this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Retiro en un punto</span>
+              <span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-1.5 py-0.5 rounded">Retira mañana</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 2. Categoría -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-categoria')">
+            <span>Categoría</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-categoria" class="flex flex-wrap gap-1.5 pt-1">
+            <button type="button" class="category-chip-btn active" onclick="filterByCategory('smartphones', this)">Smartphones</button>
+            <button type="button" class="category-chip-btn" onclick="filterByCategory('basicos', this)">Celulares básicos</button>
+            <button type="button" class="category-chip-btn" onclick="filterByCategory('repuestos', this)">Repuestos de celulares</button>
+          </div>
+        </div>
+
+        <!-- 3. Marca (Checkboxes independientes) -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-marca')">
+            <span>Marca</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-marca" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-samsung" onchange="toggleBrandCheckbox('samsung', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Samsung</span>
+              <span class="text-slate-400" id="cnt-samsung">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-apple" onchange="toggleBrandCheckbox('apple', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Apple</span>
+              <span class="text-slate-400" id="cnt-apple">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-motorola" onchange="toggleBrandCheckbox('motorola', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Motorola</span>
+              <span class="text-slate-400" id="cnt-motorola">(2)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-xiaomi" onchange="toggleBrandCheckbox('xiaomi', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Xiaomi</span>
+              <span class="text-slate-400" id="cnt-xiaomi">(1)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Rango de Precio -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2">Precio</div>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <input type="number" id="minPriceInput" placeholder="Min" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+              <span class="text-slate-400">-</span>
+              <input type="number" id="maxPriceInput" placeholder="Max" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+            </div>
+            <button type="button" onclick="applyPriceFilter()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-1.5 rounded text-xs font-semibold">Aplicar</button>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- CATÁLOGO PRINCIPAL (DERECHA) -->
+      <section class="flex-1 min-w-0 w-full">
+        
+        <!-- BARRA SUPERIOR DE RESULTADOS Y ORDEN -->
+        <div class="bg-white p-3 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div class="text-xs text-slate-600 font-medium">
+            <span id="resultsCountText" class="font-bold text-slate-900">Resultados (8,947)</span> en Celulares y Teléfonos
+          </div>
+
+          <div class="flex items-center gap-3">
+            <label for="sortSelect" class="text-xs text-slate-500 whitespace-nowrap">Ordenar por:</label>
+            <select id="sortSelect" onchange="handleSort(this.value)" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-slate-900 outline-none">
+              <option value="relevance">Recomendados</option>
+              <option value="price_asc">Menor precio</option>
+              <option value="price_desc">Mayor precio</option>
+              <option value="rating">Mejor calificación</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CHIPS DE FILTRO ACTIVOS -->
+        <div class="flex flex-wrap items-center gap-2 mb-4" id="activeFilterChips">
+          <!-- Inyectado dinámicamente -->
+        </div>
+
+        <!-- GRID DE PRODUCTOS -->
+        <div id="celGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Inyectado dinámicamente con JavaScript -->
+        </div>
+
+        <!-- MENSAJE SIN RESULTADOS -->
+        <div id="noResultsMessage" class="hidden bg-white p-12 text-center rounded-xl border border-slate-200 my-8">
+          <svg class="w-16 h-16 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 class="text-base font-bold text-slate-800 mb-1">No encontramos celulares con esos filtros</h3>
+          <p class="text-xs text-slate-500 mb-4">Intenta deseleccionar filtros de marca o ajustar el rango de precios.</p>
+          <button type="button" onclick="clearAllFilters()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold px-4 py-2 rounded-lg">Ver todos los celulares</button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       DRAWER OFICIAL: CARRITO DE COMPRAS
+       ========================================== -->
+  <div id="cartDrawer" class="fixed inset-0 hidden" style="z-index: 9999;">
+    <div id="cartBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="toggleCartDrawer()"></div>
+    
+    <div id="cartDrawerPanel" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 transform translate-x-full" style="z-index: 10000; background-color: #ffffff;">
+      
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="font-black text-slate-900 text-sm">Bolsa de Compras</h3>
+          <span id="cartDrawerCountBadge" class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button type="button" onclick="toggleCartDrawer()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg" title="Cerrar bolsa">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="cartDrawerItems" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <div class="p-4 border-t border-slate-100 bg-slate-50 space-y-3">
+        <div class="flex items-center justify-between text-xs text-slate-600">
+          <span>Subtotal estimado</span>
+          <span id="cartSubtotalText" class="font-bold text-slate-900 text-sm">S/ 0.00</span>
+        </div>
+        <div class="text-[11px] text-slate-400">
+          Los costos de envío y descuentos CMR se calcularán en el pago.
+        </div>
+        <button type="button" onclick="checkoutCart()" class="w-full bg-[#008f39] hover:bg-[#007a31] text-white font-black py-3 rounded-xl text-xs tracking-wide uppercase transition shadow-md">
+          Ir a pagar bolsa
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       DRAWER OFICIAL: MENÚ DE CATEGORÍAS
+       ========================================== -->
+  <div id="techCategoriesDrawer" class="fixed inset-0 hidden" style="z-index: 9999;">
+    <div id="techCategoriesBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="toggleTechMenuDrawer()"></div>
+    
+    <div id="techCategoriesPanel" class="fixed top-0 left-0 bottom-0 w-full max-w-xs bg-white shadow-2xl flex flex-col transition-transform duration-300 transform -translate-x-full" style="z-index: 10000; background-color: #ffffff;">
+      
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <span class="font-black text-slate-900 text-sm tracking-wide">Categorías de Tecnología</span>
+        <button type="button" onclick="toggleTechMenuDrawer()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4 space-y-1 text-sm font-semibold text-slate-700">
+        <a href="celulares.html" class="flex items-center gap-3 p-2.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold">
+          <span>📱</span><span>Celulares y Teléfonos</span>
+        </a>
+        <a href="tablets.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>📲</span><span>Tablets</span>
+        </a>
+        <a href="laptops.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>💻</span><span>Laptops y Computación</span>
+        </a>
+        <a href="televisores.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>📺</span><span>Televisores Smart TV</span>
+        </a>
+        <a href="camaras.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>📷</span><span>Cámaras y Fotografía</span>
+        </a>
+        <a href="tecnologia.html#sec-audio" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>🎧</span><span>Audio y Sonido</span>
+        </a>
+        <a href="tecnologia.html" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-100 text-slate-800">
+          <span>⚡</span><span>Todo Tecnología</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
+    <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+    <span id="toastMessage" class="text-xs font-semibold">Producto añadido a la bolsa</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-bold text-slate-700">falabella.com — Todos los derechos reservados.</p>
+      <p class="mt-1">Precios oficiales en soles peruanos (S/) con garantía y soporte oficial.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT: BASE DE DATOS Y LÓGICA DE NEGOCIO
+       ========================================== -->
+  <script>
+    /* -------------------------------------------------------------
+       1. BASE DE DATOS OFICIAL DE CELULARES Y SMARTPHONES
+       ------------------------------------------------------------- */
+    const ALL_BRANDS = ['samsung', 'apple', 'motorola', 'xiaomi'];
+
+    const CEL_PRODUCTS = [
+      // 1. Samsung Galaxy A16 (Captura 3 Tarjeta 1)
+      {
+        id: 401,
+        name: 'SAMSUNG Celular Galaxy A16 128gb Negro.',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        seller: 'Millennials',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_samsung_a16.png',
+        priceCmr: null,
+        discountNormal: '-41%',
+        priceNormal: 529,
+        priceList: 899,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 5,
+        reviews: 523,
+        sponsored: true
+      },
+      // 2. Apple iPhone 15 Pro Max (Captura 3 Tarjeta 2)
+      {
+        id: 402,
+        name: 'APPLE iPhone 15 Pro Max 256GB Negro Titanio Reacondicionado A2849',
+        brand: 'Apple',
+        brandKey: 'apple',
+        seller: 'Electronic Deals Pe',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_apple_ip15promax.png',
+        priceCmr: null,
+        discountNormal: '-12%',
+        priceNormal: 2999,
+        priceList: 3399,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 5,
+        reviews: 11,
+        sponsored: true
+      },
+      // 3. Apple iPhone 18 Pro Max Black (Captura 3 Tarjeta 3)
+      {
+        id: 403,
+        name: 'APPLE iPhone 18 Pro Max 256GB',
+        brand: 'Apple',
+        brandKey: 'apple',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_apple_ip18promax_black.png',
+        priceCmr: 6799,
+        discountCmr: '-7%',
+        priceNormal: 6999,
+        priceList: 7299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: '6 10 18 Cuotas S/Interés CMR',
+        rating: 5,
+        reviews: 4,
+        sponsored: false
+      },
+      // 4. Apple iPhone 18 Pro Black (Captura 3 Tarjeta 4)
+      {
+        id: 404,
+        name: 'APPLE iPhone 18 Pro 256GB',
+        brand: 'Apple',
+        brandKey: 'apple',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_apple_ip18pro_black.png',
+        priceCmr: 5999,
+        discountCmr: '-10%',
+        priceNormal: 6499,
+        priceList: 6699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: '6 10 18 Cuotas S/Interés CMR',
+        rating: 5,
+        reviews: 2,
+        sponsored: false
+      },
+      // 5. Apple iPhone 18 Pro Max Burgundy / Red (Captura 2 Tarjeta 1)
+      {
+        id: 405,
+        name: 'APPLE iPhone 18 Pro Max 256GB Rojo Titanio',
+        brand: 'Apple',
+        brandKey: 'apple',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_apple_ip18promax_red.png',
+        priceCmr: 6799,
+        discountCmr: '-7%',
+        priceNormal: 6999,
+        priceList: 7299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: '6 10 18 Cuotas S/Interés CMR',
+        rating: 5,
+        reviews: 4,
+        sponsored: false
+      },
+      // 6. Motorola Moto G06 (Captura 2 Tarjeta 2)
+      {
+        id: 406,
+        name: 'MOTOROLA Celular Moto G06 4GB 128GB Azul',
+        brand: 'Motorola',
+        brandKey: 'motorola',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_motorola_g06.png',
+        priceCmr: null,
+        discountNormal: '-38%',
+        priceNormal: 499,
+        priceList: 799,
+        badgeText: 'Incluye Cargador Turbo Power',
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 4.5,
+        reviews: 35,
+        sponsored: false
+      },
+      // 7. Samsung Galaxy A57 5G Violeta (Captura 2 Tarjeta 3)
+      {
+        id: 407,
+        name: 'SAMSUNG Celular Galaxy A57 5G 8GB 256GB Violeta',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_samsung_a57_violet.png',
+        priceCmr: null,
+        discountNormal: '-16%',
+        priceNormal: 1899,
+        priceList: 2249,
+        badgeText: 'Galaxy AI',
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 4.9,
+        reviews: 553,
+        sponsored: false
+      },
+      // 8. Samsung Galaxy A57 5G CMR (Captura 2 Tarjeta 4)
+      {
+        id: 408,
+        name: 'SAMSUNG Celular Samsung Galaxy A57 5G',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_samsung_a57.png',
+        priceCmr: 1799,
+        discountCmr: '-22%',
+        priceNormal: 1899,
+        priceList: 2299,
+        badgeText: 'Galaxy AI',
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 4.7,
+        reviews: 53,
+        sponsored: false
+      },
+      // 9. Xiaomi Redmi Note 15 Pro (Captura 2 Tarjeta 5)
+      {
+        id: 409,
+        name: 'XIAOMI Celular Redmi Note 15 Pro 8GB 256GB Negro',
+        brand: 'Xiaomi',
+        brandKey: 'xiaomi',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_xiaomi_note15pro.png',
+        priceCmr: 1179,
+        discountCmr: '-9%',
+        priceNormal: 1199,
+        priceList: 1299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 4.8,
+        reviews: 18,
+        sponsored: false
+      },
+      // 10. Motorola Moto G17 (Captura 2 Tarjeta 6)
+      {
+        id: 410,
+        name: 'MOTOROLA Moto G17 4+128GB Azul',
+        brand: 'Motorola',
+        brandKey: 'motorola',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_motorola_g17.png',
+        priceCmr: null,
+        discountNormal: '-39%',
+        priceNormal: 549,
+        priceList: 899,
+        badgeText: '1 año garantía',
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: null,
+        rating: 4.5,
+        reviews: 55,
+        sponsored: false
+      },
+      // 11. Samsung Galaxy S26 FE 5G (Banner Promocional)
+      {
+        id: 411,
+        name: 'SAMSUNG Celular Galaxy S26 FE 5G 256GB Mint Green',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        seller: 'Samsung Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/celulares/cel_samsung_s26fe.png',
+        priceCmr: 2499,
+        discountCmr: '-24%',
+        priceNormal: 2699,
+        priceList: 3299,
+        badgeText: 'Galaxy AI Oficial',
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        cuotas: '6 10 18 Cuotas S/Interés CMR',
+        rating: 5,
+        reviews: 142,
+        sponsored: false
+      }
+    ];
+
+    /* -------------------------------------------------------------
+       2. ESTADO GLOBAL
+       ------------------------------------------------------------- */
+    let selectedBrands = new Set(ALL_BRANDS);
+    let currentSearch = '';
+    let currentSort = 'relevance';
+    let filterDeliveryHome = false;
+    let filterPickupStore = false;
+    let minPrice = null;
+    let maxPrice = null;
+
+    /* -------------------------------------------------------------
+       3. RENDERIZADO DEL CATÁLOGO
+       ------------------------------------------------------------- */
+    function renderProducts() {
+      const grid = document.getElementById('celGrid');
+      const noResults = document.getElementById('noResultsMessage');
+      const countText = document.getElementById('resultsCountText');
+      if (!grid) return;
+
+      let filtered = CEL_PRODUCTS.filter(item => {
+        // Marca
+        if (selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+          if (!selectedBrands.has(item.brandKey)) return false;
+        } else if (selectedBrands.size === 0) {
+          return false;
+        }
+
+        // Búsqueda
+        if (currentSearch.trim()) {
+          const q = currentSearch.toLowerCase();
+          const match = item.name.toLowerCase().includes(q) || item.brand.toLowerCase().includes(q);
+          if (!match) return false;
+        }
+
+        // Tipo de entrega
+        if (filterDeliveryHome && !item.delivery) return false;
+        if (filterPickupStore && !item.pickup) return false;
+
+        // Rango de precio
+        const effPrice = item.priceCmr || item.priceNormal;
+        if (minPrice !== null && effPrice < minPrice) return false;
+        if (maxPrice !== null && effPrice > maxPrice) return false;
+
+        return true;
+      });
+
+      // Ordenamiento
+      if (currentSort === 'price_asc') {
+        filtered.sort((a,b) => (a.priceCmr || a.priceNormal) - (b.priceCmr || b.priceNormal));
+      } else if (currentSort === 'price_desc') {
+        filtered.sort((a,b) => (b.priceCmr || b.priceNormal) - (a.priceCmr || a.priceNormal));
+      } else if (currentSort === 'rating') {
+        filtered.sort((a,b) => b.rating - a.rating);
+      }
+
+      // Conteo
+      const totalCount = filtered.length;
+      if (countText) countText.textContent = `Resultados (${totalCount})`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (noResults) noResults.classList.remove('hidden');
+        return;
+      }
+
+      if (noResults) noResults.classList.add('hidden');
+
+      const fmt = (num) => {
+        if (num === null || num === undefined) return '';
+        return Number.isInteger(num)
+          ? `S/ ${num.toLocaleString('es-PE')}`
+          : `S/ ${num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      };
+
+      grid.innerHTML = filtered.map(p => {
+        const hasCmr = Boolean(p.priceCmr);
+        const cmrPriceStr = hasCmr ? fmt(p.priceCmr) : '';
+        const normalPriceStr = fmt(p.priceNormal);
+        const listPriceStr = p.priceList ? fmt(p.priceList) : '';
+
+        return `
+          <div class="p-card group">
+            
+            <!-- Botón Favorito -->
+            <button type="button" onclick="toggleWishlist(${p.id}, this)" class="absolute top-3 right-3 text-slate-300 hover:text-red-500 p-1.5 transition z-10" title="Añadir a favoritos">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+
+            <!-- Imagen del Teléfono -->
+            <div class="w-full h-44 flex items-center justify-center p-2 mb-2 bg-white relative">
+              <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+
+            <!-- Marca -->
+            <div class="text-[11px] font-bold text-slate-500 tracking-wider uppercase mb-1">${p.brand}</div>
+            
+            <!-- Título -->
+            <h3 class="text-xs font-semibold text-slate-800 line-clamp-2 h-8 leading-snug mb-1" title="${p.name}">
+              ${p.name}
+            </h3>
+
+            <!-- Vendedor / Seller Badge -->
+            <div class="mb-2">
+              <span class="text-[11px] text-slate-500 font-medium">Por <span class="text-slate-800 font-semibold">${p.seller}</span></span>
+              ${p.sellerVerified ? `<span class="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full ml-1" title="Vendedor Oficial"></span>` : ''}
+            </div>
+
+            <!-- Precios y Descuentos Oficiales -->
+            <div class="mt-auto space-y-1 pt-2 border-t border-slate-50">
+              ${hasCmr ? `
+                <div class="flex items-center gap-2">
+                  <span class="cmr-pill"><span class="text-[9px]">CMR</span></span>
+                  <span class="text-base font-extrabold text-rose-600">${cmrPriceStr}</span>
+                  <span class="text-xs font-bold text-rose-600">${p.discountCmr}</span>
+                </div>
+                <div class="text-xs text-slate-700 font-semibold">${normalPriceStr}</div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              ` : `
+                <div class="flex items-center gap-2">
+                  <span class="text-base font-extrabold text-slate-900">${normalPriceStr}</span>
+                  ${p.discountNormal ? `<span class="text-xs font-bold text-rose-600 bg-rose-50 px-1 rounded">${p.discountNormal}</span>` : ''}
+                </div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              `}
+
+              <!-- Badge de Cuotas CMR -->
+              ${p.cuotas ? `
+                <div class="pt-1">
+                  <span class="cuotas-badge">${p.cuotas}</span>
+                </div>
+              ` : ''}
+
+              <!-- Badge de Promoción / AI -->
+              ${p.badgeText ? `
+                <div class="pt-0.5">
+                  <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-100">${p.badgeText}</span>
+                </div>
+              ` : ''}
+
+              <!-- Badges de Entrega -->
+              <div class="flex flex-wrap gap-1.5 pt-1.5">
+                ${p.delivery ? `<span class="green-badge text-[10px]">${p.delivery}</span>` : ''}
+                ${p.pickup ? `<span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-1.5 py-0.5 rounded">${p.pickup}</span>` : ''}
+              </div>
+
+              <!-- Ratings -->
+              <div class="flex items-center gap-1 pt-1.5 text-amber-400 text-xs">
+                ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5 - Math.floor(p.rating))}
+                <span class="text-[11px] text-slate-400 font-normal">(${p.reviews})</span>
+              </div>
+
+              <!-- Botón Agregar a la Bolsa -->
+              <div class="pt-3">
+                <button type="button" onclick="addToCart(${p.id})" class="btn-add-cart">
+                  Agregar a la bolsa
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       4. CONTROLADORES DE FILTROS Y EVENTOS
+       ------------------------------------------------------------- */
+    function selectBrand(brand) {
+      if (brand === 'all') {
+        selectedBrands = new Set(ALL_BRANDS);
+      } else {
+        selectedBrands = new Set([brand]);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function toggleBrandCheckbox(brand, checked) {
+      if (checked) {
+        selectedBrands.add(brand);
+      } else {
+        selectedBrands.delete(brand);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function syncBrandUI() {
+      // 1. Checkboxes
+      ALL_BRANDS.forEach(b => {
+        const cb = document.getElementById(`cb-${b}`);
+        if (cb) cb.checked = selectedBrands.has(b);
+      });
+
+      // 2. Tarjetas superiores
+      document.querySelectorAll('.brand-card-item').forEach(el => el.classList.remove('active'));
+      if (selectedBrands.size === 1) {
+        const singleBrand = [...selectedBrands][0];
+        const activeCard = document.getElementById(`brandCard-${singleBrand}`);
+        if (activeCard) activeCard.classList.add('active');
+      } else if (selectedBrands.size === ALL_BRANDS.length) {
+        const allCard = document.getElementById('brandCard-all');
+        if (allCard) allCard.classList.add('active');
+      }
+
+      // 3. Encabezado dinámico
+      const headingEl = document.getElementById('categoryHeading');
+      const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+      if (headingEl) {
+        if (selectedBrands.size === 1) {
+          const singleBrand = [...selectedBrands][0];
+          const cap = singleBrand.charAt(0).toUpperCase() + singleBrand.slice(1);
+          headingEl.textContent = `Celulares ${cap}`;
+          if (breadcrumbCurrent) breadcrumbCurrent.textContent = `Celulares ${cap}`;
+        } else if (selectedBrands.size === ALL_BRANDS.length) {
+          headingEl.textContent = 'Celulares y Teléfonos';
+          if (breadcrumbCurrent) breadcrumbCurrent.textContent = 'Celulares y Teléfonos';
+        } else if (selectedBrands.size === 0) {
+          headingEl.textContent = 'Celulares (Sin marcas seleccionadas)';
+        } else {
+          headingEl.textContent = `Celulares (${selectedBrands.size} marcas)`;
+        }
+      }
+
+      // 4. Chips activos
+      updateBrandFilterChips();
+    }
+
+    function updateBrandFilterChips() {
+      const activeFilterChips = document.getElementById('activeFilterChips');
+      if (!activeFilterChips) return;
+
+      if (selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+        activeFilterChips.innerHTML = [...selectedBrands].map(b => {
+          const cap = b.charAt(0).toUpperCase() + b.slice(1);
+          return `
+            <span class="filter-tag-pill" onclick="toggleBrandCheckbox('${b}', false)">
+              <span>${cap}</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+          `;
+        }).join('');
+      } else {
+        activeFilterChips.innerHTML = `
+          <span class="filter-tag-pill" onclick="selectBrand('all')">
+            <span>Todas las marcas</span>
+          </span>
+        `;
+      }
+    }
+
+    function filterByDelivery(checked) {
+      filterDeliveryHome = checked;
+      renderProducts();
+    }
+
+    function filterByPickup(checked) {
+      filterPickupStore = checked;
+      renderProducts();
+    }
+
+    function filterByCategory(cat, btn) {
+      document.querySelectorAll('.category-chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (cat !== 'smartphones') {
+        showToast('Categoría secundaria filtrada');
+      }
+    }
+
+    function handleSearch(val) {
+      currentSearch = val;
+      renderProducts();
+    }
+
+    function handleSort(val) {
+      currentSort = val;
+      renderProducts();
+    }
+
+    function applyPriceFilter() {
+      const minEl = document.getElementById('minPriceInput');
+      const maxEl = document.getElementById('maxPriceInput');
+      minPrice = minEl && minEl.value ? parseFloat(minEl.value) : null;
+      maxPrice = maxEl && maxEl.value ? parseFloat(maxEl.value) : null;
+      renderProducts();
+    }
+
+    function clearAllFilters() {
+      selectedBrands = new Set(ALL_BRANDS);
+      currentSearch = '';
+      filterDeliveryHome = false;
+      filterPickupStore = false;
+      minPrice = null;
+      maxPrice = null;
+
+      const sInput = document.getElementById('celSearchInput');
+      if (sInput) sInput.value = '';
+      const minEl = document.getElementById('minPriceInput');
+      if (minEl) minEl.value = '';
+      const maxEl = document.getElementById('maxPriceInput');
+      if (maxEl) maxEl.value = '';
+      const cbDom = document.getElementById('cb-domicilio');
+      if (cbDom) cbDom.checked = false;
+      const cbRet = document.getElementById('cb-retiro');
+      if (cbRet) cbRet.checked = false;
+
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('hidden');
+    }
+
+    function toggleWishlist(id, btn) {
+      btn.classList.toggle('text-red-500');
+      btn.classList.toggle('text-slate-300');
+      showToast('Actualizado en tu lista de deseos.');
+    }
+
+    function openWishlistModal() {
+      alert('Tienes 0 productos en tu lista de favoritos.');
+    }
+
+    /* -------------------------------------------------------------
+       5. SISTEMA DE CARRITO GLOBAL UNIFICADO (falabella_store_cart_v2)
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    function getCart() {
+      try {
+        const raw = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch (e) {}
+      updateCartBadge();
+    }
+
+    function addToCart(productId) {
+      const product = CEL_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = getCart();
+      const existing = cart.find(item => (item.id === productId || item.productId === productId));
+      const effectivePrice = product.priceCmr || product.priceNormal;
+
+      if (existing) {
+        const currentQty = existing.qty || existing.quantity || 1;
+        existing.qty = currentQty + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          id: product.id,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          img: product.image,
+          price: effectivePrice,
+          originalPrice: product.priceNormal || effectivePrice,
+          regularPrice: product.priceNormal || effectivePrice,
+          qty: 1,
+          quantity: 1
+        });
+      }
+
+      saveCart(cart);
+      showToast(`${product.name.slice(0, 30)}... añadido a la bolsa.`);
+      
+      // Abre el drawer automáticamente
+      const drawer = document.getElementById('cartDrawer');
+      if (drawer && drawer.classList.contains('hidden')) {
+        toggleCartDrawer();
+      } else {
+        renderCartDrawer();
+      }
+    }
+
+    function removeFromCart(productId) {
+      let cart = getCart().filter(i => (i.id !== productId && i.productId !== productId));
+      saveCart(cart);
+      renderCartDrawer();
+    }
+
+    function updateCartQuantity(productId, delta) {
+      let cart = getCart();
+      const item = cart.find(i => (i.id === productId || i.productId === productId));
+      if (!item) return;
+
+      const currentQty = item.qty || item.quantity || 1;
+      const newQty = currentQty + delta;
+      if (newQty <= 0) {
+        cart = cart.filter(i => (i.id !== productId && i.productId !== productId));
+      } else {
+        item.qty = newQty;
+        item.quantity = newQty;
+      }
+      saveCart(cart);
+      renderCartDrawer();
+    }
+
+    function updateCartBadge() {
+      const cart = getCart();
+      const totalCount = cart.reduce((acc, item) => acc + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('cartCountBadge');
+      const drawerBadge = document.getElementById('cartDrawerCountBadge');
+      if (badge) {
+        badge.textContent = totalCount;
+        badge.style.display = totalCount > 0 ? 'flex' : 'none';
+      }
+      if (drawerBadge) drawerBadge.textContent = totalCount;
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const panel = document.getElementById('cartDrawerPanel');
+      const backdrop = document.getElementById('cartBackdrop');
+      if (!drawer || !panel || !backdrop) return;
+
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        renderCartDrawer();
+        setTimeout(() => {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+          panel.style.transform = 'translateX(0)';
+        }, 10);
+      } else {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function renderCartDrawer() {
+      const container = document.getElementById('cartDrawerItems');
+      const subtotalEl = document.getElementById('cartSubtotalText');
+      if (!container) return;
+
+      const cart = getCart();
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <p class="text-xs font-semibold">Tu bolsa de compras está vacía.</p>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const itemQty = item.qty || item.quantity || 1;
+        const itemPrice = item.price || 0;
+        const itemTotal = itemPrice * itemQty;
+        subtotal += itemTotal;
+        const itemId = item.id || item.productId;
+        const itemImg = item.image || item.img || 'assets/categories/cat_celulares.webp';
+        const itemName = item.name || 'Producto Falabella';
+
+        return `
+          <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <img src="${itemImg}" alt="${itemName}" class="w-14 h-14 object-contain bg-white rounded-lg p-1 border border-slate-200" onerror="this.src='assets/categories/cat_celulares.webp'" />
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-bold text-slate-800 truncate" title="${itemName}">${itemName}</h4>
+              <div class="text-[11px] text-slate-500 font-medium">S/ ${itemPrice.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} c/u</div>
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" onclick="updateCartQuantity(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, -1)" class="w-5 h-5 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center">-</button>
+                <span class="text-xs font-bold text-slate-800">${itemQty}</span>
+                <button type="button" onclick="updateCartQuantity(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, 1)" class="w-5 h-5 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center">+</button>
+                <button type="button" onclick="removeFromCart(${typeof itemId === 'string' ? `'${itemId}'` : itemId})" class="ml-auto text-rose-500 hover:text-rose-700 text-xs font-semibold p-1">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+    }
+
+    function checkoutCart() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Tu bolsa de compras está vacía.');
+        return;
+      }
+      window.location.href = 'index.html#checkout';
+    }
+
+    // Sincronización cross-tab / cross-window
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORE_CART_KEY) {
+        updateCartBadge();
+        const drawer = document.getElementById('cartDrawer');
+        if (drawer && !drawer.classList.contains('hidden')) {
+          renderCartDrawer();
+        }
+      }
+    });
+
+    /* -------------------------------------------------------------
+       6. MENÚ DE CATEGORÍAS LATERAL
+       ------------------------------------------------------------- */
+    function toggleTechMenuDrawer() {
+      const drawer = document.getElementById('techCategoriesDrawer');
+      const panel = document.getElementById('techCategoriesPanel');
+      const backdrop = document.getElementById('techCategoriesBackdrop');
+      if (!drawer || !panel || !backdrop) return;
+
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+          panel.style.transform = 'translateX(0)';
+        }, 10);
+      } else {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        panel.style.transform = 'translateX(-100%)';
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       7. TOAST NOTIFICATIONS
+       ------------------------------------------------------------- */
+    let toastTimeout = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const toastMsg = document.getElementById('toastMessage');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    /* -------------------------------------------------------------
+       8. INICIALIZACIÓN Y PARÁMETROS URL (?brand=samsung, etc.)
+       ------------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const brandParam = urlParams.get('brand');
+
+      if (brandParam) {
+        const bClean = brandParam.toLowerCase().trim();
+        if (bClean === 'all' || bClean === 'todas') {
+          selectedBrands = new Set(ALL_BRANDS);
+        } else if (ALL_BRANDS.includes(bClean)) {
+          selectedBrands = new Set([bClean]);
+        }
+      } else {
+        selectedBrands = new Set(ALL_BRANDS);
+      }
+
+      syncBrandUI();
+      renderProducts();
+      updateCartBadge();
+    });
+  </script>
+
+</body>
+</html>

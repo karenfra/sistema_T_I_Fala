@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Televisores y Smart TV | falabella.com</title>
+  <meta name="description" content="Encuentra los mejores Televisores LG, Samsung, Caixun, Xiaomi, TCL y más en falabella.com. Precios exclusivos con Tarjeta CMR, envío rápido y retiro en tienda." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f8fafc; color: #0f172a; }
+    
+    /* Header */
+    .store-header { background: #ffffff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .store-subbar { background: #ffffff; border-bottom: 1px solid #f1f5f9; font-size: 11.5px; color: #475569; }
+    .store-search-wrap { position: relative; width: 100%; display: flex; align-items: center; }
+    .store-search-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 46px 0 18px;
+      border-radius: 9999px;
+      border: 1px solid #cbd5e1;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #ffffff;
+    }
+    .store-search-input:focus { border-color: #0f172a; box-shadow: 0 0 0 1px #0f172a; }
+    .store-search-btn {
+      position: absolute;
+      right: 4px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9999px;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .store-search-btn:hover { background: #0f172a; }
+    
+    /* Brand Cards Row */
+    .brand-card-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .brand-card-box {
+      width: 82px;
+      height: 82px;
+      border-radius: 14px;
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .brand-card-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .brand-card-item:hover .brand-card-box {
+      border-color: #94a3b8;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .brand-card-item.active .brand-card-box {
+      border-color: #0f172a;
+      border-width: 2px;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.15);
+    }
+    .brand-card-title {
+      margin-top: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #334155;
+      text-align: center;
+    }
+    .brand-card-item.active .brand-card-title {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Product Card */
+    .p-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .p-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+    .cmr-pill {
+      background-color: #e11d48;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .green-badge {
+      background-color: #dcfce7;
+      color: #15803d;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .btn-add-cart {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 8px;
+      width: 100%;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-add-cart:hover {
+      background-color: #aad500;
+      color: #0f172a;
+    }
+
+    /* Filter Tag */
+    .filter-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #334155;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .filter-tag-pill:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .category-chip-btn {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .category-chip-btn:hover, .category-chip-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 99999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Hide scrollbar for brand carousel */
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==========================================
+       HEADER OFICIAL FALABELLA
+       ========================================== -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between gap-4">
+      
+      <!-- Menú Drawer Toggle + Logo Falabella -->
+      <div class="flex items-center gap-3 sm:gap-6 flex-shrink-0">
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 text-slate-800 transition" title="Abrir menú de categorías">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="text-sm font-black hidden md:inline tracking-tight">Menú</span>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-1 group no-underline">
+          <span style="color:#aad500; font-size:26px; font-weight:900; letter-spacing:-0.5px;">falabella</span>
+          <span style="color:#aad500; font-size:18px; font-weight:900;">.com</span>
+        </a>
+      </div>
+
+      <!-- Barra de Búsqueda -->
+      <div class="flex-1 max-w-2xl px-2">
+        <div class="store-search-wrap">
+          <input 
+            type="text" 
+            id="tvSearchInput" 
+            class="store-search-input" 
+            placeholder="¿Qué televisor buscas hoy? (ej. Samsung 65, LG QNED, Roku...)" 
+            oninput="handleSearch(this.value)"
+          />
+          <button type="button" class="store-search-btn" title="Buscar">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de Usuario -->
+      <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión -->
+        <a href="#" onclick="alert('Módulo de autenticación en línea.'); return false;" class="flex flex-col text-left text-xs text-slate-700 hover:text-black no-underline">
+          <span class="text-[11px] text-slate-500 leading-tight">Hola,</span>
+          <span class="font-bold flex items-center gap-0.5 leading-tight">Inicia sesión <svg class="w-3 h-3 text-slate-500 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+        </a>
+
+        <!-- Mi cuenta -->
+        <a href="#" onclick="alert('Módulo de Mi Cuenta Falabella.'); return false;" class="hidden md:block text-xs font-bold text-slate-700 hover:text-black no-underline">
+          Mi cuenta
+        </a>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="openWishlistModal()" class="p-1.5 text-slate-700 hover:text-red-500 relative transition" title="Mis Favoritos">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+        </button>
+
+        <!-- Carrito de Compras Oficial -->
+        <button type="button" onclick="toggleCartDrawer()" class="flex items-center gap-1.5 text-slate-800 hover:text-[#0f766e] relative px-2 py-1 rounded-lg transition" title="Ver bolsa de compras">
+          <div class="relative">
+            <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span id="storeCartBadge" class="absolute -top-1 -right-2 bg-[#aad500] text-slate-900 text-[11px] font-black rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border border-white">0</span>
+          </div>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SUB-BARRA DE UBICACIÓN OFICIAL FALABELLA -->
+  <div class="store-subbar py-1.5">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div class="flex items-center gap-1.5 cursor-pointer hover:text-black">
+        <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span>Ingresa tu ubicación para ver los tiempos de entrega.</span>
+        <span class="font-bold underline ml-1 text-slate-800">Ingresa tu ubicación</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-slate-500">
+        <a href="tecnologia.html" class="hover:text-black font-semibold text-slate-700">← Volver a Tecnología</a>
+        <a href="celulares.html" class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0284c7] transition">
+              <span>📱 Celulares y Smartphones</span>
+            </a>
+            <a href="laptops.html" class="hover:text-black">Laptops</a>
+        <a href="tablets.html" class="hover:text-black">Tablets</a>
+        <a href="camaras.html" class="hover:text-black">Cámaras</a>
+        <a href="#" class="hover:text-black">Ayuda</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+    
+    <!-- Breadcrumbs -->
+    <nav class="text-xs text-slate-500 flex items-center gap-2 mb-4 overflow-x-auto whitespace-nowrap">
+      <a href="index.html" class="hover:text-slate-800">falabella.com</a>
+      <span>&gt;</span>
+      <a href="tecnologia.html" class="hover:text-slate-800">Tecnología - TV Televisores</a>
+      <span>&gt;</span>
+      <span class="text-slate-800 font-bold" id="breadcrumbCurrent">Televisores</span>
+    </nav>
+
+    <!-- FILA DE MARCAS DESTACADAS (CARRUSEL / SELECTOR SUPERIOR TAL COMO LA CAPTURA) -->
+    <section class="mb-6 relative">
+      <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none" id="brandsContainer">
+        
+        <!-- LG -->
+        <div class="brand-card-item" id="brandCard-lg" onclick="selectBrand('lg')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_lg.png" alt="LG" />
+          </div>
+          <span class="brand-card-title">LG</span>
+        </div>
+
+        <!-- Samsung -->
+        <div class="brand-card-item" id="brandCard-samsung" onclick="selectBrand('samsung')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_samsung.png" alt="Samsung" />
+          </div>
+          <span class="brand-card-title">Samsung</span>
+        </div>
+
+        <!-- JVC -->
+        <div class="brand-card-item" id="brandCard-jvc" onclick="selectBrand('jvc')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_jvc.png" alt="JVC" />
+          </div>
+          <span class="brand-card-title">JVC</span>
+        </div>
+
+        <!-- TCL -->
+        <div class="brand-card-item" id="brandCard-tcl" onclick="selectBrand('tcl')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_tcl.png" alt="TCL" />
+          </div>
+          <span class="brand-card-title">TCL</span>
+        </div>
+
+        <!-- Hisense -->
+        <div class="brand-card-item" id="brandCard-hisense" onclick="selectBrand('hisense')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_hisense.png" alt="Hisense" />
+          </div>
+          <span class="brand-card-title">Hisense</span>
+        </div>
+
+        <!-- Xiaomi -->
+        <div class="brand-card-item" id="brandCard-xiaomi" onclick="selectBrand('xiaomi')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_xiaomi.png" alt="Xiaomi" />
+          </div>
+          <span class="brand-card-title">Xiaomi</span>
+        </div>
+
+        <!-- Caixun -->
+        <div class="brand-card-item" id="brandCard-caixun" onclick="selectBrand('caixun')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_caixun.png" alt="Caixun" />
+          </div>
+          <span class="brand-card-title">Caixun</span>
+        </div>
+
+        <!-- Hyundai -->
+        <div class="brand-card-item" id="brandCard-hyundai" onclick="selectBrand('hyundai')">
+          <div class="brand-card-box">
+            <img src="assets/televisores/logo_hyundai.png" alt="Hyundai" />
+          </div>
+          <span class="brand-card-title">Hyundai</span>
+        </div>
+
+        <!-- Más marcas -->
+        <div class="brand-card-item" id="brandCard-all" onclick="selectBrand('all')">
+          <div class="brand-card-box flex flex-col items-center justify-center text-slate-700 hover:text-black">
+            <svg class="w-7 h-7 mb-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            <span class="text-[10px] font-bold">Ver todas</span>
+          </div>
+          <span class="brand-card-title">Más marcas</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LAYOUT CATÁLOGO: SIDEBAR FILTROS + GRID DE PRODUCTOS -->
+    <div class="flex flex-col lg:flex-row gap-6 items-start">
+      
+      <!-- SIDEBAR FILTROS (IZQUIERDA) -->
+      <aside class="w-full lg:w-[260px] flex-shrink-0 bg-white p-4 rounded-xl border border-slate-200 space-y-5 text-sm">
+        
+        <!-- Encabezado de Categoría -->
+        <div>
+          <span class="text-xs text-slate-500 font-medium">Tecnología</span>
+          <h1 id="categoryHeading" class="text-lg font-bold text-slate-900 leading-tight mt-0.5">TV Televisores - LG</h1>
+          <span id="resultsCountText" class="text-xs text-slate-500 mt-1 block">Resultados (4)</span>
+        </div>
+
+        <!-- Filtros Seleccionados (Chips) -->
+        <div id="selectedFiltersSection" class="pt-3 border-t border-slate-100">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-2">
+            <span>Filtro seleccionado</span>
+            <button type="button" onclick="clearAllFilters()" class="text-slate-400 hover:text-slate-700 text-[11px] font-normal">Limpiar todo</button>
+          </div>
+          <div class="flex flex-wrap gap-2" id="activeFilterChips">
+            <!-- Chips de marca inyectados dinámicamente -->
+          </div>
+        </div>
+
+        <!-- 1. Tipo de Entrega -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-entrega')">
+            <span>Tipo de Entrega</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-entrega" class="space-y-2 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg> 
+                Envío a domicilio
+              </span>
+              <button type="button" class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold hover:bg-slate-200">Llega mañana</button>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600 flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> 
+                Retiro en un punto
+              </span>
+              <button type="button" class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-semibold hover:bg-slate-200">Retira mañana</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Categoría Chips -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-cat')">
+            <span>Categoría</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-cat" class="flex flex-wrap gap-1.5 text-xs">
+            <button type="button" class="category-chip-btn active" onclick="filterByCategory('all', this)">Televisores smart tv</button>
+            <button type="button" class="category-chip-btn" onclick="filterByCategory('accesorios', this)">Accesorios tv</button>
+            <button type="button" class="category-chip-btn" onclick="filterByCategory('dvd', this)">Dvd y blu ray</button>
+          </div>
+        </div>
+
+        <!-- 3. Marca (Checkboxes independientes) -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-marca')">
+            <span>Marca</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-marca" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-lg" onchange="toggleBrandCheckbox('lg', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> LG</span>
+              <span class="text-slate-400" id="cnt-lg">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-samsung" onchange="toggleBrandCheckbox('samsung', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Samsung</span>
+              <span class="text-slate-400" id="cnt-samsung">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-caixun" onchange="toggleBrandCheckbox('caixun', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Caixun</span>
+              <span class="text-slate-400" id="cnt-caixun">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-xiaomi" onchange="toggleBrandCheckbox('xiaomi', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Xiaomi</span>
+              <span class="text-slate-400" id="cnt-xiaomi">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-tcl" onchange="toggleBrandCheckbox('tcl', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> TCL</span>
+              <span class="text-slate-400" id="cnt-tcl">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-hisense" onchange="toggleBrandCheckbox('hisense', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Hisense</span>
+              <span class="text-slate-400" id="cnt-hisense">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-jvc" onchange="toggleBrandCheckbox('jvc', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> JVC</span>
+              <span class="text-slate-400" id="cnt-jvc">(4)</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" id="cb-hyundai" onchange="toggleBrandCheckbox('hyundai', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> Hyundai</span>
+              <span class="text-slate-400" id="cnt-hyundai">(4)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Tamaño de Pantalla (Pulgadas) -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2 flex items-center justify-between cursor-pointer" onclick="toggleAccordion('acc-size')">
+            <span>Tamaño de Pantalla</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div id="acc-size" class="space-y-1.5 text-xs text-slate-700">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('32', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 32 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('40', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 40 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('43', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 43 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('50', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 50 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('55', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 55 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('65', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 65 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('75', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 75 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('85', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 85 pulgadas</span>
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="flex items-center gap-2"><input type="checkbox" onchange="filterBySize('100', this.checked)" class="rounded text-[#0f172a] focus:ring-0"> 100 pulgadas</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. Rango de Precio -->
+        <div class="pt-3 border-t border-slate-100">
+          <div class="font-bold text-slate-800 text-xs mb-2">Precio</div>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <input type="number" id="minPriceInput" placeholder="Min" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+              <span class="text-slate-400">-</span>
+              <input type="number" id="maxPriceInput" placeholder="Max" class="w-full border border-slate-200 rounded px-2 py-1 text-xs" />
+            </div>
+            <button type="button" onclick="applyPriceFilter()" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-1.5 rounded text-xs font-semibold">Aplicar</button>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- CATÁLOGO PRINCIPAL (DERECHA) -->
+      <section class="flex-1 min-w-0 w-full">
+        
+        <!-- BARRA SUPERIOR DE RESULTADOS Y ORDEN -->
+        <div class="bg-white p-3 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div class="text-xs text-slate-600 font-medium">
+            Mostrando televisores oficiales con despacho y garantía
+          </div>
+
+          <div class="flex items-center gap-3">
+            <label for="sortSelect" class="text-xs text-slate-500 whitespace-nowrap">Ordenar por:</label>
+            <select id="sortSelect" onchange="handleSort(this.value)" class="text-xs border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-slate-900 outline-none">
+              <option value="relevance">Recomendados</option>
+              <option value="price_asc">Menor precio</option>
+              <option value="price_desc">Mayor precio</option>
+              <option value="rating">Mejor calificados</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- GRID DE TELEVISORES (4 COLUMNAS EN DESKTOP) -->
+        <div id="tvGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Renderizado dinámico vía JavaScript -->
+        </div>
+
+        <!-- Mensaje sin resultados -->
+        <div id="noResultsMessage" class="hidden bg-white p-12 rounded-xl border border-slate-200 text-center space-y-3">
+          <div class="text-4xl">📺</div>
+          <h3 class="text-base font-bold text-slate-800">No encontramos televisores con esos filtros</h3>
+          <p class="text-xs text-slate-500 max-w-sm mx-auto">Prueba quitando algún filtro o buscando otra marca para ver los televisores disponibles.</p>
+          <button type="button" onclick="clearAllFilters()" class="px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+            Limpiar todos los filtros
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       DRAWER OFICIAL: BOLSA DE COMPRAS
+       ========================================== -->
+  <div id="cartDrawer" class="fixed inset-0 hidden" style="z-index: 9999;">
+    <!-- Backdrop oscuro con blur -->
+    <div id="cartBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="toggleCartDrawer()"></div>
+    
+    <!-- Panel lateral deslizante (desde la derecha) -->
+    <div id="cartDrawerPanel" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transition-transform duration-300 transform translate-x-full" style="z-index: 10000; background-color: #ffffff;">
+      
+      <!-- Encabezado Drawer -->
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="font-black text-slate-900 text-sm">Bolsa de Compras</h3>
+          <span id="cartDrawerCountBadge" class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button type="button" onclick="toggleCartDrawer()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-200 transition" title="Cerrar bolsa">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Items del Carrito -->
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3 divide-y divide-slate-100">
+        <!-- Renderizado dinámicamente -->
+      </div>
+
+      <!-- Footer Drawer con Subtotal y Checkout -->
+      <div class="p-4 border-t border-slate-200 bg-white space-y-3">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-500 font-medium">Subtotal estimado:</span>
+          <span id="cartSubtotalText" class="font-black text-slate-900 text-base">S/ 0.00</span>
+        </div>
+        <div class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          ¡Envío gratis en miles de productos seleccionados!
+        </div>
+        <button type="button" onclick="goToCheckout()" class="w-full bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black py-3 rounded-xl transition text-sm flex items-center justify-center gap-2 shadow-sm">
+          <span>Ir a pagar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <button type="button" onclick="toggleCartDrawer()" class="w-full text-slate-600 hover:text-slate-900 py-1 text-xs font-semibold">
+          Seguir comprando
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       DRAWER OFICIAL: MENÚ DE CATEGORÍAS
+       ========================================== -->
+  <div id="techCategoriesDrawer" class="fixed inset-0 hidden" style="z-index: 9999;">
+    <!-- Backdrop oscuro con blur -->
+    <div id="techCategoriesBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="toggleCategoriesDrawer()"></div>
+    
+    <!-- Panel lateral deslizante (desde la izquierda) -->
+    <div id="techCategoriesPanel" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col transition-transform duration-300 transform -translate-x-full" style="z-index: 10000; background-color: #ffffff;">
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
+        <div class="flex items-center gap-1.5">
+          <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px;">falabella</span>
+          <span style="color:#aad500; font-size:16px; font-weight:900;">.com</span>
+        </div>
+        <button type="button" onclick="toggleCategoriesDrawer()" class="text-white hover:text-slate-300 p-1" title="Cerrar menú">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto p-4 space-y-2 text-xs">
+        
+        <!-- Categoría Activa: Tecnología con todas sus subcategorías -->
+        <div class="rounded-xl bg-slate-50 border border-slate-200/80 p-2.5">
+          <a href="tecnologia.html" class="flex items-center justify-between font-bold text-slate-900 pb-1.5 mb-1.5 border-b border-slate-200">
+            <span class="flex items-center gap-1.5 text-sm">⚡ Tecnología</span>
+            <span class="text-[10px] bg-[#aad500] text-slate-900 px-2 py-0.5 rounded-full font-black">VER TODO</span>
+          </a>
+          <div class="space-y-1 text-xs">
+            <a href="televisores.html" class="flex items-center justify-between py-1.5 px-2 rounded bg-amber-50 text-amber-800 font-bold">
+              <span>📺 Televisores y Smart TV</span>
+              <span class="text-[10px] bg-amber-700 text-white px-1.5 py-0.5 rounded font-semibold">Aquí</span>
+            </a>
+            <a href="laptops.html" class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0284c7] transition">
+              <span>💻 Laptops y Computadoras</span>
+            </a>
+            <a href="tablets.html" class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0284c7] transition">
+              <span>📱 Tablets y iPads</span>
+            </a>
+            <a href="camaras.html" class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0284c7] transition">
+              <span>📷 Cámaras Profesionales</span>
+            </a>
+            <a href="tecnologia.html#sec-audio" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-[#0284c7] transition">🎧 Audio y Parlantes</a>
+          </div>
+        </div>
+
+        <!-- Otras Categorías Oficiales de Falabella -->
+        <div class="pt-2 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2">Departamentos</div>
+        <ul class="space-y-1 text-slate-700 font-medium">
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">🛋️ Decohogar y Muebles</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">🧸 Infantil y Juguetes</a></li>
+          <li><a href="index.html" class="block py-2 px-2.5 rounded-lg hover:bg-slate-100 transition">⚽ Deportes y Aire Libre</a></li>
+        </ul>
+      </div>
+
+      <div class="p-4 border-t border-slate-100 bg-slate-50">
+        <a href="index.html" class="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Ir a la Portada Principal</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN -->
+  <div id="toastNotification" class="toast-msg">
+    <svg class="w-5 h-5 text-[#aad500] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span id="toastNotificationText">Producto agregado a tu bolsa de compras.</span>
+  </div>
+
+  <!-- ==========================================
+       FOOTER OFICIAL FALABELLA
+       ========================================== -->
+  <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-xs text-slate-500">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span style="color:#aad500; font-size:20px; font-weight:900;">falabella</span>
+        <span style="color:#aad500; font-size:14px; font-weight:900;">.com</span>
+        <span class="text-slate-400 ml-2">© 2026 Todos los derechos reservados.</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 text-slate-600">
+        <a href="index.html" class="hover:underline">Términos y Condiciones</a>
+        <a href="index.html" class="hover:underline">Política de Privacidad</a>
+        <a href="index.html" class="hover:underline">Libro de Reclamaciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT: PRODUCTOS, FILTROS Y CARRITO
+       ========================================== -->
+  <script>
+    /* -------------------------------------------------------------
+       1. GESTIÓN DEL CARRITO (falabella_store_cart_v2)
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    function getStoreCart() {
+      try {
+        const raw = localStorage.getItem(STORE_CART_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch(e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+        updateCartBadge();
+      } catch(e) {
+        console.error('Error al guardar carrito:', e);
+      }
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('storeCartBadge');
+      if(!badge) return;
+      const cart = getStoreCart();
+      const count = cart.reduce((acc, item) => acc + (item.qty || item.quantity || 1), 0);
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    function addToCart(productId) {
+      const product = TV_PRODUCTS.find(p => p.id === productId);
+      if(!product) return;
+
+      const cart = getStoreCart();
+      const existing = cart.find(item => String(item.id) === String(product.id));
+
+      if(existing) {
+        existing.qty = (existing.qty || existing.quantity || 1) + 1;
+      } else {
+        cart.push({
+          id: String(product.id),
+          name: product.name,
+          price: product.priceCmr || product.priceNormal,
+          image: product.image,
+          brand: product.brand,
+          qty: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡${product.brand} agregado a tu bolsa!`);
+      toggleCartDrawer();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastNotificationText');
+      if(!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartBackdrop');
+      const panel = document.getElementById('cartDrawerPanel');
+      if(!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('hidden');
+      if(isHidden) {
+        renderCartItems();
+        drawer.classList.remove('hidden');
+        void drawer.offsetWidth;
+        if(backdrop) backdrop.classList.remove('opacity-0');
+        panel.style.transform = 'translateX(0)';
+      } else {
+        if(backdrop) backdrop.classList.add('opacity-0');
+        panel.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cartItemsContainer');
+      const subtotalEl = document.getElementById('cartSubtotalText');
+      const countBadge = document.getElementById('cartDrawerCountBadge');
+      if(!container) return;
+
+      const cart = getStoreCart();
+      const totalCount = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      if(countBadge) countBadge.textContent = totalCount;
+
+      if(!cart.length) {
+        container.innerHTML = `
+          <div class="text-center py-12 px-4 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center mb-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+            <div class="text-sm font-bold text-slate-800">Tu bolsa de compras está vacía</div>
+            <div class="text-xs text-slate-400 mt-1 max-w-xs">Explora nuestras categorías y agrega los televisores que más te gusten.</div>
+            <button type="button" onclick="toggleCartDrawer()" class="mt-4 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">
+              Explorar productos
+            </button>
+          </div>
+        `;
+        if(subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        updateCartBadge();
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const qty = item.qty || item.quantity || 1;
+        const price = Number(item.price) || 0;
+        const totalItem = price * qty;
+        subtotal += totalItem;
+        const imgSrc = item.image || '';
+        return `
+          <div class="py-3 flex items-start gap-3">
+            <div class="w-14 h-14 rounded-lg border border-slate-100 flex-shrink-0 bg-white p-1 flex items-center justify-center overflow-hidden">
+              ${imgSrc ? `<img src="${imgSrc}" alt="${item.name}" class="max-h-full max-w-full object-contain" />` : '<span class="text-lg">📺</span>'}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-xs font-bold text-slate-800 line-clamp-2 leading-snug" title="${item.name}">${item.name}</div>
+              <div class="text-xs text-rose-600 font-extrabold mt-1">S/ ${price.toLocaleString('es-PE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+              <div class="flex items-center gap-2 mt-2">
+                <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                  <button type="button" onclick="updateCartItemQty('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center font-bold text-xs text-slate-600 hover:bg-slate-200 transition">-</button>
+                  <span class="w-7 text-center text-xs font-bold text-slate-800">${qty}</span>
+                  <button type="button" onclick="updateCartItemQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center font-bold text-xs text-slate-600 hover:bg-slate-200 transition">+</button>
+                </div>
+                <button type="button" onclick="removeCartItem('${item.id}')" class="text-slate-400 hover:text-rose-500 p-1 transition" title="Eliminar producto">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="text-xs font-bold text-slate-700 text-right">
+              S/ ${totalItem.toLocaleString('es-PE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if(subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      }
+      updateCartBadge();
+    }
+
+    function updateCartItemQty(id, delta) {
+      const cart = getStoreCart();
+      const item = cart.find(i => String(i.id) === String(id));
+      if(!item) return;
+      const current = item.qty || item.quantity || 1;
+      const next = current + delta;
+      if(next <= 0) {
+        removeCartItem(id);
+      } else {
+        item.qty = next;
+        saveStoreCart(cart);
+        renderCartItems();
+      }
+    }
+
+    function removeCartItem(id) {
+      let cart = getStoreCart();
+      cart = cart.filter(i => String(i.id) !== String(id));
+      saveStoreCart(cart);
+      renderCartItems();
+    }
+
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('techCategoriesDrawer');
+      const backdrop = document.getElementById('techCategoriesBackdrop');
+      const panel = document.getElementById('techCategoriesPanel');
+      if(!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('hidden');
+      if(isHidden) {
+        drawer.classList.remove('hidden');
+        void drawer.offsetWidth;
+        if(backdrop) backdrop.classList.remove('opacity-0');
+        panel.style.transform = 'translateX(0)';
+      } else {
+        if(backdrop) backdrop.classList.add('opacity-0');
+        panel.style.transform = 'translateX(-100%)';
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function goToCheckout() {
+      const cart = getStoreCart();
+      if(!cart.length) {
+        alert('Tu bolsa de compras está vacía.');
+        return;
+      }
+      window.location.href = 'index.html';
+    }
+
+    window.addEventListener('storage', (e) => {
+      if(e.key === STORE_CART_KEY) {
+        updateCartBadge();
+        const drawer = document.getElementById('cartDrawer');
+        if(drawer && !drawer.classList.contains('hidden')) {
+          renderCartItems();
+        }
+      }
+    });
+
+    /* -------------------------------------------------------------
+       2. BASE DE DATOS DE TELEVISORES (EXACTA A LAS 4 CAPTURAS)
+       ------------------------------------------------------------- */
+    const ALL_BRANDS = ['lg', 'samsung', 'caixun', 'xiaomi', 'tcl', 'hisense', 'jvc', 'hyundai'];
+
+        const TV_PRODUCTS = [
+      // 4 MODELOS LG (Captura 2)
+      {
+        id: 501,
+        name: 'LG Televisor 55" QNED AI Mini LED QNED70 4K Smart TV 2026',
+        brand: 'LG',
+        brandKey: 'lg',
+        size: '55',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_lg_1.png',
+        priceCmr: 1399,
+        discountCmr: '-30%',
+        priceNormal: 1449,
+        priceList: 1999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 46
+      },
+      {
+        id: 502,
+        name: 'LG Televisor 75" NANO 4K UHD AI NU80 Smart TV 2026',
+        brand: 'LG',
+        brandKey: 'lg',
+        size: '75',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_lg_2.png',
+        priceCmr: 1899,
+        discountCmr: '-32%',
+        priceNormal: 1999,
+        priceList: 2799,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 51
+      },
+      {
+        id: 503,
+        name: 'LG Televisor 65" NANO 4K UHD AI NU80 Smart TV 2026',
+        brand: 'LG',
+        brandKey: 'lg',
+        size: '65',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_lg_3.png',
+        priceCmr: null,
+        discountNormal: '-35%',
+        priceNormal: 1499,
+        priceList: 2299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 30
+      },
+      {
+        id: 504,
+        name: 'LG Televisor 65" QNED AI Mini LED QNED74 4K Smart TV 2026',
+        brand: 'LG',
+        brandKey: 'lg',
+        size: '65',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_lg_4.png',
+        priceCmr: 1799,
+        discountCmr: '-16%',
+        priceNormal: 1849,
+        priceList: 2149,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 3
+      },
+
+      // 4 MODELOS SAMSUNG (Captura 3)
+      {
+        id: 505,
+        name: 'SAMSUNG Televisor QLED 65" Smart TV 4K QN65Q6FAAGXPE - Nuevo 2025',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        size: '65',
+        seller: 'Electrohogar',
+        sellerVerified: false,
+        image: 'assets/televisores/tv_samsung_1.png',
+        priceCmr: 1489,
+        discountCmr: '-63%',
+        priceNormal: 1599,
+        priceList: 3999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 18
+      },
+      {
+        id: 506,
+        name: 'SAMSUNG Televisor 65" UHD U8000H Vision AI Smart TV (2026)',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        size: '65',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_samsung_2.png',
+        priceCmr: null,
+        discountNormal: '-19%',
+        priceNormal: 1449,
+        priceList: 1799,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 62
+      },
+      {
+        id: 507,
+        name: 'SAMSUNG Televisor 55" Mini LED M70H Vision AI Smart TV (2026)',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        size: '55',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_samsung_3.png',
+        priceCmr: 1349,
+        discountCmr: '-21%',
+        priceNormal: 1399,
+        priceList: 1699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 24
+      },
+      {
+        id: 508,
+        name: 'SAMSUNG Televisor 50" UHD U8000H Vision AI Smart TV (2026)',
+        brand: 'Samsung',
+        brandKey: 'samsung',
+        size: '50',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_samsung_4.png',
+        priceCmr: null,
+        discountNormal: '-13%',
+        priceNormal: 1049,
+        priceList: 1199,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 39
+      },
+
+      // 4 MODELOS CAIXUN (Captura 4)
+      {
+        id: 509,
+        name: 'CAIXUN Smart TV LED 32 HD Roku TV C32V1HR',
+        brand: 'Caixun',
+        brandKey: 'caixun',
+        size: '32',
+        seller: 'Caixun Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_caixun_1.png',
+        priceCmr: null,
+        discountNormal: '-63%',
+        priceNormal: 369,
+        priceList: 989,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 85
+      },
+      {
+        id: 510,
+        name: 'CAIXUN Televisor LED 43" Full HD Roku TV C43V1FR',
+        brand: 'Caixun',
+        brandKey: 'caixun',
+        size: '43',
+        seller: 'Caixun Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_caixun_2.png',
+        priceCmr: null,
+        discountNormal: '-55%',
+        priceNormal: 629,
+        priceList: 1389,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 42
+      },
+      {
+        id: 511,
+        name: 'CAIXUN Televisor LED 43 FHD Google TV C43K4FG',
+        brand: 'Caixun',
+        brandKey: 'caixun',
+        size: '43',
+        seller: 'Caixun Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_caixun_3.png',
+        priceCmr: null,
+        discountNormal: '-52%',
+        priceNormal: 669,
+        priceList: 1399,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 31
+      },
+      {
+        id: 512,
+        name: 'CAIXUN Televisor LED 65 UHD 4K Google TV C65V1UG',
+        brand: 'Caixun',
+        brandKey: 'caixun',
+        size: '65',
+        seller: 'Caixun Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_caixun_4.png',
+        priceCmr: null,
+        discountNormal: '-61%',
+        priceNormal: 1299,
+        priceList: 3299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 19
+      },
+
+      // 4 MODELOS JVC (Captura Real JVC)
+      {
+        id: 513,
+        name: 'JVC Televisor 43" Qled 4k Google Tv Smart Tv',
+        brand: 'JVC',
+        brandKey: 'jvc',
+        size: '43',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_jvc_1.png',
+        priceCmr: 679,
+        discountCmr: '-48%',
+        priceNormal: 699,
+        priceList: 1299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 31
+      },
+      {
+        id: 514,
+        name: 'JVC Televisor 50\'\' QLED 4K UHD Roku TV',
+        brand: 'JVC',
+        brandKey: 'jvc',
+        size: '50',
+        seller: 'Tottus',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_jvc_2.png',
+        priceCmr: 829,
+        discountCmr: '-36%',
+        priceNormal: 899,
+        priceList: 1299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 7
+      },
+      {
+        id: 515,
+        name: 'JVC Televisor 75" QD MiniLed 4k Google TV LT-75KM958',
+        brand: 'JVC',
+        brandKey: 'jvc',
+        size: '75',
+        seller: 'Sodimac',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_jvc_3.png',
+        priceCmr: 1749.90,
+        discountCmr: '-42%',
+        priceNormal: 2299.90,
+        priceList: 2999.90,
+        delivery: 'Retira mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 14
+      },
+      {
+        id: 516,
+        name: 'JVC Televisor 85" QD MiniLed 4k Google Tv LT-85KM958 Smart Tv',
+        brand: 'JVC',
+        brandKey: 'jvc',
+        size: '85',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_jvc_4.png',
+        priceCmr: 2799,
+        discountCmr: '-44%',
+        priceNormal: 2899,
+        priceList: 4999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 14
+      },
+
+      // 4 MODELOS HYUNDAI (Captura Real Hyundai)
+      {
+        id: 517,
+        name: 'HYUNDAI Televisor 43 QLED SMART TV FHD Google TV HYLED4326QG',
+        brand: 'Hyundai',
+        brandKey: 'hyundai',
+        size: '43',
+        seller: 'Import Djaguar Pro',
+        sellerVerified: false,
+        image: 'assets/televisores/tv_hyundai_1.png',
+        priceCmr: null,
+        discountNormal: '-54%',
+        priceNormal: 729,
+        priceList: 1599,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 12
+      },
+      {
+        id: 518,
+        name: 'HYUNDAI TELEVISOR SMART TV QLED 43 HYLED4326QG + ANTENA',
+        brand: 'Hyundai',
+        brandKey: 'hyundai',
+        size: '43',
+        seller: 'Electroshop Sv',
+        sellerVerified: false,
+        image: 'assets/televisores/tv_hyundai_2.png',
+        priceCmr: null,
+        discountNormal: null,
+        priceNormal: 1499,
+        priceList: null,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 4
+      },
+      {
+        id: 519,
+        name: 'HYUNDAI TELEVISOR 55 QLED SMART TV GOOGLE TV 4K UHD - HYLED5529QG',
+        brand: 'Hyundai',
+        brandKey: 'hyundai',
+        size: '55',
+        seller: 'Rp Inversiones',
+        sellerVerified: false,
+        image: 'assets/televisores/tv_hyundai_3.png',
+        priceCmr: null,
+        discountNormal: '-43%',
+        priceNormal: 1149,
+        priceList: 1999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 8
+      },
+      {
+        id: 520,
+        name: 'HYUNDAI Televisor 55 QLED Smart TV GOOGLE TV 4K UHD - HYLED5529QG',
+        brand: 'Hyundai',
+        brandKey: 'hyundai',
+        size: '55',
+        seller: 'Renovando Tu Hogar',
+        sellerVerified: false,
+        image: 'assets/televisores/tv_hyundai_4.png',
+        priceCmr: null,
+        discountNormal: '-27%',
+        priceNormal: 1099,
+        priceList: 1499,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 1
+      },
+
+      // 4 MODELOS XIAOMI (Captura Real Xiaomi)
+      {
+        id: 521,
+        name: 'XIAOMI Televisor Smart TV A Pro QLED 55" 4K UHD Google TV 2026',
+        brand: 'Xiaomi',
+        brandKey: 'xiaomi',
+        size: '55',
+        seller: 'Xiaomi Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_xiaomi_1.png',
+        priceCmr: 1079,
+        discountCmr: '-23%',
+        priceNormal: 1149,
+        priceList: 1399,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 41
+      },
+      {
+        id: 522,
+        name: 'XIAOMI Televisor inteligente TV A 55 2026 Calidad de imagen UHD 4K',
+        brand: 'Xiaomi',
+        brandKey: 'xiaomi',
+        size: '55',
+        seller: 'Xiaomi Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_xiaomi_2.png',
+        priceCmr: 1019,
+        discountCmr: '-18%',
+        priceNormal: 1079,
+        priceList: 1249,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 26
+      },
+      {
+        id: 523,
+        name: 'XIAOMI Televisor Smart TV A Pro QLED 65" 4K UHD Google TV 2026 - HDR',
+        brand: 'Xiaomi',
+        brandKey: 'xiaomi',
+        size: '65',
+        seller: 'Xiaomi Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_xiaomi_3.png',
+        priceCmr: 1649,
+        discountCmr: '-18%',
+        priceNormal: 1699,
+        priceList: 1999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 17
+      },
+      {
+        id: 524,
+        name: 'XIAOMI Televisor Smart TV S Pro QD-Mini LED 65" 4K UHD Google TV 2026',
+        brand: 'Xiaomi',
+        brandKey: 'xiaomi',
+        size: '65',
+        seller: 'Xiaomi Tienda Oficial',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_xiaomi_4.png',
+        priceCmr: 2299,
+        discountCmr: '-12%',
+        priceNormal: 2399,
+        priceList: 2599,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 15
+      },
+
+      // MODELOS TCL (4 MODELOS OFICIALES)
+      {
+        id: 525,
+        name: 'TCL Televisor 55" QD MiniLED 4K 55A400U Premium Smart Tv',
+        brand: 'TCL',
+        brandKey: 'tcl',
+        size: '55',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_tcl_1.png',
+        priceCmr: null,
+        discountNormal: '-47%',
+        priceNormal: 1599,
+        priceList: 2999,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 16
+      },
+      {
+        id: 526,
+        name: 'TCL Televisor Smart TV 55" 4K QLED Google TV 55T6C',
+        brand: 'TCL',
+        brandKey: 'tcl',
+        size: '55',
+        seller: 'Sodimac',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_tcl_2.png',
+        priceCmr: 1049.90,
+        discountCmr: '-28%',
+        priceNormal: 1099.90,
+        priceList: 1459.90,
+        delivery: '',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 185
+      },
+      {
+        id: 527,
+        name: 'TCL Televisor 75" QD MiniLED 4K 75A400U Premium Smart Tv',
+        brand: 'TCL',
+        brandKey: 'tcl',
+        size: '75',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_tcl_3.png',
+        priceCmr: null,
+        discountNormal: '-26%',
+        priceNormal: 3499,
+        priceList: 4699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 15
+      },
+      {
+        id: 528,
+        name: 'TCL Televisor 65" QD MiniLED 4K 65A400U Premium Smart Tv',
+        brand: 'TCL',
+        brandKey: 'tcl',
+        size: '65',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_tcl_4.png',
+        priceCmr: null,
+        discountNormal: '-31%',
+        priceNormal: 2549,
+        priceList: 3699,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 12
+      },
+
+      // MODELOS HISENSE (4 MODELOS OFICIALES)
+      {
+        id: 529,
+        name: 'HISENSE Televisor 65" Miniled 4K 65U6ESG Smart Tv',
+        brand: 'Hisense',
+        brandKey: 'hisense',
+        size: '65',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_hisense_1.png',
+        priceCmr: 1949,
+        discountCmr: '-41%',
+        priceNormal: 1999,
+        priceList: 3299,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 15
+      },
+      {
+        id: 530,
+        name: 'HISENSE Televisor 75" Qled 4k 75qd6n Google Tv (2025) Smart Tv',
+        brand: 'Hisense',
+        brandKey: 'hisense',
+        size: '75',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_hisense_2.png',
+        priceCmr: null,
+        discountNormal: '-38%',
+        priceNormal: 1999,
+        priceList: 3199,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 24
+      },
+      {
+        id: 531,
+        name: 'HISENSE Televisor 40" QLED FHD',
+        brand: 'Hisense',
+        brandKey: 'hisense',
+        size: '40',
+        seller: 'Tottus',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_hisense_3.png',
+        priceCmr: 549,
+        discountCmr: '-50%',
+        priceNormal: 599,
+        priceList: 1099,
+        delivery: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5,
+        reviews: 40
+      },
+      {
+        id: 532,
+        name: 'HISENSE Televisor 100" Hi-Qled 4K 100Q7QG Google Tv Smart Tv',
+        brand: 'Hisense',
+        brandKey: 'hisense',
+        size: '100',
+        seller: 'Falabella',
+        sellerVerified: true,
+        image: 'assets/televisores/tv_hisense_4.png',
+        priceCmr: null,
+        discountNormal: '-43%',
+        priceNormal: 5099,
+        priceList: 8999,
+        delivery: 'Llega mañana',
+        pickup: '',
+        rating: 5,
+        reviews: 120
+      }
+    ];
+
+    /* -------------------------------------------------------------
+       3. ESTADO GLOBAL DE FILTROS
+       ------------------------------------------------------------- */
+    let selectedBrands = new Set(['lg']); // LG por defecto como en la captura 1 y 2
+    let currentSizes = [];
+    let currentSearch = '';
+    let currentSort = 'relevance';
+    let minPrice = null;
+    let maxPrice = null;
+
+    function renderProducts() {
+      const grid = document.getElementById('tvGrid');
+      const noResults = document.getElementById('noResultsMessage');
+      const countText = document.getElementById('resultsCountText');
+      if(!grid) return;
+
+      let filtered = TV_PRODUCTS.filter(item => {
+        // Filtro por marca
+        if(selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+          if(!selectedBrands.has(item.brandKey)) return false;
+        } else if(selectedBrands.size === 0) {
+          return false;
+        }
+
+        // Filtro por tamaño de pantalla
+        if(currentSizes.length > 0 && !currentSizes.includes(item.size)) return false;
+
+        // Búsqueda de texto
+        if(currentSearch.trim()) {
+          const q = currentSearch.toLowerCase();
+          const match = item.name.toLowerCase().includes(q) || item.brand.toLowerCase().includes(q);
+          if(!match) return false;
+        }
+
+        // Rango de precio
+        const effPrice = item.priceCmr || item.priceNormal;
+        if(minPrice !== null && effPrice < minPrice) return false;
+        if(maxPrice !== null && effPrice > maxPrice) return false;
+
+        return true;
+      });
+
+      // Ordenamiento
+      if(currentSort === 'price_asc') {
+        filtered.sort((a,b) => (a.priceCmr || a.priceNormal) - (b.priceCmr || b.priceNormal));
+      } else if(currentSort === 'price_desc') {
+        filtered.sort((a,b) => (b.priceCmr || b.priceNormal) - (a.priceCmr || a.priceNormal));
+      } else if(currentSort === 'rating') {
+        filtered.sort((a,b) => b.rating - a.rating);
+      }
+
+      // Conteo
+      const totalCount = filtered.length;
+      if(countText) countText.textContent = `Resultados (${totalCount})`;
+
+      if(filtered.length === 0) {
+        grid.innerHTML = '';
+        if(noResults) noResults.classList.remove('hidden');
+        return;
+      }
+
+      if(noResults) noResults.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(p => {
+        const fmt = (num) => {
+          if (num === null || num === undefined) return '';
+          return Number.isInteger(num)
+            ? `S/ ${num.toLocaleString('es-PE')}`
+            : `S/ ${num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        };
+        const hasCmr = Boolean(p.priceCmr);
+        const cmrPriceStr = hasCmr ? fmt(p.priceCmr) : '';
+        const normalPriceStr = fmt(p.priceNormal);
+        const listPriceStr = p.priceList ? fmt(p.priceList) : '';
+
+        return `
+          <div class="p-card group">
+            
+            <!-- Wishlist Heart Button -->
+            <button type="button" onclick="toggleWishlist(${p.id}, this)" class="absolute top-3 right-3 text-slate-300 hover:text-red-500 p-1.5 transition z-10" title="Añadir a favoritos">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+
+            <!-- Imagen del Televisor -->
+            <div class="w-full h-44 flex items-center justify-center p-2 mb-2 bg-white relative">
+              <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+            </div>
+
+            <!-- Marca -->
+            <div class="text-[11px] font-bold text-slate-500 tracking-wider uppercase mb-1">${p.brand}</div>
+            
+            <!-- Título -->
+            <h3 class="text-xs font-semibold text-slate-800 line-clamp-2 h-8 leading-snug mb-1" title="${p.name}">
+              ${p.name}
+            </h3>
+
+            <!-- Vendedor / Seller Badge -->
+            <div class="mb-2">
+              <span class="text-[11px] text-slate-500 font-medium">Por <span class="text-slate-800 font-bold">${p.seller}</span></span>
+              ${p.sellerVerified ? `<span class="inline-block w-2.5 h-2.5 bg-[#aad500] rounded-sm ml-0.5"></span>` : ''}
+            </div>
+
+            <!-- Precios y Descuentos Oficiales -->
+            <div class="mt-auto space-y-1 pt-2 border-t border-slate-50">
+              ${hasCmr ? `
+                <div class="flex items-center gap-2">
+                  <span class="cmr-pill"><span class="text-[9px]">CMR</span></span>
+                  <span class="text-base font-extrabold text-rose-600">${cmrPriceStr}</span>
+                  <span class="text-xs font-bold text-rose-600">${p.discountCmr}</span>
+                </div>
+                <div class="text-xs text-slate-700 font-semibold">${normalPriceStr}</div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              ` : `
+                <div class="flex items-center gap-2">
+                  <span class="text-base font-extrabold text-slate-900">${normalPriceStr}</span>
+                  ${p.discountNormal ? `<span class="text-xs font-bold text-rose-600 bg-rose-50 px-1 rounded">${p.discountNormal}</span>` : ''}
+                </div>
+                ${listPriceStr ? `<div class="text-[11px] text-slate-400 line-through">${listPriceStr}</div>` : ''}
+              `}
+
+              <!-- Badges de Entrega -->
+              <div class="flex flex-wrap gap-1.5 pt-1.5">
+                ${p.delivery ? `<span class="green-badge text-[10px]">${p.delivery}</span>` : ''}
+                ${p.pickup ? `<span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-1.5 py-0.5 rounded">${p.pickup}</span>` : ''}
+              </div>
+
+              <!-- Ratings -->
+              <div class="flex items-center gap-1 pt-1.5 text-amber-400 text-xs">
+                ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5 - Math.floor(p.rating))}
+                <span class="text-[11px] text-slate-400 font-normal">(${p.reviews})</span>
+              </div>
+
+              <!-- Botón Agregar a la Bolsa -->
+              <div class="pt-3">
+                <button type="button" onclick="addToCart(${p.id})" class="btn-add-cart">
+                  Agregar a la bolsa
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       4. CONTROLADORES DE FILTROS Y EVENTOS
+       ------------------------------------------------------------- */
+    function selectBrand(brand) {
+      if(brand === 'all') {
+        selectedBrands = new Set(ALL_BRANDS);
+      } else {
+        selectedBrands = new Set([brand]);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function toggleBrandCheckbox(brand, checked) {
+      if(checked) {
+        selectedBrands.add(brand);
+      } else {
+        selectedBrands.delete(brand);
+      }
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function syncBrandUI() {
+      // 1. Checkboxes en sidebar
+      ALL_BRANDS.forEach(b => {
+        const cb = document.getElementById(`cb-${b}`);
+        if(cb) {
+          cb.checked = selectedBrands.has(b);
+        }
+      });
+
+      // 2. Tarjetas superiores
+      document.querySelectorAll('.brand-card-item').forEach(el => el.classList.remove('active'));
+      if(selectedBrands.size === 1) {
+        const singleBrand = [...selectedBrands][0];
+        const activeCard = document.getElementById(`brandCard-${singleBrand}`);
+        if(activeCard) activeCard.classList.add('active');
+      } else if(selectedBrands.size === ALL_BRANDS.length) {
+        const allCard = document.getElementById('brandCard-all');
+        if(allCard) allCard.classList.add('active');
+      }
+
+      // 3. Título de categoría y breadcrumbs
+      const headingEl = document.getElementById('categoryHeading');
+      const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+      if(headingEl) {
+        if(selectedBrands.size === 1) {
+          const singleBrand = [...selectedBrands][0];
+          const cap = singleBrand.charAt(0).toUpperCase() + singleBrand.slice(1);
+          headingEl.textContent = `TV Televisores - ${cap}`;
+          if(breadcrumbCurrent) breadcrumbCurrent.textContent = `Televisores ${cap}`;
+        } else if(selectedBrands.size === ALL_BRANDS.length) {
+          headingEl.textContent = 'TV Televisores';
+          if(breadcrumbCurrent) breadcrumbCurrent.textContent = 'Televisores';
+        } else if(selectedBrands.size === 0) {
+          headingEl.textContent = 'TV Televisores (Sin marcas seleccionadas)';
+        } else {
+          headingEl.textContent = `TV Televisores (${selectedBrands.size} marcas)`;
+        }
+      }
+
+      // 4. Chips activos
+      updateBrandFilterChips();
+    }
+
+    function updateBrandFilterChips() {
+      const activeFilterChips = document.getElementById('activeFilterChips');
+      if(!activeFilterChips) return;
+
+      if(selectedBrands.size > 0 && selectedBrands.size < ALL_BRANDS.length) {
+        activeFilterChips.innerHTML = [...selectedBrands].map(b => {
+          const cap = b.charAt(0).toUpperCase() + b.slice(1);
+          return `
+            <span class="filter-tag-pill" onclick="toggleBrandCheckbox('${b}', false)">
+              <span>${cap}</span>
+              <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+          `;
+        }).join('');
+      } else {
+        activeFilterChips.innerHTML = `
+          <span class="filter-tag-pill" onclick="selectBrand('lg')">
+            <span>Todas las marcas</span>
+          </span>
+        `;
+      }
+    }
+
+    function filterBySize(size, checked) {
+      if(checked && !currentSizes.includes(size)) {
+        currentSizes.push(size);
+      } else if(!checked) {
+        currentSizes = currentSizes.filter(s => s !== size);
+      }
+      renderProducts();
+    }
+
+    function filterByCategory(cat, btn) {
+      document.querySelectorAll('.category-chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if(cat !== 'all') {
+        showToast('Categoría de accesorios y complementos');
+      }
+    }
+
+    function handleSearch(val) {
+      currentSearch = val;
+      renderProducts();
+    }
+
+    function handleSort(val) {
+      currentSort = val;
+      renderProducts();
+    }
+
+    function applyPriceFilter() {
+      const minEl = document.getElementById('minPriceInput');
+      const maxEl = document.getElementById('maxPriceInput');
+      minPrice = minEl && minEl.value ? parseFloat(minEl.value) : null;
+      maxPrice = maxEl && maxEl.value ? parseFloat(maxEl.value) : null;
+      renderProducts();
+    }
+
+    function clearAllFilters() {
+      selectedBrands = new Set(ALL_BRANDS);
+      currentSizes = [];
+      currentSearch = '';
+      minPrice = null;
+      maxPrice = null;
+      const sInput = document.getElementById('tvSearchInput');
+      if(sInput) sInput.value = '';
+      const minEl = document.getElementById('minPriceInput');
+      if(minEl) minEl.value = '';
+      const maxEl = document.getElementById('maxPriceInput');
+      if(maxEl) maxEl.value = '';
+
+      syncBrandUI();
+      renderProducts();
+    }
+
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.classList.toggle('hidden');
+    }
+
+    function toggleWishlist(id, btn) {
+      btn.classList.toggle('text-red-500');
+      btn.classList.toggle('text-slate-300');
+      showToast('Actualizado en tu lista de deseos.');
+    }
+
+    function openWishlistModal() {
+      alert('Tienes 0 productos en tu lista de favoritos.');
+    }
+
+    /* -------------------------------------------------------------
+       5. INICIALIZACIÓN Y PARÁMETROS URL (?brand=samsung, etc.)
+       ------------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const brandParam = urlParams.get('brand');
+
+      if(brandParam) {
+        const bClean = brandParam.toLowerCase().trim();
+        if(bClean === 'all' || bClean === 'todas') {
+          selectedBrands = new Set(ALL_BRANDS);
+        } else if(ALL_BRANDS.includes(bClean)) {
+          selectedBrands = new Set([bClean]);
+        }
+      } else {
+        // Por defecto, selección LG como en la captura 1 y 2
+        selectedBrands = new Set(['lg']);
+      }
+
+      syncBrandUI();
+      renderProducts();
+      updateCartBadge();
+    });
+  </script>
+
+</body>
+</html>
