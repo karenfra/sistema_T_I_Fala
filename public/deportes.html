@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Deportes Falabella: Bicicletas montañeras, urbanas, máquinas de ejercicio, zona fitness, suplementos deportivos, zapatillas y ropa deportiva al mejor precio en falabella.com.">
+  <title>Deportes: Bicicletas, Fitness, Suplementos y Ropa Deportiva | falabella.com</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23aad500'/><text x='50%' y='68%' font-size='55' font-weight='900' fill='%23000' text-anchor='middle' font-family='Arial'>f</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ==================== HERO CAROUSEL ==================== */
+    .hero-slide {
+      transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+    .hero-dot-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 9999px;
+      background-color: #cbd5e1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-dot-indicator.active {
+      width: 24px;
+      background-color: #0f172a;
+    }
+
+    /* ==================== SUB-NAV BAR ==================== */
+    .subnav-tab-item {
+      padding: 0.65rem 1.15rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      background: transparent;
+      cursor: pointer;
+    }
+    .subnav-tab-item:hover {
+      color: #0f172a;
+      border-bottom-color: #cbd5e1;
+    }
+    .subnav-tab-item.active {
+      color: #0f172a;
+      border-bottom-color: #0f172a;
+      font-weight: 800;
+    }
+
+    /* ==================== EFECTO BICICLETAS: NEGRO_CORTO - LARGO_A_COLOR ==================== */
+    .bici-panel-card {
+      flex: 1 1 0%;
+      min-width: 65px;
+      transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, transform 0.25s ease;
+      position: relative;
+    }
+
+    .bici-panel-card .bici-img-col {
+      opacity: 1;
+      transition: opacity 0.4s ease, transform 0.5s ease;
+      filter: brightness(0.95) contrast(1.05);
+      object-position: center center;
+    }
+
+    .bici-panel-card .bici-img-exp {
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.5s ease;
+      transform: scale(1.02);
+      object-position: center bottom;
+    }
+
+    /* Estado Activo / Hover: Largo a color */
+    .bici-panel-card.active {
+      flex: 3.8 1 0%;
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.28);
+    }
+
+    .bici-panel-card.active .bici-img-col {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .bici-panel-card.active .bici-img-exp {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ==================== SUPLEMENTOS 3D CARDS ==================== */
+    .supplement-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .supplement-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.12);
+    }
+    .supplement-card:hover img {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    /* ==================== HOTSPOTS ZONA FITNESS ==================== */
+    .fitness-hotspot-btn {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 9999px;
+      background-color: white;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      border: 2px solid #0f172a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+    .fitness-hotspot-btn::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 9999px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    .fitness-hotspot-btn:hover {
+      transform: translate(-50%, -50%) scale(1.25);
+      background-color: #aad500;
+      border-color: #0f172a;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.7); opacity: 0.9; }
+      50% { transform: scale(1.3); opacity: 0.3; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .fitness-popover {
+      display: none;
+      position: absolute;
+      z-index: 30;
+      width: 230px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      padding: 12px;
+      transform: translate(-50%, -115%);
+      transition: all 0.2s ease;
+    }
+    .fitness-popover.open {
+      display: block;
+      animation: popoverFadeIn 0.2s ease-out;
+    }
+    @keyframes popoverFadeIn {
+      from { opacity: 0; transform: translate(-50%, -105%); }
+      to { opacity: 1; transform: translate(-50%, -115%); }
+    }
+    .fitness-popover::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: white;
+    }
+
+    /* ==================== PRODUCT CARDS ==================== */
+    .product-card-deporte {
+      transition: all 0.25s ease;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card-deporte:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- ==================== HEADER OFICIAL ==================== -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
+    
+    <!-- Top Utility Bar -->
+    <div class="hidden lg:flex items-center justify-between px-4 lg:px-8 py-1.5 bg-[#f8fafc] border-b border-slate-200 text-[11px] text-slate-600 font-medium">
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1 hover:text-slate-900 cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-[#aad500]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+          Ingresa tu ubicación
+        </span>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="hover:text-slate-900">Tarjeta CMR</a>
+        <a href="index.html" class="hover:text-slate-900">Vende y comisiona</a>
+        <a href="index.html" class="hover:text-slate-900">Venta telefónica</a>
+        <a href="index.html" class="hover:text-slate-900">Ayuda</a>
+        <a href="index.html" class="flex items-center gap-1 hover:text-slate-900">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          Rastrear
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Menu Drawer Button -->
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="flex items-center gap-1.5 focus:outline-none" title="Volver a Falabella Inicio">
+          <span class="text-2xl sm:text-3xl font-black text-[#aad500] tracking-tight hover:opacity-90 transition">falabella<span class="text-slate-900">.com</span></span>
+        </a>
+
+        <!-- Botón Menú con icono oficial -->
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-800 hover:bg-slate-100 transition shadow-2xs">
+          <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="hidden sm:inline">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de Búsqueda -->
+      <div class="flex-1 max-w-2xl mx-2">
+        <div class="relative">
+          <input type="text" id="deportesSearchInput" placeholder="Buscar en Deportes: bicicletas, trotadoras, proteínas, zapatillas..." onkeyup="handleDeportesSearch(event)"
+                 class="w-full py-2.5 pl-4 pr-11 text-xs sm:text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-[#aad500]/30 transition shadow-inner">
+          <button type="button" onclick="triggerDeportesSearch()" class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0f172a] text-white flex items-center justify-center hover:bg-slate-800 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- User Actions & Cart -->
+      <div class="flex items-center gap-3 sm:gap-5 ml-auto flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión / Mi cuenta -->
+        <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
+          <div class="flex flex-col text-[11px] leading-tight">
+            <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
+            <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
+              Inicia sesión
+              <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </div>
+          <div class="border-l border-slate-300 pl-2.5 ml-1 hidden sm:flex flex-col text-[11px] leading-tight">
+            <span class="font-bold text-slate-900">Mi</span>
+            <span class="font-bold text-slate-900">cuenta</span>
+          </div>
+        </div>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="openFalabellaFavoritesModal()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+          <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
+        </button>
+
+        <!-- Botón Carrito Global Falabella -->
+        <button type="button" onclick="openDeportesCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Ver bolsa de compras">
+          <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="deportesCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ) ==================== -->
+  <aside id="deportesCategoriesDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0">
+    <div class="relative w-80 max-w-[85vw] h-full bg-white shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300">
+      <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-[#aad500]"></span>
+          <h2 class="font-black text-sm uppercase tracking-wider">Categorías Falabella</h2>
+        </div>
+        <button type="button" onclick="toggleCategoriesDrawer()" class="p-1 rounded-full text-slate-400 hover:text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      
+      <div class="overflow-y-auto flex-1 p-4 space-y-4 text-xs font-semibold text-slate-700">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Departamentos</span>
+          <ul class="mt-2 space-y-1">
+            <li><a href="tecnologia.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📱 Tecnología & Smartphones</a></li>
+            <li><a href="moda_mujer.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👗 Moda Falabella Para Mujer</a></li>
+            <li><a href="moda_hombre.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👔 Moda Falabella Hombre</a></li>
+            <li><a href="deportes.html" class="block p-2 rounded-lg bg-slate-100 text-slate-900 font-bold transition">⚽ Deportes & Fitness (Actual)</a></li>
+            <li><a href="televisores.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📺 Televisores & Audio</a></li>
+            <li><a href="celulares.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📱 Celulares & Accesorios</a></li>
+            <li><a href="index.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">🏠 Electrohogar & Cocina</a></li>
+          </ul>
+        </div>
+
+        <div class="pt-2 border-t border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Especial Deportes</span>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#sec-bicicletas" onclick="toggleCategoriesDrawer()" class="block p-2 rounded-lg hover:bg-slate-100 transition">🚴 Bicicletas & Scooters</a></li>
+            <li><a href="#sec-zona-fitness" onclick="toggleCategoriesDrawer()" class="block p-2 rounded-lg hover:bg-slate-100 transition">🏋️ Zona Fitness & Máquinas</a></li>
+            <li><a href="#sec-suplementos" onclick="toggleCategoriesDrawer()" class="block p-2 rounded-lg hover:bg-slate-100 transition">💊 Suplementos & Nutrición</a></li>
+            <li><a href="#sec-catalogo" onclick="filterByCategory('Zapatillas'); toggleCategoriesDrawer()" class="block p-2 rounded-lg hover:bg-slate-100 transition">👟 Zapatillas Running & Training</a></li>
+            <li><a href="#sec-catalogo" onclick="filterByCategory('Vestuario'); toggleCategoriesDrawer()" class="block p-2 rounded-lg hover:bg-slate-100 transition">🏃 Vestuario Deportivo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200 text-center">
+        <a href="index.html" class="block w-full py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">Ir a Portada Falabella</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8">
+
+    <!-- Breadcrumb Oficial -->
+    <nav class="flex items-center gap-2 text-xs text-slate-500 font-medium pt-1">
+      <a href="index.html" class="hover:text-slate-900 transition flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Home
+      </a>
+      <span>&gt;</span>
+      <span class="text-slate-900 font-bold">Deportes</span>
+    </nav>
+
+    <!-- ==================== 1. HERO CAROUSEL: 3 BANNERS DE DEPORTES ==================== -->
+    <section class="relative w-full rounded-2xl overflow-hidden bg-slate-900 shadow-lg aspect-[1024/300] sm:aspect-[1024/300] md:aspect-[1024/300] max-h-[380px]">
+      
+      <!-- Slide 1: Vestuario Deportivo (Auténtico de Imagen 1) -->
+      <div class="hero-slide active" data-slide="0">
+        <picture>
+          <source srcset="assets/deportes/banner_vestuario_deportivo.webp" type="image/webp">
+          <img src="assets/deportes/banner_vestuario_deportivo.png" alt="Vestuario Deportivo Falabella: Mujer, Hombre y Niños" class="w-full h-full object-cover">
+        </picture>
+        <div class="absolute inset-0 flex items-center justify-between p-6 md:p-12 pointer-events-none">
+          <div class="pointer-events-auto cursor-pointer" onclick="filterByCategory('Vestuario')">
+            <span class="sr-only">Explorar Vestuario Deportivo</span>
+          </div>
+          <button type="button" onclick="filterByCategory('Vestuario')" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-white text-slate-900 font-black rounded-full hover:bg-[#aad500] hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
+            ¡Ver más! <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 2: Zona Fitness & Máquinas de Ejercicio (16:9 HD) -->
+      <div class="hero-slide" data-slide="1">
+        <picture>
+          <source srcset="assets/deportes/banner_zona_fitness.webp" type="image/webp">
+          <img src="assets/deportes/banner_zona_fitness.png" alt="Zona Fitness Falabella: Máquinas y Pesas hasta 40% Dcto" class="w-full h-full object-cover">
+        </picture>
+        <div class="absolute inset-0 flex items-center justify-end p-6 md:p-12 pointer-events-none">
+          <button type="button" onclick="document.getElementById('sec-zona-fitness').scrollIntoView({behavior:'smooth'})" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-[#aad500] text-slate-950 font-black rounded-full hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
+            ¡Ver más! <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 3: Mundo Bicicletas & Outdoor (16:9 HD) -->
+      <div class="hero-slide" data-slide="2">
+        <picture>
+          <source srcset="assets/deportes/banner_mundo_bicicletas.webp" type="image/webp">
+          <img src="assets/deportes/banner_mundo_bicicletas.png" alt="Mundo Bicicletas Falabella: Montañeras y Urbanas hasta 35% Dcto" class="w-full h-full object-cover">
+        </picture>
+        <div class="absolute inset-0 flex items-center justify-end p-6 md:p-12 pointer-events-none">
+          <button type="button" onclick="document.getElementById('sec-bicicletas').scrollIntoView({behavior:'smooth'})" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-[#aad500] text-slate-950 font-black rounded-full hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
+            ¡Ver catálogo! <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Flechas Prev / Next -->
+      <button type="button" onclick="prevHeroSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-xs transition z-20" aria-label="Slide anterior">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" onclick="nextHeroSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-xs transition z-20" aria-label="Siguiente slide">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Indicadores de puntos -->
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+        <button type="button" onclick="setHeroSlide(0)" class="hero-dot-indicator active" aria-label="Slide 1"></button>
+        <button type="button" onclick="setHeroSlide(1)" class="hero-dot-indicator" aria-label="Slide 2"></button>
+        <button type="button" onclick="setHeroSlide(2)" class="hero-dot-indicator" aria-label="Slide 3"></button>
+      </div>
+    </section>
+
+    <!-- ==================== SUB-BARRA DE NAVEGACIÓN EXACTA A LA IMAGEN 1 ==================== -->
+    <nav class="bg-white rounded-xl shadow-2xs border border-slate-200 overflow-x-auto scrollbar-none flex items-center justify-between px-2">
+      <div class="flex items-center gap-1 sm:gap-2 min-w-max py-1">
+        <button type="button" onclick="filterByCategory('Vestuario')" class="subnav-tab-item active">Vestuario deportivo</button>
+        <button type="button" onclick="filterByCategory('Todos')" class="subnav-tab-item">Lo último</button>
+        <button type="button" onclick="document.getElementById('sec-zona-fitness').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item">Zona fitness</button>
+        <button type="button" onclick="document.getElementById('sec-bicicletas').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item">Bicicletas</button>
+        <button type="button" onclick="filterByCategory('Todos')" class="subnav-tab-item">Deportes</button>
+        <button type="button" onclick="filterByCategory('Outdoor')" class="subnav-tab-item">Outdoor</button>
+        <button type="button" onclick="document.getElementById('sec-suplementos').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item">Suplementos</button>
+      </div>
+      <div class="hidden sm:flex items-center pr-2">
+        <button type="button" onclick="document.getElementById('sec-catalogo').scrollIntoView({behavior:'smooth'});" class="p-1 text-slate-400 hover:text-slate-800 transition" title="Ver catálogo completo">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ==================== 2. SECCIÓN: BICICLETAS (EFECTO NEGRO_CORTO - LARGO_A_COLOR) ==================== -->
+    <section id="sec-bicicletas" class="pt-4 scroll-mt-24">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style="font-family:'Segoe UI',system-ui,sans-serif;">
+            BICICLETAS<span class="text-amber-400">.</span>
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">Explora las categorías de ciclismo urbano, ruta, montaña, infantil y scooters eléctricos.</p>
+        </div>
+        <button type="button" onclick="filterByCategory('Bicicletas')" class="text-xs font-bold text-slate-900 hover:text-[#007185] flex items-center gap-1 transition">
+          Ver todas las bicicletas &rarr;
+        </button>
+      </div>
+
+      <!-- Contenedor Acordeón Interactivo Oficial con las 5 tarjetas auténticas -->
+      <div class="flex flex-row items-stretch gap-2.5 h-[320px] sm:h-[340px] md:h-[360px] max-w-[1050px] mx-auto w-full select-none" id="bicyclesAccordion">
+        
+        <!-- Panel 1: MONTAÑERA (Activa por defecto) -->
+        <article class="bici-panel-card group active rounded-2xl overflow-hidden cursor-pointer shadow-sm"
+                 data-cat="Montañera"
+                 onclick="selectBiciCard(this, 'Montañera')"
+                 onmouseenter="hoverBiciCard(this)"
+                 title="Bicicletas Montañeras">
+          <picture>
+            <source srcset="assets/deportes/bici_montanera_col.webp" type="image/webp">
+            <img src="assets/deportes/bici_montanera_col.png" alt="Montañera Colapsada" class="bici-img-col absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <picture>
+            <source srcset="assets/deportes/bici_montanera_exp.webp" type="image/webp">
+            <img src="assets/deportes/bici_montanera_exp.png" alt="Montañera Expandida" class="bici-img-exp absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <button type="button" onclick="event.stopPropagation(); filterBiciCategory('Montañera')" class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" aria-label="Ir a categoría Montañera"></button>
+        </article>
+
+        <!-- Panel 2: URBANAS -->
+        <article class="bici-panel-card group rounded-2xl overflow-hidden cursor-pointer shadow-sm"
+                 data-cat="Urbanas"
+                 onclick="selectBiciCard(this, 'Urbanas')"
+                 onmouseenter="hoverBiciCard(this)"
+                 title="Bicicletas Urbanas">
+          <picture>
+            <source srcset="assets/deportes/bici_urbanas_col.webp" type="image/webp">
+            <img src="assets/deportes/bici_urbanas_col.png" alt="Urbanas Colapsada" class="bici-img-col absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <picture>
+            <source srcset="assets/deportes/bici_urbanas_exp.webp" type="image/webp">
+            <img src="assets/deportes/bici_urbanas_exp.png" alt="Urbanas Expandida" class="bici-img-exp absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <button type="button" onclick="event.stopPropagation(); filterBiciCategory('Urbanas')" class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" aria-label="Ir a categoría Urbanas"></button>
+        </article>
+
+        <!-- Panel 3: RUTERA -->
+        <article class="bici-panel-card group rounded-2xl overflow-hidden cursor-pointer shadow-sm"
+                 data-cat="Rutera"
+                 onclick="selectBiciCard(this, 'Rutera')"
+                 onmouseenter="hoverBiciCard(this)"
+                 title="Bicicletas de Ruta">
+          <picture>
+            <source srcset="assets/deportes/bici_rutera_col.webp" type="image/webp">
+            <img src="assets/deportes/bici_rutera_col.png" alt="Rutera Colapsada" class="bici-img-col absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <picture>
+            <source srcset="assets/deportes/bici_rutera_exp.webp" type="image/webp">
+            <img src="assets/deportes/bici_rutera_exp.png" alt="Rutera Expandida" class="bici-img-exp absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <button type="button" onclick="event.stopPropagation(); filterBiciCategory('Rutera')" class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" aria-label="Ir a categoría Rutera"></button>
+        </article>
+
+        <!-- Panel 4: INFANTIL -->
+        <article class="bici-panel-card group rounded-2xl overflow-hidden cursor-pointer shadow-sm"
+                 data-cat="Infantil"
+                 onclick="selectBiciCard(this, 'Infantil')"
+                 onmouseenter="hoverBiciCard(this)"
+                 title="Bicicletas Infantiles">
+          <picture>
+            <source srcset="assets/deportes/bici_infantil_col.webp" type="image/webp">
+            <img src="assets/deportes/bici_infantil_col.png" alt="Infantil Colapsada" class="bici-img-col absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <picture>
+            <source srcset="assets/deportes/bici_infantil_exp.webp" type="image/webp">
+            <img src="assets/deportes/bici_infantil_exp.png" alt="Infantil Expandida" class="bici-img-exp absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <button type="button" onclick="event.stopPropagation(); filterBiciCategory('Infantil')" class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" aria-label="Ir a categoría Infantil"></button>
+        </article>
+
+        <!-- Panel 5: SCOOTER -->
+        <article class="bici-panel-card group rounded-2xl overflow-hidden cursor-pointer shadow-sm"
+                 data-cat="Scooter"
+                 onclick="selectBiciCard(this, 'Scooter')"
+                 onmouseenter="hoverBiciCard(this)"
+                 title="Scooters Eléctricos">
+          <picture>
+            <source srcset="assets/deportes/bici_scooter_col.webp" type="image/webp">
+            <img src="assets/deportes/bici_scooter_col.png" alt="Scooter Colapsada" class="bici-img-col absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <picture>
+            <source srcset="assets/deportes/bici_scooter_exp.webp" type="image/webp">
+            <img src="assets/deportes/bici_scooter_exp.png" alt="Scooter Expandida" class="bici-img-exp absolute inset-0 w-full h-full object-cover">
+          </picture>
+          <button type="button" onclick="event.stopPropagation(); filterBiciCategory('Scooter')" class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" aria-label="Ir a categoría Scooter"></button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: SUPLEMENTOS ==================== -->
+    <section id="sec-suplementos" class="pt-6 scroll-mt-24">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style="font-family:'Segoe UI',system-ui,sans-serif;">
+            SUPLEMENTOS<span class="text-amber-400">.</span>
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">Nutrición deportiva, rendimiento muscular, energía y vitaminas certificadas.</p>
+        </div>
+        <button type="button" onclick="filterByCategory('Suplementos')" class="text-xs font-bold text-slate-900 hover:text-[#007185] flex items-center gap-1 transition">
+          Ver todos los suplementos &rarr;
+        </button>
+      </div>
+
+      <!-- Grid de 4 categorías con frascos flotantes auténticos de Imagen 4 -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <!-- Categoría 1: Proteínas (Whey Pro) -->
+        <article class="supplement-card bg-[#f1f1f1] rounded-2xl p-5 flex flex-col items-center justify-between cursor-pointer border border-slate-200"
+                 onclick="filterSupplements('Proteínas')">
+          <div class="h-44 flex items-center justify-center p-2">
+            <picture>
+              <source srcset="assets/deportes/suplemento_whey_pro.webp" type="image/webp">
+              <img src="assets/deportes/suplemento_whey_pro.png" alt="Proteínas Whey Pro" class="max-h-full object-contain drop-shadow-md transition-transform duration-300" loading="lazy">
+            </picture>
+          </div>
+          <span class="mt-4 text-xs md:text-sm font-black text-slate-800 tracking-wider flex items-center gap-1 group-hover:text-black">
+            PROTEÍNAS &gt;
+          </span>
+        </article>
+
+        <!-- Categoría 2: Creatina (Applied Nutrition) -->
+        <article class="supplement-card bg-[#f1f1f1] rounded-2xl p-5 flex flex-col items-center justify-between cursor-pointer border border-slate-200"
+                 onclick="filterSupplements('Creatina')">
+          <div class="h-44 flex items-center justify-center p-2">
+            <picture>
+              <source srcset="assets/deportes/suplemento_creatina.webp" type="image/webp">
+              <img src="assets/deportes/suplemento_creatina.png" alt="Creatina Monohidratada" class="max-h-full object-contain drop-shadow-md transition-transform duration-300" loading="lazy">
+            </picture>
+          </div>
+          <span class="mt-4 text-xs md:text-sm font-black text-slate-800 tracking-wider flex items-center gap-1 group-hover:text-black">
+            CREATINA &gt;
+          </span>
+        </article>
+
+        <!-- Categoría 3: Quemadores de Grasa (Lipo 6 Black) -->
+        <article class="supplement-card bg-[#f1f1f1] rounded-2xl p-5 flex flex-col items-center justify-between cursor-pointer border border-slate-200"
+                 onclick="filterSupplements('Quemadores')">
+          <div class="h-44 flex items-center justify-center p-2">
+            <picture>
+              <source srcset="assets/deportes/suplemento_lipo6.webp" type="image/webp">
+              <img src="assets/deportes/suplemento_lipo6.png" alt="Quemadores de Grasa Lipo 6" class="max-h-full object-contain drop-shadow-md transition-transform duration-300" loading="lazy">
+            </picture>
+          </div>
+          <span class="mt-4 text-xs md:text-sm font-black text-slate-800 tracking-wider flex items-center gap-1 group-hover:text-black">
+            QUEMADORES DE GRASA &gt;
+          </span>
+        </article>
+
+        <!-- Categoría 4: Vitaminas (Nutricost Omega-3) -->
+        <article class="supplement-card bg-[#f1f1f1] rounded-2xl p-5 flex flex-col items-center justify-between cursor-pointer border border-slate-200"
+                 onclick="filterSupplements('Vitaminas')">
+          <div class="h-44 flex items-center justify-center p-2">
+            <picture>
+              <source srcset="assets/deportes/suplemento_vitaminas.webp" type="image/webp">
+              <img src="assets/deportes/suplemento_vitaminas.png" alt="Vitaminas y Omega 3" class="max-h-full object-contain drop-shadow-md transition-transform duration-300" loading="lazy">
+            </picture>
+          </div>
+          <span class="mt-4 text-xs md:text-sm font-black text-slate-800 tracking-wider flex items-center gap-1 group-hover:text-black">
+            VITAMINAS &gt;
+          </span>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. SECCIÓN: MÁQUINAS DE EJERCICIO / ZONA FITNESS ==================== -->
+    <section id="sec-zona-fitness" class="pt-6 scroll-mt-24">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style="font-family:'Segoe UI',system-ui,sans-serif;">
+            ZONA FITNESS<span class="text-amber-400">.</span>
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">Equipa tu entrenamiento en casa: trotadoras eléctricas, gimnasios multifuerza, pesas y spinning.</p>
+        </div>
+        <button type="button" onclick="filterByCategory('Máquinas')" class="text-xs font-bold text-slate-900 hover:text-[#007185] flex items-center gap-1 transition">
+          Ver todas las máquinas &rarr;
+        </button>
+      </div>
+
+      <!-- Cuadro Principal Interactivo con Hotspots idéntico a Imagen 5 -->
+      <div class="relative w-full rounded-2xl overflow-hidden bg-slate-900 shadow-md aspect-[1012/379]">
+        <picture>
+          <source srcset="assets/deportes/zona_fitness_room.webp" type="image/webp">
+          <img src="assets/deportes/zona_fitness_room.png" alt="Zona Fitness Falabella: Sala de Máquinas de Ejercicio" class="w-full h-full object-cover">
+        </picture>
+
+        <!-- Hotspot 1: Gimnasio Multifuerza Atletis -->
+        <div style="left: 24.5%; top: 77%;" class="absolute">
+          <button type="button" class="fitness-hotspot-btn" onclick="toggleHotspotPopover('popover-gym')" title="Multigimnasio Atletis Multifuerza">+</button>
+          <div id="popover-gym" class="fitness-popover">
+            <span class="text-[10px] font-black uppercase text-rose-600 block">Multifuerza</span>
+            <h5 class="text-xs font-bold text-slate-900 leading-tight mt-0.5">Atletis Gimnasio 100 Lbs</h5>
+            <div class="mt-2 flex items-baseline justify-between">
+              <span class="text-sm font-black text-slate-900">S/ 1,399.00</span>
+              <span class="text-[10px] line-through text-slate-400">S/ 1,799.00</span>
+            </div>
+            <button type="button" onclick="addToCart(608); closeAllHotspots()" class="mt-2 w-full py-1.5 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-lg text-xs transition">
+              Añadir a la bolsa
+            </button>
+          </div>
+        </div>
+
+        <!-- Hotspot 2: Banco de Pesas Olímpico -->
+        <div style="left: 41.5%; top: 67.5%;" class="absolute">
+          <button type="button" class="fitness-hotspot-btn" onclick="toggleHotspotPopover('popover-banco')" title="Banco de Pesas Inclinable Atletis">+</button>
+          <div id="popover-banco" class="fitness-popover">
+            <span class="text-[10px] font-black uppercase text-rose-600 block">Bancos & Fuerza</span>
+            <h5 class="text-xs font-bold text-slate-900 leading-tight mt-0.5">Atletis Banco Olímpico Regulable</h5>
+            <div class="mt-2 flex items-baseline justify-between">
+              <span class="text-sm font-black text-slate-900">S/ 429.00</span>
+              <span class="text-[10px] line-through text-slate-400">S/ 549.00</span>
+            </div>
+            <button type="button" onclick="addToCart(609); closeAllHotspots()" class="mt-2 w-full py-1.5 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-lg text-xs transition">
+              Añadir a la bolsa
+            </button>
+          </div>
+        </div>
+
+        <!-- Hotspot 3: Rack de Mancuernas -->
+        <div style="left: 54.3%; top: 66%;" class="absolute">
+          <button type="button" class="fitness-hotspot-btn" onclick="toggleHotspotPopover('popover-pesos')" title="Rack de Mancuernas Hexagonales">+</button>
+          <div id="popover-pesos" class="fitness-popover">
+            <span class="text-[10px] font-black uppercase text-rose-600 block">Pesas Libres</span>
+            <h5 class="text-xs font-bold text-slate-900 leading-tight mt-0.5">Bowflex Mancuernas Ajustables</h5>
+            <div class="mt-2 flex items-baseline justify-between">
+              <span class="text-sm font-black text-slate-900">S/ 999.00</span>
+              <span class="text-[10px] line-through text-slate-400">S/ 1,299.00</span>
+            </div>
+            <button type="button" onclick="addToCart(610); closeAllHotspots()" class="mt-2 w-full py-1.5 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-lg text-xs transition">
+              Añadir a la bolsa
+            </button>
+          </div>
+        </div>
+
+        <!-- Hotspot 4: Trotadora Eléctrica -->
+        <div style="left: 69.0%; top: 87.5%;" class="absolute">
+          <button type="button" class="fitness-hotspot-btn" onclick="toggleHotspotPopover('popover-treadmill')" title="Trotadora Eléctrica Sole Fitness">+</button>
+          <div id="popover-treadmill" class="fitness-popover">
+            <span class="text-[10px] font-black uppercase text-rose-600 block">Cardio Profesional</span>
+            <h5 class="text-xs font-bold text-slate-900 leading-tight mt-0.5">Sole Fitness Trotadora F63 2.5 HP</h5>
+            <div class="mt-2 flex items-baseline justify-between">
+              <span class="text-sm font-black text-slate-900">S/ 2,899.00</span>
+              <span class="text-[10px] line-through text-slate-400">S/ 3,499.00</span>
+            </div>
+            <button type="button" onclick="addToCart(606); closeAllHotspots()" class="mt-2 w-full py-1.5 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-lg text-xs transition">
+              Añadir a la bolsa
+            </button>
+          </div>
+        </div>
+
+        <!-- Hotspot 5: Spinning Bike -->
+        <div style="left: 86.5%; top: 78%;" class="absolute">
+          <button type="button" class="fitness-hotspot-btn" onclick="toggleHotspotPopover('popover-spinning')" title="Bicicleta de Spinning Oxford">+</button>
+          <div id="popover-spinning" class="fitness-popover">
+            <span class="text-[10px] font-black uppercase text-rose-600 block">Spinning & Cardio</span>
+            <h5 class="text-xs font-bold text-slate-900 leading-tight mt-0.5">Oxford Spinning Magnética 18kg</h5>
+            <div class="mt-2 flex items-baseline justify-between">
+              <span class="text-sm font-black text-slate-900">S/ 1,199.00</span>
+              <span class="text-[10px] line-through text-slate-400">S/ 1,499.00</span>
+            </div>
+            <button type="button" onclick="addToCart(607); closeAllHotspots()" class="mt-2 w-full py-1.5 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-lg text-xs transition">
+              Añadir a la bolsa
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra rápida de 4 tipos de máquinas -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+        <button type="button" onclick="filterMachineCategory('Trotadoras')" class="p-3 bg-white border border-slate-200 rounded-xl hover:border-slate-400 text-left transition flex items-center gap-3">
+          <span class="text-xl">🏃</span>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900">Trotadoras & Caminadoras</h5>
+            <p class="text-[10px] text-slate-500">Motorizadas, plegables</p>
+          </div>
+        </button>
+
+        <button type="button" onclick="filterMachineCategory('Spinning')" class="p-3 bg-white border border-slate-200 rounded-xl hover:border-slate-400 text-left transition flex items-center gap-3">
+          <span class="text-xl">🚴</span>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900">Spinning & Elípticas</h5>
+            <p class="text-[10px] text-slate-500">Volantes 14kg a 22kg</p>
+          </div>
+        </button>
+
+        <button type="button" onclick="filterMachineCategory('Multigimnasios')" class="p-3 bg-white border border-slate-200 rounded-xl hover:border-slate-400 text-left transition flex items-center gap-3">
+          <span class="text-xl">🏋️</span>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900">Gimnasios Multifuerza</h5>
+            <p class="text-[10px] text-slate-500">Torres con lingoteras</p>
+          </div>
+        </button>
+
+        <button type="button" onclick="filterMachineCategory('Pesas')" class="p-3 bg-white border border-slate-200 rounded-xl hover:border-slate-400 text-left transition flex items-center gap-3">
+          <span class="text-xl">💪</span>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900">Mancuernas & Bancos</h5>
+            <p class="text-[10px] text-slate-500">Discos, barras y sets</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CATÁLOGO COMPLETO DE DEPORTES ==================== -->
+    <section id="sec-catalogo" class="pt-8 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 pb-4 border-b border-slate-200 gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - DEPORTES</h3>
+            <span class="bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">Oficial</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">Garantía oficial Falabella en todas las marcas deportivas, bicicletas y máquinas de fitness.</p>
+        </div>
+
+        <!-- Filtros Rápidos por Categoría -->
+        <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1" id="deportesCategoryPills">
+          <button type="button" onclick="filterByCategory('Todos')" class="cat-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition">Todos</button>
+          <button type="button" onclick="filterByCategory('Bicicletas')" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Bicicletas</button>
+          <button type="button" onclick="filterByCategory('Máquinas')" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Zona Fitness</button>
+          <button type="button" onclick="filterByCategory('Suplementos')" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Suplementos</button>
+          <button type="button" onclick="filterByCategory('Zapatillas')" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Zapatillas</button>
+          <button type="button" onclick="filterByCategory('Vestuario')" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Vestuario</button>
+        </div>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="deportesProductsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Renderizado dinámicamente por JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL DE CARRITO GLOBAL (FALABELLA_STORE_CART_V2) ==================== -->
+  <div id="deportesCartModal" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity" onclick="closeDeportesCartModal()"></div>
+
+    <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+      <div class="pointer-events-auto w-screen max-w-md bg-white shadow-2xl flex flex-col">
+        
+        <!-- Cart Header -->
+        <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-2">
+            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <h3 class="font-black text-slate-900 text-base">Bolsa de compras</h3>
+            <span id="deportesCartCountPill" class="bg-[#0f172a] text-[#aad500] text-xs font-black px-2 py-0.5 rounded-full">0</span>
+          </div>
+          <button type="button" onclick="closeDeportesCartModal()" class="text-slate-400 hover:text-slate-600 p-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="deportesCartItemsList" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+          <!-- Renderizado dinámico -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-4 sm:p-5 border-t border-slate-200 bg-slate-50 space-y-3">
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>Envío</span>
+            <span class="text-emerald-700 font-bold">Gratis por compras &gt; S/ 199</span>
+          </div>
+          <div class="flex items-center justify-between text-base font-black text-slate-900 pt-1">
+            <span>Subtotal estimado</span>
+            <span id="deportesCartSubtotal" class="text-rose-600 text-lg">S/ 0.00</span>
+          </div>
+          <button type="button" onclick="proceedToCheckout()" class="w-full py-3 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black rounded-xl text-sm tracking-wide shadow-md hover:scale-[1.01] transition">
+            Continuar compra
+          </button>
+          <button type="button" onclick="closeDeportesCartModal()" class="w-full py-2 bg-white border border-slate-300 text-slate-700 font-bold rounded-xl text-xs hover:bg-slate-100 transition">
+            Seguir explorando
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="deportesToast" class="fixed bottom-5 right-5 z-50 bg-[#0f172a] text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <span class="text-[#aad500] text-base">✓</span>
+    <span id="deportesToastMsg">Producto añadido a tu bolsa</span>
+  </div>
+
+  <!-- ==================== FOOTER OFICIAL FALABELLA ==================== -->
+  <footer class="mt-16 bg-[#1e293b] text-slate-300 text-xs pt-12 pb-8 border-t border-slate-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Servicio al cliente</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-white transition">Centro de ayuda</a></li>
+          <li><a href="index.html" class="hover:text-white transition">Estado de mi orden</a></li>
+          <li><a href="index.html" class="hover:text-white transition">Cambios y devoluciones</a></li>
+          <li><a href="index.html" class="hover:text-white transition">Boletas y facturas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Deportes Falabella</h4>
+        <ul class="space-y-2">
+          <li><a href="#sec-bicicletas" class="hover:text-white transition">Bicicletas Monark & Trek</a></li>
+          <li><a href="#sec-zona-fitness" class="hover:text-white transition">Trotadoras y Máquinas</a></li>
+          <li><a href="#sec-suplementos" class="hover:text-white transition">Proteínas y Creatina</a></li>
+          <li><a href="#sec-catalogo" class="hover:text-white transition">Zapatillas Running</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Nuestras Tiendas</h4>
+        <ul class="space-y-2">
+          <li><a href="tecnologia.html" class="hover:text-white transition">Tecnología</a></li>
+          <li><a href="moda_mujer.html" class="hover:text-white transition">Moda Mujer</a></li>
+          <li><a href="moda_hombre.html" class="hover:text-white transition">Moda Hombre</a></li>
+          <li><a href="deportes.html" class="hover:text-white transition">Deportes & Outdoors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Garantía Falabella</h4>
+        <p class="text-slate-400 leading-relaxed mb-3">Compras 100% protegidas, envíos garantizados y devoluciones sin costo en tiendas físicas a nivel nacional.</p>
+        <span class="inline-block px-3 py-1 bg-slate-800 text-[#aad500] font-black rounded-md text-[11px]">Compra 100% Segura</span>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2">
+      <span>© 2026 falabella.com - Todos los derechos reservados.</span>
+      <span>Precios y promociones válidos para compras online.</span>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPT DE DEPORTES & CARRITO GLOBAL ==================== -->
+  <script>
+    /* ============================================================
+       BASE DE DATOS DE PRODUCTOS DEPORTES (DEPORTES_PRODUCTS)
+       ============================================================ */
+    const DEPORTES_PRODUCTS = [
+      // 1. BICICLETAS
+      {
+        id: 601,
+        code: 'DEP-BIC-01',
+        name: 'Monark Bicicleta Montañera Furious Aro 29 Freno Disco',
+        brand: 'Monark',
+        category: 'Bicicletas',
+        subcat: 'Montañera',
+        priceCmr: 899.00,
+        priceNormal: 1199.00,
+        discount: '-25%',
+        rating: 4.9,
+        reviews: 142,
+        image: 'assets/deportes/bici_montanera_exp.webp',
+        badge: 'Top Ventas'
+      },
+      {
+        id: 602,
+        code: 'DEP-BIC-02',
+        name: 'Jeep Bicicleta Urbana Commuter Paseo Aluminio 700c',
+        brand: 'Jeep',
+        category: 'Bicicletas',
+        subcat: 'Urbanas',
+        priceCmr: 749.00,
+        priceNormal: 999.00,
+        discount: '-25%',
+        rating: 4.8,
+        reviews: 87,
+        image: 'assets/deportes/bici_urbanas_exp.webp',
+        badge: 'Oferta CMR'
+      },
+      {
+        id: 603,
+        code: 'DEP-BIC-03',
+        name: 'Trek Bicicleta de Ruta Alpha Domane AL 2 Disc 16 Velocidades',
+        brand: 'Trek',
+        category: 'Bicicletas',
+        subcat: 'Rutera',
+        priceCmr: 2499.00,
+        priceNormal: 2999.00,
+        discount: '-17%',
+        rating: 5.0,
+        reviews: 64,
+        image: 'assets/deportes/bici_rutera_exp.webp',
+        badge: 'Profesional'
+      },
+      {
+        id: 604,
+        code: 'DEP-BIC-04',
+        name: 'Monark Bicicleta Infantil Kids Aro 16 con Rueditas de Apoyo',
+        brand: 'Monark',
+        category: 'Bicicletas',
+        subcat: 'Infantil',
+        priceCmr: 389.00,
+        priceNormal: 499.00,
+        discount: '-22%',
+        rating: 4.7,
+        reviews: 95,
+        image: 'assets/deportes/bici_infantil_exp.webp',
+        badge: 'Kids'
+      },
+      {
+        id: 605,
+        code: 'DEP-BIC-05',
+        name: 'Segway Ninebot KickScooter Eléctrico F25 Plegable 25km/h',
+        brand: 'Segway',
+        category: 'Bicicletas',
+        subcat: 'Scooter',
+        priceCmr: 1599.00,
+        priceNormal: 1999.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 110,
+        image: 'assets/deportes/bici_scooter_exp.webp',
+        badge: 'E-Mobility'
+      },
+
+      // 2. MÁQUINAS DE EJERCICIO / ZONA FITNESS
+      {
+        id: 606,
+        code: 'DEP-FIT-01',
+        name: 'Sole Fitness Trotadora Eléctrica F63 2.5 HP Pantalla LCD Plegable',
+        brand: 'Sole Fitness',
+        category: 'Máquinas',
+        subcat: 'Trotadoras',
+        priceCmr: 2899.00,
+        priceNormal: 3499.00,
+        discount: '-17%',
+        rating: 4.9,
+        reviews: 82,
+        image: 'assets/deportes/banner_zona_fitness.webp',
+        badge: 'Alta Gama'
+      },
+      {
+        id: 607,
+        code: 'DEP-FIT-02',
+        name: 'Oxford Bicicleta de Spinning Magnética Volante Inercia 18kg',
+        brand: 'Oxford',
+        category: 'Máquinas',
+        subcat: 'Spinning',
+        priceCmr: 1199.00,
+        priceNormal: 1499.00,
+        discount: '-20%',
+        rating: 4.8,
+        reviews: 124,
+        image: 'assets/deportes/zona_fitness_room.webp',
+        badge: 'Recomendado'
+      },
+      {
+        id: 608,
+        code: 'DEP-FIT-03',
+        name: 'Atletis Multigimnasio Multifuerza Profesional 100 Lbs con Poleas',
+        brand: 'Atletis',
+        category: 'Máquinas',
+        subcat: 'Multigimnasios',
+        priceCmr: 1399.00,
+        priceNormal: 1799.00,
+        discount: '-22%',
+        rating: 4.9,
+        reviews: 68,
+        image: 'assets/deportes/zona_fitness_room.webp',
+        badge: 'Exclusivo'
+      },
+      {
+        id: 609,
+        code: 'DEP-FIT-04',
+        name: 'Atletis Banco de Pesas Olímpico Inclinable con Extensión de Piernas',
+        brand: 'Atletis',
+        category: 'Máquinas',
+        subcat: 'Pesas',
+        priceCmr: 429.00,
+        priceNormal: 549.00,
+        discount: '-22%',
+        rating: 4.7,
+        reviews: 54,
+        image: 'assets/deportes/zona_fitness_room.webp',
+        badge: 'Fuerza'
+      },
+      {
+        id: 610,
+        code: 'DEP-FIT-05',
+        name: 'Bowflex Set Mancuernas Ajustables SelectTech 552 (2 a 24 kg) + Rack',
+        brand: 'Bowflex',
+        category: 'Máquinas',
+        subcat: 'Pesas',
+        priceCmr: 999.00,
+        priceNormal: 1299.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 139,
+        image: 'assets/deportes/zona_fitness_room.webp',
+        badge: 'Innovación'
+      },
+
+      // 3. SUPLEMENTOS DEPORTIVOS
+      {
+        id: 611,
+        code: 'DEP-SUP-01',
+        name: 'Whey Pro Proteína Concentrada 5 Lbs Sabor Chocolate Suizo',
+        brand: 'Whey Pro',
+        category: 'Suplementos',
+        subcat: 'Proteínas',
+        priceCmr: 199.90,
+        priceNormal: 249.90,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 215,
+        image: 'assets/deportes/suplemento_whey_pro.webp',
+        badge: 'Top Ventas'
+      },
+      {
+        id: 612,
+        code: 'DEP-SUP-02',
+        name: 'Applied Nutrition Creatina Monohidratada Micronizada Pura 250g',
+        brand: 'Applied Nutrition',
+        category: 'Suplementos',
+        subcat: 'Creatina',
+        priceCmr: 89.90,
+        priceNormal: 119.90,
+        discount: '-25%',
+        rating: 4.9,
+        reviews: 184,
+        image: 'assets/deportes/suplemento_creatina.webp',
+        badge: 'Esencial'
+      },
+      {
+        id: 613,
+        code: 'DEP-SUP-03',
+        name: 'Nutrex Research Lipo 6 Black Intense Ultra Quemador 60 Cápsulas',
+        brand: 'Nutrex',
+        category: 'Suplementos',
+        subcat: 'Quemadores',
+        priceCmr: 129.90,
+        priceNormal: 169.90,
+        discount: '-24%',
+        rating: 4.8,
+        reviews: 147,
+        image: 'assets/deportes/suplemento_lipo6.webp',
+        badge: 'Termogénico'
+      },
+      {
+        id: 614,
+        code: 'DEP-SUP-04',
+        name: 'Nutricost Omega-3 2500mg 1200mg EPA / 850mg DHA 120 Softgels',
+        brand: 'Nutricost',
+        category: 'Suplementos',
+        subcat: 'Vitaminas',
+        priceCmr: 79.90,
+        priceNormal: 99.90,
+        discount: '-20%',
+        rating: 4.8,
+        reviews: 98,
+        image: 'assets/deportes/suplemento_vitaminas.webp',
+        badge: 'Salud & Cardio'
+      },
+
+      // 4. VESTUARIO DEPORTIVO & ZAPATILLAS
+      {
+        id: 615,
+        code: 'DEP-CAL-01',
+        name: 'Nike Zapatillas Running Air Zoom Pegasus 40 Hombre Black/White',
+        brand: 'Nike',
+        category: 'Zapatillas',
+        subcat: 'Running',
+        priceCmr: 399.00,
+        priceNormal: 499.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 320,
+        image: 'assets/deportes/banner_vestuario_deportivo.webp',
+        badge: 'Nike Pro'
+      },
+      {
+        id: 616,
+        code: 'DEP-VES-01',
+        name: 'Adidas Casaca Deportiva Cortaviento Tiro 23 Windbreaker Negro',
+        brand: 'Adidas',
+        category: 'Vestuario',
+        subcat: 'Hombre',
+        priceCmr: 199.00,
+        priceNormal: 249.00,
+        discount: '-20%',
+        rating: 4.8,
+        reviews: 112,
+        image: 'assets/deportes/banner_vestuario_deportivo.webp',
+        badge: 'Adidas Tiro'
+      },
+      {
+        id: 617,
+        code: 'DEP-VES-02',
+        name: 'Under Armour Polo Deportivo HeatGear Compresión Hombre',
+        brand: 'Under Armour',
+        category: 'Vestuario',
+        subcat: 'Hombre',
+        priceCmr: 99.90,
+        priceNormal: 129.90,
+        discount: '-23%',
+        rating: 4.7,
+        reviews: 85,
+        image: 'assets/deportes/banner_vestuario_deportivo.webp',
+        badge: 'HeatGear'
+      },
+      {
+        id: 618,
+        code: 'DEP-VES-03',
+        name: 'Puma Leggings Deportivas Tiro Alto Training Mujer Strong',
+        brand: 'Puma',
+        category: 'Vestuario',
+        subcat: 'Mujer',
+        priceCmr: 119.90,
+        priceNormal: 149.90,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 144,
+        image: 'assets/deportes/banner_vestuario_deportivo.webp',
+        badge: 'DryCELL'
+      },
+      // PRODUCTOS OFICIALES DEPORTES FALABELLA (NUEVAS ADICIONES)
+      // -- Bicicletas Montañera, Rutera, Urbanas & Infantil --
+      {
+        id: 622,
+        code: 'DEP-BIC-06',
+        name: 'Oxford Bicicleta Montañera Aluminio Jade Aro 27.5',
+        brand: 'Oxford',
+        category: 'Bicicletas',
+        subcat: 'Montañera',
+        priceCmr: 699.00,
+        priceNormal: 1299.00,
+        discount: '-46%',
+        rating: 5.0,
+        reviews: 2,
+        image: 'assets/deportes/prod_bici_oxford_jade_275.webp',
+        badge: 'Llega mañana'
+      },
+      {
+        id: 623,
+        code: 'DEP-BIC-07',
+        name: 'Trinx Bicicleta de Ruta Swift 2.0 700CC 50 CM Rojo',
+        brand: 'Trinx',
+        category: 'Bicicletas',
+        subcat: 'Rutera',
+        priceCmr: 2999.00,
+        priceNormal: 5330.00,
+        discount: '-44%',
+        rating: 5.0,
+        reviews: 1,
+        image: 'assets/deportes/prod_bici_trinx_swift_rojo.webp',
+        badge: 'Trinx Racing'
+      },
+      {
+        id: 624,
+        code: 'DEP-BIC-08',
+        name: 'Trinx Bicicleta de Ruta Swift 2.0 700CC 50 CM Azul',
+        brand: 'Trinx',
+        category: 'Bicicletas',
+        subcat: 'Rutera',
+        priceCmr: 2999.00,
+        priceNormal: 5330.00,
+        discount: '-44%',
+        rating: 5.0,
+        reviews: 1,
+        image: 'assets/deportes/prod_bici_trinx_swift_azul.webp',
+        badge: 'Carbon Fork'
+      },
+      {
+        id: 625,
+        code: 'DEP-BIC-09',
+        name: 'Jeep Bicicleta Aro 20 Peak Doble Suspensión Naranja',
+        brand: 'Jeep',
+        category: 'Bicicletas',
+        subcat: 'Urbanas',
+        priceCmr: 699.00,
+        priceNormal: 999.00,
+        discount: '-30%',
+        rating: 4.9,
+        reviews: 14,
+        image: 'assets/deportes/prod_bici_jeep_peak_20.webp',
+        badge: 'Llega mañana'
+      },
+      {
+        id: 626,
+        code: 'DEP-BIC-10',
+        name: 'Monark Bicicleta Infantil Minnie Party Aro 12 Rosado con Canastilla',
+        brand: 'Monark',
+        category: 'Bicicletas',
+        subcat: 'Infantil',
+        priceCmr: 299.00,
+        priceNormal: 369.00,
+        discount: '-19%',
+        rating: 4.9,
+        reviews: 28,
+        image: 'assets/deportes/prod_bici_minnie_party_12.webp',
+        badge: 'Disney Kids'
+      },
+      {
+        id: 627,
+        code: 'DEP-BIC-11',
+        name: 'Valiant Bicicleta de Equilibrio para Bebés Aro 12 Plateada (1 a 4 años)',
+        brand: 'Valiant',
+        category: 'Bicicletas',
+        subcat: 'Infantil',
+        priceCmr: 229.00,
+        priceNormal: 399.00,
+        discount: '-43%',
+        rating: 4.8,
+        reviews: 4,
+        image: 'assets/deportes/prod_bici_valiant_equilibrio.webp',
+        badge: 'Llega mañana'
+      },
+      {
+        id: 628,
+        code: 'DEP-BIC-12',
+        name: 'Bicicleta Infantil Aro 16 con Rueditas de Apoyo y Caramañola',
+        brand: 'Genérico',
+        category: 'Bicicletas',
+        subcat: 'Infantil',
+        priceCmr: 300.00,
+        priceNormal: 350.00,
+        discount: '-14%',
+        rating: 4.8,
+        reviews: 10,
+        image: 'assets/deportes/prod_bici_infantil_aro16.webp',
+        badge: 'Retira mañana'
+      },
+      {
+        id: 629,
+        code: 'DEP-BIC-13',
+        name: 'Bicicleta Aro 20 para Niños Luces LED Multicolor y Canasta Metálica',
+        brand: 'Genérico',
+        category: 'Bicicletas',
+        subcat: 'Infantil',
+        priceCmr: 529.90,
+        priceNormal: 889.90,
+        discount: '-40%',
+        rating: 5.0,
+        reviews: 1,
+        image: 'assets/deportes/prod_bici_infantil_led_aro20.webp',
+        badge: 'Luces LED'
+      },
+      // -- Máquinas de Ejercicio: Trotadoras & Mancuernas / Pesas --
+      {
+        id: 620,
+        code: 'DEP-PES-01',
+        name: 'Set Mancuerna ajustable 20kg Pesa Rusa Barra Kettlebell 3 en 1 - Negro',
+        brand: 'Genérico',
+        category: 'Máquinas',
+        subcat: 'Pesas',
+        priceCmr: 124.00,
+        priceNormal: 300.00,
+        discount: '-59%',
+        rating: 5.0,
+        reviews: 16,
+        image: 'assets/deportes/prod_mancuerna_ajustable_20kg.webp',
+        badge: 'Llega mañana'
+      },
+      {
+        id: 621,
+        code: 'DEP-PES-02',
+        name: 'Proiron Set de mancuernas hexagonales de 50KG + Rack de Acero',
+        brand: 'Proiron',
+        category: 'Máquinas',
+        subcat: 'Pesas',
+        priceCmr: 679.00,
+        priceNormal: 1299.00,
+        discount: '-48%',
+        rating: 4.8,
+        reviews: 4,
+        image: 'assets/deportes/prod_mancuernas_hex_50kg.webp',
+        badge: 'Pro Sport'
+      },
+      {
+        id: 630,
+        code: 'DEP-FIT-08',
+        name: 'Ten Series Trotadora Eléctrica TM60 12 Km/h Pantalla Digital',
+        brand: 'Ten Series',
+        category: 'Máquinas',
+        subcat: 'Trotadoras',
+        priceCmr: 699.00,
+        priceNormal: 1399.00,
+        discount: '-50%',
+        rating: 4.8,
+        reviews: 166,
+        image: 'assets/deportes/prod_trotadora_tm60.webp',
+        badge: 'Llega mañana'
+      },
+      {
+        id: 631,
+        code: 'DEP-FIT-09',
+        name: 'Ten Series Trotadora Eléctrica Black A3 14km/h Plegable',
+        brand: 'Ten Series',
+        category: 'Máquinas',
+        subcat: 'Trotadoras',
+        priceCmr: 879.00,
+        priceNormal: 1799.00,
+        discount: '-51%',
+        rating: 4.9,
+        reviews: 32,
+        image: 'assets/deportes/prod_trotadora_black_a3.webp',
+        badge: 'Llega mañana'
+      }
+    ];
+
+    /* ============================================================
+       CONTROL DE HERO CAROUSEL
+       ============================================================ */
+    let currentHeroSlide = 0;
+    const totalHeroSlides = 3;
+    let heroAutoPlayTimer = null;
+
+    function showHeroSlide(index) {
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot-indicator');
+      
+      slides.forEach((slide, idx) => {
+        if (idx === currentHeroSlide) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentHeroSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function nextHeroSlide() { showHeroSlide(currentHeroSlide + 1); resetHeroTimer(); }
+    function prevHeroSlide() { showHeroSlide(currentHeroSlide - 1); resetHeroTimer(); }
+    function setHeroSlide(idx) { showHeroSlide(idx); resetHeroTimer(); }
+
+    function resetHeroTimer() {
+      if (heroAutoPlayTimer) clearInterval(heroAutoPlayTimer);
+      heroAutoPlayTimer = setInterval(() => { nextHeroSlide(); }, 6000);
+    }
+    resetHeroTimer();
+
+    /* ============================================================
+       ACORDEÓN DE BICICLETAS: NEGRO_CORTO - LARGO_A_COLOR
+       ============================================================ */
+    function hoverBiciCard(cardEl) {
+      const cards = document.querySelectorAll('.bici-panel-card');
+      cards.forEach(c => c.classList.remove('active'));
+      cardEl.classList.add('active');
+    }
+
+    function selectBiciCard(cardEl, categoryName) {
+      hoverBiciCard(cardEl);
+      filterBiciCategory(categoryName);
+    }
+
+    function filterBiciCategory(subcat) {
+      const filtered = DEPORTES_PRODUCTS.filter(p => p.category === 'Bicicletas' && (p.subcat.toLowerCase() === subcat.toLowerCase() || p.name.toLowerCase().includes(subcat.toLowerCase())));
+      renderDeportesProducts(filtered.length ? filtered : DEPORTES_PRODUCTS.filter(p => p.category === 'Bicicletas'));
+      scrollToCatalog();
+    }
+
+    /* ============================================================
+       HOTSPOTS ZONA FITNESS & POPOVERS
+       ============================================================ */
+    function toggleHotspotPopover(popoverId) {
+      const popover = document.getElementById(popoverId);
+      if (!popover) return;
+      const isOpen = popover.classList.contains('open');
+      closeAllHotspots();
+      if (!isOpen) {
+        popover.classList.add('open');
+      }
+    }
+
+    function closeAllHotspots() {
+      document.querySelectorAll('.fitness-popover').forEach(p => p.classList.remove('open'));
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.fitness-hotspot-btn') && !e.target.closest('.fitness-popover')) {
+        closeAllHotspots();
+      }
+    });
+
+    function filterMachineCategory(type) {
+      const filtered = DEPORTES_PRODUCTS.filter(p => p.category === 'Máquinas' && (p.subcat.toLowerCase().includes(type.toLowerCase()) || p.name.toLowerCase().includes(type.toLowerCase())));
+      renderDeportesProducts(filtered.length ? filtered : DEPORTES_PRODUCTS.filter(p => p.category === 'Máquinas'));
+      scrollToCatalog();
+    }
+
+    /* ============================================================
+       SUPLEMENTOS FILTERS
+       ============================================================ */
+    function filterSupplements(type) {
+      let filtered = DEPORTES_PRODUCTS.filter(p => p.category === 'Suplementos');
+      if (type !== 'Todos') {
+        filtered = filtered.filter(p => p.subcat.toLowerCase().includes(type.toLowerCase()) || p.name.toLowerCase().includes(type.toLowerCase()));
+      }
+      renderDeportesProducts(filtered);
+      scrollToCatalog();
+    }
+
+    /* ============================================================
+       FILTRADO & RENDERIZADO DEL CATÁLOGO
+       ============================================================ */
+    let currentCategoryFilter = 'Todos';
+
+    function filterByCategory(cat) {
+      currentCategoryFilter = cat;
+
+      const pills = document.querySelectorAll('#deportesCategoryPills .cat-pill');
+      pills.forEach(p => {
+        const text = p.textContent.trim();
+        if ((cat === 'Todos' && text === 'Todos') || (text.toLowerCase() === cat.toLowerCase())) {
+          p.className = 'cat-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+
+      let filtered = DEPORTES_PRODUCTS;
+      if (cat !== 'Todos') {
+        filtered = DEPORTES_PRODUCTS.filter(p => 
+          p.category.toLowerCase() === cat.toLowerCase() ||
+          p.subcat.toLowerCase() === cat.toLowerCase()
+        );
+      }
+      renderDeportesProducts(filtered);
+      scrollToCatalog();
+    }
+
+    function scrollToCatalog() {
+      const el = document.getElementById('sec-catalogo');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderDeportesProducts(productsToRender) {
+      const grid = document.getElementById('deportesProductsGrid');
+      if (!grid) return;
+
+      if (!productsToRender.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500">
+            <p class="text-sm font-semibold">No se encontraron artículos para este filtro.</p>
+            <button onclick="filterByCategory('Todos')" class="mt-3 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold">Ver todos los productos</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = productsToRender.map(p => `
+        <article class="product-card-deporte group">
+          <div class="relative aspect-square overflow-hidden bg-slate-100 cursor-pointer p-4 flex items-center justify-center" onclick="addToCart(${p.id})">
+            <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500" loading="lazy" />
+            <span class="absolute top-2 left-2 bg-[#aad500] text-slate-950 text-[10px] font-black px-2 py-0.5 rounded shadow-xs uppercase tracking-wider">
+              ${p.badge}
+            </span>
+            <span class="absolute top-2 right-2 bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-xs">
+              ${p.discount}
+            </span>
+          </div>
+
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400 font-bold mb-1 uppercase tracking-wider">
+                <span>${p.brand}</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded font-black text-[9px]">${p.category}</span>
+                  <button type="button" onclick="window.toggleProductFavorite(event, ${p.id})" data-fav-prod-id="${p.id}" class="falabella-card-fav-btn p-1 text-slate-400 hover:text-rose-600 transition" title="Guardar en favoritos">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-rose-600 transition" title="${p.name}">
+                ${p.name}
+              </h4>
+              <div class="flex items-center gap-1 mt-1 text-[11px] text-amber-500">
+                <span>★</span>
+                <span class="font-bold text-slate-700">${p.rating}</span>
+                <span class="text-slate-400">(${p.reviews})</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-3 border-t border-slate-100">
+              <div class="flex items-baseline gap-2">
+                <span class="text-base font-black text-rose-600">S/ ${p.priceCmr.toFixed(2)}</span>
+                <span class="text-[10px] font-bold text-slate-400 line-through">S/ ${p.priceNormal.toFixed(2)}</span>
+              </div>
+              <span class="text-[10px] font-bold text-slate-400 block mt-0.5">Precio CMR</span>
+
+              <button type="button" onclick="addToCart(${p.id})" class="mt-3 w-full py-2 bg-[#0f172a] hover:bg-[#aad500] hover:text-slate-950 text-white font-black text-xs rounded-lg transition duration-200 flex items-center justify-center gap-1.5 shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span>Añadir a la bolsa</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function handleDeportesSearch(event) {
+      if (event.key === 'Enter') triggerDeportesSearch();
+    }
+
+    function triggerDeportesSearch() {
+      const q = (document.getElementById('deportesSearchInput').value || '').trim().toLowerCase();
+      if (!q) {
+        renderDeportesProducts(DEPORTES_PRODUCTS);
+        return;
+      }
+      const filtered = DEPORTES_PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.subcat.toLowerCase().includes(q)
+      );
+      renderDeportesProducts(filtered);
+      scrollToCatalog();
+    }
+
+    /* ============================================================
+       CARRITO GLOBAL (FALABELLA_STORE_CART_V2)
+       ============================================================ */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    function getStoreCart() {
+      try {
+        const raw = localStorage.getItem(STORE_CART_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      localStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+      try {
+        sessionStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+      } catch (e) {}
+      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new CustomEvent('falabella_cart_updated', { detail: { cart } }));
+      updateDeportesCartUI();
+    }
+
+    function addToCart(productId) {
+      const product = DEPORTES_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = getStoreCart();
+      const existing = cart.find(item => (item.id === productId || item.productId === productId));
+      const effectivePrice = product.priceCmr || product.priceNormal;
+
+      if (existing) {
+        const currentQty = existing.qty || existing.quantity || 1;
+        existing.qty = currentQty + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          id: product.id,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          img: product.image,
+          price: effectivePrice,
+          originalPrice: product.priceNormal,
+          regularPrice: product.priceNormal,
+          qty: 1,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡${product.name.slice(0, 26)}... añadido a tu bolsa!`);
+      openDeportesCartModal();
+    }
+
+    function updateCartItemQty(productId, delta) {
+      let cart = getStoreCart();
+      const item = cart.find(i => (i.id === productId || i.productId === productId));
+      if (!item) return;
+
+      const currentQty = item.qty || item.quantity || 1;
+      const newQty = currentQty + delta;
+
+      if (newQty <= 0) {
+        cart = cart.filter(i => !(i.id === productId || i.productId === productId));
+      } else {
+        item.qty = newQty;
+        item.quantity = newQty;
+      }
+      saveStoreCart(cart);
+    }
+
+    function removeCartItem(productId) {
+      let cart = getStoreCart();
+      cart = cart.filter(i => !(i.id === productId || i.productId === productId));
+      saveStoreCart(cart);
+    }
+
+    function updateDeportesCartUI() {
+      const cart = getStoreCart();
+      const totalCount = cart.reduce((acc, it) => acc + (it.qty || it.quantity || 1), 0);
+      
+      const badge = document.getElementById('deportesCartBadge');
+      if (badge) badge.textContent = totalCount;
+
+      const countPill = document.getElementById('deportesCartCountPill');
+      if (countPill) countPill.textContent = totalCount;
+
+      const list = document.getElementById('deportesCartItemsList');
+      const subtotalEl = document.getElementById('deportesCartSubtotal');
+
+      if (!list) return;
+
+      if (!cart.length) {
+        list.innerHTML = `
+          <div class="py-16 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <p class="text-sm font-bold text-slate-600">Tu bolsa de compras está vacía</p>
+            <p class="text-xs mt-1">Explora bicicletas, máquinas y suplementos para agregar.</p>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const qty = item.qty || item.quantity || 1;
+        const price = item.price || item.unitPrice || 0;
+        const itemSubtotal = price * qty;
+        subtotal += itemSubtotal;
+        const img = item.image || item.img || 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=200&auto=format&fit=crop&q=80';
+
+        return `
+          <div class="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl shadow-2xs">
+            <img src="${img}" alt="${item.name}" class="w-16 h-16 object-contain rounded-lg bg-slate-50 border border-slate-100 flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-black uppercase text-slate-400 block">${item.brand || 'Falabella'}</span>
+              <h5 class="text-xs font-bold text-slate-800 truncate" title="${item.name}">${item.name}</h5>
+              <span class="text-xs font-black text-rose-600 block mt-0.5">S/ ${price.toFixed(2)}</span>
+              
+              <div class="flex items-center gap-2 mt-2">
+                <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+                  <button type="button" onclick="updateCartItemQty(${item.id || item.productId}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:bg-slate-200 font-black text-xs">-</button>
+                  <span class="px-2 text-xs font-black text-slate-800">${qty}</span>
+                  <button type="button" onclick="updateCartItemQty(${item.id || item.productId}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:bg-slate-200 font-black text-xs">+</button>
+                </div>
+                <button type="button" onclick="removeCartItem(${item.id || item.productId})" class="text-[11px] text-rose-600 hover:underline font-semibold ml-auto">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toFixed(2)}`;
+      }
+    }
+
+    function openDeportesCartModal() {
+      updateDeportesCartUI();
+      const modal = document.getElementById('deportesCartModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeDeportesCartModal() {
+      const modal = document.getElementById('deportesCartModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function proceedToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa de compras está vacía.');
+        return;
+      }
+      window.location.href = 'index.html';
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('deportesToast');
+      const msgEl = document.getElementById('deportesToastMsg');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    /* ============================================================
+       CONTROL DE DRAWER DE CATEGORÍAS
+       ============================================================ */
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('deportesCategoriesDrawer');
+      if (!drawer) return;
+      const isHidden = drawer.classList.contains('hidden');
+      const inner = drawer.firstElementChild;
+
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          inner.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        inner.classList.add('-translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    /* ============================================================
+       SINCRONIZACIÓN INICIAL & EVENTOS MULTI-VENTANA
+       ============================================================ */
+    window.addEventListener('storage', updateDeportesCartUI);
+    window.addEventListener('falabella_cart_updated', updateDeportesCartUI);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDeportesProducts(DEPORTES_PRODUCTS);
+      updateDeportesCartUI();
+    });
+  </script>
+<script src="assets/falabella-auth-favorites.js"></script>
+</body>
+</html>

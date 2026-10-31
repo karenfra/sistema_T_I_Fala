@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Falabella Auth & Favorites Test Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-slate-50 font-sans">
+  <h1 class="text-2xl font-black mb-4">🧪 Falabella Auth, Progressive Linking & Favorites Test Suite</h1>
+  
+  <!-- Dummy Header to test greeting and fav badge -->
+  <header class="bg-white p-4 border rounded-xl shadow mb-6 flex items-center justify-between">
+    <div onclick="openFalabellaAuthOrAccount()" class="cursor-pointer">
+      <span class="text-xs text-slate-500">Hola,</span>
+      <span id="falabellaUserGreetingName" class="font-bold text-sm falabella-user-greeting">Inicia sesión</span>
+    </div>
+    <button id="testFavBtn" onclick="openFalabellaFavoritesModal()" class="relative p-2 text-slate-700">
+      ❤️
+      <span id="falabellaFavCountBadge" class="falabella-fav-badge bg-rose-600 text-white text-xs px-1.5 rounded-full hidden">0</span>
+    </button>
+  </header>
+
+  <!-- Dummy product card -->
+  <div class="product-card p-4 bg-white border rounded-xl max-w-xs mb-6">
+    <div class="flex justify-between items-center">
+      <span class="font-bold">Bicicleta Oxford Montañera</span>
+      <button id="cardFavBtn" type="button" onclick="window.toggleProductFavorite(event, { id: 624, name: 'Bicicleta Oxford Montañera', brand: 'Oxford', price: 699, priceCmr: 699, priceNormal: 1299, image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=600' })" data-fav-prod-id="624" class="falabella-card-fav-btn p-1 text-slate-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="testResults" class="space-y-2 font-mono text-sm"></div>
+
+  <!-- Load universal suite -->
+  <script src="assets/falabella-auth-favorites.js"></script>
+
+  <script>
+    const results = [];
+    function assert(name, condition, extra = '') {
+      results.push({ name, passed: Boolean(condition), extra });
+      const el = document.getElementById('testResults');
+      const div = document.createElement('div');
+      div.className = condition ? 'p-2 bg-emerald-100 text-emerald-900 rounded' : 'p-2 bg-rose-100 text-rose-900 rounded font-bold';
+      div.textContent = `${condition ? '✅ PASS' : '❌ FAIL'}: ${name} ${extra ? '(' + extra + ')' : ''}`;
+      el.appendChild(div);
+    }
+
+    async function runSuite() {
+      // Clear session & favorites before starting
+      localStorage.removeItem('falabella_user_session_v1');
+      localStorage.removeItem('falabella_active_favs_v1');
+      localStorage.removeItem('falabella_store_cart_v2');
+      window.dispatchEvent(new Event('falabella_session_changed'));
+
+      // Test 1: Header initial state is "Inicia sesión"
+      assert('Initial header greeting is "Inicia sesión"', document.getElementById('falabellaUserGreetingName').textContent.includes('Inicia sesión'));
+
+      // Test 2: Favorites count initially 0
+      assert('Initial favorites list is empty', window.getFalabellaFavorites().length === 0);
+
+      // Test 3: Progressive Linking Detection
+      // Ana Torres DNI is 45879632
+      window.handleDniInputLiveValidation('45879632');
+      const badge = document.getElementById('falDniMatchNotification');
+      assert('Live DNI matching recognizes physical client Ana Torres', badge && !badge.classList.contains('hidden') && badge.textContent.includes('Ana Torres'));
+
+      // Test 4: Registration with strict validation error handling
+      // Submitting empty form should be blocked
+      const fakeEvt = { preventDefault: () => {} };
+      document.getElementById('falRegNombres').value = '123'; // invalid name with digits
+      document.getElementById('falRegApellidos').value = 'Torres';
+      document.getElementById('falRegDni').value = '45879632';
+      document.getElementById('falRegEmail').value = 'ana.new@gmail.com';
+      document.getElementById('falRegPassword').value = '123456';
+      document.getElementById('falRegConfirmPassword').value = 'differentPass'; // mismatch
+      document.getElementById('falRegTerms').checked = false;
+
+      window.handleFalabellaRegisterSubmit(fakeEvt);
+      const errNombres = document.getElementById('falErrNombres');
+      const errConfirm = document.getElementById('falErrConfirmPassword');
+      const errTerms = document.getElementById('falErrTerms');
+      assert('Validation blocks invalid names with numbers', errNombres && !errNombres.classList.contains('hidden'));
+      assert('Validation blocks mismatched passwords', errConfirm && !errConfirm.classList.contains('hidden'));
+      assert('Validation blocks unchecked terms', errTerms && !errTerms.classList.contains('hidden'));
+
+      // Test 5: Successful registration with Progressive Linking
+      document.getElementById('falRegNombres').value = 'Ana';
+      document.getElementById('falRegApellidos').value = 'Torres';
+      document.getElementById('falRegDni').value = '45879632';
+      document.getElementById('falRegEmail').value = 'ana.linked.' + Date.now() + '@gmail.com';
+      document.getElementById('falRegPassword').value = 'segura123';
+      document.getElementById('falRegConfirmPassword').value = 'segura123';
+      document.getElementById('falRegTerms').checked = true;
+
+      window.handleFalabellaRegisterSubmit(fakeEvt);
+      const session = window.getFalabellaSession();
+      assert('User session created after registration', session && session.email);
+      assert('Account is marked as linked physical client', session && session.isLinkedClient === true);
+
+      // Test 6: Header changed to "Hola, Ana"
+      window.updateFalabellaHeaderGreeting();
+      const greetingText = document.getElementById('falabellaUserGreetingName').textContent;
+      assert('Header greeting dynamically updated to "Hola, Ana"', greetingText.includes('Ana'));
+
+      // Test 7: Adding a product to favorites
+      document.getElementById('cardFavBtn').click();
+      let favs = window.getFalabellaFavorites();
+      assert('Product added to favorites', favs.length === 1 && favs[0].id === 624);
+      assert('Product marked as favorited', window.isProductFavorited(624));
+
+      // Test 8: Header heart badge updated
+      const favBadge = document.getElementById('falabellaFavCountBadge');
+      assert('Favorites badge shows count 1', favBadge && favBadge.textContent === '1');
+
+      // Test 9: Add from Favorites to Global Cart (falabella_store_cart_v2)
+      window.addFavItemToCart(624);
+      const cart = JSON.parse(localStorage.getItem('falabella_store_cart_v2') || '[]');
+      assert('Product added to falabella_store_cart_v2 from Favorites', cart.length === 1 && (cart[0].id === 624 || cart[0].productId === 624));
+
+      // Test 10: Toggle favorite off removes product
+      document.getElementById('cardFavBtn').click();
+      favs = window.getFalabellaFavorites();
+      assert('Product removed from favorites upon second click', favs.length === 0);
+
+      // Test 11: Logout clears session and restores greeting
+      window.logoutFalabellaUser();
+      assert('Session cleared after logout', window.getFalabellaSession() === null);
+      assert('Header greeting restored to "Inicia sesión"', document.getElementById('falabellaUserGreetingName').textContent.includes('Inicia sesión'));
+
+      // Summary marker for test runner
+      const summaryDiv = document.createElement('div');
+      summaryDiv.id = 'suiteFinished';
+      summaryDiv.className = 'mt-4 p-3 font-bold text-center ' + (results.every(r => r.passed) ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white');
+      summaryDiv.textContent = results.every(r => r.passed) ? '🎉 ALL 11 TESTS PASSED PERFECTLY!' : '⚠️ SOME TESTS FAILED';
+      document.body.appendChild(summaryDiv);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(runSuite, 300);
+    });
+  </script>
+</body>
+</html>

@@ -924,7 +924,20 @@
         <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
         <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
         <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🧸 Infantil y Juguetes</a></li>
-        <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes y Fitness</a></li>
+        <li>
+          <div class="rounded-xl bg-lime-50/80 border border-lime-200 p-2.5">
+            <a href="deportes.html" class="flex items-center justify-between text-slate-900 font-bold pb-1.5 mb-1.5 border-b border-lime-300">
+              <span class="flex items-center gap-1.5 text-sm">⚽ Deportes & Fitness</span>
+              <span class="text-[10px] bg-[#aad500] text-slate-950 px-2 py-0.5 rounded-full font-black">NUEVO</span>
+            </a>
+            <div class="space-y-1 text-xs">
+              <a href="deportes.html#sec-bicicletas" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-black transition">🚴 Bicicletas y Scooters</a>
+              <a href="deportes.html#sec-zona-fitness" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-black transition">🏋️ Zona Fitness y Máquinas</a>
+              <a href="deportes.html#sec-suplementos" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-black transition">💊 Suplementos y Nutrición</a>
+              <a href="deportes.html#sec-catalogo" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-black transition">👟 Catálogo Completo de Deportes</a>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="mt-8 pt-4 border-t border-slate-200">
         <button type="button" onclick="toggleStoreCategoriesDrawer(); toggleSidebar(true);" class="w-full text-center bg-slate-900 hover:bg-slate-800 text-white py-2.5 px-4 rounded-xl font-bold text-xs transition cursor-pointer">
@@ -968,7 +981,7 @@
         <div onclick="openAccountDropdownOrModal()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
           <div class="flex flex-col text-[11px] leading-tight">
             <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
-            <span class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5">
+            <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
               Inicia sesión
               <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </span>
@@ -980,8 +993,9 @@
         </div>
 
         <!-- Favoritos (Corazón) -->
-        <button type="button" onclick="toggleStoreFavorites()" class="p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+        <button type="button" onclick="toggleStoreFavorites()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
           <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="storeFavsBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
         <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
@@ -6247,6 +6261,10 @@ function setStoreCategory(catId){
 }
 
 function filterStoreByCategory(catId){
+  if(catId === 4){
+    window.location.href = 'deportes.html';
+    return;
+  }
   enterStore();
   setStoreCategory(catId);
   scrollToProducts();
@@ -6377,7 +6395,10 @@ function renderStoreProducts(){
     const isLowStock = !isOutOfStock && p.stock <= (p.minStock || 3);
 
     return '<div class="store-card group">' +
-      '<div class="store-card-img-wrap cursor-pointer" onclick="openProductDetailModal(' + p.id + ')">' +
+      '<div class="store-card-img-wrap cursor-pointer relative" onclick="openProductDetailModal(' + p.id + ')">' +
+        '<button type="button" onclick="window.toggleProductFavorite(event, ' + p.id + ')" data-fav-prod-id="' + p.id + '" class="falabella-card-fav-btn absolute top-2 right-2 z-20 w-8 h-8 rounded-full bg-white/90 hover:bg-white shadow-md flex items-center justify-center text-slate-400 hover:text-rose-600 transition" title="Guardar en favoritos">' +
+          '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>' +
+        '</button>' +
         (discPct ? ('<span class="store-card-badge px-2 py-0.5 rounded-md text-[11px] font-black bg-rose-600 text-white shadow-sm">-' + discPct + '%</span>') : '') +
         (p.isFeatured ? ('<span class="absolute top-2 right-2 z-10 px-2 py-0.5 rounded-md text-[10px] font-black bg-amber-400 text-slate-900 shadow-sm uppercase tracking-wider">Top Ventas</span>') : '') +
         '<img src="' + escapeHtml(p.image || 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&auto=format&fit=crop&q=80') + '" ' +
@@ -7666,6 +7687,11 @@ function handleCategoryCardClick(catName, catId, query){
       window.location.href = 'moda_hombre.html';
       return;
     }
+    // Redirección especial para Deportes
+    if(catId === 4 || cName.includes('deport') || cName.includes('sport')){
+      window.location.href = 'deportes.html';
+      return;
+    }
     enterStore();
     if(catId){
       setStoreCategory(catId);
@@ -8324,5 +8350,6 @@ function showHojaReclamacionSuccess(rec){
 }
 
 </script>
+<script src="assets/falabella-auth-favorites.js"></script>
 </body>
 </html>

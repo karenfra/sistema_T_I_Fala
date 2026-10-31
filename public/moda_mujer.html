@@ -387,10 +387,10 @@
       <div class="flex items-center gap-4 sm:gap-6 ml-auto flex-shrink-0">
         
         <!-- Hola, Inicia sesión / Mi cuenta -->
-        <a href="index.html" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1 no-underline text-inherit" title="Iniciar sesión / Mi cuenta">
+        <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
           <div class="flex flex-col text-[11px] leading-tight">
             <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
-            <span class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5">
+            <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
               Inicia sesión
               <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </span>
@@ -399,11 +399,12 @@
             <span class="font-bold text-slate-900">Mi</span>
             <span class="font-bold text-slate-900">cuenta</span>
           </div>
-        </a>
+        </div>
 
         <!-- Favoritos (Corazón) -->
-        <button type="button" onclick="showToast('❤️ Sección de Mis Favoritos guardados')" class="p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+        <button type="button" onclick="openFalabellaFavoritesModal()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
           <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
         <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
@@ -472,6 +473,7 @@
         <li><a href="laptops.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Laptops</a></li>
         <li><a href="televisores.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📺 Televisores</a></li>
         <li><a href="camaras.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📷 Fotografía</a></li>
+        <li><a href="deportes.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition font-bold text-slate-900">⚽ Deportes & Fitness</a></li>
         <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
         <li><a href="index.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🛋️ Decohogar</a></li>
       </ul>
@@ -1440,7 +1442,12 @@
 
           <div class="p-3.5 flex flex-col flex-1 justify-between">
             <div>
-              <div class="text-[11px] font-black uppercase text-slate-500 tracking-wider">${p.brand}</div>
+              <div class="flex items-center justify-between text-[11px] font-black uppercase text-slate-500 tracking-wider">
+                <span>${p.brand}</span>
+                <button type="button" onclick="window.toggleProductFavorite(event, ${p.id})" data-fav-prod-id="${p.id}" class="falabella-card-fav-btn p-1 text-slate-400 hover:text-rose-600 transition" title="Guardar en favoritos">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </button>
+              </div>
               <h4 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5 group-hover:text-black transition" title="${p.name}">
                 ${p.name}
               </h4>
@@ -1577,5 +1584,6 @@
       startMujerCarousel();
     });
   </script>
+<script src="assets/falabella-auth-favorites.js"></script>
 </body>
 </html>
