@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calzado y Zapatillas en Falabella.com Perú - Las mejores marcas en zapatillas urbanas, running, zapatos de vestir, tacos, sandalias">
+  <title>Calzado, Zapatillas y Zapatos | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              navy: '#0f172a',
+              green: '#004724'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-input::placeholder {
+      color: #718096;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Hero Banner Carousel */
+    .calzado-carousel-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 944 / 232;
+      min-height: 200px;
+      max-height: 380px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000000;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    }
+    @media (max-width: 768px) {
+      .calzado-carousel-container {
+        aspect-ratio: 16 / 7;
+        min-height: 150px;
+        border-radius: 6px;
+      }
+    }
+    .calzado-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      cursor: pointer;
+    }
+    .calzado-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .calzado-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Hero Nav Arrows */
+    .calzado-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .calzado-carousel-container:hover .calzado-nav-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .calzado-nav-arrow:hover {
+      background: #aad500;
+      border-color: #aad500;
+      color: #0f172a;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .calzado-nav-prev { left: 14px; }
+    .calzado-nav-next { right: 14px; }
+
+    /* Carousel Dots */
+    .calzado-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      margin-bottom: 16px;
+    }
+    .calzado-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      padding: 0;
+    }
+    .calzado-dot.active {
+      background: #334155;
+      transform: scale(1.25);
+    }
+
+    /* Subcategories Bar (Image 1 replica) */
+    .subnav-tabs-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #ffffff;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: sticky;
+      top: 60px;
+      z-index: 30;
+      box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    }
+    .subnav-tabs-bar::-webkit-scrollbar { display: none; }
+    .subnav-tab-item {
+      flex: 1;
+      min-width: 130px;
+      padding: 13px 18px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      border-right: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+    }
+    .subnav-tab-item:last-child {
+      border-right: none;
+    }
+    .subnav-tab-item:hover {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .subnav-tab-item.active {
+      color: #0f172a;
+      background: #ffffff;
+      box-shadow: inset 0 -3.5px 0 #aad500;
+      font-weight: 800;
+    }
+
+    /* Product Card Styling */
+    .product-card-calzado {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .product-card-calzado:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    /* Sports Grid Overlay styling with brackets */
+    .sports-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .sports-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .sports-card:hover img {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==================== TOP BANNER INSTITUCIONAL ==================== -->
+  <aside class="store-topbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4 text-xs font-medium text-slate-500 overflow-x-auto">
+        <span class="font-bold text-[#aad500] flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          falabella.com
+        </span>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Banco Falabella</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Seguros Falabella</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Tottus</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Sodimac</a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-xs text-slate-500 font-medium">
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Vende en falabella.com</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Ayuda / PQRS</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== HEADER PRINCIPAL FALABELLA ==================== -->
+  <header class="store-header">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+      
+      <!-- Logo y Botón Menú -->
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="flex items-center gap-1.5 focus:outline-none" title="Ir a Portada Principal Falabella">
+          <span class="text-2xl font-black tracking-tight text-slate-900 font-sans">
+            falabella<span class="text-[#aad500]">.com</span>
+          </span>
+        </a>
+
+        <!-- Botón Menú Categorías -->
+        <button 
+          type="button"
+          onclick="toggleCategoriesDrawer()"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+          aria-label="Abrir menú de categorías"
+        >
+          <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="hidden sm:inline">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de Búsqueda Centrada -->
+      <div class="flex-1 max-w-xl mx-2">
+        <form onsubmit="event.preventDefault(); executeCalzadoSearch(document.getElementById('calzadoSearchInput').value);" class="store-search-wrap">
+          <input 
+            type="search" 
+            id="calzadoSearchInput"
+            placeholder="Buscar zapatillas, zapatos, tacos, sandalias, marcas..." 
+            class="store-search-input"
+            autocomplete="off"
+            oninput="handleLiveSearch(this.value)"
+          />
+          <button type="submit" class="store-search-btn" title="Buscar en Calzado">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21-4.35-4.35M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Iconos de Cuenta, Favoritos y Carrito -->
+      <div class="flex items-center gap-4 text-slate-700">
+        
+        <!-- Estado de Usuario / Auth -->
+        <div class="relative group">
+          <button 
+            type="button" 
+            onclick="openAuthModal()"
+            class="flex items-center gap-1.5 text-xs text-left font-bold text-slate-700 hover:text-slate-950 transition cursor-pointer"
+            id="userNavButton"
+          >
+            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM12 14a7 7 0 0 0-7 7h14a7 7 0 0 0-7-7Z"/></svg>
+            </div>
+            <div class="hidden xl:block leading-tight">
+              <span class="text-[10px] text-slate-400 font-normal block" id="userNavGreeting">Hola,</span>
+              <span class="text-xs font-bold text-slate-800" id="userNavLabel">Inicia sesión</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Botón Mis Favoritos -->
+        <a 
+          href="index.html#falabellaWishlistSection" 
+          class="relative p-2 text-slate-700 hover:text-slate-950 hover:bg-slate-100 rounded-full transition"
+          title="Ver Lista de Deseos"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="falabellaWishlistCount" class="absolute -top-1 -right-1 bg-rose-600 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </a>
+
+        <!-- Botón Bolsa de Compras -->
+        <button 
+          type="button" 
+          onclick="toggleCartDrawer()" 
+          class="relative p-2 text-slate-700 hover:text-slate-950 hover:bg-slate-100 rounded-full transition cursor-pointer"
+          title="Ver Bolsa de Compras"
+          aria-label="Abrir bolsa de compras"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="falabellaCartCount" class="absolute -top-1 -right-1 bg-[#aad500] text-slate-900 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SUB-BARRA DE UBICACIÓN Y ACCESOS ==================== -->
+  <div class="bg-white border-b border-slate-200 text-xs text-slate-600 py-1.5 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 text-slate-600 font-medium">
+        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        <span>Ingresa tu ubicación</span>
+      </div>
+      <div class="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Tarjeta CMR ▾</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Vende y comisiona</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Venta telefónica ▾</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Ayuda ▾</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENEDOR PRINCIPAL ==================== -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 py-4 w-full space-y-6">
+
+    <!-- BREADCRUMB EXACTO A LA IMAGEN 1 -->
+    <nav class="text-xs text-slate-500 flex items-center gap-1.5 font-medium" aria-label="Migas de pan">
+      <a href="index.html" class="hover:text-slate-900 transition">Home</a>
+      <span>&gt;</span>
+      <span class="text-slate-800 font-bold">Mejores Marcas De Zapatos 👟</span>
+    </nav>
+
+    <!-- ==================== HERO BANNER CAROUSEL (IMAGEN 1: PUMA HERO) ==================== -->
+    <section id="calzadoHeroCarousel" class="relative" aria-label="Banners Principales de Calzado">
+      <div class="calzado-carousel-container" id="carouselWrapper">
+        
+        <!-- Slide 1: PUMA Maxstride & Maxima Pro (1:1 Exacto a Imagen 1) -->
+        <article class="calzado-slide active" id="calzadoSlide1" onclick="filterByBrand('Puma')" title="Ver colección PUMA Maxstride & Maxima Pro">
+          <img 
+            src="assets/calzado/banner_puma_hero.png" 
+            alt="PUMA Maxstride & Maxima Pro Zapatillas Running" 
+            loading="eager"
+          />
+        </article>
+
+        <!-- Slide 2: NIKE RUNNING Air Zoom & Pegasus 40 -->
+        <article class="calzado-slide" id="calzadoSlide2" onclick="filterByBrand('Nike')" title="Ver colección Nike Running">
+          <img 
+            src="assets/calzado/banner_nike_hero.png" 
+            alt="Nike Running Air Zoom Pegasus & Vomero 17" 
+            loading="lazy"
+          />
+        </article>
+
+        <!-- Slide 3: ADIDAS ORIGINALS Samba & Gazelle -->
+        <article class="calzado-slide" id="calzadoSlide3" onclick="filterByBrand('Adidas')" title="Ver colección Adidas Originals">
+          <img 
+            src="assets/calzado/banner_adidas_hero.png" 
+            alt="Adidas Originals Samba, Gazelle & Spezial" 
+            loading="lazy"
+          />
+        </article>
+
+        <!-- Flechas de navegación -->
+        <button type="button" class="calzado-nav-arrow calzado-nav-prev" onclick="changeCalzadoSlide(-1)" aria-label="Banner anterior">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button type="button" class="calzado-nav-arrow calzado-nav-next" onclick="changeCalzadoSlide(1)" aria-label="Siguiente banner">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Indicadores de Navegación (3 puntos) -->
+      <div class="calzado-dots" id="calzadoDotsContainer" role="tablist" aria-label="Seleccionar banner">
+        <button type="button" class="calzado-dot active" onclick="goToCalzadoSlide(0)" aria-label="Ir al banner 1 de Puma"></button>
+        <button type="button" class="calzado-dot" onclick="goToCalzadoSlide(1)" aria-label="Ir al banner 2 de Nike"></button>
+        <button type="button" class="calzado-dot" onclick="goToCalzadoSlide(2)" aria-label="Ir al banner 3 de Adidas"></button>
+      </div>
+    </section>
+
+    <!-- ==================== SUB-BARRA DE NAVEGACIÓN FIJA (1:1 EXACTA A IMAGEN 1) ==================== -->
+    <nav class="subnav-tabs-bar" id="calzadoSubnavBar" aria-label="Subnavegación de Calzado">
+      <button type="button" onclick="navigateToCalzadoSection('sec-marcas', this)" class="subnav-tab-item" data-section="sec-marcas">Mejores marcas</button>
+      <button type="button" onclick="navigateToCalzadoSection('sec-lo-ultimo', this)" class="subnav-tab-item active" data-section="sec-lo-ultimo">Lo último</button>
+      <button type="button" onclick="navigateToCalzadoSection('sec-mundo-mujer', this)" class="subnav-tab-item" data-section="sec-mundo-mujer">Mundo mujer</button>
+      <button type="button" onclick="navigateToCalzadoSection('sec-mundo-deportes', this)" class="subnav-tab-item" data-section="sec-mundo-deportes">Mundo deportes</button>
+      <button type="button" onclick="navigateToCalzadoSection('sec-mundo-hombre', this)" class="subnav-tab-item" data-section="sec-mundo-hombre">Mundo hombre</button>
+    </nav>
+
+    <!-- ==================== 1. SECCIÓN: MEJORES MARCAS ==================== -->
+    <section id="sec-marcas" class="pt-6 scroll-mt-28 space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">MEJORES MARCAS DE CALZADO</h2>
+          <p class="text-xs text-slate-500">Las firmas globales más destacadas en calzado deportivo, formal y urbano</p>
+        </div>
+        <button type="button" onclick="filterByBrand('Todos')" class="text-xs font-bold text-slate-700 hover:text-[#aad500] transition">
+          Ver todas las marcas →
+        </button>
+      </div>
+
+      <!-- Carrusel de Marcas Oficiales (1:1 con Imagen de Marcas en Calzado) -->
+      <div class="brand-carousel-wrapper">
+        <!-- Flecha Izquierda -->
+        <button type="button" class="brand-carousel-btn prev" onclick="scrollCalzadoBrandCarousel(-280)" title="Ver marcas anteriores" aria-label="Anterior">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+
+        <div class="brand-carousel-track" id="calzadoBrandCarousel">
+          
+          <!-- 1. Tarjeta CYBER WOW: 40% en Zapatillas -->
+          <div class="brand-item-card" onclick="filterByBrand('Cyber Wow')" title="CYBER WOW - 40% en Zapatillas">
+            <div class="brand-item-box bg-[#004724]">
+              <img src="assets/calzado/marcas/box_cyber_wow.png" srcset="assets/calzado/marcas/box_cyber_wow@2x.png 2x" alt="CYBER WOW De las mejores marcas" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">40% en<br>Zapatillas</span>
+          </div>
+
+          <!-- 2. Reebok -->
+          <div class="brand-item-card" onclick="filterByBrand('Reebok')" title="Ver productos Reebok">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_reebok.png" srcset="assets/calzado/marcas/box_reebok@2x.png 2x" alt="Reebok" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Reebok</span>
+          </div>
+
+          <!-- 3. Adidas -->
+          <div class="brand-item-card" onclick="filterByBrand('Adidas')" title="Ver productos Adidas">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_adidas.png" srcset="assets/calzado/marcas/box_adidas@2x.png 2x" alt="Adidas" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Adidas</span>
+          </div>
+
+          <!-- 4. Puma -->
+          <div class="brand-item-card" onclick="filterByBrand('Puma')" title="Ver productos Puma">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_puma.png" srcset="assets/calzado/marcas/box_puma@2x.png 2x" alt="Puma" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Puma</span>
+          </div>
+
+          <!-- 5. Adidas Originals -->
+          <div class="brand-item-card" onclick="filterByBrand('Adidas Originals')" title="Ver productos Adidas Originals">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_adidas_originals.png" srcset="assets/calzado/marcas/box_adidas_originals@2x.png 2x" alt="Adidas Originals" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Adidas<br>Originals</span>
+          </div>
+
+          <!-- 6. New Balance -->
+          <div class="brand-item-card" onclick="filterByBrand('New Balance')" title="Ver productos New Balance">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_new_balance.png" srcset="assets/calzado/marcas/box_new_balance@2x.png 2x" alt="New Balance" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">New Balance</span>
+          </div>
+
+          <!-- 7. Nike -->
+          <div class="brand-item-card" onclick="filterByBrand('Nike')" title="Ver productos Nike">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_nike.png" srcset="assets/calzado/marcas/box_nike@2x.png 2x" alt="Nike" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Nike</span>
+          </div>
+
+          <!-- 8. Aldo -->
+          <div class="brand-item-card" onclick="filterByBrand('Aldo')" title="Ver productos Aldo">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_aldo.png" srcset="assets/calzado/marcas/box_aldo@2x.png 2x" alt="Aldo" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Aldo</span>
+          </div>
+
+          <!-- 9. Diadora -->
+          <div class="brand-item-card" onclick="filterByBrand('Diadora')" title="Ver productos Diadora">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_diadora.png" srcset="assets/calzado/marcas/box_diadora@2x.png 2x" alt="Diadora" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Diadora</span>
+          </div>
+
+          <!-- 10. Skechers -->
+          <div class="brand-item-card" onclick="filterByBrand('Skechers')" title="Ver productos Skechers">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_skechers.png" srcset="assets/calzado/marcas/box_skechers@2x.png 2x" alt="Skechers" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Skechers</span>
+          </div>
+
+        </div>
+
+        <!-- Flecha Derecha -->
+        <button type="button" class="brand-carousel-btn next" onclick="scrollCalzadoBrandCarousel(280)" title="Ver marcas siguientes" aria-label="Siguiente">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 2. SECCIÓN: LO ÚLTIMO (TRENDING) ==================== -->
+    <section id="sec-lo-ultimo" class="pt-6 scroll-mt-28 space-y-4">
+      <div class="border-b border-slate-200 pb-3">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">LO ÚLTIMO EN CALZADO</h2>
+        <p class="text-xs text-slate-500">Tendencias globales que marcan la pauta en tus pasos esta temporada</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <article class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 flex flex-col justify-between group hover:shadow-md transition">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider text-orange-700 bg-orange-100 px-2 py-0.5 rounded-full inline-block mb-2">Trend Alert</span>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-orange-700 transition">Retro T-Toe Sneakers</h3>
+            <p class="text-xs text-slate-600 mt-1">Samba, Gazelle y siluetas retro inspiradas en las canchas de los 70s y 80s.</p>
+          </div>
+          <button onclick="filterByCategoryAndSub('Todos', 'zapatillas')" class="mt-4 text-xs font-bold text-orange-700 hover:text-orange-900 flex items-center gap-1">
+            Explorar zapatillas urbanas →
+          </button>
+        </article>
+
+        <article class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-4 flex flex-col justify-between group hover:shadow-md transition">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full inline-block mb-2">Tecnología</span>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition">Max Running & Espuma Reactiva</h3>
+            <p class="text-xs text-slate-600 mt-1">Puma Nitro, Nike ZoomX y amortiguación para entrenamientos de alto kilometraje.</p>
+          </div>
+          <button onclick="filterByCategoryAndSub('Deportes', 'running')" class="mt-4 text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1">
+            Ver zona running →
+          </button>
+        </article>
+
+        <article class="bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200 rounded-2xl p-4 flex flex-col justify-between group hover:shadow-md transition">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider text-rose-700 bg-rose-100 px-2 py-0.5 rounded-full inline-block mb-2">Elegancia</span>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-rose-700 transition">Slingbacks & Kitten Heels</h3>
+            <p class="text-xs text-slate-600 mt-1">Tacos confortables con siluetas puntiagudas en charol y tonos borgoña.</p>
+          </div>
+          <button onclick="filterByCategoryAndSub('Mujer', 'tacos')" class="mt-4 text-xs font-bold text-rose-700 hover:text-rose-900 flex items-center gap-1">
+            Ver tacos y kitten heels →
+          </button>
+        </article>
+
+        <article class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 flex flex-col justify-between group hover:shadow-md transition">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full inline-block mb-2">Confort Diario</span>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-700 transition">Mules & Zapatos de Cuero</h3>
+            <p class="text-xs text-slate-600 mt-1">Calzado formal y casual en piel genuina y gamuza para todo el día.</p>
+          </div>
+          <button onclick="filterByCategoryAndSub('Hombre', 'casuales')" class="mt-4 text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1">
+            Ver calzado masculino →
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: MUNDO MUJER | INSPÍRATE (EXACTA A IMAGEN 4) ==================== -->
+    <section id="sec-mundo-mujer" class="pt-8 scroll-mt-28 space-y-4">
+      <div class="text-center mb-2">
+        <h2 class="text-xl sm:text-2xl font-light tracking-[0.25em] text-slate-700 uppercase font-sans">
+          MUNDO MUJER <span class="font-bold text-slate-900">| INSPÍRATE</span>
+        </h2>
+      </div>
+
+      <!-- 4 BANNERS VERTICALES (EXACTO A IMAGEN 4) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        
+        <!-- 1. TACOS -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Mujer', 'tacos')" title="Ver Tacos Mujer">
+          <img src="assets/calzado/mujer_tacos.png" alt="Tacos Mujer Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 2. ZAPATOS CASUALES -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Mujer', 'casuales')" title="Ver Zapatos Casuales Mujer">
+          <img src="assets/calzado/mujer_casuales.png" alt="Zapatos Casuales Mujer Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 3. ZAPATILLAS -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Mujer', 'zapatillas')" title="Ver Zapatillas Mujer">
+          <img src="assets/calzado/mujer_zapatillas.png" alt="Zapatillas Mujer Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 4. SANDALIAS -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Mujer', 'sandalias')" title="Ver Sandalias Mujer">
+          <img src="assets/calzado/mujer_sandalias.png" alt="Sandalias Mujer Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. SECCIÓN: MUNDO DEPORTES (EXACTA A IMAGEN 5) ==================== -->
+    <section id="sec-mundo-deportes" class="pt-8 scroll-mt-28 space-y-4">
+      <div class="text-center mb-2">
+        <h2 class="text-xl sm:text-2xl font-light tracking-[0.25em] text-slate-700 uppercase font-sans">
+          MUNDO <span class="font-bold text-slate-900">DEPORTES</span>
+        </h2>
+      </div>
+
+      <!-- GRID 2x2 DE ZONAS DEPORTIVAS CON ESTILO NEÓN (1:1 CON IMAGEN 5) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        
+        <!-- 1. ZONA RUNNING -->
+        <article class="sports-card group border border-slate-200 bg-slate-950 shadow-2xs hover:shadow-md transition" onclick="filterFootwearBySpecial('Deportes', 'running')" title="Ver Zona Running">
+          <img src="assets/calzado/deportes_running.png" alt="Zona Running Falabella" class="w-full h-auto object-cover" loading="lazy">
+        </article>
+
+        <!-- 2. ZONA FÚTBOL -->
+        <article class="sports-card group border border-slate-200 bg-slate-950 shadow-2xs hover:shadow-md transition" onclick="filterFootwearBySpecial('Deportes', 'futbol')" title="Ver Zona Fútbol">
+          <img src="assets/calzado/deportes_futbol.png" alt="Zona Fútbol Falabella" class="w-full h-auto object-cover" loading="lazy">
+        </article>
+
+        <!-- 3. ZONA TRAINING -->
+        <article class="sports-card group border border-slate-200 bg-slate-950 shadow-2xs hover:shadow-md transition" onclick="filterFootwearBySpecial('Deportes', 'training')" title="Ver Zona Training">
+          <img src="assets/calzado/deportes_training.png" alt="Zona Training Falabella" class="w-full h-auto object-cover" loading="lazy">
+        </article>
+
+        <!-- 4. ZONA OUTDOOR -->
+        <article class="sports-card group border border-slate-200 bg-slate-950 shadow-2xs hover:shadow-md transition" onclick="filterFootwearBySpecial('Deportes', 'outdoor')" title="Ver Zona Outdoor">
+          <img src="assets/calzado/deportes_outdoor.png" alt="Zona Outdoor Falabella" class="w-full h-auto object-cover" loading="lazy">
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. SECCIÓN: MUNDO HOMBRE | INSPÍRATE (EXACTA A IMAGEN 3) ==================== -->
+    <section id="sec-mundo-hombre" class="pt-8 scroll-mt-28 space-y-4">
+      <div class="text-center mb-2">
+        <h2 class="text-xl sm:text-2xl font-light tracking-[0.25em] text-slate-700 uppercase font-sans">
+          MUNDO HOMBRE <span class="font-bold text-slate-900">| INSPÍRATE</span>
+        </h2>
+      </div>
+
+      <!-- 4 BANNERS VERTICALES HOMBRE (EXACTO A IMAGEN 3) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        
+        <!-- 1. ZAPATOS DE VESTIR -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Hombre', 'vestir')" title="Ver Zapatos de Vestir Hombre">
+          <img src="assets/calzado/hombre_vestir.png" alt="Zapatos de Vestir Hombre Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 2. ZAPATOS CASUALES -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Hombre', 'casuales')" title="Ver Zapatos Casuales Hombre">
+          <img src="assets/calzado/hombre_casuales.png" alt="Zapatos Casuales Hombre Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 3. ZAPATILLAS -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Hombre', 'zapatillas')" title="Ver Zapatillas Hombre">
+          <img src="assets/calzado/hombre_zapatillas.png" alt="Zapatillas Hombre Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 4. SANDALIAS -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterFootwearBySpecial('Hombre', 'sandalias')" title="Ver Sandalias Hombre">
+          <img src="assets/calzado/hombre_sandalias.png" alt="Sandalias Hombre Falabella" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. CATÁLOGO COMPLETO INTERACTIVO ==================== -->
+    <section id="sec-catalogo" class="pt-10 scroll-mt-24">
+      <div class="border-b border-slate-200 pb-4 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - CALZADO</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Zapatillas, zapatos formales, tacos, sandalias y calzado deportivo original</p>
+          </div>
+          <a href="productos_calzado.html" class="inline-flex items-center gap-2 px-4 py-2.5 bg-[#004724] hover:bg-[#00361b] text-white text-xs font-black rounded-xl shadow-xs hover:shadow transition">
+            <span>Ver Catálogo Deportivo PLP (Con Filtros Laterales)</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+
+          <!-- Filtros de Marca en Botones Píldora -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" id="brandFilterPills">
+            <button type="button" onclick="filterByBrand('Todos')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition">Todos</button>
+            <button type="button" onclick="filterByBrand('Puma')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Puma</button>
+            <button type="button" onclick="filterByBrand('Nike')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Nike</button>
+            <button type="button" onclick="filterByBrand('Adidas')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Adidas</button>
+            <button type="button" onclick="filterByBrand('Yamp')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Yamp</button>
+            <button type="button" onclick="filterByBrand('Diadora')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Diadora</button>
+            <button type="button" onclick="filterByBrand('Disney')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Disney</button>
+            <button type="button" onclick="filterByBrand('Redwood')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Redwood</button>
+            <button type="button" onclick="filterByBrand('Aldo')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Aldo</button>
+            <button type="button" onclick="filterByBrand('Sybilla')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Sybilla</button>
+            <button type="button" onclick="filterByBrand('Skechers')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Skechers</button>
+            <button type="button" onclick="filterByBrand('Columbia')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Columbia</button>
+          </div>
+        </div>
+
+        <!-- Filtros secundarios: Categoría, Subcategoría y Orden -->
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-bold text-slate-700">Mundo:</span>
+            <select id="categorySelectFilter" onchange="filterByCategory(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+              <option value="Todos">Todos los Mundos</option>
+              <option value="Mujer">Mundo Mujer</option>
+              <option value="Hombre">Mundo Hombre</option>
+              <option value="Deportes">Mundo Deportes</option>
+            </select>
+
+            <span class="font-bold text-slate-700 ml-2">Tipo de Calzado:</span>
+            <select id="subCategorySelectFilter" onchange="filterBySubCategory(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+              <option value="Todos">Todos los Tipos</option>
+              <option value="zapatillas">Zapatillas Urbanas & Sport</option>
+              <option value="vestir">Zapatos de Vestir</option>
+              <option value="casuales">Zapatos Casuales & Flats</option>
+              <option value="tacos">Tacos & Stilettos</option>
+              <option value="sandalias">Sandalias & Mules</option>
+              <option value="running">Running</option>
+              <option value="futbol">Fútbol & Chimpunes</option>
+              <option value="training">Training & Gym</option>
+              <option value="outdoor">Outdoor & Trekking</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-slate-700">Ordenar por:</span>
+            <select id="sortSelectFilter" onchange="sortCalzadoProducts(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+              <option value="featured">Recomendados</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="rating">Mejor Calificados</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Productos Renderizado Vía JavaScript -->
+      <div id="calzadoProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Generado dinámicamente -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS ==================== -->
+  <div id="categoriesDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="toggleCategoriesDrawer()"></div>
+    <div class="absolute top-0 left-0 bottom-0 w-80 max-w-full bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300 pointer-events-auto" id="categoriesDrawerPanel">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <h3 class="font-black text-slate-900 text-base tracking-tight">CATEGORÍAS FALABELLA</h3>
+        <button onclick="toggleCategoriesDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <ul class="mt-4 space-y-1 text-sm font-semibold text-slate-700">
+        <li>
+          <a href="calzado.html" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-100 text-slate-900 font-black">
+            <span>👟 Calzado y Zapatillas</span>
+            <span class="text-[10px] bg-[#aad500] text-slate-900 px-1.5 py-0.5 rounded font-black">Actual</span>
+          </a>
+          <div class="pl-4 pr-1 py-1 space-y-1 text-xs font-medium text-slate-600">
+            <a href="#sec-lo-ultimo" onclick="toggleCategoriesDrawer()" class="block py-1 hover:text-[#aad500]">⚡ Lo Último & Tendencias</a>
+            <a href="#sec-mundo-mujer" onclick="toggleCategoriesDrawer()" class="block py-1 hover:text-[#aad500]">👠 Mundo Mujer</a>
+            <a href="#sec-mundo-deportes" onclick="toggleCategoriesDrawer()" class="block py-1 hover:text-[#aad500]">⚽ Mundo Deportes</a>
+            <a href="#sec-mundo-hombre" onclick="toggleCategoriesDrawer()" class="block py-1 hover:text-[#aad500]">👞 Mundo Hombre</a>
+          </div>
+        </li>
+        <li><a href="belleza.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="moda_hombre.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+        <li><a href="tecnologia.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Tecnología</a></li>
+        <li><a href="celulares.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📱 Celulares y Telefonía</a></li>
+        <li><a href="tablets.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📱 Tablets y iPads</a></li>
+        <li><a href="laptops.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Laptops</a></li>
+        <li><a href="televisores.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📺 Televisores</a></li>
+        <li><a href="camaras.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📷 Fotografía</a></li>
+        <li><a href="deportes.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes & Fitness</a></li>
+      </ul>
+
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#333f48] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DRAWER DEL CARRITO GLOBAL ==================== -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="toggleCartDrawer()"></div>
+    <div class="absolute top-0 right-0 bottom-0 w-96 max-w-full bg-white shadow-2xl p-6 overflow-y-auto transform translate-x-full transition-transform duration-300 pointer-events-auto flex flex-col justify-between" id="cartDrawerPanel">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <h3 class="font-black text-slate-900 text-base">Bolsa de Compras</h3>
+          </div>
+          <button onclick="toggleCartDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Lista de Productos en el Carrito -->
+        <div id="cartItemsList" class="divide-y divide-slate-100 my-4 max-h-[55vh] overflow-y-auto pr-1">
+          <!-- Render dinámico -->
+        </div>
+      </div>
+
+      <!-- Footer del Carrito con Subtotal y Checkout -->
+      <div class="pt-4 border-t border-slate-200">
+        <div class="flex items-center justify-between text-sm mb-1 font-bold text-slate-800">
+          <span>Subtotal estimado:</span>
+          <span id="cartDrawerSubtotal" class="text-base font-black text-slate-900">S/ 0.00</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-4">Costos de envío calculados al finalizar la compra</p>
+        <button 
+          type="button" 
+          onclick="proceedToCheckout()" 
+          class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2"
+        >
+          <span>Ir a pagar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <button 
+          type="button" 
+          onclick="toggleCartDrawer()" 
+          class="w-full mt-2 py-2 text-xs font-bold text-slate-500 hover:text-slate-800 transition text-center"
+        >
+          Seguir comprando
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE AUTENTICACIÓN (INICIAR SESIÓN / REGISTRO) ==================== -->
+  <div id="authModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs" onclick="closeAuthModal()"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 overflow-hidden z-10 animate-fade-in">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="flex items-center justify-between border-b border-slate-200 mb-6">
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition">Iniciar Sesión</button>
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition">Crear Cuenta</button>
+      </div>
+
+      <!-- Formulario Login -->
+      <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Correo electrónico</label>
+          <input type="email" id="loginEmail" required placeholder="ej. usuario@correo.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500] focus:ring-1 focus:ring-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Contraseña</label>
+          <input type="password" id="loginPassword" required placeholder="Ingresa tu contraseña" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500] focus:ring-1 focus:ring-[#aad500]">
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm transition mt-2">
+          Iniciar Sesión
+        </button>
+      </form>
+
+      <!-- Formulario Registro -->
+      <form id="formRegister" onsubmit="handleRegisterSubmit(event)" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Nombre completo</label>
+          <input type="text" id="regName" required placeholder="ej. Carlos Ramírez" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Correo electrónico</label>
+          <input type="email" id="regEmail" required placeholder="ej. carlos.ramirez@gmail.com" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Contraseña (mínimo 6 caracteres)</label>
+          <input type="password" id="regPassword" required minlength="6" placeholder="Mínimo 6 caracteres" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div class="flex items-start gap-2 pt-1">
+          <input type="checkbox" id="regTerms" required class="mt-1 accent-[#aad500]">
+          <label for="regTerms" class="text-xs text-slate-600 leading-tight">
+            Acepto los <a href="terminos-condiciones.html" target="_blank" class="font-bold underline text-slate-800">Términos y Condiciones</a> y la <a href="politica-privacidad.html" target="_blank" class="font-bold underline text-slate-800">Política de Privacidad</a> de falabella.com.
+          </label>
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm transition mt-2">
+          Crear mi cuenta Falabella
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700">
+      <span class="w-2 h-2 rounded-full bg-[#aad500]"></span>
+      <span id="toastMessage">Acción realizada</span>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER OFICIAL FALABELLA ==================== -->
+  <footer class="bg-white border-t border-slate-200 mt-16 pt-12 pb-8 text-xs text-slate-600">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200">
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Servicio al Cliente</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Centro de ayuda</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Seguimiento de mi orden</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Cambios y devoluciones</a></li>
+            <li><a href="libro-reclamaciones.html" class="hover:text-slate-900 transition font-bold text-slate-700">📖 Libro de Reclamaciones</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Políticas y Términos</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="terminos-condiciones.html" class="hover:text-slate-900 transition font-bold text-slate-800">Términos y Condiciones</a></li>
+            <li><a href="politica-privacidad.html" class="hover:text-slate-900 transition font-bold text-slate-800">Política de Privacidad</a></li>
+            <li><a href="terminos-condiciones.html#garantias" class="hover:text-slate-900 transition">Política de garantías</a></li>
+            <li><a href="terminos-condiciones.html#promociones" class="hover:text-slate-900 transition">Términos de promociones</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Mundo Falabella</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Tarjeta CMR Falabella</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">CMR Puntos</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Seguros Falabella</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Vende con nosotros</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Canales de Venta</h4>
+          <p class="text-slate-500 mb-2">Venta telefónica: <strong>(01) 555-1234</strong></p>
+          <p class="text-slate-500 mb-4">WhatsApp Oficial: <strong>+51 987 654 321</strong></p>
+          <div class="flex items-center gap-2">
+            <span class="inline-block bg-[#004724] text-white text-[10px] font-black px-2 py-1 rounded">CYBER WOW</span>
+            <span class="inline-block bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-1 rounded">CALZADO 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        <p>© 2026 Falabella Perú S.A. Todos los derechos reservados. RUC 20100128056.</p>
+        <div class="flex items-center gap-4">
+          <a href="terminos-condiciones.html" class="hover:text-slate-600 transition">Términos y Condiciones</a>
+          <span>•</span>
+          <a href="politica-privacidad.html" class="hover:text-slate-600 transition">Política de Privacidad</a>
+          <span>•</span>
+          <a href="libro-reclamaciones.html" class="hover:text-slate-600 transition">Libro de Reclamaciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT DEL SISTEMA DE CALZADO ==================== -->
+  <script>
+    /* -------------------------------------------------------------
+       BASE DE DATOS DE CALZADO (1:1 CON IMÁGENES DE FALABELLA)
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+    const STORE_FAVS_KEY = 'falabella_wishlist_items_v1';
+    const STORE_USER_KEY = 'falabella_current_user_v1';
+
+    const CALZADO_PRODUCTS = [
+      {
+        id: 841,
+        code: 'CAL-REE-01',
+        name: 'Zapatillas Urbanas Unisex Reebok Club C 85 Vintage',
+        brand: 'Reebok',
+        category: 'Deportes',
+        subCategory: 'zapatillas',
+        gender: 'unisex',
+        priceCmr: 299.00,
+        priceNormal: 359.00,
+        discount: '-17%',
+        image: 'assets/calzado/prod_reebok_club_c.png',
+        badge: 'CYBER WOW',
+        arrival: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 4.8,
+        reviewsCount: 64,
+        bestSeller: true
+      },
+      {
+        id: 842,
+        code: 'CAL-REE-02',
+        name: 'Zapatillas Deportivas Hombre Reebok Nano X3 Training',
+        brand: 'Reebok',
+        category: 'Deportes',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 379.00,
+        priceNormal: 449.00,
+        discount: '-15%',
+        image: 'assets/calzado/prod_reebok_nano.png',
+        badge: 'CYBER WOW',
+        arrival: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 4.9,
+        reviewsCount: 42,
+        bestSeller: false
+      },
+      {
+        id: 843,
+        code: 'CAL-NB-01',
+        name: 'Zapatillas Urbanas Unisex New Balance 574 Core Grey',
+        brand: 'New Balance',
+        category: 'Deportes',
+        subCategory: 'zapatillas',
+        gender: 'unisex',
+        priceCmr: 389.00,
+        priceNormal: 429.00,
+        discount: '-9%',
+        image: 'assets/calzado/prod_nb_574.png',
+        badge: 'CYBER WOW',
+        arrival: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 4.9,
+        reviewsCount: 88,
+        bestSeller: true
+      },
+      {
+        id: 844,
+        code: 'CAL-NB-02',
+        name: 'Zapatillas Urbanas Hombre New Balance 9060 Sea Salt',
+        brand: 'New Balance',
+        category: 'Deportes',
+        subCategory: 'zapatillas',
+        gender: 'hombre',
+        priceCmr: 549.00,
+        priceNormal: 599.00,
+        discount: '-8%',
+        image: 'assets/calzado/prod_nb_9060.png',
+        badge: 'CYBER WOW',
+        arrival: 'Llega mañana',
+        pickup: 'Retira mañana',
+        rating: 5.0,
+        reviewsCount: 31,
+        bestSeller: false
+      },
+      // --- MUNDO INFANTIL (EXACTOS A IMAGEN 2) ---
+      {
+        id: 801,
+        code: 'CAL-INF-01',
+        name: 'Ballerinas Niña Yamp Negro Charol Suela Confort',
+        brand: 'Yamp',
+        category: 'Infantil',
+        subCategory: 'ballerinas',
+        gender: 'niña',
+        priceCmr: 29.95,
+        priceNormal: 59.90,
+        discount: '-50%',
+        rating: 4.5,
+        reviews: 4,
+        image: 'assets/calzado/prod_yamp_ballerinas_negro.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 802,
+        code: 'CAL-INF-02',
+        name: 'Sandalias Niño Yamp Velcro Ajustable Marrón Sport',
+        brand: 'Yamp',
+        category: 'Infantil',
+        subCategory: 'sandalias',
+        gender: 'niño',
+        priceCmr: 29.95,
+        priceNormal: 59.90,
+        discount: '-50%',
+        rating: 4.7,
+        reviews: 18,
+        image: 'assets/calzado/prod_yamp_sandalias_nino.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 803,
+        code: 'CAL-INF-03',
+        name: 'Zapatillas Urbanas Bebe Niño Diadora Doble Velcro',
+        brand: 'Diadora',
+        category: 'Infantil',
+        subCategory: 'zapatillas',
+        gender: 'bebe',
+        priceCmr: 43.96,
+        priceNormal: 109.90,
+        discount: '-60%',
+        rating: 4.8,
+        reviews: 6,
+        image: 'assets/calzado/prod_diadora_zapatillas_bebe.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 804,
+        code: 'CAL-INF-04',
+        name: 'Ballerinas Niña Disney Glitter Plata Con Moño Elegante',
+        brand: 'Disney',
+        category: 'Infantil',
+        subCategory: 'ballerinas',
+        gender: 'niña',
+        priceCmr: 39.95,
+        priceNormal: 79.90,
+        discount: '-50%',
+        rating: 4.9,
+        reviews: 23,
+        image: 'assets/calzado/prod_disney_ballerinas_brillo.png',
+        badge: 'CYBER WOW',
+        promoTag: 'REGALO POR COMPRA'
+      },
+      {
+        id: 805,
+        code: 'CAL-INF-05',
+        name: 'Zapatilla Sport Niño Redwood Suela Antideslizante',
+        brand: 'Redwood',
+        category: 'Infantil',
+        subCategory: 'zapatillas',
+        gender: 'niño',
+        priceCmr: 24.90,
+        priceNormal: 49.90,
+        discount: '-50%',
+        rating: 4.7,
+        reviews: 3,
+        image: 'assets/calzado/prod_redwood_zapatilla_sport.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 806,
+        code: 'CAL-INF-06',
+        name: 'Zapatillas Urbanas Bebe Niño Yamp Azul Marino & Cyan',
+        brand: 'Yamp',
+        category: 'Infantil',
+        subCategory: 'zapatillas',
+        gender: 'bebe',
+        priceCmr: 44.95,
+        priceNormal: 89.90,
+        discount: '-50%',
+        rating: 4.1,
+        reviews: 7,
+        image: 'assets/calzado/prod_yamp_zapatillas_urbanas.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+
+      // --- MUNDO DEPORTES (EXACTOS A IMAGEN 1 Y 5) ---
+      {
+        id: 807,
+        code: 'CAL-PUM-01',
+        name: 'Zapatillas Running Puma Maxstride & Maxima Pro Amortiguación Max',
+        brand: 'Puma',
+        category: 'Deportes',
+        subCategory: 'running',
+        gender: 'unisex',
+        priceCmr: 279.00,
+        priceNormal: 399.00,
+        discount: '-30%',
+        shippingTag: 'Retira mañana',
+        rating: 4.9,
+        reviews: 142,
+        image: 'assets/calzado/prod_puma_maxstride.png',
+        badge: 'LANZAMIENTO',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 808,
+        code: 'CAL-NIK-01',
+        name: 'Zapatillas Running Nike Air Zoom Pegasus 40 React Foam',
+        brand: 'Nike',
+        category: 'Deportes',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 389.00,
+        priceNormal: 549.00,
+        discount: '-29%',
+        shippingTag: 'Retira mañana',
+        rating: 4.9,
+        reviews: 320,
+        image: 'assets/calzado/prod_nike_running.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 809,
+        code: 'CAL-ADI-01',
+        name: 'Chimpunes Adidas Predator Accuracy Laceless Terreno Firme',
+        brand: 'Adidas',
+        category: 'Deportes',
+        subCategory: 'futbol',
+        gender: 'unisex',
+        priceCmr: 299.00,
+        priceNormal: 429.00,
+        discount: '-30%',
+        rating: 4.8,
+        reviews: 88,
+        image: 'assets/calzado/prod_adidas_futbol.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 810,
+        code: 'CAL-ADI-02',
+        name: 'Zapatillas Training Adidas Dropset 2 Estabilidad Gym & Cross',
+        brand: 'Adidas',
+        category: 'Deportes',
+        subCategory: 'training',
+        gender: 'hombre',
+        priceCmr: 259.00,
+        priceNormal: 369.00,
+        discount: '-30%',
+        rating: 4.9,
+        reviews: 95,
+        image: 'assets/calzado/prod_adidas_training.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 811,
+        code: 'CAL-COL-01',
+        name: 'Zapatillas Outdoor Trailstorm Waterproof Columbia Grip',
+        brand: 'Columbia',
+        category: 'Deportes',
+        subCategory: 'outdoor',
+        gender: 'unisex',
+        priceCmr: 349.00,
+        priceNormal: 499.00,
+        discount: '-30%',
+        rating: 4.8,
+        reviews: 74,
+        image: 'assets/calzado/prod_outdoor_trekking.png',
+        badge: 'WATERPROOF',
+        promoTag: 'ENVÍO GRATIS'
+      },
+
+      // --- MUNDO HOMBRE (EXACTOS A IMAGEN 3) ---
+      {
+        id: 812,
+        code: 'CAL-ALD-01',
+        name: 'Zapatos de Vestir Oxford Cuero Genuino Negro Aldo Brillo Formal',
+        brand: 'Aldo',
+        category: 'Hombre',
+        subCategory: 'vestir',
+        gender: 'hombre',
+        priceCmr: 269.00,
+        priceNormal: 399.00,
+        discount: '-33%',
+        shippingTag: 'Retira mañana',
+        rating: 4.9,
+        reviews: 110,
+        image: 'assets/calzado/prod_hombre_vestir_black.png',
+        badge: 'CUERO 100%',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 813,
+        code: 'CAL-CLA-01',
+        name: 'Zapatos Casuales Cuero Nobuk Marrón Suela Ultralight Confort',
+        brand: 'Aldo',
+        category: 'Hombre',
+        subCategory: 'casuales',
+        gender: 'hombre',
+        priceCmr: 239.00,
+        priceNormal: 349.00,
+        discount: '-31%',
+        rating: 4.8,
+        reviews: 85,
+        image: 'assets/calzado/prod_hombre_casual_brown.png',
+        badge: 'CONFORT',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 814,
+        code: 'CAL-ADI-03',
+        name: 'Zapatillas Urbanas Adidas Samba OG Olive Suede Clásicas',
+        brand: 'Adidas',
+        category: 'Hombre',
+        subCategory: 'zapatillas',
+        gender: 'hombre',
+        priceCmr: 379.00,
+        priceNormal: 429.00,
+        discount: '-12%',
+        shippingTag: 'Retira mañana',
+        rating: 5.0,
+        reviews: 450,
+        image: 'assets/calzado/prod_adidas_samba_olive.png',
+        badge: 'BEST SELLER',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 815,
+        code: 'CAL-CIS-01',
+        name: 'Mules y Sandalias Casuales de Gamuza Beige Verano',
+        brand: 'Aldo',
+        category: 'Hombre',
+        subCategory: 'sandalias',
+        gender: 'hombre',
+        priceCmr: 149.00,
+        priceNormal: 229.00,
+        discount: '-35%',
+        rating: 4.7,
+        reviews: 42,
+        image: 'assets/calzado/prod_hombre_mules_suede.png',
+        badge: 'VERANO 2026',
+        promoTag: '2DO CON 40%'
+      },
+
+      // --- MUNDO MUJER (EXACTOS A IMAGEN 4) ---
+      {
+        id: 816,
+        code: 'CAL-ALD-02',
+        name: 'Tacos Stiletto Slingback Charol Gris Humo Puntera Fina 9cm',
+        brand: 'Aldo',
+        category: 'Mujer',
+        subCategory: 'tacos',
+        gender: 'mujer',
+        priceCmr: 249.00,
+        priceNormal: 369.00,
+        discount: '-32%',
+        shippingTag: 'Retira mañana',
+        rating: 4.9,
+        reviews: 135,
+        image: 'assets/calzado/prod_mujer_tacos_grey.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 817,
+        code: 'CAL-SYB-01',
+        name: 'Zapatos Casuales Flats Puntera Fina Borgoña Slingback',
+        brand: 'Sybilla',
+        category: 'Mujer',
+        subCategory: 'casuales',
+        gender: 'mujer',
+        priceCmr: 129.00,
+        priceNormal: 189.00,
+        discount: '-32%',
+        rating: 4.8,
+        reviews: 92,
+        image: 'assets/calzado/prod_mujer_flats_burgundy.png',
+        badge: 'TENDENCIA',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 818,
+        code: 'CAL-SKE-01',
+        name: 'Zapatillas Urbanas Pastel D’Lites Confort Memory Foam',
+        brand: 'Skechers',
+        category: 'Mujer',
+        subCategory: 'zapatillas',
+        gender: 'mujer',
+        priceCmr: 219.00,
+        priceNormal: 319.00,
+        discount: '-31%',
+        rating: 4.9,
+        reviews: 260,
+        image: 'assets/calzado/prod_mujer_sneakers_stack.png',
+        badge: 'AIR COOLED',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 819,
+        code: 'CAL-MAN-01',
+        name: 'Sandalias Kitten Heels Tiras Finas Vino Fiesta 5cm',
+        brand: 'Sybilla',
+        category: 'Mujer',
+        subCategory: 'sandalias',
+        gender: 'mujer',
+        priceCmr: 159.00,
+        priceNormal: 229.00,
+        discount: '-30%',
+        rating: 4.7,
+        reviews: 68,
+        image: 'assets/calzado/prod_mujer_sandalias_kitten.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+    
+      // --- NUEVOS PRODUCTOS ADIDAS ORIGINALS ADISTAR (IMAGEN 1) ---
+      {
+        id: 901,
+        code: 'CAL-ADI-ADS1',
+        name: 'Zapatillas Urbanas Unisex Adistar Control 3 Plata',
+        brand: 'Adidas',
+        category: 'Deportes',
+        subCategory: 'zapatillas',
+        gender: 'unisex',
+        priceCmr: 399.00,
+        priceNormal: null,
+        discount: null,
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 93,
+        image: 'assets/calzado/prod_adistar_1.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 902,
+        code: 'CAL-ADI-ADS2',
+        name: 'Zapatillas Urbanas Mujer Adistar Control 3 Beige',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'zapatillas',
+        gender: 'mujer',
+        priceCmr: 399.00,
+        priceNormal: null,
+        discount: null,
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 42,
+        image: 'assets/calzado/prod_adistar_2.png',
+        badge: 'CYBER WOW',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 903,
+        code: 'CAL-ADI-ADS3',
+        name: 'Zapatillas Urbanas Unisex Adistar Control 3 Silver Metallic',
+        brand: 'Adidas',
+        category: 'Deportes',
+        subCategory: 'zapatillas',
+        gender: 'unisex',
+        priceCmr: 399.00,
+        priceNormal: null,
+        discount: null,
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 95,
+        image: 'assets/calzado/prod_adistar_3.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 904,
+        code: 'CAL-ADI-ADS4',
+        name: 'Zapatillas Urbanas Mujer Adistar Control 3 Black Silver',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'zapatillas',
+        gender: 'mujer',
+        priceCmr: 399.00,
+        priceNormal: null,
+        discount: null,
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 48,
+        image: 'assets/calzado/prod_adistar_4.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+
+      // --- NUEVOS PRODUCTOS PUMA RUNNING (IMAGEN 2) ---
+      {
+        id: 905,
+        code: 'CAL-PUM-MAX1',
+        name: 'Zapatillas Running Hombre Maxstride Lite Ls Black',
+        brand: 'Puma',
+        category: 'Deportes',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 174.30,
+        priceNormal: 249.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 4.8,
+        reviews: 38,
+        image: 'assets/calzado/prod_puma_maxstride_black.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+      {
+        id: 906,
+        code: 'CAL-PUM-MAX2',
+        name: 'Zapatillas Running Hombre Maxima Pro Amortiguación',
+        brand: 'Puma',
+        category: 'Deportes',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 197.40,
+        priceNormal: 329.00,
+        discount: '-40%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 5,
+        image: 'assets/calzado/prod_puma_maxima_pro.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+      {
+        id: 907,
+        code: 'CAL-PUM-MAX3',
+        name: 'Zapatillas Running Mujer Maxstride Lite Ls Stone',
+        brand: 'Puma',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 174.30,
+        priceNormal: 249.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 4.9,
+        reviews: 24,
+        image: 'assets/calzado/prod_puma_maxstride_beige.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 908,
+        code: 'CAL-PUM-MAX4',
+        name: 'Zapatillas Running Mujer Maxstride Lite Ls Wns Rose',
+        brand: 'Puma',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 149.40,
+        priceNormal: 249.00,
+        discount: '-40%',
+        shippingTag: 'Llega mañana',
+        rating: 4.8,
+        reviews: 19,
+        image: 'assets/calzado/prod_puma_maxstride_pink.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+
+      // --- NUEVOS PRODUCTOS ADIDAS & SKECHERS (IMAGEN 3) ---
+      {
+        id: 909,
+        code: 'CAL-ADI-RES1',
+        name: 'Zapatillas Running Mujer Response 2 Ice Aqua',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 155.40,
+        priceNormal: 259.00,
+        discount: '-40%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 137,
+        image: 'assets/calzado/prod_adidas_response2_aqua.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+      {
+        id: 910,
+        code: 'CAL-ADI-RES2',
+        name: 'Zapatillas Running Mujer Response 2 Cream Pearl',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 155.40,
+        priceNormal: 259.00,
+        discount: '-40%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 120,
+        image: 'assets/calzado/prod_adidas_response2_cream.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+      {
+        id: 911,
+        code: 'CAL-SKE-DYN1',
+        name: 'Zapatillas Running Hombre Dynamight 2.0 Black',
+        brand: 'Skechers',
+        category: 'Hombre',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 132.30,
+        priceNormal: 189.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 11,
+        image: 'assets/calzado/prod_skechers_dynamight_black.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 912,
+        code: 'CAL-SKE-SON1',
+        name: 'Zapatillas Running Mujer Sonic Lite Black',
+        brand: 'Skechers',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 153.30,
+        priceNormal: 219.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 4.9,
+        reviews: 45,
+        image: 'assets/calzado/prod_skechers_sonic_lite_black.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+
+      // --- NUEVOS PRODUCTOS PUMA POUNCE & RESPONSE PACE (IMAGEN 4) ---
+      {
+        id: 913,
+        code: 'CAL-PUM-POU1',
+        name: 'Zapatillas Running Hombre Pounce Lite 2 Engineered Dark Grey',
+        brand: 'Puma',
+        category: 'Hombre',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 109.50,
+        priceNormal: 219.00,
+        discount: '-50%',
+        shippingTag: 'Llega mañana',
+        rating: 4.7,
+        reviews: 7,
+        image: 'assets/calzado/prod_puma_pounce_grey.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 914,
+        code: 'CAL-PUM-POU2',
+        name: 'Zapatillas Running Hombre Pounce Lite 2 Engineered Navy Blue',
+        brand: 'Puma',
+        category: 'Hombre',
+        subCategory: 'running',
+        gender: 'hombre',
+        priceCmr: 149.90,
+        priceNormal: 219.00,
+        discount: '-32%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 1,
+        image: 'assets/calzado/prod_puma_pounce_blue.png',
+        badge: 'CYBER WOW',
+        promoTag: 'RETIRA MAÑANA'
+      },
+      {
+        id: 915,
+        code: 'CAL-ADI-PAC1',
+        name: 'Zapatillas Running Mujer Response Pace Soft Pink',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 139.00,
+        priceNormal: 199.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 27,
+        image: 'assets/calzado/prod_adidas_response_pace_pink.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      },
+      {
+        id: 916,
+        code: 'CAL-ADI-PAC2',
+        name: 'Zapatillas Running Mujer Response Pace White Pink',
+        brand: 'Adidas',
+        category: 'Mujer',
+        subCategory: 'running',
+        gender: 'mujer',
+        priceCmr: 139.30,
+        priceNormal: 199.00,
+        discount: '-30%',
+        shippingTag: 'Llega mañana',
+        rating: 5.0,
+        reviews: 44,
+        image: 'assets/calzado/prod_adidas_response_pace_white.png',
+        badge: 'CYBER WOW',
+        promoTag: 'OFERTA'
+      }
+
+    ];
+
+    let currentFilterBrand = 'Todos';
+    let currentFilterCategory = 'Todos';
+    let currentFilterSub = 'Todos';
+    let currentSortOption = 'featured';
+
+    /* -------------------------------------------------------------
+       RENDERIZADO DINÁMICO DEL CATÁLOGO DE CALZADO
+       ------------------------------------------------------------- */
+    function renderCalzadoProducts(products) {
+      const grid = document.getElementById('calzadoProductsGrid');
+      if (!grid) return;
+
+      if (!products.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-xl border border-slate-200">
+            <svg class="w-12 h-12 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h4 class="text-base font-bold text-slate-800">No encontramos calzado con los filtros seleccionados</h4>
+            <p class="text-xs text-slate-500 mt-1">Prueba seleccionando otra categoría o limpiando los filtros de búsqueda.</p>
+            <button onclick="resetCalzadoFilters()" class="mt-4 px-4 py-2 bg-[#0f172a] text-white text-xs font-bold rounded-lg hover:bg-[#333f48] transition">
+              Ver todo el catálogo de Calzado
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = products.map(product => {
+        const fullStars = Math.floor(product.rating);
+        const hasHalf = product.rating % 1 !== 0;
+        const starsHtml = '★'.repeat(fullStars) + (hasHalf ? '½' : '');
+        
+        // Badge superior (CYBER WOW en verde oscuro #004724 vs otros badges)
+        let badgeHtml = '';
+        if (product.badge) {
+          if (product.badge === 'CYBER WOW') {
+            badgeHtml = `
+              <span class="bg-[#004724] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider shadow-2xs">
+                CYBER WOW
+              </span>
+            `;
+          } else {
+            badgeHtml = `
+              <span class="bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-0.5 rounded shadow-2xs tracking-tight">
+                ${product.badge}
+              </span>
+            `;
+          }
+        }
+
+        // Formato precios
+        const formattedCmr = product.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedNormal = product.priceNormal ? product.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : null;
+
+        return `
+          <article class="product-card-calzado group" data-brand="${product.brand}" data-cat="${product.category}">
+            <!-- Imagen del Producto y Badges -->
+            <div class="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-3 border-b border-slate-100">
+              <img 
+                src="${product.image}" 
+                alt="${product.name}" 
+                class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                onerror="this.src='assets/calzado/prod_puma_maxstride.png'"
+              />
+              
+              <!-- Badge de Promoción / Categoría -->
+              <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start">
+                ${badgeHtml}
+              </div>
+
+              <!-- Botón Favorito -->
+              <button 
+                type="button" 
+                onclick="event.stopPropagation(); toggleFalabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\'")}', ${product.priceCmr}, '${product.image}', '${product.brand}')"
+                class="falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer"
+                title="Añadir a favoritos"
+                data-product-id="${product.id}"
+              >
+                <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </button>
+            </div>
+
+            <!-- Información y Precios -->
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                  ${product.brand}
+                </span>
+                <h4 class="text-xs font-semibold text-slate-800 line-clamp-2 leading-snug mb-1 group-hover:text-blue-600 transition" title="${product.name}">
+                  ${product.name}
+                </h4>
+
+                <!-- Vendedor Falabella (Icono verde 1:1) -->
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-2 font-medium">
+                  <span>Por Falabella</span>
+                  <span class="inline-block w-2.5 h-3 bg-[#aad500] rounded-xs" title="Vendido por Falabella"></span>
+                </div>
+
+                <!-- Bloque de Precios Falabella -->
+                <div class="space-y-0.5 mb-2">
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-base font-black text-slate-900">S/ ${formattedCmr}</span>
+                    ${product.discount ? `
+                      <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-2xs">
+                        ${product.discount}
+                      </span>
+                    ` : ''}
+                  </div>
+                  ${formattedNormal && product.discount ? `
+                    <div class="text-[11px] text-slate-400 line-through">
+                      S/ ${formattedNormal}
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Tags de Envío y Promoción -->
+                <div class="space-y-1 mb-2">
+                  ${product.shippingTag ? `
+                    <div>
+                      <span class="inline-block text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                        ${product.shippingTag}
+                      </span>
+                    </div>
+                  ` : ''}
+                  ${product.promoTag ? `
+                    <div>
+                      <span class="inline-block bg-[#222222] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-tight">
+                        ${product.promoTag}
+                      </span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Rating de Estrellas -->
+                <div class="flex items-center gap-1.5 text-xs mb-3">
+                  <span class="text-amber-400 font-bold tracking-tight text-[11px]">${starsHtml}</span>
+                  <span class="text-[11px] text-slate-400">(${product.reviews})</span>
+                </div>
+              </div>
+
+              <!-- Botón Añadir a la Bolsa -->
+              <button 
+                type="button" 
+                onclick="addToCart(${product.id})"
+                class="w-full py-2.5 px-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-lg text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-2 cursor-pointer select-none active:scale-[0.98]"
+              >
+                <svg class="w-4 h-4 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span>Agregar a la bolsa</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       FILTROS DE MARCA, CATEGORÍA Y NAVEGACIÓN
+       ------------------------------------------------------------- */
+    function scrollCalzadoBrandCarousel(delta) {
+      const track = document.getElementById('calzadoBrandCarousel');
+      if (track) {
+        track.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+    }
+
+    function filterByBrand(brand) {
+      currentFilterBrand = brand;
+      
+      // Highlight in carousel
+      document.querySelectorAll('#calzadoBrandCarousel .brand-item-card').forEach(c => {
+        const title = c.getAttribute('title') || '';
+        if (brand !== 'Todos' && title.toLowerCase().includes(brand.toLowerCase())) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+      currentFilterBrand = brand;
+      
+      const pills = document.querySelectorAll('#brandFilterPills button');
+      pills.forEach(p => {
+        if (p.textContent.trim().toLowerCase() === brand.toLowerCase() || (brand === 'Todos' && p.textContent.trim() === 'Todos')) {
+          p.className = 'filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    function filterFootwearByBrandDirect(brand) {
+      filterByBrand(brand);
+      showToast(`Mostrando calzado marca: ${brand}`);
+    }
+
+    function filterByCategory(category) {
+      currentFilterCategory = category;
+      const select = document.getElementById('categorySelectFilter');
+      if (select) select.value = category;
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    function filterBySubCategory(subCat) {
+      currentFilterSub = subCat;
+      const select = document.getElementById('subCategorySelectFilter');
+      if (select) select.value = subCat;
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    function filterByCategoryAndSub(cat, subCat) {
+      currentFilterCategory = cat;
+      currentFilterSub = subCat;
+      const selectCat = document.getElementById('categorySelectFilter');
+      if (selectCat) selectCat.value = cat;
+      const selectSub = document.getElementById('subCategorySelectFilter');
+      if (selectSub) selectSub.value = subCat;
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    /* Filtro desde las tarjetas editoriales de las imágenes (Hombre, Mujer, Deportes) */
+    function filterFootwearBySpecial(mundo, sub) {
+      currentFilterCategory = mundo;
+      currentFilterSub = sub;
+
+      const selectCat = document.getElementById('categorySelectFilter');
+      if (selectCat) selectCat.value = mundo;
+      const selectSub = document.getElementById('subCategorySelectFilter');
+      if (selectSub) selectSub.value = sub;
+
+      applyCombinedFilters();
+      scrollToCatalog();
+      showToast(`Mostrando ${mundo}: ${sub.toUpperCase()}`);
+    }
+
+    function sortCalzadoProducts(criteria) {
+      currentSortOption = criteria;
+      applyCombinedFilters();
+    }
+
+    function applyCombinedFilters() {
+      let filtered = [...CALZADO_PRODUCTS];
+
+      if (currentFilterBrand !== 'Todos') {
+        if (currentFilterBrand.toLowerCase().includes('cyber')) {
+          filtered = filtered.filter(p => p.badge && p.badge.includes('CYBER'));
+        } else {
+          const target = currentFilterBrand.toLowerCase();
+          filtered = filtered.filter(p => p.brand.toLowerCase() === target || p.brand.toLowerCase().includes(target));
+        }
+      }
+
+      if (currentFilterCategory !== 'Todos') {
+        filtered = filtered.filter(p => p.category.toLowerCase() === currentFilterCategory.toLowerCase());
+      }
+
+      if (currentFilterSub !== 'Todos') {
+        const targetSub = currentFilterSub.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.subCategory.toLowerCase() === targetSub || 
+          p.subCategory.toLowerCase().includes(targetSub) ||
+          p.name.toLowerCase().includes(targetSub)
+        );
+      }
+
+      // Ordenamiento
+      if (currentSortOption === 'price-asc') {
+        filtered.sort((a, b) => a.priceCmr - b.priceCmr);
+      } else if (currentSortOption === 'price-desc') {
+        filtered.sort((a, b) => b.priceCmr - a.priceCmr);
+      } else if (currentSortOption === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      renderCalzadoProducts(filtered);
+    }
+
+    function resetCalzadoFilters() {
+      currentFilterBrand = 'Todos';
+      currentFilterCategory = 'Todos';
+      currentFilterSub = 'Todos';
+      currentSortOption = 'featured';
+
+      const selectCat = document.getElementById('categorySelectFilter');
+      if (selectCat) selectCat.value = 'Todos';
+      const selectSub = document.getElementById('subCategorySelectFilter');
+      if (selectSub) selectSub.value = 'Todos';
+      const selectSort = document.getElementById('sortSelectFilter');
+      if (selectSort) selectSort.value = 'featured';
+
+      const pills = document.querySelectorAll('#brandFilterPills button');
+      pills.forEach((p, idx) => {
+        p.className = idx === 0 
+          ? 'filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition'
+          : 'filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+      });
+
+      renderCalzadoProducts(CALZADO_PRODUCTS);
+    }
+
+    function executeCalzadoSearch(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        applyCombinedFilters();
+        return;
+      }
+      const filtered = CALZADO_PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.brand.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q) ||
+        p.subCategory.toLowerCase().includes(q)
+      );
+      renderCalzadoProducts(filtered);
+      scrollToCatalog();
+      showToast(`Resultados para: "${query}" (${filtered.length} encontrados)`);
+    }
+
+    function handleLiveSearch(query) {
+      if (query.trim().length >= 3) {
+        executeCalzadoSearch(query);
+      } else if (query.trim().length === 0) {
+        applyCombinedFilters();
+      }
+    }
+
+    function scrollToCatalog() {
+      const sec = document.getElementById('sec-catalogo');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* Navegación fluida por la sub-barra fija hacia las secciones de calzado */
+    function navigateToCalzadoSection(sectionId, btn) {
+      document.querySelectorAll('.subnav-tab-item').forEach(item => item.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        const headerOffset = 110;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    /* -------------------------------------------------------------
+       GESTIÓN DEL CARRITO GLOBAL (falabella_store_cart_v2)
+       ------------------------------------------------------------- */
+    function getStoreCart() {
+      try {
+        const stored = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        sessionStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+        localStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+      } catch (e) {
+        console.error('Error saving cart:', e);
+      }
+      updateCartBadge();
+      renderCartDrawerItems();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const badges = document.querySelectorAll('#falabellaCartCount');
+      badges.forEach(b => {
+        b.textContent = totalCount;
+      });
+    }
+
+    function addToCart(productId) {
+      const product = CALZADO_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const cart = getStoreCart();
+      const existing = cart.find(item => item.id === product.id);
+
+      if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1;
+      } else {
+        cart.push({
+          id: product.id,
+          code: product.code,
+          name: product.name,
+          brand: product.brand,
+          price: product.priceCmr,
+          priceCmr: product.priceCmr,
+          priceNormal: product.priceNormal,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡Agregaste "${product.name.slice(0, 30)}..." a la bolsa!`);
+    }
+
+    function updateCartItemQty(id, delta) {
+      const cart = getStoreCart();
+      const item = cart.find(p => p.id === id);
+      if (!item) return;
+
+      item.quantity = (item.quantity || 1) + delta;
+      if (item.quantity <= 0) {
+        const filtered = cart.filter(p => p.id !== id);
+        saveStoreCart(filtered);
+      } else {
+        saveStoreCart(cart);
+      }
+    }
+
+    function removeCartItem(id) {
+      const cart = getStoreCart();
+      const filtered = cart.filter(p => p.id !== id);
+      saveStoreCart(filtered);
+      showToast('Producto eliminado de la bolsa');
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const panel = document.getElementById('cartDrawerPanel');
+      if (!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('opacity-0');
+      if (isHidden) {
+        renderCartDrawerItems();
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        panel.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.add('translate-x-full');
+      }
+    }
+
+    function renderCartDrawerItems() {
+      const list = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartDrawerSubtotal');
+      if (!list || !subtotalEl) return;
+
+      const cart = getStoreCart();
+      if (!cart.length) {
+        list.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <p class="text-sm font-bold text-slate-700">Tu bolsa está vacía</p>
+            <p class="text-xs text-slate-400 mt-1">Explora nuestro catálogo de calzado y encuentra tus favoritos.</p>
+          </div>
+        `;
+        subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const itemTotal = (item.priceCmr || item.price) * (item.quantity || 1);
+        subtotal += itemTotal;
+
+        return `
+          <div class="py-3 flex items-center justify-between gap-3">
+            <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-contain rounded-lg border border-slate-100 p-1 flex-shrink-0" onerror="this.src='assets/calzado/prod_puma_maxstride.png'">
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">${item.brand || 'Calzado'}</span>
+              <h5 class="text-xs font-semibold text-slate-800 truncate" title="${item.name}">${item.name}</h5>
+              <div class="text-xs font-black text-[#0f766e] mt-0.5">S/ ${((item.priceCmr || item.price)).toFixed(2)}</div>
+              
+              <!-- Cantidad -->
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" onclick="updateCartItemQty(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">-</button>
+                <span class="text-xs font-bold text-slate-800 w-4 text-center">${item.quantity || 1}</span>
+                <button type="button" onclick="updateCartItemQty(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">+</button>
+              </div>
+            </div>
+            <button type="button" onclick="removeCartItem(${item.id})" class="text-slate-300 hover:text-rose-500 transition p-1" title="Eliminar">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      subtotalEl.textContent = `S/ ${subtotal.toFixed(2)}`;
+    }
+
+    function proceedToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa de compras está vacía.');
+        return;
+      }
+      showToast('Redirigiendo a pasarela segura Falabella...');
+      setTimeout(() => {
+        window.location.href = 'index.html#falabellaCartSection';
+      }, 1000);
+    }
+
+    /* -------------------------------------------------------------
+       GESTIÓN DE FAVORITOS (falabella_wishlist_items_v1)
+       ------------------------------------------------------------- */
+    function getStoreFavorites() {
+      try {
+        const stored = localStorage.getItem(STORE_FAVS_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function toggleFalabellaFavorite(id, name, price, image, brand) {
+      let favs = getStoreFavorites();
+      const exists = favs.some(item => item.id === id);
+
+      if (exists) {
+        favs = favs.filter(item => item.id !== id);
+        showToast('Producto eliminado de tu lista de deseos');
+      } else {
+        favs.push({ id, name, price, image, brand });
+        showToast('¡Guardado en tu lista de deseos!');
+      }
+
+      localStorage.setItem(STORE_FAVS_KEY, JSON.stringify(favs));
+      updateWishlistBadge();
+    }
+
+    function updateWishlistBadge() {
+      const favs = getStoreFavorites();
+      const badge = document.getElementById('falabellaWishlistCount');
+      if (badge) badge.textContent = favs.length;
+    }
+
+    /* -------------------------------------------------------------
+       DRAWER DE CATEGORÍAS
+       ------------------------------------------------------------- */
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('categoriesDrawer');
+      const panel = document.getElementById('categoriesDrawerPanel');
+      if (!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('opacity-0');
+      if (isHidden) {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        panel.classList.remove('-translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.add('-translate-x-full');
+      }
+    }
+
+    /* -------------------------------------------------------------
+       MODAL DE AUTENTICACIÓN
+       ------------------------------------------------------------- */
+    function openAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    }
+
+    function switchAuthTab(tab) {
+      const tabLogin = document.getElementById('tabLogin');
+      const tabRegister = document.getElementById('tabRegister');
+      const formLogin = document.getElementById('formLogin');
+      const formRegister = document.getElementById('formRegister');
+
+      if (tab === 'login') {
+        tabLogin.className = 'flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition';
+        tabRegister.className = 'flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition';
+        formLogin.classList.remove('hidden');
+        formRegister.classList.add('hidden');
+      } else {
+        tabRegister.className = 'flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition';
+        tabLogin.className = 'flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition';
+        formRegister.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const userName = email.split('@')[0];
+      const user = { name: userName, email };
+      localStorage.setItem(STORE_USER_KEY, JSON.stringify(user));
+      updateUserNavState();
+      closeAuthModal();
+      showToast(`¡Bienvenido de vuelta, ${userName}!`);
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const user = { name, email };
+      localStorage.setItem(STORE_USER_KEY, JSON.stringify(user));
+      updateUserNavState();
+      closeAuthModal();
+      showToast(`¡Cuenta creada con éxito! Bienvenido, ${name}`);
+    }
+
+    function updateUserNavState() {
+      const stored = localStorage.getItem(STORE_USER_KEY);
+      const greetingEl = document.getElementById('userNavGreeting');
+      const labelEl = document.getElementById('userNavLabel');
+      if (!labelEl || !greetingEl) return;
+
+      if (stored) {
+        try {
+          const user = JSON.parse(stored);
+          greetingEl.textContent = 'Hola,';
+          labelEl.textContent = user.name || 'Mi Perfil';
+        } catch (e) {}
+      } else {
+        greetingEl.textContent = 'Hola,';
+        labelEl.textContent = 'Inicia sesión';
+      }
+    }
+
+    /* -------------------------------------------------------------
+       SISTEMA DE TOAST
+       ------------------------------------------------------------- */
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    /* -------------------------------------------------------------
+       HERO CAROUSEL LOGIC
+       ------------------------------------------------------------- */
+    let currentSlide = 0;
+    const totalSlides = 3;
+    let autoSlideInterval;
+
+    function showSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`calzadoSlide${i}`);
+        if (slide) slide.classList.toggle('active', i - 1 === currentSlide);
+      }
+
+      const dots = document.querySelectorAll('.calzado-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function changeCalzadoSlide(delta) {
+      resetAutoSlide();
+      showSlide(currentSlide + delta);
+    }
+
+    function goToCalzadoSlide(index) {
+      resetAutoSlide();
+      showSlide(index);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    /* -------------------------------------------------------------
+       INICIALIZACIÓN Y DETECCIÓN DE SCROLL PARA TABS
+       ------------------------------------------------------------- */
+    function setupScrollSpy() {
+      const sections = [
+        { id: 'sec-marcas', index: 0 },
+        { id: 'sec-lo-ultimo', index: 1 },
+        { id: 'sec-mundo-mujer', index: 2 },
+        { id: 'sec-mundo-deportes', index: 3 },
+        { id: 'sec-mundo-hombre', index: 4 }
+      ];
+
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + 160;
+        const tabs = document.querySelectorAll('.subnav-tab-item');
+        if (!tabs.length) return;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = document.getElementById(sections[i].id);
+          if (sec && sec.offsetTop <= scrollPosition) {
+            tabs.forEach((t, idx) => t.classList.toggle('active', idx === sections[i].index));
+            break;
+          }
+        }
+      }, { passive: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCalzadoProducts(CALZADO_PRODUCTS);
+      updateCartBadge();
+      updateWishlistBadge();
+      updateUserNavState();
+      startAutoSlide();
+      setupScrollSpy();
+    });
+  </script>
+</body>
+</html>

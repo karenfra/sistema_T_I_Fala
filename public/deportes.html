@@ -344,14 +344,14 @@
     <!-- ==================== 1. HERO CAROUSEL: 3 BANNERS DE DEPORTES ==================== -->
     <section class="relative w-full rounded-2xl overflow-hidden bg-slate-900 shadow-lg aspect-[1024/300] sm:aspect-[1024/300] md:aspect-[1024/300] max-h-[380px]">
       
-      <!-- Slide 1: Vestuario Deportivo (Auténtico de Imagen 1) -->
-      <div class="hero-slide active" data-slide="0">
+      <!-- Slide 1: Vestuario Deportivo -->
+      <div class="hero-slide active cursor-pointer" data-slide="0" onclick="filterByCategory('Vestuario')">
         <picture>
           <source srcset="assets/deportes/banner_vestuario_deportivo.webp" type="image/webp">
-          <img src="assets/deportes/banner_vestuario_deportivo.png" alt="Vestuario Deportivo Falabella: Mujer, Hombre y Niños" class="w-full h-full object-cover">
+          <img src="assets/deportes/banner_vestuario_deportivo.png" alt="Vestuario Deportivo Falabella: Mujer y Hombre" class="w-full h-full object-cover">
         </picture>
         <div class="absolute inset-0 flex items-center justify-between p-6 md:p-12 pointer-events-none">
-          <div class="pointer-events-auto cursor-pointer" onclick="filterByCategory('Vestuario')">
+          <div class="pointer-events-auto">
             <span class="sr-only">Explorar Vestuario Deportivo</span>
           </div>
           <button type="button" onclick="filterByCategory('Vestuario')" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-white text-slate-900 font-black rounded-full hover:bg-[#aad500] hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
@@ -360,30 +360,20 @@
         </div>
       </div>
 
-      <!-- Slide 2: Zona Fitness & Máquinas de Ejercicio (16:9 HD) -->
-      <div class="hero-slide" data-slide="1">
+      <!-- Slide 2: Zona Fitness & Máquinas de Ejercicio -->
+      <div class="hero-slide cursor-pointer" data-slide="1" onclick="document.getElementById('sec-zona-fitness').scrollIntoView({behavior:'smooth'})">
         <picture>
           <source srcset="assets/deportes/banner_zona_fitness.webp" type="image/webp">
           <img src="assets/deportes/banner_zona_fitness.png" alt="Zona Fitness Falabella: Máquinas y Pesas hasta 40% Dcto" class="w-full h-full object-cover">
         </picture>
-        <div class="absolute inset-0 flex items-center justify-end p-6 md:p-12 pointer-events-none">
-          <button type="button" onclick="document.getElementById('sec-zona-fitness').scrollIntoView({behavior:'smooth'})" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-[#aad500] text-slate-950 font-black rounded-full hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
-            ¡Ver más! <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
       </div>
 
-      <!-- Slide 3: Mundo Bicicletas & Outdoor (16:9 HD) -->
-      <div class="hero-slide" data-slide="2">
+      <!-- Slide 3: Mundo Bicicletas & Outdoor -->
+      <div class="hero-slide cursor-pointer" data-slide="2" onclick="document.getElementById('sec-bicicletas').scrollIntoView({behavior:'smooth'})">
         <picture>
           <source srcset="assets/deportes/banner_mundo_bicicletas.webp" type="image/webp">
           <img src="assets/deportes/banner_mundo_bicicletas.png" alt="Mundo Bicicletas Falabella: Montañeras y Urbanas hasta 35% Dcto" class="w-full h-full object-cover">
         </picture>
-        <div class="absolute inset-0 flex items-center justify-end p-6 md:p-12 pointer-events-none">
-          <button type="button" onclick="document.getElementById('sec-bicicletas').scrollIntoView({behavior:'smooth'})" class="pointer-events-auto hidden md:flex items-center gap-2 px-6 py-2.5 bg-[#aad500] text-slate-950 font-black rounded-full hover:scale-105 transition shadow-lg text-xs tracking-wider uppercase">
-            ¡Ver catálogo! <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
       </div>
 
       <!-- Flechas Prev / Next -->
@@ -832,6 +822,9 @@
           <li><a href="index.html" class="hover:text-white transition">Estado de mi orden</a></li>
           <li><a href="index.html" class="hover:text-white transition">Cambios y devoluciones</a></li>
           <li><a href="index.html" class="hover:text-white transition">Boletas y facturas</a></li>
+          <li><a href="terminos-condiciones.html" class="hover:text-white transition">Términos y condiciones</a></li>
+          <li><a href="politica-privacidad.html" class="hover:text-white transition">Política de privacidad</a></li>
+          <li><a href="libro-reclamaciones.html" class="hover:text-white transition">Libro de reclamaciones</a></li>
         </ul>
       </div>
       <div>
@@ -859,6 +852,13 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2">
+      <div class="flex items-center gap-3">
+        <a href="terminos-condiciones.html" class="hover:text-white hover:underline transition">Términos y condiciones</a>
+        <span>•</span>
+        <a href="politica-privacidad.html" class="hover:text-white hover:underline transition">Política de privacidad</a>
+        <span>•</span>
+        <a href="libro-reclamaciones.html" class="hover:text-white hover:underline transition">Libro de reclamaciones</a>
+      </div>
       <span>© 2026 falabella.com - Todos los derechos reservados.</span>
       <span>Precios y promociones válidos para compras online.</span>
     </div>

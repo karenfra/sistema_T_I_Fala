@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Decohogar Falabella en Falabella.com Perú - Especial Árboles de Navidad, adornos, sofás, seccionales, centros de TV, muebles de sala y las mejores marcas: Basement Home, Mica, Dear Santa.">
+  <title>Decohogar &amp; Muebles Falabella | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              navy: '#0f172a',
+              rose: '#e11d48',
+              forest: '#182e23'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-input::placeholder {
+      color: #718096;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Hero Banner Carousel (Exact 1024x253 ratio) */
+    .deco-carousel-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1024 / 253;
+      min-height: 200px;
+      max-height: 400px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #182e23;
+      box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.16);
+    }
+    @media (max-width: 768px) {
+      .deco-carousel-container {
+        aspect-ratio: 16 / 9;
+        min-height: 170px;
+        border-radius: 6px;
+      }
+    }
+    .deco-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      cursor: pointer;
+    }
+    .deco-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .deco-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Hero Nav Arrows */
+    .deco-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      transition: all 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .deco-carousel-container:hover .deco-nav-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .deco-nav-arrow:hover {
+      background: #aad500;
+      border-color: #aad500;
+      color: #0f172a;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .deco-nav-prev { left: 14px; }
+    .deco-nav-next { right: 14px; }
+
+    /* Carousel Dots */
+    .deco-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+    .deco-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      padding: 0;
+    }
+    .deco-dot.active {
+      background: #334155;
+      transform: scale(1.25);
+    }
+
+    /* Subcategories Bar */
+    .subnav-tabs-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #ffffff;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .subnav-tabs-bar::-webkit-scrollbar { display: none; }
+    .subnav-tab-item {
+      flex: 1;
+      min-width: 130px;
+      padding: 13px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      border-right: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .subnav-tab-item:last-child {
+      border-right: none;
+    }
+    .subnav-tab-item:hover, .subnav-tab-item.active {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .subnav-arrow-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #334155;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 6px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .subnav-arrow-btn:hover {
+      background: #aad500;
+      color: #0f172a;
+    }
+
+    /* ==================== SECCIÓN: ENCUENTRA EL ÁRBOL PERFECTO ==================== */
+    .tree-room-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1024 / 515;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+    @media (max-width: 768px) {
+      .tree-room-container {
+        aspect-ratio: 16 / 10;
+      }
+    }
+    .tree-hotspot-pin {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+      border: 2px solid #ffffff;
+    }
+    .tree-hotspot-pin:hover, .tree-hotspot-pin.active {
+      transform: scale(1.15);
+      background: #aad500;
+      color: #0f172a;
+      border-color: #ffffff;
+    }
+    .tree-hotspot-pulse {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      animation: pulsePin 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      pointer-events: none;
+    }
+    @keyframes pulsePin {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.85); opacity: 0; }
+    }
+
+    /* Tooltip card exact replica of Image 3 */
+    .tree-tooltip-card {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 0 12px 30px -4px rgba(0,0,0,0.35), 0 0 1px 1px rgba(0,0,0,0.06);
+      width: 210px;
+      z-index: 30;
+      text-align: left;
+      pointer-events: auto;
+      transition: all 0.25s ease;
+      display: none;
+    }
+    .tree-hotspot-pin.active .tree-tooltip-card {
+      display: block;
+    }
+    .tree-tooltip-card::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 7px;
+      border-style: solid;
+      border-color: #ffffff transparent transparent transparent;
+    }
+
+    /* Showcase Panels (Similar to Sybilla Sunny Looks) */
+    .deco-showcase-container {
+      display: grid;
+      grid-template-columns: 1.15fr 1.35fr 1fr;
+      gap: 12px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    @media (max-width: 860px) {
+      .deco-showcase-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .deco-panel-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 290px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .deco-panel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .deco-panel-card:hover img {
+      transform: scale(1.05);
+    }
+    .deco-tag-overlay {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .deco-panel-card:hover .deco-tag-overlay {
+      transform: scale(1.05);
+      background: #aad500;
+      color: #0f172a;
+    }
+
+    /* Product Card */
+    .product-card-deco {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .product-card-deco:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.12);
+      border-color: #cbd5e1;
+    }
+
+    /* Cyber Wow Badge */
+    .cyber-badge {
+      background: #15803d;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 2px;
+      display: inline-block;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* Swatch dots */
+    .color-swatch-circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid #cbd5e1;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 4px solid #aad500;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- ==================== HEADER OFICIAL FALABELLA ==================== -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-3 sm:gap-6 justify-between">
+      
+      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-4 sm:gap-6 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
+          <span style="color:#aad500; font-size:32px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+          <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+        </a>
+
+        <!-- Botón Menú Hamburguesa -->
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="decohogarSearchInput" class="store-search-input" placeholder="Buscar en falabella.com - Árboles, Sofás, Navidad, Sillas, Muebles..." onkeydown="if(event.key==='Enter') executeDecoSearch(this.value)" />
+          <button type="button" onclick="executeDecoSearch(document.getElementById('decohogarSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de cabecera: Hola, Inicia sesión | Mi cuenta, Favoritos, Carrito -->
+      <div class="flex items-center gap-4 sm:gap-6 ml-auto flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión / Mi cuenta -->
+        <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
+          <div class="flex flex-col text-[11px] leading-tight">
+            <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
+            <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
+              Inicia sesión
+              <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </div>
+          <div class="border-l border-slate-300 pl-2.5 ml-1 hidden sm:flex flex-col text-[11px] leading-tight text-slate-600">
+            <span>Mi</span>
+            <span class="font-bold text-slate-900 text-[12px]">cuenta</span>
+          </div>
+        </div>
+
+        <!-- Botón Mis Favoritos con Badge en tiempo real -->
+        <button type="button" onclick="openFalabellaFavoritesModal()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer select-none" title="Mis Favoritos" aria-label="Ver favoritos">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span id="falabellaFavHeaderBadge" class="absolute -top-1 -right-1 bg-rose-600 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+        </button>
+
+        <!-- Botón Carrito / Bolsa con Badge Dinámico conectado al almacenamiento global -->
+        <button type="button" onclick="openDecoCartModal()" class="relative p-1 text-slate-700 hover:text-black transition cursor-pointer select-none" title="Bolsa de compras" aria-label="Ver bolsa de compras">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span id="decoCartBadge" class="absolute -top-1 -right-1.5 bg-[#aad500] text-slate-950 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">0</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MENÚ DRAWER LATERAL DE CATEGORÍAS ==================== -->
+  <div id="decoCategoriesDrawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="toggleCategoriesDrawer()">
+    <div class="fixed top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <h3 class="font-black text-slate-900 text-lg flex items-center gap-2">
+          <span class="text-[#aad500] font-black text-xl">falabella</span>.com
+        </h3>
+        <button onclick="toggleCategoriesDrawer()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="py-3 text-xs font-bold uppercase text-slate-400 tracking-wider">Departamentos</div>
+      <ul class="space-y-1 text-sm font-semibold text-slate-700">
+        <li>
+          <a href="decohogar.html" class="flex items-center justify-between p-2.5 rounded-xl bg-lime-50 text-slate-900 border border-lime-200 font-bold transition">
+            <span>🛋️ Decohogar &amp; Muebles</span>
+            <span class="text-[10px] bg-[#aad500] text-slate-900 px-2 py-0.5 rounded-full font-black">ACTUAL</span>
+          </a>
+        </li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="moda_hombre.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+        <li><a href="tecnologia.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Tecnología</a></li>
+        <li><a href="calzado.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+        <li><a href="belleza.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+        <li><a href="deportes.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes &amp; Fitness</a></li>
+      </ul>
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#333f48] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 space-y-6">
+
+    <!-- BREADCRUMB -->
+    <nav class="flex items-center gap-1.5 text-xs text-slate-500 select-none pb-1" aria-label="Breadcrumb">
+      <a href="index.html" class="hover:underline hover:text-slate-800 transition">Home</a>
+      <span class="text-slate-400 font-bold">&gt;</span>
+      <span class="text-slate-800 font-bold underline">Decohogar &amp; Navidad</span>
+    </nav>
+
+    <!-- ==================== 1. HERO CAROUSEL: ESTILO Y COLORES EXACTOS A LA IMAGEN 1 ==================== -->
+    <section class="deco-carousel-container" id="decoHeroCarousel" onmouseenter="pauseDecoCarousel()" onmouseleave="startDecoCarousel()">
+      
+      <!-- Slide 1: Broma/Oficial de Navidad Falabella (Imagen 1 del usuario) -->
+      <div class="deco-slide active" onclick="document.getElementById('sec-arbol-perfecto').scrollIntoView({behavior:'smooth'})" title="Adornos, Árboles y Luces de Navidad - 40% DSCTO">
+        <picture>
+          <source srcset="assets/decohogar/banner_navidad_oficial.webp" type="image/webp">
+          <img src="assets/decohogar/banner_navidad_oficial.jpg" alt="Feliz Navidad para todos - Adornos, Árboles y Luces de Navidad 40% DSCTO" loading="eager" />
+        </picture>
+      </div>
+
+      <!-- Slide 2: Renueva tu Sala con Estilo (Muebles, Sofás Ying & Centros de TV con estilo Image 1) -->
+      <div class="deco-slide" onclick="document.getElementById('sec-muebles-sala').scrollIntoView({behavior:'smooth'})" title="Renueva tu Sala - Sofás, Seccionales y Centros de TV">
+        <picture>
+          <source srcset="assets/decohogar/banner_muebles_oficial.webp" type="image/webp">
+          <img src="assets/decohogar/banner_muebles_oficial.jpg" alt="Renueva tu sala - Sofás, Seccionales y Centros de TV hasta 60% DSCTO" loading="lazy" />
+        </picture>
+      </div>
+
+      <!-- Slide 3: Confort & Gamer (Sillas Reclinables con reposapiés y escritorios) -->
+      <div class="deco-slide" onclick="filterByCategory('Sillas & Oficina')" title="Confort & Gamer - Sillas Ergonómicas">
+        <picture>
+          <source srcset="assets/decohogar/banner_gamer_oficial.webp" type="image/webp">
+          <img src="assets/decohogar/banner_gamer_oficial.jpg" alt="Confort & Gamer - Sillas Reclinables y Home Office hasta 58% DSCTO" loading="lazy" />
+        </picture>
+      </div>
+
+      <!-- Flechas Prev / Next -->
+      <button type="button" class="deco-nav-arrow deco-nav-prev" onclick="event.stopPropagation(); moveDecoSlide(-1);" aria-label="Banner anterior">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="deco-nav-arrow deco-nav-next" onclick="event.stopPropagation(); moveDecoSlide(1);" aria-label="Banner siguiente">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </section>
+
+    <!-- Indicadores Dots del Carousel -->
+    <div class="deco-dots" id="decoCarouselDots">
+      <button type="button" class="deco-dot active" onclick="setDecoSlide(0)" aria-label="Slide 1"></button>
+      <button type="button" class="deco-dot" onclick="setDecoSlide(1)" aria-label="Slide 2"></button>
+      <button type="button" class="deco-dot" onclick="setDecoSlide(2)" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- ==================== SUB-BARRA DE NAVEGACIÓN ==================== -->
+    <nav class="subnav-tabs-bar" aria-label="Subnavegación de Decohogar">
+      <button type="button" onclick="document.getElementById('sec-arbol-perfecto').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item active text-emerald-800 font-black">🎄 Árboles de Navidad</button>
+      <button type="button" onclick="document.getElementById('sec-muebles-sala').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item">Muebles de Sala</button>
+      <button type="button" onclick="filterByCategory('Sofás')" class="subnav-tab-item">Sofás y Seccionales</button>
+      <button type="button" onclick="document.getElementById('sec-navidad').scrollIntoView({behavior:'smooth'});" class="subnav-tab-item">Adornos &amp; Luces</button>
+      <button type="button" onclick="filterByCategory('Centros de TV')" class="subnav-tab-item">Centros de TV</button>
+      <button type="button" onclick="filterByCategory('Sillas & Oficina')" class="subnav-tab-item">Sillas &amp; Gamer</button>
+      <button type="button" onclick="filterByCategory('Iluminación')" class="subnav-tab-item">Iluminación</button>
+      <button type="button" onclick="filterByBrand('Basement Home')" class="subnav-tab-item">Basement Home</button>
+      <button type="button" onclick="filterByBrand('Mica')" class="subnav-tab-item">Mica</button>
+      <div class="subnav-tab-item flex items-center justify-between !pr-2 !min-w-[130px] cursor-pointer" onclick="scrollToCatalog()">
+        <span>Todo...</span>
+        <div class="subnav-arrow-btn">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== 2. NUEVA SECCIÓN DE ÁRBOLES: ENCUENTRA EL ÁRBOL PERFECTO (IMÁGENES 2 Y 3) ==================== -->
+    <section id="sec-arbol-perfecto" class="pt-2 scroll-mt-20">
+      
+      <!-- Encabezado idéntico a la Imagen 3 -->
+      <div class="text-center mb-4">
+        <div class="flex items-center justify-center gap-3 sm:gap-4">
+          <!-- Estrella navideña roja -->
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-rose-800 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2zM12 8l.8 2.2L15 11l-2.2.8L12 14l-.8-2.2L9 11l2.2-.8L12 8z"/>
+          </svg>
+          <h2 class="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight" style="font-family:'Segoe UI',sans-serif;">
+            Encuentra el <span class="font-bold text-slate-900">árbol perfecto</span>
+          </h2>
+          <!-- Estrella navideña roja -->
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-rose-800 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2zM12 8l.8 2.2L15 11l-2.2.8L12 14l-.8-2.2L9 11l2.2-.8L12 8z"/>
+          </svg>
+        </div>
+
+        <!-- Línea tricolor sutil decorativa -->
+        <div class="flex items-center justify-center gap-1 mt-2.5">
+          <div class="w-5 h-[2px] bg-rose-700"></div>
+          <div class="w-5 h-[2px] bg-emerald-700"></div>
+          <div class="w-5 h-[2px] bg-slate-400"></div>
+        </div>
+
+        <!-- Enlace 'Ver todo >' -->
+        <a href="#sec-catalogo" onclick="filterByCategory('Árboles')" class="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-black font-semibold mt-1.5 transition">
+          <span>Ver todo</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- ESCENA VIRTUAL INTERACTIVA CON PINES / HOTSPOTS (IMAGEN 2 & 3) -->
+      <div class="tree-room-container" id="treeRoomScene">
+        <picture>
+          <source srcset="assets/decohogar/scene_arbol_perfecto_room.webp" type="image/webp">
+          <img src="assets/decohogar/scene_arbol_perfecto_room.jpg" alt="Encuentra el árbol de navidad perfecto - Falabella" class="w-full h-full object-cover" />
+        </picture>
+
+        <!-- HOTSPOT 1: ÁRBOL COLORADO DELUXE (Izquierda) -->
+        <div class="tree-hotspot-pin" style="left: 17.5%; top: 90%;" onclick="toggleTreePin(1, event)" title="Ver Árbol Colorado Deluxe 2.10m">
+          <div class="tree-hotspot-pulse"></div>
+          <svg class="w-4 h-4 font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
+          
+          <div class="tree-tooltip-card" id="tooltipPin1">
+            <h4 class="text-[11px] font-black uppercase text-slate-900 tracking-wider">COLORADO DELUXE</h4>
+            <p class="text-[10px] text-slate-500 font-bold mt-0.5">MICA | Árbol</p>
+            <p class="text-[10px] text-slate-600">2.10m 1224 Ramas</p>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+              <span class="text-xs font-black text-rose-600">S/ 239.90</span>
+              <span class="text-[9.5px] text-slate-400 line-through">S/ 599.90</span>
+            </div>
+            <div class="mt-2.5 flex items-center gap-1.5">
+              <button type="button" onclick="event.stopPropagation(); addToCart(808)" class="flex-1 py-1 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-[10px] font-bold rounded transition">
+                + Agregar
+              </button>
+              <a href="#sec-catalogo" onclick="event.stopPropagation(); filterByCategory('Árboles')" class="text-[9.5px] font-bold text-slate-500 hover:underline">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOTSPOT 2: NAVIDAD PENCIL DEAR SANTA (Centro-Izquierda, Activo por defecto como en Imagen 3) -->
+        <div class="tree-hotspot-pin active" style="left: 36.5%; top: 82%;" onclick="toggleTreePin(2, event)" title="Ver Navidad Pencil Dear Santa">
+          <div class="tree-hotspot-pulse"></div>
+          <svg class="w-4 h-4 font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
+          
+          <!-- Tooltip exacto a la Imagen 3 -->
+          <div class="tree-tooltip-card" id="tooltipPin2" style="display: block;">
+            <h4 class="text-[11px] font-black uppercase text-slate-900 tracking-wider">NAVIDAD PENCIL</h4>
+            <p class="text-[10px] text-slate-500 font-bold mt-0.5">DEAR SANTA | Árbol</p>
+            <p class="text-[10px] text-slate-600">2.10m 425 Ramas</p>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+              <span class="text-xs font-black text-rose-600">S/ 169.90</span>
+              <span class="text-[9.5px] text-slate-400 line-through">S/ 329.90</span>
+            </div>
+            <div class="mt-2.5 flex items-center gap-1.5">
+              <button type="button" onclick="event.stopPropagation(); addToCart(817)" class="flex-1 py-1 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-[10px] font-bold rounded transition">
+                + Agregar
+              </button>
+              <a href="#sec-catalogo" onclick="event.stopPropagation(); filterByCategory('Árboles')" class="text-[9.5px] font-bold text-slate-500 hover:underline">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOTSPOT 3: ÁRBOL COLORADO CLÁSICO (Centro-Derecha) -->
+        <div class="tree-hotspot-pin" style="left: 65%; top: 91%;" onclick="toggleTreePin(3, event)" title="Ver Árbol Colorado 1.80m">
+          <div class="tree-hotspot-pulse"></div>
+          <svg class="w-4 h-4 font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
+          
+          <div class="tree-tooltip-card" id="tooltipPin3">
+            <h4 class="text-[11px] font-black uppercase text-slate-900 tracking-wider">COLORADO CLÁSICO</h4>
+            <p class="text-[10px] text-slate-500 font-bold mt-0.5">MICA | Árbol</p>
+            <p class="text-[10px] text-slate-600">1.80m 380 Ramas</p>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+              <span class="text-xs font-black text-rose-600">S/ 79.90</span>
+              <span class="text-[9.5px] text-slate-400 line-through">S/ 199.90</span>
+            </div>
+            <div class="mt-2.5 flex items-center gap-1.5">
+              <button type="button" onclick="event.stopPropagation(); addToCart(811)" class="flex-1 py-1 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-[10px] font-bold rounded transition">
+                + Agregar
+              </button>
+              <a href="#sec-catalogo" onclick="event.stopPropagation(); filterByCategory('Árboles')" class="text-[9.5px] font-bold text-slate-500 hover:underline">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOTSPOT 4: COMBO PRE-ILUMINADO (Derecha) -->
+        <div class="tree-hotspot-pin" style="left: 83%; top: 86%;" onclick="toggleTreePin(4, event)" title="Ver Combo Colorado Pre-Iluminado">
+          <div class="tree-hotspot-pulse"></div>
+          <svg class="w-4 h-4 font-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
+          
+          <div class="tree-tooltip-card" id="tooltipPin4">
+            <h4 class="text-[11px] font-black uppercase text-slate-900 tracking-wider">COMBO COLORADO</h4>
+            <p class="text-[10px] text-slate-500 font-bold mt-0.5">MICA | Árbol + Bolas</p>
+            <p class="text-[10px] text-slate-600">1.80m + Set 20 Bolas + Luces</p>
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+              <span class="text-xs font-black text-rose-600">S/ 99.90</span>
+              <span class="text-[9.5px] text-slate-400 line-through">S/ 349.60</span>
+            </div>
+            <div class="mt-2.5 flex items-center gap-1.5">
+              <button type="button" onclick="event.stopPropagation(); addToCart(812)" class="flex-1 py-1 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-[10px] font-bold rounded transition">
+                + Agregar
+              </button>
+              <a href="#sec-catalogo" onclick="event.stopPropagation(); filterByCategory('Árboles')" class="text-[9.5px] font-bold text-slate-500 hover:underline">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIRA DE TARJETAS COMPARATIVAS DE LOS 4 ÁRBOLES DE LA ESCENA -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+        
+        <!-- Tarjeta Árbol 1 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between hover:shadow-md transition">
+          <div class="flex gap-3 items-center">
+            <img src="assets/decohogar/tree_colorado_deluxe_scene.png" alt="Colorado Deluxe" class="w-16 h-20 object-contain bg-slate-50 rounded p-1">
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-black text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded uppercase">Frondoso 2.10m</span>
+              <h4 class="text-xs font-bold text-slate-900 mt-1 truncate">Árbol Colorado Deluxe</h4>
+              <p class="text-[10.5px] text-slate-500">1224 Ramas | Base metálica</p>
+              <div class="mt-1 flex items-baseline gap-1.5">
+                <span class="text-sm font-black text-slate-950">S/ 239.90</span>
+                <span class="text-[10px] text-slate-400 line-through">S/ 599.90</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addToCart(808)" class="mt-3 w-full py-1.5 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+            <span>Agregar a la bolsa</span>
+          </button>
+        </div>
+
+        <!-- Tarjeta Árbol 2 (NAVIDAD PENCIL) -->
+        <div class="bg-white border-2 border-emerald-600/40 rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:shadow-md transition relative">
+          <span class="absolute -top-2.5 right-3 bg-emerald-700 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Favorito Espacios</span>
+          <div class="flex gap-3 items-center">
+            <img src="assets/decohogar/tree_pencil_dearsanta_scene.png" alt="Navidad Pencil Dear Santa" class="w-16 h-20 object-contain bg-slate-50 rounded p-1">
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-black text-rose-800 bg-rose-50 px-2 py-0.5 rounded uppercase">Slim Pencil 2.10m</span>
+              <h4 class="text-xs font-bold text-slate-900 mt-1 truncate">Navidad Pencil Dear Santa</h4>
+              <p class="text-[10.5px] text-slate-500">425 Ramas | Diseño Estilizado</p>
+              <div class="mt-1 flex items-baseline gap-1.5">
+                <span class="text-sm font-black text-rose-600">S/ 169.90</span>
+                <span class="text-[10px] text-slate-400 line-through">S/ 329.90</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addToCart(817)" class="mt-3 w-full py-1.5 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+            <span>Agregar a la bolsa</span>
+          </button>
+        </div>
+
+        <!-- Tarjeta Árbol 3 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between hover:shadow-md transition">
+          <div class="flex gap-3 items-center">
+            <img src="assets/decohogar/tree_colorado_180_scene.png" alt="Árbol Colorado 1.80m" class="w-16 h-20 object-contain bg-slate-50 rounded p-1">
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded uppercase">Clásico 1.80m</span>
+              <h4 class="text-xs font-bold text-slate-900 mt-1 truncate">Árbol Colorado Clásico</h4>
+              <p class="text-[10.5px] text-slate-500">380 Ramas | Fácil armado</p>
+              <div class="mt-1 flex items-baseline gap-1.5">
+                <span class="text-sm font-black text-slate-950">S/ 79.90</span>
+                <span class="text-[10px] text-slate-400 line-through">S/ 199.90</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addToCart(811)" class="mt-3 w-full py-1.5 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+            <span>Agregar a la bolsa</span>
+          </button>
+        </div>
+
+        <!-- Tarjeta Árbol 4 -->
+        <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex flex-col justify-between hover:shadow-md transition">
+          <div class="flex gap-3 items-center">
+            <img src="assets/decohogar/tree_preiluminado_scene.png" alt="Combo Colorado" class="w-16 h-20 object-contain bg-slate-50 rounded p-1">
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-black text-amber-800 bg-amber-50 px-2 py-0.5 rounded uppercase">Combo Completo</span>
+              <h4 class="text-xs font-bold text-slate-900 mt-1 truncate">Combo Árbol 1.80M + Bolas</h4>
+              <p class="text-[10.5px] text-slate-500">380 Ramas + 20 Bolas + Luces</p>
+              <div class="mt-1 flex items-baseline gap-1.5">
+                <span class="text-sm font-black text-rose-600">S/ 99.90</span>
+                <span class="text-[10px] text-slate-400 line-through">S/ 349.60</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addToCart(812)" class="mt-3 w-full py-1.5 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white text-xs font-bold rounded transition flex items-center justify-center gap-1.5">
+            <span>Agregar a la bolsa</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: BASEMENT HOME | SALA & CONFORT ==================== -->
+    <section id="sec-muebles-sala" class="pt-6 scroll-mt-20">
+      
+      <!-- Título de Vitrina -->
+      <div class="text-center mt-4 mb-4 flex items-center justify-center gap-3">
+        <span class="text-3xl font-black text-slate-900 tracking-tight" style="font-family:'Segoe UI',system-ui,sans-serif;">Basement Home<span class="text-[#aad500]">.</span></span>
+        <span class="text-2xl text-slate-300 font-light">|</span>
+        <span class="text-3xl font-light text-slate-800 italic" style="font-family:Georgia,serif;">estilo</span>
+        <span class="text-3xl font-black text-slate-900 tracking-wider">&amp; CONFORT</span>
+      </div>
+
+      <!-- Vitrina de 3 paneles de Muebles de Sala -->
+      <div class="deco-showcase-container">
+        
+        <!-- Panel 1: Sofá Ying 4 Cuerpos -->
+        <article class="deco-panel-card group" onclick="addToCart(802)" title="Sofá Ying 4 Cuerpos Basement Home - S/ 2,699.00">
+          <img src="assets/decohogar/prod_sofa_ying.png" alt="Sofá Ying 4 Cuerpos Basement Home" loading="lazy">
+          <div class="deco-tag-overlay flex items-center gap-1.5">
+            <span>SOFÁ YING 4 CUERPOS</span>
+            <span class="font-black text-[#aad500]">S/ 2,699</span>
+            <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </div>
+        </article>
+
+        <!-- Panel 2: Seccional Osaka Reclinable -->
+        <article class="deco-panel-card group" onclick="addToCart(804)" title="Seccional con Cabecera Reclinable Osaka - S/ 2,199.00">
+          <img src="assets/decohogar/prod_seccional_osaka.png" alt="Seccional Osaka 4 Cuerpos Izquierdo Basement Home" loading="lazy">
+          <div class="deco-tag-overlay flex items-center gap-1.5">
+            <span>SECCIONAL OSAKA</span>
+            <span class="font-black text-[#aad500]">S/ 2,199</span>
+            <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </div>
+        </article>
+
+        <!-- Panel 3: Centro de TV Marocco 65" -->
+        <article class="deco-panel-card group" onclick="addToCart(805)" title="Centro De Tv Marocco 65\" Mica - S/ 399.90">
+          <img src="assets/decohogar/prod_centro_tv.png" alt="Centro De Tv Marocco 65 Mica" loading="lazy">
+          <div class="deco-tag-overlay flex items-center gap-1.5">
+            <span>CENTRO DE TV 65"</span>
+            <span class="font-black text-[#aad500]">S/ 399.90</span>
+            <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. SECCIÓN: ADORNOS & ILUMINACIÓN NAVIDEÑA ==================== -->
+    <section id="sec-navidad" class="pt-6 scroll-mt-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-5 pb-3 border-b border-slate-200 gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style="font-family:'Segoe UI',sans-serif;">Adornos &amp; Magia Navideña</h3>
+            <span class="bg-[#aad500] text-slate-900 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">Temporada 2026</span>
+            <span class="bg-rose-50 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200">Hasta 71% DCTO</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">Luces de 100 metros con 1000 LED, faroles de Santa Claus, peluches con bufanda y osos gigantes Beary.</p>
+        </div>
+        <button onclick="filterByCategory('Navidad')" class="text-xs font-bold text-slate-700 hover:text-black underline flex items-center gap-1">
+          Ver adornos navideños &rarr;
+        </button>
+      </div>
+
+      <!-- Carrusel Horizontal de Adornos Navideños -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        
+        <!-- Tarjeta 1: Farol Navideño Rojo Santa 90cm -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(807)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_farol_rojo.png" alt="Farol navideño rojo santa 90cm" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">MICA</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Farol navideño rojo santa 90cm">Farol Rojo Santa 90cm</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-slate-900">S/ 199.90</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 399.90</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Peluche Navidad Oso Bufanda 50cm -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(806)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_peluche_oso.png" alt="Peluche navidad Oso bufanda 50cm" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">MICA</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Peluche navidad Oso bufanda 50cm">Peluche Oso Bufanda 50cm</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-slate-900">S/ 124.90</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 249.90</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Luces Navideñas 100m 1000 LED -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(810)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_luces_navidenas_100m.png" alt="Luces Navideñas Lineales 100 Metros 1000 Led" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">ARTEZA</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Luces Navideñas Lineales 100 Metros 1000 Led">Luces Navideñas 100m</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-slate-900">S/ 99.00</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 120.00</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4: Guirnalda 10 Metros + Focos LED -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(809)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_guirnalda_focos_led.png" alt="Guirnalda 10m Focos LED" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">GENERICO</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Guirnalda 10 Mtr + Focos LED Calidos">Guirnalda 10m Terraza LED</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-rose-600">S/ 45.00</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 125.00</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta 5: Oso Beary 134cm Adorno Gigante -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(813)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_oso_beary_134cm.png" alt="Adorno Navideño de Oso Beary 134cm" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">MICA</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Adorno Navideño de Oso Beary 134cm">Oso Beary Adorno 134cm</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-slate-900">S/ 1,499.00</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 2,999.00</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+        <!-- Tarjeta 6: Silla Gamer GX2000 Gris -->
+        <article class="group relative rounded-lg overflow-hidden bg-white border border-slate-200 p-2.5 flex flex-col justify-between hover:shadow-lg transition cursor-pointer" onclick="addToCart(801)">
+          <div class="aspect-square w-full rounded overflow-hidden bg-slate-50 relative mb-2">
+            <img src="assets/decohogar/prod_silla_gamer.png" alt="Silla Gamer GX2000" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-1 left-1 cyber-badge">CYBER WOW</span>
+          </div>
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">VIDITA</span>
+            <h4 class="text-xs font-bold text-slate-800 line-clamp-2" title="Silla Gamer GX2000 Reclinable Profesional">Silla Gamer GX2000 Gris</h4>
+            <div class="mt-1.5">
+              <span class="text-xs font-black text-rose-600">S/ 249.90</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">S/ 599.90</span>
+            </div>
+            <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded inline-block mt-1">Llega mañana</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. SECCIÓN: TENDENCIAS DESTACADAS ==================== -->
+    <section id="sec-tendencias" class="pt-6 scroll-mt-20">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-xl font-black text-slate-900 tracking-tight">TENDENCIAS EN DECORACIÓN</h3>
+          <p class="text-xs text-slate-500">Diseño, calidez y confort seleccionados para tu espacio</p>
+        </div>
+        <button onclick="scrollToCatalog()" class="text-xs font-bold text-slate-700 hover:text-black underline">Ver catálogo completo &gt;</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Tarjeta 1: Árboles & Magia Navideña -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByCategory('Árboles')">
+          <img src="assets/decohogar/scene_arbol_perfecto_room.jpg" alt="Árboles de Navidad" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Especial Temporada</span>
+            <h4 class="text-lg font-black leading-tight">Árboles de Navidad</h4>
+            <p class="text-xs text-slate-300 mt-1">Líneas Colorado, Slim Pencil Dear Santa y combos completos</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver colección &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Sofás & Seccionales -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByCategory('Sofás')">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&auto=format&fit=crop&q=80" alt="Sofás y Seccionales" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Favoritos</span>
+            <h4 class="text-lg font-black leading-tight">Sofás &amp; Seccionales</h4>
+            <p class="text-xs text-slate-300 mt-1">Modelos Ying, Rafa y Osaka en 4 cuerpos con telas premium</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver colección &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Centros de TV & Living -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByCategory('Centros de TV')">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&auto=format&fit=crop&q=80" alt="Centros de TV" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Multimedia</span>
+            <h4 class="text-lg font-black leading-tight">Centros de TV &amp; Racks</h4>
+            <p class="text-xs text-slate-300 mt-1">Centro Marocco 65" y muebles flotantes con acabados amaderados</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver colección &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Zona Gamer & Home Office -->
+        <div class="group relative rounded-xl overflow-hidden aspect-[4/5] bg-slate-900 cursor-pointer shadow-md" onclick="filterByCategory('Sillas & Oficina')">
+          <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&auto=format&fit=crop&q=80" alt="Home Office & Gamer" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-5 text-white">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-[#aad500] mb-1">Ergonomía</span>
+            <h4 class="text-lg font-black leading-tight">Sillas Gamer &amp; Oficina</h4>
+            <p class="text-xs text-slate-300 mt-1">Sillas reclinables con reposapiés para trabajo y juego intenso</p>
+            <span class="mt-3 text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition">Ver colección &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. CATÁLOGO COMPLETO DE DECOHOGAR ==================== -->
+    <section id="sec-catalogo" class="pt-8 scroll-mt-20">
+      <div class="border-b border-slate-200 pb-4 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - DECOHOGAR</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Árboles de navidad, muebles de sala, sillas y accesorios con descuentos exclusivos CMR</p>
+          </div>
+
+          <!-- Filtros de Marca y Categoría en Botones Píldora -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" id="brandFilterPills">
+            <button type="button" onclick="filterByBrand('Todos')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition">Todos</button>
+            <button type="button" onclick="filterByCategory('Árboles')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">🎄 Árboles</button>
+            <button type="button" onclick="filterByBrand('Basement Home')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Basement Home</button>
+            <button type="button" onclick="filterByBrand('Mica')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Mica</button>
+            <button type="button" onclick="filterByCategory('Navidad')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Navidad</button>
+            <button type="button" onclick="filterByCategory('Sofás')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Sofás</button>
+            <button type="button" onclick="filterByCategory('Sillas & Oficina')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Sillas Gamer</button>
+            <button type="button" onclick="filterByCategory('Iluminación')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Iluminación</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div id="decoProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Renderizado dinámico vía JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL DE CARRITO GLOBAL (CONECTADO A FALABELLA_STORE_CART_V2) ==================== -->
+  <div id="decoCartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="closeDecoCartModal()">
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      
+      <!-- Cabecera de la Bolsa -->
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <h3 class="text-base font-black text-slate-900">Bolsa de compras</h3>
+          <span id="cartModalItemCount" class="text-xs bg-[#333f48] text-white px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button onclick="closeDecoCartModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Barra de Envío Gratis -->
+      <div class="bg-emerald-50 px-4 py-2 border-b border-emerald-100 flex items-center gap-2 text-xs text-emerald-800 font-medium">
+        <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span>¡Tus productos cuentan con despacho Llega Mañana a nivel nacional!</span>
+      </div>
+
+      <!-- Contenedor con scroll para productos -->
+      <div id="cartModalItemList" class="flex-1 overflow-y-auto p-4 space-y-3 divide-y divide-slate-100">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Footer de la Bolsa con Totales -->
+      <div class="p-4 border-t border-slate-200 bg-slate-50 space-y-3">
+        <div class="space-y-1.5 text-xs text-slate-600">
+          <div class="flex justify-between">
+            <span>Subtotal de productos:</span>
+            <span id="cartModalSubtotal" class="font-bold text-slate-900">S/ 0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Descuentos CMR aplicados:</span>
+            <span class="text-rose-600 font-bold">- S/ 0.00</span>
+          </div>
+          <div class="flex justify-between text-base font-black text-slate-900 pt-1.5 border-t border-slate-200">
+            <span>Total estimado:</span>
+            <span id="cartModalTotal" class="text-xl text-slate-950 font-black">S/ 0.00</span>
+          </div>
+        </div>
+
+        <button onclick="goToCheckout()" class="w-full py-3 bg-[#aad500] hover:bg-[#99bf00] text-slate-950 font-black text-sm rounded-xl transition shadow flex items-center justify-center gap-2 cursor-pointer select-none">
+          <span>Ir a pagar con CMR o efectivo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+        <button onclick="clearDecoCart()" class="w-full text-center text-xs text-slate-400 hover:text-rose-600 transition">
+          Vaciar bolsa de compras
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIÓN -->
+  <div id="toastNotification" class="toast-msg">
+    <svg class="w-5 h-5 text-[#aad500] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+    <span id="toastText">Producto agregado a la bolsa</span>
+  </div>
+
+  <!-- ==================== FOOTER CORPORATIVO FALABELLA ==================== -->
+  <footer class="mt-20 border-t border-slate-200 bg-white">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-1 mb-3">
+            <span style="color:#aad500; font-size:26px; font-weight:900; letter-spacing:-0.5px;">falabella</span>
+            <span style="color:#aad500; font-size:18px; font-weight:900;">.com</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed mb-4">
+            La tienda por departamento líder del Perú. Todo en Decohogar, Muebles, Sala, Árboles de Navidad, Tecnología, Moda y Calzado con la garantía de Falabella.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-slate-600 font-bold">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Venta Telefónica: (01) 615-6002
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">Servicio al Cliente</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li><a href="libro-reclamaciones.html" class="hover:underline hover:text-black">Libro de Reclamaciones</a></li>
+            <li><a href="terminos-condiciones.html" class="hover:underline hover:text-black">Términos y Condiciones</a></li>
+            <li><a href="politica-privacidad.html" class="hover:underline hover:text-black">Política de Privacidad</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Cambios y Devoluciones</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Boleta Electrónica</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">Nuestras Tiendas</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Falabella Jockey Plaza</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Falabella San Isidro</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Falabella Miraflores</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Falabella Megaplaza</a></li>
+            <li><a href="javascript:void(0)" class="hover:underline hover:text-black">Falabella Mallplaza Trujillo / Arequipa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">Beneficios CMR</h4>
+          <p class="text-xs text-slate-500 mb-3">
+            Acumula CMR Puntos en cada compra y accede a descuentos exclusivos en Decohogar, Muebles y Árboles Navideños.
+          </p>
+          <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+            <span class="text-[11px] font-bold text-rose-600 block">Tarjeta CMR Banco Falabella</span>
+            <span class="text-[10px] text-slate-500">Hasta 10 cuotas sin intereses en muebles y navidad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+        <p>&copy; 2026 Falabella Perú S.A.A. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4 text-[11px]">
+          <span>Compra 100% Segura</span>
+          <span>&bull;</span>
+          <span>Garantía de Satisfacción</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT: LÓGICA DE PRODUCTOS, CARRITO & INTERACTIVIDAD ==================== -->
+  <script>
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    /* -------------------------------------------------------------
+       CATÁLOGO DE PRODUCTOS DE DECOHOGAR (INCLUYE ÁRBOLES DE IMÁGENES 2 Y 3)
+       ------------------------------------------------------------- */
+    const DECO_PRODUCTS = [
+      {
+        id: 817,
+        code: 'DEC-SAN-01',
+        name: 'NAVIDAD PENCIL DEAR SANTA | Árbol 2.10m 425 Ramas',
+        brand: 'DEAR SANTA',
+        seller: 'Por Falabella',
+        category: 'Árboles',
+        priceCmr: 169.90,
+        priceInternet: 169.90,
+        priceNormal: 329.90,
+        discount: '-48%',
+        rating: 5.0,
+        reviews: 28,
+        image: 'assets/decohogar/tree_pencil_dearsanta_scene.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: 'PROMOCION X COMPRA',
+        tag: 'Favorito Espacios',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 808,
+        code: 'DEC-MIC-05',
+        name: 'Arbol de Navidad Colorado Deluxe 2.10m 1224 Ramas',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Árboles',
+        priceCmr: 239.90,
+        priceInternet: 239.90,
+        priceNormal: 599.90,
+        discount: '-60%',
+        rating: 5.0,
+        reviews: 32,
+        image: 'assets/decohogar/prod_arbol_colorado_deluxe.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Destacado',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 811,
+        code: 'DEC-MIC-06',
+        name: 'Arbol de Navidad Colorado 1.80m 380 Ramas',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Árboles',
+        priceCmr: 79.90,
+        priceInternet: 79.90,
+        priceNormal: 199.90,
+        discount: '-60%',
+        rating: 5.0,
+        reviews: 16,
+        image: 'assets/decohogar/prod_arbol_colorado_180.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Destacado',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 812,
+        code: 'DEC-MIC-07',
+        name: 'Combo Arbol de Navidad 1.80M 380 Ramas + Set20 Bolas Rose Gold 7cm + Luces LED',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Árboles',
+        priceCmr: 99.90,
+        priceInternet: 99.90,
+        priceNormal: 349.60,
+        discount: '-71%',
+        rating: 5.0,
+        reviews: 24,
+        image: 'assets/decohogar/prod_combo_arbol_bolas.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Combo Navideño',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 801,
+        code: 'DEC-VID-01',
+        name: 'Silla Gamer GX2000 Reclinable Profesional con Reposapiés-Gris',
+        brand: 'VIDITA',
+        seller: 'Por Home Design Pe',
+        category: 'Sillas & Oficina',
+        priceCmr: 249.90,
+        priceInternet: 279.90,
+        priceNormal: 599.90,
+        discount: '-58%',
+        rating: 4.5,
+        reviews: 983,
+        image: 'assets/decohogar/prod_silla_gamer.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Patrocinado',
+        hasCmrSpecial: true,
+        swatches: null
+      },
+      {
+        id: 802,
+        code: 'DEC-BSM-01',
+        name: 'Sofá Ying 4 Cuerpos',
+        brand: 'BASEMENT HOME',
+        seller: 'Por Falabella',
+        category: 'Sofás',
+        priceCmr: 2699.00,
+        priceInternet: 2699.00,
+        priceNormal: 3999.00,
+        discount: '-33%',
+        rating: 5.0,
+        reviews: 8,
+        image: 'assets/decohogar/prod_sofa_ying.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: '4y10 CuotasSinInterésCMR',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: ['#e5e0d8']
+      },
+      {
+        id: 803,
+        code: 'DEC-MIC-01',
+        name: 'Seccional Rafa 4 Cuerpos Izquierdo',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Sofás',
+        priceCmr: 1999.00,
+        priceInternet: 1999.00,
+        priceNormal: 3499.00,
+        discount: '-43%',
+        rating: 5.0,
+        reviews: 15,
+        image: 'assets/decohogar/prod_seccional_rafa.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: '4y10 CuotasSinInterésCMR',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: ['#1e3a8a', '#94a3b8']
+      },
+      {
+        id: 804,
+        code: 'DEC-BSM-02',
+        name: 'Seccional con Cabecera Reclinable Osaka 4 Cuerpos Izquierdo',
+        brand: 'BASEMENT HOME',
+        seller: 'Por Falabella',
+        category: 'Sofás',
+        priceCmr: 2199.00,
+        priceInternet: 2199.00,
+        priceNormal: 3999.00,
+        discount: '-45%',
+        rating: 5.0,
+        reviews: 5,
+        image: 'assets/decohogar/prod_seccional_osaka.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: '4y10 CuotasSinInterésCMR',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: ['#64748b']
+      },
+      {
+        id: 805,
+        code: 'DEC-MIC-02',
+        name: 'Centro De Tv Marocco 65"',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Centros de TV',
+        priceCmr: 399.90,
+        priceInternet: 449.90,
+        priceNormal: 999.00,
+        discount: '-60%',
+        rating: 5.0,
+        reviews: 84,
+        image: 'assets/decohogar/prod_centro_tv.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: null,
+        hasCmrSpecial: true,
+        swatches: ['#78350f', '#f5f5f4']
+      },
+      {
+        id: 806,
+        code: 'DEC-MIC-03',
+        name: 'Peluche navidad Oso bufanda 50cm',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Navidad',
+        priceCmr: 124.90,
+        priceInternet: 124.90,
+        priceNormal: 249.90,
+        discount: '-50%',
+        rating: 5.0,
+        reviews: 3,
+        image: 'assets/decohogar/prod_peluche_oso.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: 'PROMOCION X COMPRA',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 807,
+        code: 'DEC-MIC-04',
+        name: 'Farol navideño rojo santa 90cm',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Navidad',
+        priceCmr: 199.90,
+        priceInternet: 199.90,
+        priceNormal: 399.90,
+        discount: '-50%',
+        rating: 5.0,
+        reviews: 3,
+        image: 'assets/decohogar/prod_farol_rojo.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: 'PROMOCION X COMPRA',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 809,
+        code: 'DEC-GEN-01',
+        name: 'Guirnalda 10 Mtr + Focos LED Calidos Impermeable E27 Terraza Patio IP65',
+        brand: 'GENERICO',
+        seller: 'Por Importadora Esn Cursor',
+        category: 'Iluminación',
+        priceCmr: 45.00,
+        priceInternet: 45.00,
+        priceNormal: 125.00,
+        discount: '-64%',
+        rating: 4.8,
+        reviews: 47,
+        image: 'assets/decohogar/prod_guirnalda_focos_led.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Patrocinado',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 810,
+        code: 'DEC-ART-01',
+        name: 'Luces Navideñas Lineales 100 Metros 1000 Led',
+        brand: 'ARTEZA',
+        seller: 'Por Impotaexpress7',
+        category: 'Iluminación',
+        priceCmr: 99.00,
+        priceInternet: 99.00,
+        priceNormal: 120.00,
+        discount: '-18%',
+        rating: 4.7,
+        reviews: 58,
+        image: 'assets/decohogar/prod_luces_navidenas_100m.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: 'Patrocinado',
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 813,
+        code: 'DEC-MIC-08',
+        name: 'Adorno Navideño de Oso Beary 134cm',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Navidad',
+        priceCmr: 1499.00,
+        priceInternet: 1499.00,
+        priceNormal: 2999.00,
+        discount: '-50%',
+        rating: 5.0,
+        reviews: 12,
+        image: 'assets/decohogar/prod_oso_beary_134cm.png',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana | Retira mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: 'PROMOCION X COMPRA',
+        tag: null,
+        hasCmrSpecial: false,
+        swatches: null
+      },
+      {
+        id: 814,
+        code: 'DEC-BSM-03',
+        name: 'Juego de Comedor 6 Sillas Madera Nogal & Tapiz Lino Beige',
+        brand: 'BASEMENT HOME',
+        seller: 'Por Falabella',
+        category: 'Comedor',
+        priceCmr: 1899.00,
+        priceInternet: 1999.00,
+        priceNormal: 3299.00,
+        discount: '-42%',
+        rating: 4.9,
+        reviews: 43,
+        image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&auto=format&fit=crop&q=80',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: '4y10 CuotasSinInterésCMR',
+        tag: null,
+        hasCmrSpecial: true,
+        swatches: null
+      },
+      {
+        id: 815,
+        code: 'DEC-BSM-04',
+        name: 'Juego de Sábanas 400 Hilos 100% Algodón Egipcio King Ivory',
+        brand: 'BASEMENT HOME',
+        seller: 'Por Falabella',
+        category: 'Dormitorio',
+        priceCmr: 189.90,
+        priceInternet: 219.90,
+        priceNormal: 349.90,
+        discount: '-45%',
+        rating: 4.8,
+        reviews: 129,
+        image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=80',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: null,
+        hasCmrSpecial: true,
+        swatches: null
+      },
+      {
+        id: 816,
+        code: 'DEC-MIC-09',
+        name: 'Espejo De Pared Ovalado Marco Metálico Dorado 80x50cm',
+        brand: 'MICA',
+        seller: 'Por Falabella',
+        category: 'Decoración',
+        priceCmr: 119.90,
+        priceInternet: 139.90,
+        priceNormal: 229.90,
+        discount: '-48%',
+        rating: 4.9,
+        reviews: 77,
+        image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=80',
+        badge: 'CYBER WOW',
+        shipping: 'Llega mañana',
+        shippingBadge: 'Llega mañana',
+        promoBadge: null,
+        tag: null,
+        hasCmrSpecial: true,
+        swatches: null
+      }
+    ];
+
+    let currentBrandFilter = 'Todos';
+
+    /* -------------------------------------------------------------
+       INTERACTIVIDAD DE PINES EN LA ESCENA DE ÁRBOLES
+       ------------------------------------------------------------- */
+    function toggleTreePin(pinIndex, evt) {
+      if (evt) evt.stopPropagation();
+      const pins = document.querySelectorAll('#treeRoomScene .tree-hotspot-pin');
+      pins.forEach((p, idx) => {
+        if (idx === pinIndex - 1) {
+          const isActive = p.classList.contains('active');
+          if (isActive) {
+            p.classList.remove('active');
+            const tooltip = p.querySelector('.tree-tooltip-card');
+            if (tooltip) tooltip.style.display = 'none';
+          } else {
+            p.classList.add('active');
+            const tooltip = p.querySelector('.tree-tooltip-card');
+            if (tooltip) tooltip.style.display = 'block';
+          }
+        } else {
+          p.classList.remove('active');
+          const tooltip = p.querySelector('.tree-tooltip-card');
+          if (tooltip) tooltip.style.display = 'none';
+        }
+      });
+    }
+
+    // Cerrar tooltip si se hace clic fuera del pin
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#treeRoomScene .tree-hotspot-pin')) {
+        const pins = document.querySelectorAll('#treeRoomScene .tree-hotspot-pin');
+        pins.forEach(p => {
+          p.classList.remove('active');
+          const tooltip = p.querySelector('.tree-tooltip-card');
+          if (tooltip) tooltip.style.display = 'none';
+        });
+      }
+    });
+
+    /* -------------------------------------------------------------
+       FUNCIONES DEL CARRITO GLOBAL (FALABELLA STORE V2)
+       ------------------------------------------------------------- */
+    function getStoreCart() {
+      try {
+        const raw = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch (e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('decoCartBadge');
+      const countModal = document.getElementById('cartModalItemCount');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
+      if (countModal) {
+        countModal.textContent = count;
+      }
+    }
+
+    function addToCart(productId) {
+      const product = DECO_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = getStoreCart();
+      const existing = cart.find(item => (item.id === productId || item.productId === productId));
+      const effectivePrice = product.priceCmr || product.priceInternet || product.priceNormal;
+
+      if (existing) {
+        const currentQty = existing.qty || existing.quantity || 1;
+        existing.qty = currentQty + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          id: product.id,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          img: product.image,
+          price: effectivePrice,
+          originalPrice: product.priceNormal,
+          regularPrice: product.priceNormal,
+          qty: 1,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡Agregaste "${product.name.slice(0, 30)}..." a tu bolsa!`);
+    }
+
+    function openDecoCartModal() {
+      renderDecoCartModalContent();
+      const modal = document.getElementById('decoCartModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const panel = modal.querySelector('div');
+        if (panel) panel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeDecoCartModal() {
+      const modal = document.getElementById('decoCartModal');
+      if (!modal) return;
+      modal.classList.add('opacity-0');
+      const panel = modal.querySelector('div');
+      if (panel) panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    function renderDecoCartModalContent() {
+      const cart = getStoreCart();
+      const list = document.getElementById('cartModalItemList');
+      const subtotalEl = document.getElementById('cartModalSubtotal');
+      const totalEl = document.getElementById('cartModalTotal');
+      if (!list) return;
+
+      if (!cart.length) {
+        list.innerHTML = `
+          <div class="py-16 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <p class="text-sm font-bold text-slate-700">Tu bolsa de compras está vacía</p>
+            <p class="text-xs text-slate-400 mt-1">Explora los árboles navideños, sofás y muebles con ofertas CMR.</p>
+            <button onclick="closeDecoCartModal()" class="mt-4 px-4 py-2 bg-[#0f172a] text-white rounded-lg text-xs font-bold hover:bg-[#333f48] transition">Comenzar a comprar</button>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        if (totalEl) totalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const qty = item.qty || item.quantity || 1;
+        const itemPrice = item.price || 0;
+        const lineTotal = itemPrice * qty;
+        subtotal += lineTotal;
+        const imgSrc = item.image || item.img || 'assets/categories/cat_decohogar.png';
+
+        return `
+          <div class="pt-3 pb-2 flex gap-3 items-center">
+            <img src="${imgSrc}" alt="${item.name}" class="w-16 h-16 object-contain rounded border border-slate-200 bg-slate-50 flex-shrink-0" />
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">${item.brand || 'FALABELLA'}</span>
+              <h4 class="text-xs font-bold text-slate-900 truncate" title="${item.name}">${item.name}</h4>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-xs font-black text-rose-600">S/ ${itemPrice.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                ${item.originalPrice ? `<span class="text-[10px] text-slate-400 line-through">S/ ${item.originalPrice.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>` : ''}
+              </div>
+              <div class="flex items-center gap-3 mt-2">
+                <div class="flex items-center border border-slate-300 rounded overflow-hidden">
+                  <button type="button" onclick="updateCartItemQty(${item.id || item.productId}, -1)" class="px-2 py-0.5 text-xs text-slate-600 hover:bg-slate-100 font-bold">-</button>
+                  <span class="px-2.5 py-0.5 text-xs font-bold text-slate-900 bg-white">${qty}</span>
+                  <button type="button" onclick="updateCartItemQty(${item.id || item.productId}, 1)" class="px-2 py-0.5 text-xs text-slate-600 hover:bg-slate-100 font-bold">+</button>
+                </div>
+                <button type="button" onclick="removeCartItem(${item.id || item.productId})" class="text-[11px] text-slate-400 hover:text-rose-600 underline">Eliminar</button>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-xs font-black text-slate-900">S/ ${lineTotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      if (totalEl) totalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function updateCartItemQty(id, delta) {
+      let cart = getStoreCart();
+      const item = cart.find(i => (i.id === id || i.productId === id));
+      if (!item) return;
+
+      const current = item.qty || item.quantity || 1;
+      const updated = current + delta;
+
+      if (updated <= 0) {
+        cart = cart.filter(i => (i.id !== id && i.productId !== id));
+      } else {
+        item.qty = updated;
+        item.quantity = updated;
+      }
+
+      saveStoreCart(cart);
+      renderDecoCartModalContent();
+    }
+
+    function removeCartItem(id) {
+      let cart = getStoreCart();
+      cart = cart.filter(i => (i.id !== id && i.productId !== id));
+      saveStoreCart(cart);
+      renderDecoCartModalContent();
+    }
+
+    function clearDecoCart() {
+      saveStoreCart([]);
+      renderDecoCartModalContent();
+    }
+
+    function goToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa de compras está vacía.');
+        return;
+      }
+      window.location.href = 'index.html#storeCatalogSection';
+    }
+
+    /* -------------------------------------------------------------
+       HERO CAROUSEL LOGIC
+       ------------------------------------------------------------- */
+    let currentSlide = 0;
+    let carouselTimer = null;
+
+    function showDecoSlide(index) {
+      const slides = document.querySelectorAll('#decoHeroCarousel .deco-slide');
+      const dots = document.querySelectorAll('#decoCarouselDots .deco-dot');
+      if (!slides.length) return;
+
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((s, idx) => {
+        if (idx === currentSlide) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+
+      dots.forEach((d, idx) => {
+        if (idx === currentSlide) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+    }
+
+    function moveDecoSlide(delta) {
+      showDecoSlide(currentSlide + delta);
+    }
+
+    function setDecoSlide(index) {
+      showDecoSlide(index);
+    }
+
+    function startDecoCarousel() {
+      stopDecoCarousel();
+      carouselTimer = setInterval(() => {
+        moveDecoSlide(1);
+      }, 5000);
+    }
+
+    function stopDecoCarousel() {
+      if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+      }
+    }
+
+    function pauseDecoCarousel() {
+      stopDecoCarousel();
+    }
+
+    /* -------------------------------------------------------------
+       RENDERIZADO DE CATÁLOGO Y FILTROS
+       ------------------------------------------------------------- */
+    function renderDecoProducts(productsToRender) {
+      const grid = document.getElementById('decoProductsGrid');
+      if (!grid) return;
+
+      if (!productsToRender.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500">
+            <p class="text-sm font-semibold">No se encontraron productos para este filtro.</p>
+            <button onclick="filterByBrand('Todos')" class="mt-3 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold">Ver todos los productos</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = productsToRender.map(p => {
+        let swatchesHtml = '';
+        if (p.swatches && p.swatches.length) {
+          swatchesHtml = `
+            <div class="flex items-center gap-1 my-1.5">
+              ${p.swatches.map(color => `<span class="color-swatch-circle" style="background-color: ${color}"></span>`).join('')}
+            </div>
+          `;
+        }
+
+        let priceBlockHtml = '';
+        if (p.hasCmrSpecial) {
+          priceBlockHtml = `
+            <div class="mt-2">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-[9px] font-black bg-rose-600 text-white px-1.5 py-0.5 rounded uppercase">Única CMR</span>
+                <span class="text-base font-black text-rose-600">S/ ${p.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                <span class="text-[11px] font-bold text-white bg-rose-600 px-1 py-0.2 rounded">${p.discount}</span>
+              </div>
+              <div class="text-xs font-bold text-slate-700 mt-0.5">
+                S/ ${p.priceInternet.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+              <div class="text-[11px] text-slate-400 line-through">
+                S/ ${p.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+            </div>
+          `;
+        } else {
+          priceBlockHtml = `
+            <div class="mt-2">
+              <div class="flex items-center gap-1.5">
+                <span class="text-base font-black text-slate-900">S/ ${p.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                <span class="text-[11px] font-bold text-white bg-rose-600 px-1 py-0.2 rounded">${p.discount}</span>
+              </div>
+              <div class="text-[11px] text-slate-400 line-through mt-0.5">
+                S/ ${p.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+            </div>
+          `;
+        }
+
+        const sellerHtml = p.seller === 'Por Falabella'
+          ? `<span class="text-[11px] text-slate-600 flex items-center gap-1 font-medium">Por Falabella <svg class="w-3.5 h-3.5 text-[#aad500] fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg></span>`
+          : `<span class="text-[11px] text-slate-500 font-medium">${p.seller}</span>`;
+
+        return `
+          <article class="product-card-deco group">
+            <div class="relative aspect-square overflow-hidden bg-white p-3 cursor-pointer flex items-center justify-center border-b border-slate-100" onclick="addToCart(${p.id})">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-contain group-hover:scale-105 transition duration-500" loading="lazy" />
+              <span class="absolute top-2 left-2 cyber-badge">
+                ${p.badge}
+              </span>
+            </div>
+
+            <div class="p-3.5 flex flex-col flex-1 justify-between">
+              <div>
+                <div class="flex items-center justify-between text-[11px] font-black uppercase text-slate-500 tracking-wider">
+                  <span>${p.brand}</span>
+                  <button type="button" onclick="window.toggleProductFavorite(event, ${p.id})" data-fav-prod-id="${p.id}" class="falabella-card-fav-btn p-1 text-slate-400 hover:text-rose-600 transition" title="Guardar en favoritos">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                  </button>
+                </div>
+
+                <h4 class="text-xs font-bold text-slate-900 line-clamp-2 mt-1 group-hover:text-[#aad500] transition" title="${p.name}">
+                  ${p.name}
+                </h4>
+
+                <div class="mt-1">
+                  ${sellerHtml}
+                </div>
+
+                ${swatchesHtml}
+
+                ${priceBlockHtml}
+
+                <div class="space-y-1 mt-2.5">
+                  <div class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded inline-block">
+                    ${p.shipping}
+                  </div>
+                  ${p.promoBadge ? `
+                    <div>
+                      <span class="text-[9.5px] font-black text-white bg-slate-900 px-1.5 py-0.5 rounded tracking-tight inline-block">
+                        ${p.promoBadge}
+                      </span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <div class="flex items-center justify-between mt-3 text-xs">
+                  <div class="flex items-center gap-1 text-amber-500">
+                    <span>★</span>
+                    <span class="font-bold text-slate-700 text-[11px]">${p.rating}</span>
+                    <span class="text-slate-400 text-[10px]">(${p.reviews})</span>
+                  </div>
+                  ${p.tag ? `<span class="text-[10px] text-slate-400 italic">${p.tag}</span>` : ''}
+                </div>
+              </div>
+
+              <button type="button" onclick="addToCart(${p.id})" class="mt-4 w-full py-2 bg-slate-900 hover:bg-[#aad500] hover:text-slate-900 text-white font-bold text-xs rounded transition flex items-center justify-center gap-1.5 shadow-sm cursor-pointer select-none">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Agregar a la bolsa
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function filterByBrand(brand) {
+      currentBrandFilter = brand;
+
+      const pills = document.querySelectorAll('#brandFilterPills .filter-pill');
+      pills.forEach(p => {
+        const text = p.textContent.trim();
+        if ((brand === 'Todos' && text === 'Todos') || (text.toLowerCase() === brand.toLowerCase())) {
+          p.className = 'filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+
+      let filtered = DECO_PRODUCTS;
+      if (brand !== 'Todos') {
+        filtered = DECO_PRODUCTS.filter(p => 
+          p.brand.toLowerCase().includes(brand.toLowerCase()) || 
+          brand.toLowerCase().includes(p.brand.toLowerCase()) ||
+          p.category.toLowerCase().includes(brand.toLowerCase())
+        );
+      }
+      renderDecoProducts(filtered);
+
+      const catEl = document.getElementById('sec-catalogo');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function filterByCategory(category) {
+      filterByBrand(category);
+    }
+
+    function scrollToCatalog() {
+      const catEl = document.getElementById('sec-catalogo');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function executeDecoSearch(query) {
+      if (!query || !query.trim()) {
+        renderDecoProducts(DECO_PRODUCTS);
+        return;
+      }
+      const q = query.toLowerCase().trim();
+      const filtered = DECO_PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.brand.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q)
+      );
+      renderDecoProducts(filtered);
+      scrollToCatalog();
+    }
+
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('decoCategoriesDrawer');
+      if (!drawer) return;
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          const panel = drawer.querySelector('div');
+          if (panel) panel.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        const panel = drawer.querySelector('div');
+        if (panel) panel.classList.add('-translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    /* -------------------------------------------------------------
+       SINCRONIZACIÓN AUTOMÁTICA DEL CARRITO ENTRE PÁGINAS Y PESTAÑAS
+       ------------------------------------------------------------- */
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORE_CART_KEY) {
+        updateCartBadge();
+        const modal = document.getElementById('decoCartModal');
+        if (modal && !modal.classList.contains('hidden')) {
+          renderDecoCartModalContent();
+        }
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDecoProducts(DECO_PRODUCTS);
+      updateCartBadge();
+      startDecoCarousel();
+    });
+  </script>
+<script src="assets/falabella-auth-favorites.js"></script>
+</body>
+</html>

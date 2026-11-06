@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zapatillas Deportivas y Calzado en Falabella.com Perú - Lo mejor de CYBER WOW con hasta 60% de descuento en Adidas, Puma, Skechers, Nike, Diadora, Yamp.">
+  <title>Zapatillas Deportivas y Calzado | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              navy: '#0f172a',
+              green: '#004724'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Brand Carousel 1:1 Imagen Marcas Calzado */
+    .brand-carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: 4px 0 16px 0;
+    }
+    .brand-carousel-btn {
+      position: absolute;
+      top: 40px;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 54px;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+    }
+    .brand-carousel-btn:hover {
+      background: #f8fafc;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }
+    .brand-carousel-btn.prev {
+      left: 0;
+    }
+    .brand-carousel-btn.next {
+      right: 0;
+    }
+    .brand-carousel-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 4px 34px 8px 34px;
+      width: 100%;
+    }
+    .brand-carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+    .brand-item-card {
+      flex: 0 0 auto;
+      width: 82px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+    .brand-item-card:hover {
+      transform: translateY(-2px);
+    }
+    .brand-item-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .brand-item-card:hover .brand-item-box {
+      border-color: #0f172a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .brand-item-card.active .brand-item-box {
+      border-color: #004724;
+      box-shadow: 0 0 0 2px #004724;
+    }
+    .brand-item-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .brand-item-label {
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #334155;
+      text-align: center;
+      line-height: 1.2;
+      max-width: 88px;
+    }
+    .brand-item-card:hover .brand-item-label {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Accordion styles */
+    .filter-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      text-align: left;
+    }
+    .filter-accordion-header:hover {
+      color: #0f766e;
+    }
+    .filter-accordion-body {
+      padding: 8px 0 12px 0;
+      font-size: 12px;
+    }
+
+    /* Color Swatch Circle */
+    .color-swatch-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .color-swatch-btn:hover, .color-swatch-btn.active {
+      transform: scale(1.2);
+      border-color: #0f172a;
+      box-shadow: 0 0 0 1px #0f172a;
+    }
+
+    /* Product Card */
+    .plp-product-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .plp-product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    /* Custom Switch Toggle */
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: #004724;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+      background-color: #004724;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==================== TOPBAR ==================== -->
+  <aside class="store-topbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4 text-xs font-medium text-slate-500 overflow-x-auto">
+        <span class="font-bold text-[#aad500] flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          falabella.com
+        </span>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Banco Falabella</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Seguros Falabella</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Tottus</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Sodimac</a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-xs text-slate-500 font-medium">
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Vende en falabella.com</a>
+        <a href="javascript:void(0)" class="hover:text-slate-800 transition">Ayuda / PQRS</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="store-header">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="flex items-center gap-1.5 focus:outline-none" title="Ir a Portada Principal Falabella">
+          <span class="text-2xl font-black tracking-tight text-slate-900 font-sans">
+            falabella<span class="text-[#aad500]">.com</span>
+          </span>
+        </a>
+
+        <!-- Botón Menú Categorías -->
+        <button 
+          type="button"
+          onclick="toggleCategoriesDrawer()"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+        >
+          <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="hidden sm:inline">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de Búsqueda -->
+      <div class="flex-1 max-w-xl mx-2">
+        <form onsubmit="event.preventDefault(); executeSearch(document.getElementById('plpSearchInput').value);" class="store-search-wrap">
+          <input 
+            type="search" 
+            id="plpSearchInput"
+            placeholder="Buscar zapatillas deportivas, running, urbanas, marcas..." 
+            class="store-search-input"
+            autocomplete="off"
+            oninput="handleSearchInput(this.value)"
+          />
+          <button type="submit" class="store-search-btn" title="Buscar">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m21 21-4.35-4.35M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Accesos rápidos -->
+      <div class="flex items-center gap-4 text-slate-700">
+        <button type="button" onclick="openAuthModal()" class="flex items-center gap-1.5 text-xs text-left font-bold text-slate-700 hover:text-slate-950 transition">
+          <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM12 14a7 7 0 0 0-7 7h14a7 7 0 0 0-7-7Z"/></svg>
+          </div>
+          <div class="hidden xl:block leading-tight">
+            <span class="text-[10px] text-slate-400 font-normal block" id="userNavGreeting">Hola,</span>
+            <span class="text-xs font-bold text-slate-800" id="userNavLabel">Inicia sesión</span>
+          </div>
+        </button>
+
+        <a href="index.html#falabellaWishlistSection" class="relative p-2 text-slate-700 hover:text-slate-950 hover:bg-slate-100 rounded-full transition" title="Lista de Deseos">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="falabellaWishlistCount" class="absolute -top-1 -right-1 bg-rose-600 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </a>
+
+        <button type="button" onclick="toggleCartDrawer()" class="relative p-2 text-slate-700 hover:text-slate-950 hover:bg-slate-100 rounded-full transition" title="Bolsa de Compras">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="falabellaCartCount" class="absolute -top-1 -right-1 bg-[#aad500] text-slate-900 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SUB-BARRA DE UBICACIÓN ==================== -->
+  <div class="bg-white border-b border-slate-200 text-xs text-slate-600 py-1.5 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 text-slate-600 font-medium">
+        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        <span>Ingresa tu ubicación</span>
+      </div>
+      <div class="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Tarjeta CMR ▾</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Vende y comisiona</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Venta telefónica ▾</a>
+        <a href="javascript:void(0)" class="hover:text-slate-900 transition">Ayuda ▾</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENEDOR PRINCIPAL DEL PLP ==================== -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 py-4 w-full space-y-6">
+
+    <!-- BREADCRUMB -->
+    <nav class="text-xs text-slate-500 flex items-center gap-1.5 font-medium" aria-label="Migas de pan">
+      <a href="index.html" class="hover:text-slate-900 transition">Home</a>
+      <span>&gt;</span>
+      <a href="calzado.html" class="hover:text-slate-900 transition">Calzado</a>
+      <span>&gt;</span>
+      <span class="text-slate-800 font-bold">Zapatillas deportivas</span>
+    </nav>
+
+    <!-- ==================== 1. BRAND CAROUSEL STRIP (1:1 CON IMAGEN DE MARCAS EN CALZADO) ==================== -->
+    <section class="relative mb-2" aria-label="Marcas destacadas de calzado">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Marcas oficiales</span>
+        <a href="calzado.html" class="text-xs font-bold text-[#004724] hover:underline flex items-center gap-1">
+          ← Volver a página especial Calzado
+        </a>
+      </div>
+
+      <div class="brand-carousel-wrapper">
+        <!-- Flecha Izquierda -->
+        <button type="button" class="brand-carousel-btn prev" onclick="scrollBrandCarousel(-280)" title="Ver marcas anteriores" aria-label="Anterior">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+
+        <div class="brand-carousel-track" id="brandCarousel">
+          
+          <!-- 1. Tarjeta CYBER WOW: 40% en Zapatillas -->
+          <div class="brand-item-card" onclick="toggleCyberWowFilter(true)" title="CYBER WOW - 40% en Zapatillas">
+            <div class="brand-item-box bg-[#004724]">
+              <img src="assets/calzado/marcas/box_cyber_wow.png" srcset="assets/calzado/marcas/box_cyber_wow@2x.png 2x" alt="CYBER WOW De las mejores marcas" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">40% en<br>Zapatillas</span>
+          </div>
+
+          <!-- 2. Reebok -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Reebok')" title="Ver productos Reebok">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_reebok.png" srcset="assets/calzado/marcas/box_reebok@2x.png 2x" alt="Reebok" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Reebok</span>
+          </div>
+
+          <!-- 3. Adidas -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Adidas')" title="Ver productos Adidas">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_adidas.png" srcset="assets/calzado/marcas/box_adidas@2x.png 2x" alt="Adidas" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Adidas</span>
+          </div>
+
+          <!-- 4. Puma -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Puma')" title="Ver productos Puma">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_puma.png" srcset="assets/calzado/marcas/box_puma@2x.png 2x" alt="Puma" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Puma</span>
+          </div>
+
+          <!-- 5. Adidas Originals -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Adidas Originals')" title="Ver productos Adidas Originals">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_adidas_originals.png" srcset="assets/calzado/marcas/box_adidas_originals@2x.png 2x" alt="Adidas Originals" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Adidas<br>Originals</span>
+          </div>
+
+          <!-- 6. New Balance -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('New Balance')" title="Ver productos New Balance">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_new_balance.png" srcset="assets/calzado/marcas/box_new_balance@2x.png 2x" alt="New Balance" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">New Balance</span>
+          </div>
+
+          <!-- 7. Nike -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Nike')" title="Ver productos Nike">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_nike.png" srcset="assets/calzado/marcas/box_nike@2x.png 2x" alt="Nike" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Nike</span>
+          </div>
+
+          <!-- 8. Aldo -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Aldo')" title="Ver productos Aldo">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_aldo.png" srcset="assets/calzado/marcas/box_aldo@2x.png 2x" alt="Aldo" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Aldo</span>
+          </div>
+
+          <!-- 9. Diadora -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Diadora')" title="Ver productos Diadora">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_diadora.png" srcset="assets/calzado/marcas/box_diadora@2x.png 2x" alt="Diadora" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Diadora</span>
+          </div>
+
+          <!-- 10. Skechers -->
+          <div class="brand-item-card" onclick="filterByBrandQuick('Skechers')" title="Ver productos Skechers">
+            <div class="brand-item-box">
+              <img src="assets/calzado/marcas/box_skechers.png" srcset="assets/calzado/marcas/box_skechers@2x.png 2x" alt="Skechers" width="80" height="80" loading="eager" />
+            </div>
+            <span class="brand-item-label">Skechers</span>
+          </div>
+
+        </div>
+
+        <!-- Flecha Derecha -->
+        <button type="button" class="brand-carousel-btn next" onclick="scrollBrandCarousel(280)" title="Ver marcas siguientes" aria-label="Siguiente">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 2. CUERPO PRINCIPAL: SIDEBAR + GRID (EXACTO A IMÁGENES 3 Y 4) ==================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      
+      <!-- ==================== SIDEBAR DE FILTROS (IZQUIERDA) ==================== -->
+      <aside class="bg-white border border-slate-200 rounded-xl p-4 shadow-2xs space-y-4">
+        
+        <!-- Encabezado Sidebar -->
+        <div>
+          <h1 class="text-xl font-bold text-slate-900 tracking-tight">Zapatillas deportivas</h1>
+          <span class="text-xs text-slate-400 font-medium block mt-0.5" id="resultsCount">Resultados (26)</span>
+        </div>
+
+        <!-- Toggle Switch CYBER WOW (1:1 Imagen 3) -->
+        <div class="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black text-[#004724] uppercase block">CYBER WOW</span>
+            <span class="text-[11px] text-emerald-800">Lo mejor de CYBER WOW</span>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="cyberWowToggle" onchange="handleCyberToggle(this.checked)" class="sr-only peer">
+            <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#004724]"></div>
+          </label>
+        </div>
+
+        <!-- Acordeón 1: Tipo de Entrega -->
+        <div class="border-t border-slate-100 pt-1">
+          <button class="filter-accordion-header" onclick="toggleAccordion('accEntrega')">
+            <span>Tipo de Entrega</span>
+            <svg class="w-4 h-4 text-slate-400 transform transition-transform" id="icon-accEntrega" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="accEntrega" class="filter-accordion-body space-y-2">
+            <label class="flex items-center justify-between text-slate-700 hover:text-slate-950 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" id="filterLlegaManana" onchange="applySidebarFilters()" class="accent-[#004724] rounded">
+                <span>Envío a domicilio</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">Llega mañana</span>
+            </label>
+            <label class="flex items-center justify-between text-slate-700 hover:text-slate-950 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" id="filterRetiraManana" onchange="applySidebarFilters()" class="accent-[#004724] rounded">
+                <span>Retiro en un punto</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">Retira mañana</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Acordeón 2: Categoría -->
+        <div class="border-t border-slate-100 pt-1">
+          <button class="filter-accordion-header" onclick="toggleAccordion('accCategoria')">
+            <span>Categoría</span>
+            <svg class="w-4 h-4 text-slate-400" id="icon-accCategoria" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="accCategoria" class="filter-accordion-body flex flex-wrap gap-1.5">
+            <button onclick="setCategoryFilter('Todos')" class="px-2 py-1 rounded bg-slate-100 text-[11px] font-medium text-slate-700 hover:bg-slate-200">Todas</button>
+            <button onclick="setCategoryFilter('Deportes')" class="px-2 py-1 rounded bg-slate-100 text-[11px] font-medium text-slate-700 hover:bg-slate-200">Deportes y aire libre</button>
+            <button onclick="setCategoryFilter('Mujer')" class="px-2 py-1 rounded bg-slate-100 text-[11px] font-medium text-slate-700 hover:bg-slate-200">Calzado Mujer</button>
+            <button onclick="setCategoryFilter('Hombre')" class="px-2 py-1 rounded bg-slate-100 text-[11px] font-medium text-slate-700 hover:bg-slate-200">Calzado Hombre</button>
+          </div>
+        </div>
+
+        <!-- Acordeón 3: Marca -->
+        <div class="border-t border-slate-100 pt-1">
+          <button class="filter-accordion-header" onclick="toggleAccordion('accMarca')">
+            <span>Marca</span>
+            <svg class="w-4 h-4 text-slate-400" id="icon-accMarca" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="accMarca" class="filter-accordion-body space-y-1.5 max-h-48 overflow-y-auto pr-1">
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Adidas" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Adidas / Adidas Originals</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Puma" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Puma</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Skechers" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Skechers</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Nike" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Nike</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Diadora" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Diadora</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Yamp" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Yamp</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Disney" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Disney</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Redwood" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Redwood</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Aldo" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Aldo</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Reebok" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Reebok</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="New Balance" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>New Balance</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="checkbox" value="Sybilla" onchange="applySidebarFilters()" class="brand-check accent-[#004724]">
+              <span>Sybilla</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Acordeón 4: Precio -->
+        <div class="border-t border-slate-100 pt-1">
+          <button class="filter-accordion-header" onclick="toggleAccordion('accPrecio')">
+            <span>Precio</span>
+            <svg class="w-4 h-4 text-slate-400" id="icon-accPrecio" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="accPrecio" class="filter-accordion-body space-y-1.5">
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="radio" name="priceRange" value="all" checked onchange="applySidebarFilters()" class="accent-[#004724]">
+              <span>Todos los precios</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="radio" name="priceRange" value="0-150" onchange="applySidebarFilters()" class="accent-[#004724]">
+              <span>Hasta S/ 150</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="radio" name="priceRange" value="150-250" onchange="applySidebarFilters()" class="accent-[#004724]">
+              <span>S/ 150 a S/ 250</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer text-slate-700">
+              <input type="radio" name="priceRange" value="250-400" onchange="applySidebarFilters()" class="accent-[#004724]">
+              <span>S/ 250 a S/ 400</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Acordeón 5: Color -->
+        <div class="border-t border-slate-100 pt-1">
+          <button class="filter-accordion-header" onclick="toggleAccordion('accColor')">
+            <span>Color</span>
+            <svg class="w-4 h-4 text-slate-400" id="icon-accColor" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="accColor" class="filter-accordion-body flex items-center gap-2 flex-wrap">
+            <button onclick="setColorFilter('negro')" class="w-6 h-6 rounded-full bg-black border border-slate-300" title="Negro"></button>
+            <button onclick="setColorFilter('blanco')" class="w-6 h-6 rounded-full bg-white border border-slate-400" title="Blanco"></button>
+            <button onclick="setColorFilter('plateado')" class="w-6 h-6 rounded-full bg-slate-300 border border-slate-400" title="Plateado"></button>
+            <button onclick="setColorFilter('crema')" class="w-6 h-6 rounded-full bg-[#fef08a] border border-amber-300" title="Crema"></button>
+            <button onclick="setColorFilter('aqua')" class="w-6 h-6 rounded-full bg-[#67e8f9] border border-cyan-400" title="Aqua"></button>
+            <button onclick="setColorFilter('azul')" class="w-6 h-6 rounded-full bg-[#1e40af] border border-blue-800" title="Azul"></button>
+            <button onclick="setColorFilter('rosado')" class="w-6 h-6 rounded-full bg-[#f472b6] border border-pink-400" title="Rosado"></button>
+            <button onclick="setColorFilter('all')" class="text-[10px] font-bold text-slate-500 underline ml-1">Todos</button>
+          </div>
+        </div>
+
+        <!-- Botón Reset Filtros -->
+        <div class="pt-2">
+          <button type="button" onclick="resetAllFilters()" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 rounded-lg text-xs font-bold text-slate-700 transition">
+            Limpiar todos los filtros
+          </button>
+        </div>
+
+      </aside>
+
+      <!-- ==================== CATÁLOGO PRINCIPAL (DERECHA) ==================== -->
+      <section class="lg:col-span-3 space-y-4">
+        
+        <!-- BARRA SUPERIOR DE FILTRADO POR GÉNERO Y ORDEN (1:1 IMAGEN 3) -->
+        <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-2xs space-y-3">
+          
+          <!-- Filtro por Género en Botones Píldora -->
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Filtrar por Género</span>
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none" id="genderPills">
+              <button onclick="setGenderFilter('TODOS')" class="gender-pill active px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0f172a] text-white transition">TODOS</button>
+              <button onclick="setGenderFilter('BEBÉ NIÑO')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">BEBÉ NIÑO</button>
+              <button onclick="setGenderFilter('HOMBRE')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">HOMBRE</button>
+              <button onclick="setGenderFilter('MUJER')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">MUJER</button>
+              <button onclick="setGenderFilter('NIÑA')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">NIÑA</button>
+              <button onclick="setGenderFilter('NIÑO')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">NIÑO</button>
+              <button onclick="setGenderFilter('UNISEX ADULTO')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">UNISEX ADULTO</button>
+              <button onclick="setGenderFilter('UNISEX NIÑO')" class="gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">UNISEX NIÑO</button>
+            </div>
+          </div>
+
+          <!-- Barra de Orden y Paginación rápida -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 font-medium">Ordenar por:</span>
+              <select id="plpSortSelect" onchange="handleSortChange(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-slate-700 font-bold focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+                <option value="featured">Recomendados</option>
+                <option value="price-asc">Precio: Menor a Mayor</option>
+                <option value="price-desc">Precio: Mayor a Menor</option>
+                <option value="rating">Mejor Calificados</option>
+                <option value="discount">Mayor Descuento</option>
+              </select>
+            </div>
+
+            <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+              <span class="w-6 h-6 rounded-md bg-slate-900 text-white flex items-center justify-center font-bold">1</span>
+              <span class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center cursor-pointer">2</span>
+              <span class="w-6 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center cursor-pointer">3</span>
+              <span>...</span>
+              <span class="w-8 h-6 rounded-md hover:bg-slate-100 flex items-center justify-center cursor-pointer">146</span>
+              <button class="p-1 text-slate-700 hover:text-black">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRID DE PRODUCTOS DINÁMICO (4 COLUMNAS) -->
+        <div id="plpProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Render dinámico vía JavaScript -->
+        </div>
+
+        <!-- Paginación Inferior -->
+        <div class="py-6 flex items-center justify-center gap-2">
+          <button class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-400 cursor-not-allowed">❮ Anterior</button>
+          <button class="w-8 h-8 rounded-lg bg-slate-900 text-white text-xs font-black">1</button>
+          <button class="w-8 h-8 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs font-bold text-slate-700">2</button>
+          <button class="w-8 h-8 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs font-bold text-slate-700">3</button>
+          <span class="text-xs text-slate-400">...</span>
+          <button class="px-2.5 h-8 rounded-lg border border-slate-200 hover:bg-slate-100 text-xs font-bold text-slate-700">146</button>
+          <button class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-100">Siguiente ❯</button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS ==================== -->
+  <div id="categoriesDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="toggleCategoriesDrawer()"></div>
+    <div class="absolute top-0 left-0 bottom-0 w-80 max-w-full bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300 pointer-events-auto" id="categoriesDrawerPanel">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <h3 class="font-black text-slate-900 text-base tracking-tight">CATEGORÍAS FALABELLA</h3>
+        <button onclick="toggleCategoriesDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <ul class="mt-4 space-y-1 text-sm font-semibold text-slate-700">
+        <li>
+          <a href="productos_calzado.html" class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 text-emerald-950 font-black">
+            <span>👟 Zapatillas & Calzado (Catálogo)</span>
+            <span class="text-[10px] bg-[#004724] text-white px-1.5 py-0.5 rounded font-black">PLP</span>
+          </a>
+        </li>
+        <li><a href="calzado.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🌟 Página Especial Calzado</a></li>
+        <li><a href="belleza.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="moda_hombre.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+        <li><a href="tecnologia.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Tecnología</a></li>
+        <li><a href="deportes.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes & Fitness</a></li>
+      </ul>
+
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#333f48] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DRAWER DEL CARRITO GLOBAL ==================== -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity" onclick="toggleCartDrawer()"></div>
+    <div class="absolute top-0 right-0 bottom-0 w-96 max-w-full bg-white shadow-2xl p-6 overflow-y-auto transform translate-x-full transition-transform duration-300 pointer-events-auto flex flex-col justify-between" id="cartDrawerPanel">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <h3 class="font-black text-slate-900 text-base">Bolsa de Compras</h3>
+          </div>
+          <button onclick="toggleCartDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div id="cartItemsList" class="divide-y divide-slate-100 my-4 max-h-[55vh] overflow-y-auto pr-1"></div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200">
+        <div class="flex items-center justify-between text-sm mb-1 font-bold text-slate-800">
+          <span>Subtotal estimado:</span>
+          <span id="cartDrawerSubtotal" class="text-base font-black text-slate-900">S/ 0.00</span>
+        </div>
+        <p class="text-[11px] text-slate-400 mb-4">Costos de envío calculados al finalizar la compra</p>
+        <button type="button" onclick="proceedToCheckout()" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2">
+          <span>Ir a pagar</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE AUTENTICACIÓN ==================== -->
+  <div id="authModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs" onclick="closeAuthModal()"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 overflow-hidden z-10">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="flex items-center justify-between border-b border-slate-200 mb-6">
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition">Iniciar Sesión</button>
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition">Crear Cuenta</button>
+      </div>
+
+      <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Correo electrónico</label>
+          <input type="email" id="loginEmail" required placeholder="ej. usuario@correo.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Contraseña</label>
+          <input type="password" id="loginPassword" required placeholder="Ingresa tu contraseña" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm transition mt-2">
+          Iniciar Sesión
+        </button>
+      </form>
+
+      <form id="formRegister" onsubmit="handleRegisterSubmit(event)" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Nombre completo</label>
+          <input type="text" id="regName" required placeholder="ej. Carlos Ramírez" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Correo electrónico</label>
+          <input type="email" id="regEmail" required placeholder="ej. carlos.ramirez@gmail.com" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Contraseña</label>
+          <input type="password" id="regPassword" required minlength="6" placeholder="Mínimo 6 caracteres" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-[#aad500]">
+        </div>
+        <div class="flex items-start gap-2 pt-1">
+          <input type="checkbox" id="regTerms" required class="mt-1 accent-[#aad500]">
+          <label for="regTerms" class="text-xs text-slate-600 leading-tight">
+            Acepto los <a href="terminos-condiciones.html" target="_blank" class="font-bold underline text-slate-800">Términos y Condiciones</a> y la <a href="politica-privacidad.html" target="_blank" class="font-bold underline text-slate-800">Política de Privacidad</a> de falabella.com.
+          </label>
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-xl text-sm transition mt-2">
+          Crear mi cuenta Falabella
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700">
+      <span class="w-2 h-2 rounded-full bg-[#aad500]"></span>
+      <span id="toastMessage">Acción realizada</span>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-white border-t border-slate-200 mt-16 pt-12 pb-8 text-xs text-slate-600">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-slate-200">
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Servicio al Cliente</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Centro de ayuda</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-slate-900 transition">Seguimiento de orden</a></li>
+            <li><a href="libro-reclamaciones.html" class="hover:text-slate-900 transition font-bold text-slate-700">📖 Libro de Reclamaciones</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Políticas</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="terminos-condiciones.html" class="hover:text-slate-900 transition font-bold text-slate-800">Términos y Condiciones</a></li>
+            <li><a href="politica-privacidad.html" class="hover:text-slate-900 transition font-bold text-slate-800">Política de Privacidad</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">Mundo Falabella</h4>
+          <ul class="space-y-2 text-slate-500 font-medium">
+            <li><a href="calzado.html" class="hover:text-slate-900 transition font-bold">Catálogo de Calzado</a></li>
+            <li><a href="belleza.html" class="hover:text-slate-900 transition">Catálogo de Belleza</a></li>
+            <li><a href="moda_mujer.html" class="hover:text-slate-900 transition">Moda Mujer</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-black text-slate-900 uppercase tracking-wider mb-3">CYBER WOW</h4>
+          <p class="text-slate-500 mb-2">Descuentos exclusivos en calzado oficial.</p>
+          <div class="inline-block bg-[#004724] text-white text-[10px] font-black px-2.5 py-1 rounded">
+            FALABELLA OFICIAL
+          </div>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        <p>© 2026 Falabella Perú S.A. Todos los derechos reservados. RUC 20100128056.</p>
+        <div class="flex items-center gap-4">
+          <a href="terminos-condiciones.html" class="hover:text-slate-600 transition">Términos y Condiciones</a>
+          <span>•</span>
+          <a href="politica-privacidad.html" class="hover:text-slate-600 transition">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+    const STORE_FAVS_KEY = 'falabella_wishlist_items_v1';
+    const STORE_USER_KEY = 'falabella_current_user_v1';
+
+    /* BASE DE DATOS DE PRODUCTOS DE CALZADO (1:1 CON LAS 4 CAPTURAS) */
+    const PLP_PRODUCTS = [
+      {
+        id: 927,
+        name: 'Zapatillas Urbanas Unisex Reebok Club C 85 Vintage',
+        brand: 'Reebok',
+        category: 'Deportes',
+        gender: 'UNISEX ADULTO',
+        price: 299.00,
+        priceNormal: 359.00,
+        discount: '-17%',
+        image: 'assets/calzado/prod_reebok_club_c.png',
+        badge: 'CYBER WOW',
+        color: 'blanco',
+        colorHex: '#ffffff',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.8,
+        reviewsCount: 64,
+        bestSeller: true
+      },
+      {
+        id: 928,
+        name: 'Zapatillas Deportivas Hombre Reebok Nano X3 Training',
+        brand: 'Reebok',
+        category: 'Deportes',
+        gender: 'HOMBRE',
+        price: 379.00,
+        priceNormal: 449.00,
+        discount: '-15%',
+        image: 'assets/calzado/prod_reebok_nano.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.9,
+        reviewsCount: 42,
+        bestSeller: false
+      },
+      {
+        id: 929,
+        name: 'Zapatillas Urbanas Unisex New Balance 574 Core Grey',
+        brand: 'New Balance',
+        category: 'Deportes',
+        gender: 'UNISEX ADULTO',
+        price: 389.00,
+        priceNormal: 429.00,
+        discount: '-9%',
+        image: 'assets/calzado/prod_nb_574.png',
+        badge: 'CYBER WOW',
+        color: 'gris',
+        colorHex: '#94a3b8',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.9,
+        reviewsCount: 88,
+        bestSeller: true
+      },
+      {
+        id: 930,
+        name: 'Zapatillas Urbanas Hombre New Balance 9060 Sea Salt',
+        brand: 'New Balance',
+        category: 'Deportes',
+        gender: 'HOMBRE',
+        price: 549.00,
+        priceNormal: 599.00,
+        discount: '-8%',
+        image: 'assets/calzado/prod_nb_9060.png',
+        badge: 'CYBER WOW',
+        color: 'beige',
+        colorHex: '#fef3c7',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviewsCount: 31,
+        bestSeller: false
+      },
+      // --- IMAGEN 1: ADIDAS ORIGINALS ADISTAR CONTROL 3 ---
+      {
+        id: 901,
+        name: 'Zapatillas Urbanas Unisex Adistar Control 3',
+        brand: 'ADIDAS ORIGINALS',
+        category: 'Deportes',
+        gender: 'UNISEX ADULTO',
+        price: 399.00,
+        priceNormal: null,
+        discount: null,
+        image: 'assets/calzado/prod_adistar_1.png',
+        badge: 'CYBER WOW',
+        color: 'plateado',
+        colorHex: '#cbd5e1',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 93
+      },
+      {
+        id: 902,
+        name: 'Zapatillas Urbanas Mujer Adistar Control 3',
+        brand: 'ADIDAS ORIGINALS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 399.00,
+        priceNormal: null,
+        discount: null,
+        image: 'assets/calzado/prod_adistar_2.png',
+        badge: null,
+        color: 'crema',
+        colorHex: '#fef3c7',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 42
+      },
+      {
+        id: 903,
+        name: 'Zapatillas Urbanas Unisex Adistar Control 3',
+        brand: 'ADIDAS ORIGINALS',
+        category: 'Deportes',
+        gender: 'UNISEX ADULTO',
+        price: 399.00,
+        priceNormal: null,
+        discount: null,
+        image: 'assets/calzado/prod_adistar_3.png',
+        badge: 'CYBER WOW',
+        color: 'plateado',
+        colorHex: '#e2e8f0',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 95
+      },
+      {
+        id: 904,
+        name: 'Zapatillas Urbanas Mujer Adistar Control 3',
+        brand: 'ADIDAS ORIGINALS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 399.00,
+        priceNormal: null,
+        discount: null,
+        image: 'assets/calzado/prod_adistar_4.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 48
+      },
+
+      // --- IMAGEN 2: PUMA RUNNING MAXSTRIDE & MAXIMA PRO ---
+      {
+        id: 905,
+        name: 'Zapatillas Running Hombre Maxstride Lite Ls',
+        brand: 'PUMA',
+        category: 'Deportes',
+        gender: 'HOMBRE',
+        price: 174.30,
+        priceNormal: 249.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_puma_maxstride_black.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#0f172a',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.8,
+        reviews: 38
+      },
+      {
+        id: 906,
+        name: 'Zapatillas Running Hombre Maxima Pro',
+        brand: 'PUMA',
+        category: 'Deportes',
+        gender: 'HOMBRE',
+        price: 197.40,
+        priceNormal: 329.00,
+        discount: '-40%',
+        image: 'assets/calzado/prod_puma_maxima_pro.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#1e293b',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 5
+      },
+      {
+        id: 907,
+        name: 'Zapatillas Running Mujer Maxstride Lite Ls',
+        brand: 'PUMA',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 174.30,
+        priceNormal: 249.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_puma_maxstride_beige.png',
+        badge: 'CYBER WOW',
+        color: 'crema',
+        colorHex: '#e5e7eb',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.9,
+        reviews: 24
+      },
+      {
+        id: 908,
+        name: 'Zapatillas Running Mujer Maxstride Lite Ls Wns',
+        brand: 'PUMA',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 149.40,
+        priceNormal: 249.00,
+        discount: '-40%',
+        image: 'assets/calzado/prod_puma_maxstride_pink.png',
+        badge: 'CYBER WOW',
+        color: 'rosado',
+        colorHex: '#fbcfe8',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.8,
+        reviews: 19
+      },
+
+      // --- IMAGEN 3: ADIDAS RESPONSE 2 & SKECHERS ---
+      {
+        id: 909,
+        name: 'Zapatillas Running Mujer Response 2',
+        brand: 'ADIDAS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 155.40,
+        priceNormal: 259.00,
+        discount: '-40%',
+        image: 'assets/calzado/prod_adidas_response2_aqua.png',
+        badge: 'CYBER WOW',
+        color: 'aqua',
+        colorHex: '#67e8f9',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 137
+      },
+      {
+        id: 910,
+        name: 'Zapatillas Running Mujer Response 2',
+        brand: 'ADIDAS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 155.40,
+        priceNormal: 259.00,
+        discount: '-40%',
+        image: 'assets/calzado/prod_adidas_response2_cream.png',
+        badge: 'CYBER WOW',
+        color: 'crema',
+        colorHex: '#fef08a',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 120
+      },
+      {
+        id: 911,
+        name: 'Zapatillas Running Hombre Dynamight 2.0',
+        brand: 'SKECHERS',
+        category: 'Hombre',
+        gender: 'HOMBRE',
+        price: 132.30,
+        priceNormal: 189.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_skechers_dynamight_black.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 11
+      },
+      {
+        id: 912,
+        name: 'Zapatillas Running Mujer Sonic Lite',
+        brand: 'SKECHERS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 153.30,
+        priceNormal: 219.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_skechers_sonic_lite_black.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#0f172a',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.9,
+        reviews: 45
+      },
+
+      // --- IMAGEN 4: PUMA POUNCE LITE 2 & ADIDAS RESPONSE PACE ---
+      {
+        id: 913,
+        name: 'Zapatillas Running Hombre Pounce Lite 2 Engineered',
+        brand: 'PUMA',
+        category: 'Hombre',
+        gender: 'HOMBRE',
+        price: 109.50,
+        priceNormal: 219.00,
+        discount: '-50%',
+        image: 'assets/calzado/prod_puma_pounce_grey.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#475569',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.7,
+        reviews: 7
+      },
+      {
+        id: 914,
+        name: 'Zapatillas Running Hombre Pounce Lite 2 Engineered',
+        brand: 'PUMA',
+        category: 'Hombre',
+        gender: 'HOMBRE',
+        price: 149.90,
+        priceNormal: 219.00,
+        discount: '-32%',
+        image: 'assets/calzado/prod_puma_pounce_blue.png',
+        badge: 'CYBER WOW',
+        color: 'azul',
+        colorHex: '#1e40af',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 1
+      },
+      {
+        id: 915,
+        name: 'Zapatillas Running Mujer Response Pace',
+        brand: 'ADIDAS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 139.00,
+        priceNormal: 199.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_adidas_response_pace_pink.png',
+        badge: 'CYBER WOW',
+        color: 'rosado',
+        colorHex: '#f472b6',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 27
+      },
+      {
+        id: 916,
+        name: 'Zapatillas Running Mujer Response Pace',
+        brand: 'ADIDAS',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 139.30,
+        priceNormal: 199.00,
+        discount: '-30%',
+        image: 'assets/calzado/prod_adidas_response_pace_white.png',
+        badge: 'CYBER WOW',
+        color: 'blanco',
+        colorHex: '#f1f5f9',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 5.0,
+        reviews: 44
+      },
+
+      // --- PRODUCTOS INFANTILES Y CLÁSICOS ---
+      {
+        id: 917,
+        name: 'Ballerinas Niña Yamp Negro Charol Suela Confort',
+        brand: 'Yamp',
+        category: 'Infantil',
+        gender: 'NIÑA',
+        price: 29.95,
+        priceNormal: 59.90,
+        discount: '-50%',
+        image: 'assets/calzado/prod_yamp_ballerinas_negro.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.5,
+        reviews: 4
+      },
+      {
+        id: 918,
+        name: 'Zapatillas Urbanas Bebe Niño Diadora Doble Velcro',
+        brand: 'Diadora',
+        category: 'Infantil',
+        gender: 'BEBÉ NIÑO',
+        price: 43.96,
+        priceNormal: 109.90,
+        discount: '-60%',
+        image: 'assets/calzado/prod_diadora_zapatillas_bebe.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.8,
+        reviews: 6
+      },
+      {
+        id: 919,
+        name: 'Ballerinas Niña Disney Glitter Plata Con Moño',
+        brand: 'Disney',
+        category: 'Infantil',
+        gender: 'NIÑA',
+        price: 39.95,
+        priceNormal: 79.90,
+        discount: '-50%',
+        image: 'assets/calzado/prod_disney_ballerinas_brillo.png',
+        badge: 'CYBER WOW',
+        color: 'plateado',
+        colorHex: '#cbd5e1',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.9,
+        reviews: 23
+      },
+      {
+        id: 920,
+        name: 'Zapatilla Sport Niño Redwood Suela Antideslizante',
+        brand: 'Redwood',
+        category: 'Infantil',
+        gender: 'NIÑO',
+        price: 24.90,
+        priceNormal: 49.90,
+        discount: '-50%',
+        image: 'assets/calzado/prod_redwood_zapatilla_sport.png',
+        badge: 'CYBER WOW',
+        color: 'azul',
+        colorHex: '#1e3a8a',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.7,
+        reviews: 3
+      },
+      {
+        id: 921,
+        name: 'Zapatillas Urbanas Bebe Niño Yamp Azul Marino & Cyan',
+        brand: 'Yamp',
+        category: 'Infantil',
+        gender: 'BEBÉ NIÑO',
+        price: 44.95,
+        priceNormal: 89.90,
+        discount: '-50%',
+        image: 'assets/calzado/prod_yamp_zapatillas_urbanas.png',
+        badge: 'CYBER WOW',
+        color: 'azul',
+        colorHex: '#0369a1',
+        shippingFast: true,
+        pickupFast: false,
+        rating: 4.1,
+        reviews: 7
+      },
+      {
+        id: 922,
+        name: 'Zapatillas Urbanas Samba OG Olive Suede Clásicas',
+        brand: 'ADIDAS',
+        category: 'Hombre',
+        gender: 'HOMBRE',
+        price: 379.00,
+        priceNormal: 429.00,
+        discount: '-12%',
+        image: 'assets/calzado/prod_adidas_samba_olive.png',
+        badge: 'CYBER WOW',
+        color: 'crema',
+        colorHex: '#4d5c43',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 5.0,
+        reviews: 450
+      },
+      {
+        id: 923,
+        name: 'Zapatillas Running Nike Air Zoom Pegasus 40',
+        brand: 'Nike',
+        category: 'Deportes',
+        gender: 'HOMBRE',
+        price: 389.00,
+        priceNormal: 549.00,
+        discount: '-29%',
+        image: 'assets/calzado/prod_nike_running.png',
+        badge: 'CYBER WOW',
+        color: 'negro',
+        colorHex: '#000000',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.9,
+        reviews: 320
+      },
+      {
+        id: 924,
+        name: 'Tacos Stiletto Slingback Charol Gris Humo 9cm',
+        brand: 'Aldo',
+        category: 'Mujer',
+        gender: 'MUJER',
+        price: 249.00,
+        priceNormal: 369.00,
+        discount: '-32%',
+        image: 'assets/calzado/prod_mujer_tacos_grey.png',
+        badge: 'CYBER WOW',
+        color: 'plateado',
+        colorHex: '#94a3b8',
+        shippingFast: true,
+        pickupFast: true,
+        rating: 4.9,
+        reviews: 135
+      }
+    ];
+
+    let currentGender = 'TODOS';
+    let currentBrand = 'all';
+    let currentCategory = 'Todos';
+    let currentColor = 'all';
+    let currentPriceRange = 'all';
+    let currentSort = 'featured';
+    let filterFastDelivery = false;
+    let filterFastPickup = false;
+    let filterCyberOnly = false;
+    let searchQuery = '';
+
+    /* -------------------------------------------------------------
+       RENDERIZADO DINÁMICO DE PRODUCTOS
+       ------------------------------------------------------------- */
+    function renderProducts(products) {
+      const grid = document.getElementById('plpProductsGrid');
+      const countEl = document.getElementById('resultsCount');
+      if (!grid) return;
+
+      if (countEl) countEl.textContent = `Resultados (${products.length})`;
+
+      if (!products.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-xl border border-slate-200">
+            <svg class="w-12 h-12 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h4 class="text-base font-bold text-slate-800">No encontramos zapatillas con estos filtros</h4>
+            <p class="text-xs text-slate-500 mt-1">Prueba seleccionando otra marca, género o limpiando los filtros.</p>
+            <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 bg-[#004724] text-white text-xs font-bold rounded-lg hover:bg-[#00361b] transition">
+              Restablecer todos los filtros
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = products.map(product => {
+        const fullStars = Math.floor(product.rating);
+        const starsHtml = '★'.repeat(fullStars);
+        
+        // Badge CYBER WOW (Verde oficial Falabella #004724)
+        const badgeHtml = product.badge ? `
+          <span class="bg-[#004724] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider">
+            ${product.badge}
+          </span>
+        ` : '';
+
+        // Precios
+        const formattedPrice = product.price.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedNormal = product.priceNormal ? product.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : null;
+
+        return `
+          <article class="plp-product-card group" data-brand="${product.brand}" data-gender="${product.gender}">
+            <!-- Header de tarjeta e imagen -->
+            <div>
+              <div class="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-2 mb-2">
+                <img 
+                  src="${product.image}" 
+                  alt="${product.name}" 
+                  class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  onerror="this.src='assets/calzado/prod_puma_maxstride.png'"
+                />
+                
+                <!-- Badge promocional -->
+                <div class="absolute top-1.5 left-1.5 flex flex-col gap-1 items-start">
+                  ${badgeHtml}
+                </div>
+
+                <!-- Botón Favorito -->
+                <button 
+                  type="button" 
+                  onclick="event.stopPropagation(); toggleFalabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\'")}', ${product.price}, '${product.image}', '${product.brand}')"
+                  class="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-2xs cursor-pointer"
+                  title="Añadir a favoritos"
+                >
+                  <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+              </div>
+
+              <!-- Marca -->
+              <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                ${product.brand}
+              </span>
+
+              <!-- Nombre del Producto -->
+              <h4 class="text-xs font-semibold text-slate-800 line-clamp-2 leading-snug mb-1 group-hover:text-blue-600 transition" title="${product.name}">
+                ${product.name}
+              </h4>
+
+              <!-- Por Falabella -->
+              <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-2 font-medium">
+                <span>Por Falabella</span>
+                <span class="inline-block w-2.5 h-3 bg-[#aad500] rounded-xs" title="Vendido por Falabella"></span>
+              </div>
+
+              <!-- Color Swatch Circle (1:1 con capturas) -->
+              <div class="flex items-center gap-1.5 mb-2.5">
+                <span class="color-swatch-btn active" style="background-color: ${product.colorHex || '#cbd5e1'};" title="Color: ${product.color}"></span>
+              </div>
+
+              <!-- Bloque de Precio -->
+              <div class="space-y-0.5 mb-2">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-base font-black text-slate-900">S/ ${formattedPrice}</span>
+                  ${product.discount ? `
+                    <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-2xs">
+                      ${product.discount}
+                    </span>
+                  ` : ''}
+                </div>
+                ${formattedNormal && product.discount ? `
+                  <div class="text-[11px] text-slate-400 line-through">
+                    S/ ${formattedNormal}
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Badges de Entrega -->
+              <div class="space-y-1 mb-2.5">
+                ${product.shippingFast ? `
+                  <div>
+                    <span class="inline-block text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                      Llega mañana
+                    </span>
+                  </div>
+                ` : ''}
+                ${product.pickupFast ? `
+                  <div>
+                    <span class="inline-block text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                      Retira mañana
+                    </span>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Rating -->
+              <div class="flex items-center gap-1.5 text-xs mb-3">
+                <span class="text-amber-400 font-bold tracking-tight text-[11px]">${starsHtml}</span>
+                <span class="text-[11px] text-slate-400">(${product.reviews})</span>
+              </div>
+            </div>
+
+            <!-- Botón Añadir a la Bolsa -->
+            <button 
+              type="button" 
+              onclick="addToCart(${product.id})"
+              class="w-full py-2 px-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-lg text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]"
+            >
+              <svg class="w-3.5 h-3.5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              <span>Agregar a la bolsa</span>
+            </button>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       FILTRADO COMBINADO AVANZADO (GÉNERO, MARCAS, PRECIO, COLOR)
+       ------------------------------------------------------------- */
+    function applyCombinedFilters() {
+      let filtered = [...PLP_PRODUCTS];
+
+      // Filtro por Género (Píldoras superiores de Imagen 3)
+      if (currentGender !== 'TODOS') {
+        filtered = filtered.filter(p => p.gender.toUpperCase() === currentGender.toUpperCase());
+      }
+
+      // Filtro por Marca seleccionada
+      if (currentBrand !== 'all') {
+        const target = currentBrand.toLowerCase();
+        filtered = filtered.filter(p => p.brand.toLowerCase() === target || p.brand.toLowerCase().includes(target));
+      }
+
+      // Filtro por Categoría del sidebar
+      if (currentCategory !== 'Todos') {
+        filtered = filtered.filter(p => p.category.toLowerCase() === currentCategory.toLowerCase());
+      }
+
+      // Filtro por Color
+      if (currentColor !== 'all') {
+        filtered = filtered.filter(p => p.color === currentColor);
+      }
+
+      // Filtro por Precio
+      if (currentPriceRange === '0-150') {
+        filtered = filtered.filter(p => p.price <= 150);
+      } else if (currentPriceRange === '150-250') {
+        filtered = filtered.filter(p => p.price > 150 && p.price <= 250);
+      } else if (currentPriceRange === '250-400') {
+        filtered = filtered.filter(p => p.price > 250 && p.price <= 400);
+      }
+
+      // Filtros de Entrega
+      if (filterFastDelivery) {
+        filtered = filtered.filter(p => p.shippingFast);
+      }
+      if (filterFastPickup) {
+        filtered = filtered.filter(p => p.pickupFast);
+      }
+
+      // Filtro CYBER WOW
+      if (filterCyberOnly) {
+        filtered = filtered.filter(p => p.badge === 'CYBER WOW');
+      }
+
+      // Búsqueda
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(q) || 
+          p.brand.toLowerCase().includes(q)
+        );
+      }
+
+      // Ordenamiento
+      if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (currentSort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else if (currentSort === 'discount') {
+        filtered.sort((a, b) => {
+          const discA = a.discount ? parseInt(a.discount.replace(/[^0-9]/g, '')) : 0;
+          const discB = b.discount ? parseInt(b.discount.replace(/[^0-9]/g, '')) : 0;
+          return discB - discA;
+        });
+      }
+
+      renderProducts(filtered);
+    }
+
+    function setGenderFilter(gender) {
+      currentGender = gender;
+      const pills = document.querySelectorAll('#genderPills button');
+      pills.forEach(p => {
+        if (p.textContent.trim().toUpperCase() === gender.toUpperCase()) {
+          p.className = 'gender-pill active px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'gender-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+      applyCombinedFilters();
+    }
+
+    function scrollBrandCarousel(delta) {
+      const track = document.getElementById('brandCarousel');
+      if (track) {
+        track.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+    }
+
+    function filterByBrandQuick(brand) {
+      currentBrand = brand;
+      // Highlight card in carousel
+      document.querySelectorAll('#brandCarousel .brand-item-card').forEach(c => {
+        const title = c.getAttribute('title') || '';
+        if (title.toLowerCase().includes(brand.toLowerCase())) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+      currentBrand = brand;
+      applyCombinedFilters();
+      showToast(`Mostrando calzado marca: ${brand}`);
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      applyCombinedFilters();
+    }
+
+    function setColorFilter(color) {
+      currentColor = color;
+      applyCombinedFilters();
+    }
+
+    function handleCyberToggle(checked) {
+      filterCyberOnly = checked;
+      applyCombinedFilters();
+    }
+
+    function toggleCyberWowFilter(enable) {
+      const toggle = document.getElementById('cyberWowToggle');
+      if (toggle) toggle.checked = enable;
+      filterCyberOnly = enable;
+      applyCombinedFilters();
+      showToast('Filtrando promociones exclusivas CYBER WOW');
+    }
+
+    function applySidebarFilters() {
+      // Checkboxes de marcas múltiples
+      const checkedBrands = Array.from(document.querySelectorAll('.brand-check:checked')).map(cb => cb.value.toLowerCase());
+      if (checkedBrands.length > 0) {
+        currentBrand = checkedBrands[0]; // primer filtro o combinado
+      } else {
+        currentBrand = 'all';
+      }
+
+      // Checkboxes de entrega
+      const delivCb = document.getElementById('filterLlegaManana');
+      const pickupCb = document.getElementById('filterRetiraManana');
+      filterFastDelivery = delivCb ? delivCb.checked : false;
+      filterFastPickup = pickupCb ? pickupCb.checked : false;
+
+      // Radio precios
+      const priceRadio = document.querySelector('input[name="priceRange"]:checked');
+      currentPriceRange = priceRadio ? priceRadio.value : 'all';
+
+      applyCombinedFilters();
+    }
+
+    function handleSortChange(sortVal) {
+      currentSort = sortVal;
+      applyCombinedFilters();
+    }
+
+    function executeSearch(query) {
+      searchQuery = query.trim();
+      applyCombinedFilters();
+      showToast(`Búsqueda: "${query}"`);
+    }
+
+    function handleSearchInput(query) {
+      searchQuery = query.trim();
+      applyCombinedFilters();
+    }
+
+    function resetAllFilters() {
+      currentGender = 'TODOS';
+      currentBrand = 'all';
+      currentCategory = 'Todos';
+      currentColor = 'all';
+      currentPriceRange = 'all';
+      currentSort = 'featured';
+      filterFastDelivery = false;
+      filterFastPickup = false;
+      filterCyberOnly = false;
+      searchQuery = '';
+
+      document.querySelectorAll('.brand-check').forEach(cb => cb.checked = false);
+      const delivCb = document.getElementById('filterLlegaManana');
+      if (delivCb) delivCb.checked = false;
+      const pickupCb = document.getElementById('filterRetiraManana');
+      if (pickupCb) pickupCb.checked = false;
+      const cyberToggle = document.getElementById('cyberWowToggle');
+      if (cyberToggle) cyberToggle.checked = false;
+      const defaultRadio = document.querySelector('input[name="priceRange"][value="all"]');
+      if (defaultRadio) defaultRadio.checked = true;
+      const sortSelect = document.getElementById('plpSortSelect');
+      if (sortSelect) sortSelect.value = 'featured';
+      const searchInput = document.getElementById('plpSearchInput');
+      if (searchInput) searchInput.value = '';
+
+      setGenderFilter('TODOS');
+    }
+
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(`icon-${id}`);
+      if (!el) return;
+      el.classList.toggle('hidden');
+      if (icon) icon.classList.toggle('rotate-180');
+    }
+
+    /* -------------------------------------------------------------
+       CARRITO GLOBAL (falabella_store_cart_v2)
+       ------------------------------------------------------------- */
+    function getStoreCart() {
+      try {
+        const stored = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        sessionStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+        localStorage.setItem(STORE_CART_KEY, JSON.stringify(cart));
+      } catch (e) {}
+      updateCartBadge();
+      renderCartDrawerItems();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const badges = document.querySelectorAll('#falabellaCartCount');
+      badges.forEach(b => b.textContent = totalCount);
+    }
+
+    function addToCart(productId) {
+      const product = PLP_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const cart = getStoreCart();
+      const existing = cart.find(item => item.id === product.id);
+
+      if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          brand: product.brand,
+          price: product.price,
+          priceCmr: product.price,
+          priceNormal: product.priceNormal,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡Agregaste "${product.name.slice(0, 30)}..." a la bolsa!`);
+    }
+
+    function updateCartItemQty(id, delta) {
+      const cart = getStoreCart();
+      const item = cart.find(p => p.id === id);
+      if (!item) return;
+
+      item.quantity = (item.quantity || 1) + delta;
+      if (item.quantity <= 0) {
+        saveStoreCart(cart.filter(p => p.id !== id));
+      } else {
+        saveStoreCart(cart);
+      }
+    }
+
+    function removeCartItem(id) {
+      const cart = getStoreCart();
+      saveStoreCart(cart.filter(p => p.id !== id));
+      showToast('Producto eliminado de la bolsa');
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById('cartDrawer');
+      const panel = document.getElementById('cartDrawerPanel');
+      if (!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('opacity-0');
+      if (isHidden) {
+        renderCartDrawerItems();
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        panel.classList.remove('translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.add('translate-x-full');
+      }
+    }
+
+    function renderCartDrawerItems() {
+      const list = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartDrawerSubtotal');
+      if (!list || !subtotalEl) return;
+
+      const cart = getStoreCart();
+      if (!cart.length) {
+        list.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <p class="text-sm font-bold text-slate-700">Tu bolsa está vacía</p>
+          </div>
+        `;
+        subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const itemTotal = (item.priceCmr || item.price) * (item.quantity || 1);
+        subtotal += itemTotal;
+
+        return `
+          <div class="py-3 flex items-center justify-between gap-3">
+            <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-contain rounded-lg border border-slate-100 p-1 flex-shrink-0">
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">${item.brand || 'Calzado'}</span>
+              <h5 class="text-xs font-semibold text-slate-800 truncate">${item.name}</h5>
+              <div class="text-xs font-black text-[#0f766e] mt-0.5">S/ ${(item.priceCmr || item.price).toFixed(2)}</div>
+              
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" onclick="updateCartItemQty(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">-</button>
+                <span class="text-xs font-bold text-slate-800 w-4 text-center">${item.quantity || 1}</span>
+                <button type="button" onclick="updateCartItemQty(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">+</button>
+              </div>
+            </div>
+            <button type="button" onclick="removeCartItem(${item.id})" class="text-slate-300 hover:text-rose-500 transition p-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      subtotalEl.textContent = `S/ ${subtotal.toFixed(2)}`;
+    }
+
+    function proceedToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa de compras está vacía.');
+        return;
+      }
+      showToast('Redirigiendo a pasarela segura Falabella...');
+      setTimeout(() => {
+        window.location.href = 'index.html#falabellaCartSection';
+      }, 1000);
+    }
+
+    /* FAVORITOS */
+    function getStoreFavorites() {
+      try {
+        const stored = localStorage.getItem(STORE_FAVS_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function toggleFalabellaFavorite(id, name, price, image, brand) {
+      let favs = getStoreFavorites();
+      const exists = favs.some(item => item.id === id);
+
+      if (exists) {
+        favs = favs.filter(item => item.id !== id);
+        showToast('Producto eliminado de tu lista de deseos');
+      } else {
+        favs.push({ id, name, price, image, brand });
+        showToast('¡Guardado en tu lista de deseos!');
+      }
+
+      localStorage.setItem(STORE_FAVS_KEY, JSON.stringify(favs));
+      updateWishlistBadge();
+    }
+
+    function updateWishlistBadge() {
+      const favs = getStoreFavorites();
+      const badge = document.getElementById('falabellaWishlistCount');
+      if (badge) badge.textContent = favs.length;
+    }
+
+    /* DRAWER CATEGORÍAS */
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('categoriesDrawer');
+      const panel = document.getElementById('categoriesDrawerPanel');
+      if (!drawer || !panel) return;
+
+      const isHidden = drawer.classList.contains('opacity-0');
+      if (isHidden) {
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        panel.classList.remove('-translate-x-full');
+      } else {
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.add('-translate-x-full');
+      }
+    }
+
+    /* AUTENTICACIÓN */
+    function openAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    }
+
+    function switchAuthTab(tab) {
+      const tabLogin = document.getElementById('tabLogin');
+      const tabRegister = document.getElementById('tabRegister');
+      const formLogin = document.getElementById('formLogin');
+      const formRegister = document.getElementById('formRegister');
+
+      if (tab === 'login') {
+        tabLogin.className = 'flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition';
+        tabRegister.className = 'flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition';
+        formLogin.classList.remove('hidden');
+        formRegister.classList.add('hidden');
+      } else {
+        tabRegister.className = 'flex-1 pb-3 text-sm font-bold text-slate-900 border-b-2 border-[#aad500] transition';
+        tabLogin.className = 'flex-1 pb-3 text-sm font-bold text-slate-400 border-b-2 border-transparent hover:text-slate-700 transition';
+        formRegister.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const userName = email.split('@')[0];
+      localStorage.setItem(STORE_USER_KEY, JSON.stringify({ name: userName, email }));
+      updateUserNavState();
+      closeAuthModal();
+      showToast(`¡Bienvenido de vuelta, ${userName}!`);
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      localStorage.setItem(STORE_USER_KEY, JSON.stringify({ name, email }));
+      updateUserNavState();
+      closeAuthModal();
+      showToast(`¡Cuenta creada con éxito! Bienvenido, ${name}`);
+    }
+
+    function updateUserNavState() {
+      const stored = localStorage.getItem(STORE_USER_KEY);
+      const greetingEl = document.getElementById('userNavGreeting');
+      const labelEl = document.getElementById('userNavLabel');
+      if (!labelEl || !greetingEl) return;
+
+      if (stored) {
+        try {
+          const user = JSON.parse(stored);
+          greetingEl.textContent = 'Hola,';
+          labelEl.textContent = user.name || 'Mi Perfil';
+        } catch (e) {}
+      } else {
+        greetingEl.textContent = 'Hola,';
+        labelEl.textContent = 'Inicia sesión';
+      }
+    }
+
+    /* TOAST */
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(PLP_PRODUCTS);
+      updateCartBadge();
+      updateWishlistBadge();
+      updateUserNavState();
+    });
+  </script>
+</body>
+</html>

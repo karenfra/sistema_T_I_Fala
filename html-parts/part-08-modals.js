@@ -329,22 +329,27 @@ function renderSaleProducts(){                               /* Listado de produ
         '<div class="text-[11px] text-slate-400">' + escapeHtml(p.code) + ' · ' + escapeHtml(categoryName(p.categoryId)) + ' · stock <b class="' + (p.stock === 0 ? 'text-rose-500' : p.stock <= p.minStock ? 'text-amber-600' : 'text-slate-500') + '">' + p.stock + '</b></div>' +
       '</div>' +
       '<span class="text-[13px] font-bold money text-slate-700 flex-shrink-0">' + fmtMoney(p.price) + '</span>' +
-      '<button class="btn btn-primary btn-icon flex-shrink-0" ' + (p.stock === 0 ? 'disabled title="Sin stock (HU-12)"' : 'title="Agregar al carrito"') + ' onclick="addToCart(' + p.id + ')">' + icon(inCart ? 'check' : 'plus','w-4 h-4') + '</button>' +
+      '<button class="btn btn-primary btn-icon flex-shrink-0" ' + (p.stock === 0 ? 'disabled title="Sin stock (HU-12)"' : 'title="Agregar al carrito"') + ' onclick="addToSaleCart(' + p.id + ')">' + icon(inCart ? 'check' : 'plus','w-4 h-4') + '</button>' +
     '</div>';
   }).join('');
 }
-function addToCart(productId){                               /* HU-17: agregar con validación de stock (RN-06, EX-04) */
+function addToSaleCart(productId){                           /* HU-17: agregar con validación de stock en venta local (RN-06, EX-04) */
   const p = productById(productId);
   if(!p) return;
   const item = SALE.items.find(it => it.productId === productId);
   const newQty = (item ? item.qty : 0) + 1;
   if(newQty > p.stock){
-    toast('warning', 'Stock insuficiente para «' + p.name + '»: disponible ' + p.stock + ' unidad(es) (EX-04 · RN-06).');
+    toast('warning', 'Stock insuficiente para “' + p.name + '”: disponible ' + p.stock + ' unidad(es) (EX-04 – RN-06).');
     return;
   }
   if(item) item.qty = newQty; else SALE.items.push({ productId, qty:1 });
   renderSaleProducts(); renderCart();
 }
+function addToCart(productId){
+  return addToSaleCart(productId);
+}
+window.addToSaleCart = addToSaleCart;
+window.addToCart = addToSaleCart;
 function setCartQty(productId, val){                          /* Modificar cantidades (HU-17) */
   const p = productById(productId);
   const item = SALE.items.find(it => it.productId === productId);

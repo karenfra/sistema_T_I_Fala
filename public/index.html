@@ -881,6 +881,20 @@
       </div>
       <ul class="space-y-2 text-sm font-semibold text-slate-700">
         <li>
+          <div class="rounded-xl bg-pink-50/70 border border-pink-100 p-2.5">
+            <a href="belleza.html" class="flex items-center justify-between text-pink-700 font-bold pb-1.5 mb-1.5 border-b border-pink-200">
+              <span class="flex items-center gap-1.5 text-sm">💄 Belleza & Perfumes</span>
+              <span class="text-[10px] bg-pink-600 text-white px-2 py-0.5 rounded-full font-black">NUEVO</span>
+            </a>
+            <div class="space-y-1 text-xs">
+              <a href="belleza.html#sec-skincare" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">✨ The Ordinary & Skincare</a>
+              <a href="belleza.html#sec-mists" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">🍓 Victoria's Secret & Bath & Body Works</a>
+              <a href="belleza.html#sec-fragancias" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">🌹 Fragancias (Ellas y Ellos)</a>
+              <a href="belleza.html#sec-maquillaje" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">💋 Maquillaje (Maybelline, Benefit, Dior)</a>
+            </div>
+          </div>
+        </li>
+        <li>
           <div class="rounded-xl bg-rose-50/70 border border-rose-100 p-2.5">
             <a href="moda_mujer.html" class="flex items-center justify-between text-rose-700 font-bold pb-1.5 mb-1.5 border-b border-rose-200">
               <span class="flex items-center gap-1.5 text-sm">👗 Moda Mujer</span>
@@ -920,11 +934,10 @@
             </div>
           </div>
         </li>
-        <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🛋️ Decohogar</a></li>
-        <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
-        <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
-        <li><a href="#storeCatalogSection" onclick="toggleStoreCategoriesDrawer()" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🧸 Infantil y Juguetes</a></li>
-        <li>
+        <li><a href="decohogar.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">🛋️ Decohogar</a></li>
+        <li><a href="calzado.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+        <li><a href="belleza.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💄 Belleza y Cuidado Personal</a></li>
+                <li>
           <div class="rounded-xl bg-lime-50/80 border border-lime-200 p-2.5">
             <a href="deportes.html" class="flex items-center justify-between text-slate-900 font-bold pb-1.5 mb-1.5 border-b border-lime-300">
               <span class="flex items-center gap-1.5 text-sm">⚽ Deportes & Fitness</span>
@@ -1131,7 +1144,7 @@
       </button>
 
       <!-- SLIDE 0: FELIZ NAVIDAD FALABELLA -->
-      <div class="hero-carousel-slide active relative overflow-hidden" id="heroSlide0" onclick="handleChristmasHeroClick(event)" title="Feliz Navidad para todos - Hasta 60% DSCTO en miles de productos">
+      <div class="hero-carousel-slide active relative overflow-hidden" id="heroSlide0" onclick="window.location.href='decohogar.html'" style="cursor: pointer;" title="Feliz Navidad para todos - Decohogar Falabella">
         <img src="assets/banners/banner_navidad_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1543258103-a62bdc069871?w=1400&auto=format&fit=crop&q=85'" alt="Navidad Falabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent z-1" style="width: 55%;"></div>
 
@@ -1146,11 +1159,11 @@
             Hasta <span style="color: #aad500; font-weight: 900;">60% dscto.</span> en miles de productos seleccionados
           </p>
           <div style="display: flex; align-items: center; gap: 10px;">
-            <button type="button" onclick="event.stopPropagation(); filterStoreByCategory(1);" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: #aad500; color: #0f172a; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(170, 213, 0, 0.35); transition: transform 0.2s ease;">
+            <button type="button" onclick="event.stopPropagation(); window.location.href='decohogar.html';" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: #aad500; color: #0f172a; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(170, 213, 0, 0.35); transition: transform 0.2s ease;">
               <span>Ver más</span>
               <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.12); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(4px);">
+            <span onclick="event.stopPropagation(); window.location.href='decohogar.html';" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.12); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(4px); cursor: pointer;">
               💳 CMR Puntos dobles
             </span>
           </div>
@@ -1158,7 +1171,7 @@
       </div>
 
       <!-- SLIDE 1: PODER MAX REDMI NOTE 17 -->
-      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide1" onclick="handleRedmiHeroClick(event)" title="PODER MAX - Xiaomi Redmi Note 17 Series">
+      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide1" onclick="window.location.href='celulares.html'" style="cursor: pointer;" title="PODER MAX - Xiaomi Redmi Note 17 Series en Celulares Falabella">
         <img src="assets/banners/banner_redmi_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1400&auto=format&fit=crop&q=85'" alt="Xiaomi Redmi Note 17 Series" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
 
@@ -1175,11 +1188,11 @@
           </p>
 
           <div style="display: flex; align-items: center; gap: 10px;">
-            <button type="button" onclick="event.stopPropagation(); setStoreBrandFilter('Xiaomi');" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: linear-gradient(90deg, #22d3ee, #2dd4bf); color: #022c22; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(34, 211, 238, 0.35); transition: transform 0.2s ease;">
+            <button type="button" onclick="event.stopPropagation(); window.location.href='celulares.html';" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: linear-gradient(90deg, #22d3ee, #2dd4bf); color: #022c22; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(34, 211, 238, 0.35); transition: transform 0.2s ease;">
               <span>Ver más</span>
               <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #99f6e4; background: rgba(15, 118, 110, 0.35); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(45, 212, 191, 0.3); backdrop-filter: blur(4px);">
+            <span onclick="event.stopPropagation(); window.location.href='celulares.html';" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #99f6e4; background: rgba(15, 118, 110, 0.35); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(45, 212, 191, 0.3); backdrop-filter: blur(4px); cursor: pointer;">
               🔥 Hasta 12 cuotas sin int.
             </span>
           </div>
@@ -1187,7 +1200,7 @@
       </div>
 
       <!-- SLIDE 2: TECH & GAMING FEST (SONY PS5, SMART TV SAMSUNG 4K, AUDÍFONOS JBL) -->
-      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide2" onclick="filterStoreByCategory(1)" title="Mundo Gaming & Tech - Consola PS5, Smart TVs y Laptops">
+      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide2" onclick="window.location.href='tecnologia.html'" style="cursor: pointer;" title="Mundo Gaming & Tech - Consola PS5, Smart TVs y Laptops en Tecnología Falabella">
         <!-- Imagen que muestra claramente la PlayStation 5 Slim blanca con DualSense, Smart TV Samsung 4K y Audífonos JBL -->
         <img src="assets/banners/banner_gaming_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1400&auto=format&fit=crop&q=85'" alt="Gaming y Smart TVs Falabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
@@ -1206,11 +1219,11 @@
           </p>
 
           <div style="display: flex; align-items: center; gap: 10px;">
-            <button type="button" onclick="event.stopPropagation(); filterStoreByCategory(1);" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: linear-gradient(90deg, #6366f1, #8b5cf6); color: #ffffff; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); transition: transform 0.2s ease;">
+            <button type="button" onclick="event.stopPropagation(); window.location.href='tecnologia.html';" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: linear-gradient(90deg, #6366f1, #8b5cf6); color: #ffffff; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); transition: transform 0.2s ease;">
               <span>Ver Tecnología</span>
               <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #e0e7ff; background: rgba(99, 102, 241, 0.25); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(165, 180, 252, 0.3); backdrop-filter: blur(4px);">
+            <span onclick="event.stopPropagation(); window.location.href='tecnologia.html';" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #e0e7ff; background: rgba(99, 102, 241, 0.25); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(165, 180, 252, 0.3); backdrop-filter: blur(4px); cursor: pointer;">
               ⚡ Despacho 24h
             </span>
           </div>
@@ -1218,7 +1231,7 @@
       </div>
 
       <!-- SLIDE 3: DEPORTES & SNEAKERS (NIKE REVOLUTION, ADIDAS GRAND COURT, APPLE WATCH) -->
-      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide3" onclick="filterStoreByCategory(4)" title="Zapatillas y Moda Deportiva - Nike, Adidas y Accesorios">
+      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide3" onclick="window.location.href='calzado.html'" style="cursor: pointer;" title="Zapatillas y Moda Deportiva - Nike, Adidas y Accesorios">
         <!-- Imagen que muestra claramente las zapatillas running Nike, urbanas Adidas y smartwatch deportivo -->
         <img src="assets/banners/banner_deportes_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1400&auto=format&fit=crop&q=85'" alt="Deportes y Zapatillas Falabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
@@ -1237,11 +1250,11 @@
           </p>
 
           <div style="display: flex; align-items: center; gap: 10px;">
-            <button type="button" onclick="event.stopPropagation(); filterStoreByCategory(4);" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: #aad500; color: #0f172a; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(170, 213, 0, 0.35); transition: transform 0.2s ease;">
+            <button type="button" onclick="event.stopPropagation(); window.location.href='calzado.html';" style="display: inline-flex; width: fit-content; align-items: center; gap: 6px; padding: 9px 24px; border-radius: 9999px; background: #aad500; color: #0f172a; font-weight: 900; font-size: 13px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(170, 213, 0, 0.35); transition: transform 0.2s ease;">
               <span>Ver Deportes</span>
               <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </button>
-            <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #f1f5f9; background: rgba(255, 255, 255, 0.12); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px);">
+            <span onclick="event.stopPropagation(); window.location.href='calzado.html';" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #f1f5f9; background: rgba(255, 255, 255, 0.12); padding: 7px 14px; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(4px); cursor: pointer;">
               🏃 Running & Lifestyle
             </span>
           </div>
@@ -1379,7 +1392,7 @@
             <h3 class="falabella-cat-label">MODA.HOMBRE<span class="cat-dot">.</span></h3>
           </div>
         </article>
-        <article class="falabella-cat-card" onclick="handleCategoryCardClick('Calzado', null, 'Zapatillas')" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado">
+        <article class="falabella-cat-card" onclick="window.location.href='calzado.html'" style="cursor: pointer;" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado">
           <picture>
             <source srcset="assets/categories/cat_calzado.webp" type="image/webp">
             <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
@@ -1404,15 +1417,6 @@
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">BELLEZA<span class="cat-dot">.</span></h3>
-          </div>
-        </article>
-        <article class="falabella-cat-card" onclick="handleCategoryCardClick('Infantil', null, 'Infantil')" role="button" tabindex="0" title="Explorar Infantil y Juguetes" aria-label="Categoría Infantil">
-          <picture>
-            <source srcset="assets/categories/cat_infantil.webp" type="image/webp">
-            <img src="assets/categories/cat_infantil.png" alt="Categoría Infantil Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
-          </picture>
-          <div class="falabella-cat-overlay">
-            <h3 class="falabella-cat-label">INFANTIL<span class="cat-dot">.</span></h3>
           </div>
         </article>
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Deportes', 4, '')" role="button" tabindex="0" title="Explorar Deporte" aria-label="Categoría Deportes" aria-hidden="true">
@@ -1451,7 +1455,7 @@
             <h3 class="falabella-cat-label">MODA.HOMBRE<span class="cat-dot">.</span></h3>
           </div>
         </article>
-        <article class="falabella-cat-card" onclick="handleCategoryCardClick('Calzado', null, 'Zapatillas')" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado" aria-hidden="true">
+        <article class="falabella-cat-card" onclick="window.location.href='calzado.html'" style="cursor: pointer;" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_calzado.webp" type="image/webp">
             <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
@@ -1476,15 +1480,6 @@
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">BELLEZA<span class="cat-dot">.</span></h3>
-          </div>
-        </article>
-        <article class="falabella-cat-card" onclick="handleCategoryCardClick('Infantil', null, 'Infantil')" role="button" tabindex="0" title="Explorar Infantil y Juguetes" aria-label="Categoría Infantil" aria-hidden="true">
-          <picture>
-            <source srcset="assets/categories/cat_infantil.webp" type="image/webp">
-            <img src="assets/categories/cat_infantil.png" alt="Categoría Infantil Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
-          </picture>
-          <div class="falabella-cat-overlay">
-            <h3 class="falabella-cat-label">INFANTIL<span class="cat-dot">.</span></h3>
           </div>
         </article>
         </div>
@@ -1591,6 +1586,8 @@
             <li><a href="javascript:void(0)" onclick="openTrackOrderModal()" class="hover:text-[#aad500] transition">Rastrear mi pedido con DNI</a></li>
             <li><a href="javascript:void(0)" onclick="Chatbot.toggleFloating()" class="hover:text-[#aad500] transition">Chatbot de preguntas frecuentes</a></li>
             <li><a href="javascript:void(0)" onclick="openReturnsPolicyModal()" class="hover:text-[#aad500] transition">Políticas de cambios y devoluciones (RN-20)</a></li>
+            <li><a href="terminos-condiciones.html" class="hover:text-[#aad500] transition">Términos y Condiciones</a></li>
+            <li><a href="politica-privacidad.html" class="hover:text-[#aad500] transition">Política de Privacidad</a></li>
             <li><a href="javascript:void(0)" onclick="openStoreCartModal()" class="hover:text-[#aad500] transition">Mi carrito de compras</a></li>
             <li><a href="javascript:void(0)" onclick="toast('info', '📱 Atención por WhatsApp: +51 987 654 321')" class="hover:text-[#aad500] transition">Atención por WhatsApp</a></li>
             <li><a href="javascript:void(0)" onclick="openHelpDropdown(event)" class="hover:text-[#aad500] transition">Centro de ayuda y consultas</a></li>
@@ -1601,6 +1598,7 @@
         <div class="space-y-2.5">
           <h4 class="text-white font-bold text-sm mb-3">Categorías Populares</h4>
           <ul class="space-y-2 text-slate-200">
+            <li><a href="belleza.html" class="hover:text-[#aad500] transition font-semibold text-pink-300">💄 Belleza, Perfumes & Skincare</a></li>
             <li><a href="javascript:void(0)" onclick="filterStoreByCategory(1)" class="hover:text-[#aad500] transition">Tecnología (Laptops, Celulares, TVs)</a></li>
             <li><a href="javascript:void(0)" onclick="setStoreBrandFilter('Xiaomi')" class="hover:text-[#aad500] transition">Telefonía Xiaomi & Redmi Note</a></li>
             <li><a href="javascript:void(0)" onclick="filterStoreByCategory(4)" class="hover:text-[#aad500] transition">Deportes (Nike y Adidas)</a></li>
@@ -1656,8 +1654,16 @@
         </div>
 
         <!-- Copyright Falabella: con margen a la derecha (pr-28) para que el botón flotante del chatbot nunca choque ni se superponga -->
-        <div class="text-[11.5px] text-slate-300 pr-0 sm:pr-28 text-center sm:text-right">
-          falabella.com • Todos los derechos reservados • Perú
+        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[11.5px] text-slate-300 pr-0 sm:pr-28 text-center sm:text-right">
+          <div class="flex items-center gap-3">
+            <a href="terminos-condiciones.html" class="hover:text-[#aad500] hover:underline transition">Términos y Condiciones</a>
+            <span class="text-slate-500">•</span>
+            <a href="politica-privacidad.html" class="hover:text-[#aad500] hover:underline transition">Política de Privacidad</a>
+            <span class="text-slate-500">•</span>
+            <a href="libro-reclamaciones.html" class="hover:text-[#aad500] hover:underline transition">Libro de Reclamaciones</a>
+          </div>
+          <span class="hidden sm:inline text-slate-500">|</span>
+          <span>falabella.com • Todos los derechos reservados • Perú</span>
         </div>
 
       </div>
@@ -4947,17 +4953,43 @@ function setGasUrl(val){
   } catch(e){}
 }
 
-function openReceipt(saleId){
-  if(!requirePerm('sales.view')) return;
+function viewReceipt(saleId){
+  const sale = saleById(saleId);
+  if(!sale){
+    toast('error', 'Comprobante no encontrado.');
+    return;
+  }
   const receipt = receiptBySaleId(saleId);
   openModal(
-    modalHead('Comprobante de pago', 'Constancia de la transacción (HU-21)', { }) +
-    '<div class="modal-body">' + receiptHTML(saleId, true) + '</div>' +
-    '<div class="modal-foot no-print flex-wrap"><button class="btn btn-outline" onclick="closeModal()">Cerrar</button>' +
-    '<button class="btn btn-outline" onclick="openSendEmailModal(' + saleId + ')" title="Enviar el comprobante por correo (Google Apps Script o simulación)">' + icon('send','w-4 h-4') + ' Enviar por correo</button>' +
-    '<button class="btn btn-primary" onclick="printReceipt()">' + icon('printer','w-4 h-4') + ' Imprimir comprobante</button></div>',
-    { maxWidth:'480px' });
+    modalHead('Comprobante de Pago Electrónico', 'Constancia oficial de la transacción en Falabella.com', {}) +
+    '<div class="modal-body !p-4 sm:!p-6 max-h-[75vh] overflow-y-auto scroll-styled">' +
+      receiptHTML(saleId, true) +
+    '</div>' +
+    '<div class="modal-foot no-print flex items-center justify-between gap-2 flex-wrap !p-4">' +
+      '<button type="button" class="btn btn-outline" onclick="closeModal()">Cerrar</button>' +
+      '<div class="flex items-center gap-2">' +
+        '<button type="button" class="btn btn-outline" onclick="openSendEmailModal(' + saleId + ')" title="Enviar el comprobante por correo (Google Apps Script)">' +
+          icon('send','w-4 h-4') + ' Enviar por correo' +
+        '</button>' +
+        '<button type="button" class="btn btn-primary !bg-emerald-700 hover:!bg-emerald-800 font-bold" onclick="printReceipt()">' +
+          icon('printer','w-4 h-4') + ' Imprimir comprobante' +
+        '</button>' +
+      '</div>' +
+    '</div>',
+    { maxWidth:'520px' }
+  );
 }
+window.viewReceipt = viewReceipt;
+
+function openReceipt(saleId){
+  const isIntranet = (typeof currentRole === 'function' && currentRole()) || (typeof currentUser !== 'undefined' && currentUser);
+  if(isIntranet && !hasPerm('sales.view')){
+    toast('error', 'No tienes permiso para ver este comprobante.');
+    return;
+  }
+  viewReceipt(saleId);
+}
+window.openReceipt = openReceipt;
 
 /* Redirige a la modal unificada de envío de comprobante */
 function emailReceipt(saleId){
@@ -6740,6 +6772,13 @@ function openProductDetailModal(productId){
 }
 
 /* ============ Proceso de Checkout y Pago ============ */
+function syncCheckoutPhoneToYape(val){
+  const yPhone = document.getElementById('storeYapePhone');
+  if(yPhone && yPhone.dataset.manual !== 'true'){
+    yPhone.value = val;
+  }
+}
+
 function openStoreCheckoutModal(){
   const totals = computeStoreCartTotals();
   if(!totals.items.length){
@@ -6747,9 +6786,64 @@ function openStoreCheckoutModal(){
     return;
   }
 
+  // 1. Obtener sesión activa de Falabella.com
+  let sessionUser = null;
+  try {
+    if (typeof window.getFalabellaSession === 'function') {
+      sessionUser = window.getFalabellaSession();
+    }
+    if (!sessionUser && typeof localStorage !== 'undefined') {
+      const raw = localStorage.getItem('falabella_user_session_v1') || sessionStorage.getItem('falabella_user_session_v1');
+      if (raw) sessionUser = JSON.parse(raw);
+    }
+  } catch(e) {
+    console.warn('Error al leer sesión:', e);
+  }
+
+  // 2. Base de clientes de tienda física para vinculación progresiva
+  const physicalClientsList = (typeof window !== 'undefined' && window.FALABELLA_PHYSICAL_CLIENTS) || [
+    { dni: '45879632', name: 'Ana Torres', email: 'ana.torres@gmail.com', phone: '987654321', pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
+    { dni: '40219577', name: 'Luis Mendoza', email: 'luis.mendoza@hotmail.com', phone: '912345678', pointsCMR: 820, totalPurchases: 2, clientSince: '2023' },
+    { dni: '71203455', name: 'Carmen Flores', email: 'carmen.flores@outlook.com', phone: '945678123', pointsCMR: 2300, totalPurchases: 6, clientSince: '2021' },
+    { dni: '09456782', name: 'Diego Salazar', email: 'diego.salazar@gmail.com', phone: '956123478', pointsCMR: 540, totalPurchases: 1, clientSince: '2024' },
+    { dni: '45871236', name: 'Ana Torres (Alt)', email: 'ana.alt@gmail.com', phone: '987654320', pointsCMR: 320, totalPurchases: 1, clientSince: '2023' }
+  ];
+
+  let userDni = sessionUser ? (sessionUser.dni || sessionUser.documento || '') : '';
+  let userName = sessionUser ? (sessionUser.nombreCompleto || (sessionUser.nombres ? (sessionUser.nombres + ' ' + (sessionUser.apellidos || '')).trim() : (sessionUser.name || ''))) : '';
+  let userPhone = sessionUser ? (sessionUser.telefono || sessionUser.phone || sessionUser.celular || '') : '';
+  let userEmail = sessionUser ? (sessionUser.email || sessionUser.correo || '') : '';
+  let userAddress = sessionUser ? (sessionUser.address || sessionUser.direccion || '') : '';
+  let isLinked = Boolean(sessionUser && (sessionUser.isLinkedClient === true || sessionUser.linkedClientData));
+
+  // Verificar si el usuario corresponde a un cliente con historial en tienda física
+  const matchPhys = physicalClientsList.find(p => (userDni && p.dni === userDni) || (userEmail && p.email && p.email.toLowerCase() === userEmail.toLowerCase())) ||
+                    (typeof DB !== 'undefined' && DB.clients ? DB.clients.find(c => (userDni && c.dni === userDni) || (userEmail && c.email && c.email.toLowerCase() === userEmail.toLowerCase())) : null);
+
+  if (matchPhys) {
+    isLinked = true;
+    if (!userDni && matchPhys.dni) userDni = matchPhys.dni;
+    if (!userName && matchPhys.name) userName = matchPhys.name;
+    if (!userPhone && (matchPhys.phone || matchPhys.telefono)) userPhone = matchPhys.phone || matchPhys.telefono;
+    if (!userEmail && matchPhys.email) userEmail = matchPhys.email;
+    if (!userAddress && matchPhys.address) userAddress = matchPhys.address;
+  }
+
   const html = modalHead('Finalizar Compra · Falabella.com', 'Completa tus datos para recibir tu pedido y comprobante de compra') +
     '<div class="modal-body !p-4 sm:!p-6 space-y-5 max-h-[75vh] overflow-y-auto scroll-styled">' +
       '<div id="storeCheckoutError" class="hidden err-box mb-3" role="alert"></div>' +
+      '<div id="checkoutLinkedClientAlert" class="' + (isLinked ? '' : 'hidden ') + 'p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 flex items-start gap-3 text-xs text-emerald-900 mb-4 shadow-sm">' +
+        '<div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">✓</div>' +
+        '<div class="flex-1">' +
+          '<div class="flex items-center gap-2 flex-wrap">' +
+            '<span class="font-bold text-emerald-950">Cliente Vinculado Falabella Detectado</span>' +
+            '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-200 text-emerald-900 tracking-wide uppercase">Tienda Física + Online</span>' +
+          '</div>' +
+          '<p class="text-[11.5px] text-emerald-800 mt-0.5 leading-relaxed">' +
+            'Tus datos (DNI, nombres, teléfono y correo) han sido autocompletados desde tu historial verificado de compras en tienda física.' +
+          '</p>' +
+        '</div>' +
+      '</div>' +
       '<div class="grid lg:grid-cols-2 gap-6 items-start">' +
 
         // Columna Izquierda: Datos del Comprador
@@ -6760,22 +6854,22 @@ function openStoreCheckoutModal(){
           '</div>' +
           '<div>' +
             '<label class="label" for="checkoutDni">DNI del Cliente *</label>' +
-            '<input type="text" id="checkoutDni" class="input font-mono" maxlength="8" placeholder="12345678" ' +
+            '<input type="text" id="checkoutDni" class="input font-mono" maxlength="8" placeholder="12345678" value="' + escapeHtml(userDni) + '" ' +
                    'oninput="filterDigits(this, 8); handleCheckoutDniChange(this.value)" />' +
             '<p class="hint mt-1">Escribe tu DNI (8 dígitos). Si ya compraste antes, completaremos tus datos automáticamente.</p>' +
           '</div>' +
           '<div>' +
             '<label class="label" for="checkoutName">Nombres y Apellidos *</label>' +
-            '<input type="text" id="checkoutName" class="input" placeholder="ej. Ana Torres" />' +
+            '<input type="text" id="checkoutName" class="input" placeholder="ej. Ana Torres" value="' + escapeHtml(userName) + '" />' +
           '</div>' +
           '<div class="grid grid-cols-2 gap-3">' +
             '<div>' +
               '<label class="label" for="checkoutPhone">Teléfono / Celular *</label>' +
-              '<input type="tel" id="checkoutPhone" class="input font-mono" placeholder="987654321" maxlength="9" oninput="filterDigits(this, 9)" />' +
+              '<input type="tel" id="checkoutPhone" class="input font-mono" placeholder="987654321" maxlength="9" value="' + escapeHtml(userPhone) + '" oninput="filterDigits(this, 9); syncCheckoutPhoneToYape(this.value)" />' +
             '</div>' +
             '<div>' +
               '<label class="label" for="checkoutEmail">Correo Electrónico *</label>' +
-              '<input type="email" id="checkoutEmail" class="input" placeholder="cliente@gmail.com" />' +
+              '<input type="email" id="checkoutEmail" class="input" placeholder="cliente@gmail.com" value="' + escapeHtml(userEmail) + '" />' +
             '</div>' +
           '</div>' +
           '<p class="hint -mt-2 text-emerald-700 font-medium">📧 Enviaremos tu comprobante oficial en tiempo real a este correo (Google Apps Script).</p>' +
@@ -6794,7 +6888,7 @@ function openStoreCheckoutModal(){
           '</div>' +
           '<div id="checkoutAddressWrap">' +
             '<label class="label" for="checkoutAddress">Dirección de Entrega</label>' +
-            '<input type="text" id="checkoutAddress" class="input" placeholder="Av. Los Pinos 123, Dpto 401 - Lima" />' +
+            '<input type="text" id="checkoutAddress" class="input" placeholder="Av. Los Pinos 123, Dpto 401 - Lima" value="' + escapeHtml(userAddress) + '" />' +
           '</div>' +
         '</div>' +
 
@@ -6827,7 +6921,7 @@ function openStoreCheckoutModal(){
             '</div>' +
             '<div>' +
               '<label class="label !text-[11px]" for="storeCardName">Nombre del Titular *</label>' +
-              '<input type="text" id="storeCardName" class="input !py-1.5 !text-xs uppercase" placeholder="JUAN PEREZ" />' +
+              '<input type="text" id="storeCardName" class="input !py-1.5 !text-xs uppercase" placeholder="JUAN PEREZ" value="' + escapeHtml(userName ? userName.toUpperCase() : '') + '" />' +
               '<p class="hint !text-[10px] mt-0.5">Tal como figura en el plástico (sin números ni símbolos).</p>' +
             '</div>' +
             '<div>' +
@@ -6867,7 +6961,7 @@ function openStoreCheckoutModal(){
             '<p class="text-xs text-slate-600 leading-relaxed">Transfiere el monto total al número oficial de Falabella.com: <b>912 345 678</b> (Titular: Falabella Perú Demo).</p>' +
             '<div>' +
               '<label class="label !text-[11px]" for="storeYapePhone">Tu celular Yape/Plin</label>' +
-              '<input type="tel" id="storeYapePhone" class="input font-mono !py-1.5 !text-xs" placeholder="987654321" maxlength="9" oninput="filterDigits(this, 9)" />' +
+              '<input type="tel" id="storeYapePhone" class="input font-mono !py-1.5 !text-xs" placeholder="987654321" maxlength="9" value="' + escapeHtml(userPhone) + '" oninput="filterDigits(this, 9); this.dataset.manual = \'true\'" />' +
             '</div>' +
             '<div>' +
               '<label class="label !text-[11px]" for="storeYapeCode">Código de Aprobación / Operación</label>' +
@@ -6904,20 +6998,75 @@ function openStoreCheckoutModal(){
     '</div>';
 
   openModal(html, { maxWidth:'840px' });
+
+  setTimeout(() => {
+    const dniInput = document.getElementById('checkoutDni');
+    const nameInput = document.getElementById('checkoutName');
+    const phoneInput = document.getElementById('checkoutPhone');
+    const emailInput = document.getElementById('checkoutEmail');
+    const yPhoneInput = document.getElementById('storeYapePhone');
+    const cardNameInput = document.getElementById('storeCardName');
+    const addressInput = document.getElementById('checkoutAddress');
+    const alertWrap = document.getElementById('checkoutLinkedClientAlert');
+
+    if(userDni && dniInput) dniInput.value = userDni;
+    if(userName && nameInput) nameInput.value = userName;
+    if(userPhone && phoneInput) phoneInput.value = userPhone;
+    if(userEmail && emailInput) emailInput.value = userEmail;
+    if(userAddress && addressInput && !addressInput.value) addressInput.value = userAddress;
+    if(userPhone && yPhoneInput) yPhoneInput.value = userPhone;
+    if(userName && cardNameInput && !cardNameInput.value) cardNameInput.value = userName.toUpperCase();
+    if(isLinked && alertWrap) alertWrap.classList.remove('hidden');
+  }, 10);
 }
 
 function handleCheckoutDniChange(dni){
-  if(dni.length === 8 && DB && DB.clients){
-    const client = DB.clients.find(c => c.dni === dni);
+  const cleanDni = String(dni || '').trim();
+  if(cleanDni.length === 8){
+    const physicalClientsList = (typeof window !== 'undefined' && window.FALABELLA_PHYSICAL_CLIENTS) || [
+      { dni: '45879632', name: 'Ana Torres', email: 'ana.torres@gmail.com', phone: '987654321', pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
+      { dni: '40219577', name: 'Luis Mendoza', email: 'luis.mendoza@hotmail.com', phone: '912345678', pointsCMR: 820, totalPurchases: 2, clientSince: '2023' },
+      { dni: '71203455', name: 'Carmen Flores', email: 'carmen.flores@outlook.com', phone: '945678123', pointsCMR: 2300, totalPurchases: 6, clientSince: '2021' },
+      { dni: '09456782', name: 'Diego Salazar', email: 'diego.salazar@gmail.com', phone: '956123478', pointsCMR: 540, totalPurchases: 1, clientSince: '2024' },
+      { dni: '45871236', name: 'Ana Torres (Alt)', email: 'ana.alt@gmail.com', phone: '987654320', pointsCMR: 320, totalPurchases: 1, clientSince: '2023' }
+    ];
+
+    let client = (typeof DB !== 'undefined' && DB.clients ? DB.clients.find(c => c.dni === cleanDni) : null) ||
+                 physicalClientsList.find(p => p.dni === cleanDni);
+
+    if(!client && typeof localStorage !== 'undefined'){
+      try {
+        const regUsers = JSON.parse(localStorage.getItem('falabella_registered_users_v1') || '[]');
+        const reg = regUsers.find(u => u.dni === cleanDni);
+        if(reg){
+          client = {
+            name: reg.nombreCompleto || `${reg.nombres} ${reg.apellidos}`,
+            phone: reg.telefono,
+            email: reg.email,
+            address: reg.direccion || ''
+          };
+        }
+      } catch(e){}
+    }
+
     if(client){
       const nameInput = document.getElementById('checkoutName');
       const phoneInput = document.getElementById('checkoutPhone');
       const emailInput = document.getElementById('checkoutEmail');
       const addressInput = document.getElementById('checkoutAddress');
-      if(nameInput && !nameInput.value) nameInput.value = client.name;
-      if(phoneInput && !phoneInput.value && client.phone) phoneInput.value = client.phone;
-      if(emailInput && !emailInput.value && client.email) emailInput.value = client.email;
-      if(addressInput && !addressInput.value && client.address) addressInput.value = client.address;
+      const yPhoneInput = document.getElementById('storeYapePhone');
+      const cardNameInput = document.getElementById('storeCardName');
+      const alertWrap = document.getElementById('checkoutLinkedClientAlert');
+
+      if(nameInput) nameInput.value = client.name;
+      const ph = client.phone || client.telefono || '';
+      if(phoneInput && ph) phoneInput.value = ph;
+      if(yPhoneInput && ph) yPhoneInput.value = ph;
+      if(emailInput && client.email) emailInput.value = client.email;
+      if(addressInput && client.address) addressInput.value = client.address;
+      if(cardNameInput && !cardNameInput.value && client.name) cardNameInput.value = client.name.toUpperCase();
+      if(alertWrap) alertWrap.classList.remove('hidden');
+
       toast('info', 'Cliente ' + client.name + ' encontrado. Datos completados.');
     }
   }
@@ -6935,6 +7084,16 @@ function switchStorePayMethod(method){
   if(cardWrap) cardWrap.classList.toggle('hidden', method !== 'Tarjeta');
   if(yapeWrap) yapeWrap.classList.toggle('hidden', method !== 'Yape/Plin');
   if(cashWrap) cashWrap.classList.toggle('hidden', method !== 'Efectivo');
+
+  // Si selecciona Yape/Plin, asegurarse de autocompletar el teléfono del cliente
+  if(method === 'Yape/Plin'){
+    const yPhone = document.getElementById('storeYapePhone');
+    const chkPhone = document.getElementById('checkoutPhone');
+    if(yPhone && (!yPhone.value || yPhone.dataset.manual !== 'true')){
+      const ph = (chkPhone && chkPhone.value) ? chkPhone.value.trim() : '';
+      if(ph) yPhone.value = ph;
+    }
+  }
 }
 
 function formatCardNumberInput(el){
@@ -7276,7 +7435,7 @@ function showStoreSuccessModal(sale, order, receipt, client, emailSent){
         '</div>' +
         '<div>' +
           '<div class="text-[10px] text-slate-400 font-bold uppercase">Total Pagado</div>' +
-          '<div class="text-xs sm:text-sm font-extrabold text-slate-900 font-mono">S/ ' + fmtMoney(sale.total) + '</div>' +
+          '<div class="text-xs sm:text-sm font-extrabold text-slate-900 font-mono">' + fmtMoney(sale.total) + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="p-3 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs text-left flex items-start gap-2.5">' +
@@ -7295,7 +7454,7 @@ function showStoreSuccessModal(sale, order, receipt, client, emailSent){
     '<div class="modal-foot !p-4 flex items-center justify-between gap-2 flex-wrap">' +
       '<button type="button" class="btn btn-outline btn-sm" onclick="closeModal(); enterStore();">Seguir comprando</button>' +
       '<div class="flex items-center gap-2">' +
-        '<button type="button" class="btn btn-outline btn-sm" onclick="closeModal(); viewReceipt(' + sale.id + ');">🧾 Ver Comprobante</button>' +
+        '<button type="button" class="btn btn-outline btn-sm" onclick="viewReceipt(' + sale.id + ');">🧾 Ver Comprobante</button>' +
         '<button type="button" class="btn btn-primary btn-sm !bg-emerald-700 hover:!bg-emerald-800" onclick="closeModal(); openTrackOrderModal(\'' + client.dni + '\');">' +
           '📦 Rastrear con DNI' +
         '</button>' +
@@ -7408,7 +7567,7 @@ function executeTrackOrderSearch(){
 
       '<div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">' +
         '<span class="text-slate-500">Total: <b class="text-slate-900">S/ ' + fmtMoney(order.total) + '</b></span>' +
-        (sale ? ('<button type="button" onclick="closeModal(); viewReceipt(' + sale.id + ');" class="text-emerald-700 hover:underline font-bold">Ver Boleta ' + (receipt ? receipt.code : '') + '</button>') : '') +
+        (sale ? ('<button type="button" onclick="viewReceipt(' + sale.id + ');" class="text-emerald-700 hover:underline font-bold">Ver Boleta ' + (receipt ? receipt.code : '') + '</button>') : '') +
       '</div>' +
     '</div>';
   });
@@ -7500,15 +7659,11 @@ function filterStoreForChristmas(){
 }
 
 function handleChristmasHeroClick(e){
-  filterStoreForChristmas();
+  window.location.href = 'decohogar.html';
 }
 
 function handleRedmiHeroClick(e){
-  setStoreBrandFilter('Xiaomi');
-  const breadcrumb = document.getElementById('storeBreadcrumbText');
-  if(breadcrumb) breadcrumb.textContent = 'Telefonía > Xiaomi Redmi Note Series';
-  scrollToProducts();
-  toast('success', '⚡ Campaña PODER MAX: Mostrando smartphones Xiaomi y Redmi Note Series.');
+  window.location.href = 'celulares.html';
 }
 
 function openAccountDropdownOrModal(){
@@ -7672,9 +7827,24 @@ function scrollCategoryCarousel(dir){
 function handleCategoryCardClick(catName, catId, query){
   try {
     const cName = (catName || '').toLowerCase();
+    // Redireccion especial para Decohogar / Muebles
+    if(catId === 2 || cName.includes('hogar') || cName.includes('deco') || cName.includes('mueble')){
+      window.location.href = 'decohogar.html';
+      return;
+    }
+    // Redireccion especial para Calzado
+    if(cName.includes('calzado') || cName.includes('zapato') || cName.includes('zapatilla')){
+      window.location.href = 'calzado.html';
+      return;
+    }
     // Redirección especial para Tecnología
     if(catId === 1 || cName.includes('tecno')){
       window.location.href = 'tecnologia.html';
+      return;
+    }
+    // Redirección especial para Belleza
+    if(cName.includes('belleza') || cName.includes('perfum') || cName.includes('maquillaje')){
+      window.location.href = 'belleza.html';
       return;
     }
     // Redirección especial para Moda Mujer
@@ -7753,6 +7923,7 @@ function openPrivacyModal(){
       '<div>' +
         '<p class="font-bold text-slate-900 mb-1">⚙️ Gestión de Preferencias</p>' +
         '<p>Puedes habilitar, deshabilitar o eliminar las cookies en cualquier momento a través de la configuración de tu navegador web.</p>' +
+        '<p class="mt-2.5 pt-2 border-t border-slate-200"><a href="politica-privacidad.html" target="_blank" class="text-[#0f766e] font-bold underline hover:text-[#0b534d]">📄 Leer Política de Privacidad completa (Ley N° 29733) →</a></p>' +
       '</div>' +
     '</div>' +
     '<div class="modal-foot !p-4">' +

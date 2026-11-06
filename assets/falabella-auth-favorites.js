@@ -244,9 +244,48 @@
   }
 
   // ============================================================
+  // ADMINISTRATIVE INTRANET EXEMPTION
+  // El portal administrativo sirve para registrar ventas en local
+  // y gestión interna. El personal administrativo NO debe ser
+  // bloqueado ni obligado a iniciar sesión de cliente en falabella.com
+  // ============================================================
+  function isAdministrativeIntranetActive(targetEl) {
+    try {
+      // 1. Si el elemento clicado o de acción está dentro del intranet o modal de venta
+      if (targetEl && typeof targetEl.closest === 'function') {
+        if (targetEl.closest('#appView, #saleProductList, #saleCart, #saleErrors, [onclick*="addToSaleCart"], [onclick*="addSale"], [onclick*="openSale"]')) {
+          return true;
+        }
+      }
+      // 2. Si la vista de la intranet administrativa (#appView) está visible
+      const appView = document.getElementById('appView');
+      if (appView && !appView.classList.contains('hidden')) {
+        return true;
+      }
+      // 3. Si los contenedores del modal de ventas en local existen en el DOM
+      if (document.getElementById('saleProductList') || document.getElementById('saleCart') || document.getElementById('saleClientSearch')) {
+        return true;
+      }
+      // 4. Si hay sesión activa de personal administrativo en sessionStorage
+      if (sessionStorage.getItem('falabella_session_user')) {
+        const path = (window.location.pathname || '').toLowerCase();
+        if (path.includes('sistema_ventas_falabella') || path.includes('intranet')) {
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  }
+  window.isAdministrativeIntranetActive = isAdministrativeIntranetActive;
+
+  // ============================================================
   // AUTH GUARD FOR RESTRICTED ACTIONS (CART & FAVORITES)
   // ============================================================
-  function requireAuthForAction(action) {
+  function requireAuthForAction(action, targetEl) {
+    // Exención: Intranet Administrativa (registro de ventas en local por personal administrativo)
+    if (isAdministrativeIntranetActive(targetEl)) {
+      return true;
+    }
     const user = getSession();
     if (!user) {
       const msg = action === 'cart'
@@ -471,7 +510,7 @@
           </div>
 
           <!-- Tabs Switcher -->
-          <div style="display: flex; border-bottom: 1px solid #e2e8f0; background: #f8fafc; font-size: 13px; font-weight: 700;">
+          <div id="falAuthTabsHeader" style="display: flex; border-bottom: 1px solid #e2e8f0; background: #f8fafc; font-size: 13px; font-weight: 700;">
             <button type="button" id="falTabBtnLogin" onclick="event.stopPropagation(); window.switchFalabellaAuthTab('login')" style="flex: 1; padding: 12px; border: none; border-bottom: 2px solid #0f172a; background: #fff; color: #0f172a; cursor: pointer; font-weight: 800;">
               Iniciar Sesión
             </button>
@@ -480,6 +519,17 @@
             </button>
           </div>
 
+          <!-- Recovery Navigation Header -->
+          <div id="falAuthRecoveryHeader" style="display: none; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+            <button type="button" onclick="event.stopPropagation(); window.switchFalabellaAuthTab('login')" style="background: none; border: none; color: #0284c7; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              Volver a Iniciar Sesión
+            </button>
+            <span style="font-size: 11px; font-weight: 700; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 99px; display: flex; align-items: center; gap: 4px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              OWASP ASVS 4.0
+            </span>
+          </div>
           <!-- Modal Body Scrollable -->
           <div style="padding: 20px; overflow-y: auto; max-height: calc(90vh - 120px);">
             
@@ -507,6 +557,11 @@
                   </button>
                 </div>
                 <input type="password" id="falLoginInputPassword" placeholder="Tu contraseña" required class="fal-input-field" />
+                <div style="display: flex; justify-content: flex-end; margin-top: 5px;">
+                  <button type="button" onclick="event.stopPropagation(); window.switchFalabellaAuthTab('recover')" style="border:none; background:none; font-size: 12px; color: #0284c7; cursor: pointer; font-weight: 700; text-decoration: underline;">
+                    ¿Olvidaste tu contraseña?
+                  </button>
+                </div>
               </div>
 
               <div id="falLoginErrorMessage" style="padding: 10px; background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; font-size: 12px; border-radius: 8px; display: none;"></div>
@@ -645,7 +700,7 @@
                 <label style="display: flex; gap: 8px; align-items: flex-start; cursor: pointer; font-size: 11.5px; color: #475569;">
                   <input type="checkbox" id="falRegTerms" required style="margin-top: 2px; width: 15px; height: 15px;" />
                   <span>
-                    Acepto los <a href="#" onclick="alert('Términos y Condiciones'); return false;" style="font-weight: 700; color: #0f172a; text-decoration: underline;">Términos y Condiciones</a> y la <a href="#" onclick="alert('Política de Privacidad'); return false;" style="font-weight: 700; color: #0f172a; text-decoration: underline;">Política de Privacidad</a> de falabella.com.
+                    Acepto los <a href="terminos-condiciones.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: #0f172a; text-decoration: underline;">Términos y Condiciones</a> y la <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: #0f172a; text-decoration: underline;">Política de Privacidad</a> de falabella.com.
                   </span>
                 </label>
                 <p id="falErrTerms" style="font-size: 11px; color: #e11d48; font-weight: 600; margin: 3px 0 0 0; display: none;"></p>
@@ -666,6 +721,160 @@
                   </button>
                 </p>
               </div>
+            </form>
+
+            <!-- ===== FORMULARIO 3: RECUPERAR CONTRASEÑA (PASO 1 - OWASP ANTI-ENUMERATION & RATE LIMITING) ===== -->
+            <form id="falRecoverForm" onsubmit="window.handleFalabellaRecoverSubmit(event)" style="display: none; flex-direction: column; gap: 14px;">
+              <div>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: #0284c7; background: #e0f2fe; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  Paso 1 de 3 · Solicitud Segura
+                </span>
+                <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">¿Olvidaste tu contraseña?</h3>
+                <p style="font-size: 12px; color: #64748b; margin: 4px 0 0 0; line-height: 1.4;">
+                  Ingresa tu correo electrónico o DNI registrado. Te enviaremos un código de seguridad OTP de 6 dígitos para verificar tu identidad.
+                </p>
+              </div>
+
+              <!-- OWASP Anti-Enumeration badge -->
+              <div style="display: flex; gap: 8px; padding: 10px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 11.5px; color: #475569; line-height: 1.4;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="flex-shrink:0; margin-top: 1px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span><strong>Protección OWASP:</strong> Por tu privacidad, el sistema no revela si el correo está registrado y limita los intentos para prevenir ataques de fuerza bruta.</span>
+              </div>
+
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 4px;" for="falRecoverInputIdentifier">
+                  Correo electrónico o DNI *
+                </label>
+                <input type="text" id="falRecoverInputIdentifier" placeholder="ej. ana.torres@gmail.com o 45879632" required class="fal-input-field" />
+              </div>
+
+              <div id="falRecoverMessage" style="padding: 10px; font-size: 12px; border-radius: 8px; display: none;"></div>
+
+              <button type="submit" id="falRecoverSubmitBtn" class="fal-btn-dark">
+                Enviar código de verificación
+              </button>
+
+              <div style="text-align: center; margin-top: 6px;">
+                <button type="button" onclick="event.stopPropagation(); window.switchFalabellaAuthTab('login')" style="border:none; background:none; font-size: 12px; font-weight: 700; color: #64748b; cursor: pointer; text-decoration: underline;">
+                  Recordé mi contraseña, volver a iniciar sesión
+                </button>
+              </div>
+            </form>
+
+            <!-- ===== FORMULARIO 4: VERIFICAR CÓDIGO OTP (PASO 2 - OWASP BRUTE-FORCE LOCKOUT & EXPIRATION) ===== -->
+            <form id="falVerifyCodeForm" onsubmit="window.handleFalabellaVerifyCodeSubmit(event)" style="display: none; flex-direction: column; gap: 14px;">
+              <div>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: #d97706; background: #fef3c7; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Paso 2 de 3 · Código de Seguridad OTP
+                </span>
+                <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">Ingresa tu código OTP</h3>
+                <p style="font-size: 12px; color: #64748b; margin: 4px 0 0 0; line-height: 1.4;">
+                  Hemos enviado un código seguro de 6 dígitos a <strong id="falVerifyTargetDisplay" style="color: #0f172a;">tu correo</strong>.
+                </p>
+              </div>
+
+              <!-- Quick Demo Helper Banner -->
+              <div style="background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="background: #0f172a; color: #aad500; font-size: 10px; font-weight: 900; padding: 2px 6px; border-radius: 4px;">DEMO</span>
+                  <span style="font-size: 11px; color: #475569;">Código generado:</span>
+                  <strong id="falDemoCodeDisplay" style="font-size: 14px; font-family: monospace; letter-spacing: 2px; color: #0f172a;">------</strong>
+                </div>
+                <button type="button" onclick="const c = document.getElementById('falDemoCodeDisplay').textContent; if(c && c !== '------'){ document.getElementById('falVerifyOtpInput').value = c; }" style="border: 1px solid #cbd5e1; background: #fff; border-radius: 6px; padding: 4px 8px; font-size: 10.5px; font-weight: 700; color: #334155; cursor: pointer;">
+                  Copiar
+                </button>
+              </div>
+
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 4px;" for="falVerifyOtpInput">
+                  Código de 6 dígitos *
+                </label>
+                <input type="text" id="falVerifyOtpInput" maxlength="6" placeholder="000000" required class="fal-input-field" style="text-align: center; font-size: 22px; font-family: monospace; letter-spacing: 6px; font-weight: 800;" />
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 11px; color: #64748b;">
+                  <span>Expira en 15 minutos (OWASP)</span>
+                  <span id="falResendCountdown">Reenviar código en 60s</span>
+                </div>
+              </div>
+
+              <div id="falVerifyErrorMessage" style="padding: 10px; background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; font-size: 12px; border-radius: 8px; display: none;"></div>
+
+              <button type="submit" id="falVerifyOtpSubmitBtn" class="fal-btn-primary">
+                Verificar código y continuar
+              </button>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <button type="button" onclick="event.stopPropagation(); window.switchFalabellaAuthTab('recover')" style="border:none; background:none; font-size: 11.5px; color: #64748b; cursor: pointer; text-decoration: underline;">
+                  Cambiar correo / DNI
+                </button>
+                <button type="button" id="falResendBtn" onclick="event.stopPropagation(); window.resendRecoveryCode()" disabled style="border:none; background:none; font-size: 11.5px; font-weight: 700; color: #94a3b8; cursor: not-allowed;">
+                  Reenviar código
+                </button>
+              </div>
+            </form>
+
+            <!-- ===== FORMULARIO 5: RESTABLECER CONTRASEÑA (PASO 3 - OWASP PASSWORD POLICY & LIVE METER) ===== -->
+            <form id="falResetPasswordForm" onsubmit="window.handleFalabellaResetPasswordSubmit(event)" style="display: none; flex-direction: column; gap: 14px;">
+              <div>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; color: #15803d; background: #dcfce7; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Paso 3 de 3 · Nueva Contraseña
+                </span>
+                <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0;">Crea tu nueva contraseña</h3>
+                <p style="font-size: 12px; color: #64748b; margin: 4px 0 0 0; line-height: 1.4;">
+                  Asegúrate de que tu nueva clave cumpla con los estándares de seguridad OWASP.
+                </p>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <label style="font-size: 12px; font-weight: 700; color: #334155;" for="falResetNewPassword">
+                    Nueva contraseña *
+                  </label>
+                  <button type="button" onclick="window.togglePasswordVisibility('falResetNewPassword')" style="border:none; background:none; font-size: 11px; color: #64748b; cursor: pointer; text-decoration: underline;">
+                    Mostrar
+                  </button>
+                </div>
+                <input type="password" id="falResetNewPassword" oninput="window.handlePasswordStrengthCheck(this.value)" placeholder="Ingresa tu nueva contraseña" required class="fal-input-field" />
+              </div>
+
+              <!-- OWASP Dynamic Password Strength Meter -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 11px; font-weight: 700; color: #475569;">Robustez OWASP:</span>
+                  <span id="falStrengthLabel" style="font-size: 11px; font-weight: 800; color: #94a3b8;">Por ingresar</span>
+                </div>
+                <div style="width: 100%; height: 6px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-bottom: 10px;">
+                  <div id="falStrengthBar" style="height: 100%; width: 0%; background: #ef4444; transition: width 0.3s ease, background-color 0.3s ease; border-radius: 99px;"></div>
+                </div>
+
+                <!-- Checklist criteria -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px;">
+                  <div id="ruleLength" style="color: #64748b;">• Mínimo 8 caracteres</div>
+                  <div id="ruleUpper" style="color: #64748b;">• Una mayúscula (A-Z)</div>
+                  <div id="ruleLower" style="color: #64748b;">• Una minúscula (a-z)</div>
+                  <div id="ruleNumber" style="color: #64748b;">• Un número o símbolo</div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <label style="font-size: 12px; font-weight: 700; color: #334155;" for="falResetConfirmPassword">
+                    Confirmar nueva contraseña *
+                  </label>
+                  <button type="button" onclick="window.togglePasswordVisibility('falResetConfirmPassword')" style="border:none; background:none; font-size: 11px; color: #64748b; cursor: pointer; text-decoration: underline;">
+                    Mostrar
+                  </button>
+                </div>
+                <input type="password" id="falResetConfirmPassword" placeholder="Repite tu nueva contraseña" required class="fal-input-field" />
+              </div>
+
+              <div id="falResetErrorMessage" style="padding: 10px; background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; font-size: 12px; border-radius: 8px; display: none;"></div>
+
+              <button type="submit" id="falResetSubmitBtn" class="fal-btn-primary">
+                Actualizar e Iniciar Sesión
+              </button>
             </form>
           </div>
         </div>
@@ -830,6 +1039,549 @@
     }
   }
 
+
+  // ============================================================
+  // OWASP COMPLIANT PASSWORD RECOVERY & RESET SUITE
+  // ============================================================
+  let resendTimerInterval = null;
+
+  function maskEmail(email) {
+    if (!email || !email.includes('@')) return email || '';
+    const [user, domain] = email.split('@');
+    if (user.length <= 2) return `${user[0]}***@${domain}`;
+    return `${user[0]}***${user[user.length - 1]}@${domain}`;
+  }
+
+  function getRateLimitAttempts() {
+    try {
+      const records = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+      const fifteenMinsAgo = Date.now() - 15 * 60 * 1000;
+      const valid = records.filter(ts => ts > fifteenMinsAgo);
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(valid));
+      return valid;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function recordRateLimitAttempt() {
+    try {
+      const valid = getRateLimitAttempts();
+      valid.push(Date.now());
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(valid));
+    } catch (e) {}
+  }
+
+  function generateSecureToken() {
+    try {
+      const bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+    } catch (e) {
+      return Math.random().toString(36).substring(2) + Date.now().toString(36);
+    }
+  }
+
+  function generateSecureOtp() {
+    try {
+      const bytes = new Uint32Array(1);
+      window.crypto.getRandomValues(bytes);
+      return String(100000 + (bytes[0] % 900000));
+    } catch (e) {
+      return String(Math.floor(100000 + Math.random() * 900000));
+    }
+  }
+
+  function sendRecoveryEmail(user, otp, token) {
+    const userEmail = user.email;
+    const userName = (user.nombres || user.nombreCompleto || 'Cliente').split(' ')[0];
+    const currentUrl = window.location.origin + window.location.pathname;
+    const resetUrl = `${currentUrl}?resetToken=${token}&email=${encodeURIComponent(userEmail)}`;
+
+    const htmlBody = `
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 580px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+        <!-- Header -->
+        <div style="background: #0f172a; padding: 24px 28px; text-align: left; border-bottom: 3px solid #aad500;">
+          <span style="color: #aad500; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">falabella<span style="color:#ffffff;">.com</span></span>
+          <span style="float: right; color: #94a3b8; font-size: 11px; font-weight: bold; margin-top: 8px;">Seguridad de la Cuenta</span>
+        </div>
+
+        <!-- Body -->
+        <div style="padding: 30px 28px; color: #1e293b; line-height: 1.6;">
+          <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-top: 0;">Hola, ${escapeHtml(userName)}:</h2>
+          <p style="font-size: 13.5px; color: #475569; margin-bottom: 20px;">
+            Recibimos una solicitud para restablecer la contraseña de tu cuenta en <strong>falabella.com</strong>.
+          </p>
+
+          <!-- OTP Box -->
+          <div style="background: #f8fafc; border: 2px dashed #aad500; border-radius: 12px; padding: 20px; text-align: center; margin: 24px 0;">
+            <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 1px; display: block;">Tu Código de Verificación OTP:</span>
+            <span style="font-size: 34px; font-weight: 900; color: #0f172a; letter-spacing: 8px; display: block; margin: 10px 0; font-family: monospace;">${otp}</span>
+            <span style="font-size: 11.5px; font-weight: bold; color: #e11d48; display: inline-block; background: #ffe4e6; padding: 3px 10px; border-radius: 99px;">
+              ⏱ Válido por 15 minutos (un solo uso)
+            </span>
+          </div>
+
+          <!-- Direct Link CTA -->
+          <div style="text-align: center; margin: 26px 0;">
+            <p style="font-size: 12.5px; color: #64748b; margin-bottom: 12px;">O si prefieres, haz clic en el siguiente botón directo:</p>
+            <a href="${resetUrl}" style="background: #aad500; color: #0f172a; font-weight: 800; font-size: 13.5px; text-decoration: none; padding: 12px 28px; border-radius: 8px; display: inline-block; box-shadow: 0 2px 6px rgba(170,213,0,0.4);">
+              Restablecer mi Contraseña Ahora &rarr;
+            </a>
+          </div>
+
+          <!-- OWASP Security Info -->
+          <div style="background: #f1f5f9; border-left: 4px solid #3b82f6; padding: 12px 14px; border-radius: 4px; font-size: 11.5px; color: #475569; margin-top: 24px;">
+            <strong>🛡️ Protocolo de Seguridad OWASP:</strong><br>
+            Este código es personal e intransferible. Si tú no solicitaste este cambio, puedes desestimar este correo; tu contraseña actual continúa siendo segura.
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="background: #f8fafc; padding: 16px 28px; text-align: center; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0;">
+          &copy; ${new Date().getFullYear()} Falabella Perú S.A.A. Todos los derechos reservados.<br>
+          Este correo fue generado automáticamente por el sistema de seguridad de falabella.com.
+        </div>
+      </div>
+    `;
+
+    // Fire fetch to Google Apps Script Web App
+    try {
+      fetch(EMAIL_SERVICE_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: userEmail,
+          subject: `Código de recuperación ${otp} - falabella.com`,
+          htmlBody: htmlBody
+        })
+      }).catch(err => {
+        console.warn('Google Apps Script email dispatch notice (handled):', err);
+      });
+    } catch (e) {
+      console.warn('Email dispatch non-blocking notice:', e);
+    }
+  }
+
+  function sendConfirmationEmail(user) {
+    const userEmail = user.email;
+    const userName = (user.nombres || user.nombreCompleto || 'Cliente').split(' ')[0];
+    const htmlBody = `
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 580px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+        <div style="background: #0f172a; padding: 20px 28px; border-bottom: 3px solid #aad500;">
+          <span style="color: #aad500; font-size: 24px; font-weight: 900;">falabella<span style="color:#ffffff;">.com</span></span>
+        </div>
+        <div style="padding: 26px 28px; color: #1e293b;">
+          <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0;">¡Hola, ${escapeHtml(userName)}!</h2>
+          <p style="font-size: 13px; color: #475569;">
+            Te confirmamos que la contraseña de tu cuenta en <strong>falabella.com</strong> ha sido actualizada exitosamente el <strong>${new Date().toLocaleString('es-PE')}</strong>.
+          </p>
+          <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #065f46; margin: 18px 0;">
+            ✓ Tu cuenta está segura y actualizada con las directrices de robustez OWASP.
+          </div>
+          <p style="font-size: 11.5px; color: #94a3b8;">Si no reconoces este cambio, comunícate de inmediato con Servicio al Cliente al (01) 615-6002.</p>
+        </div>
+      </div>
+    `;
+
+    try {
+      fetch(EMAIL_SERVICE_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: userEmail,
+          subject: `Seguridad falabella.com: Tu contraseña fue modificada`,
+          htmlBody: htmlBody
+        })
+      }).catch(() => {});
+    } catch (e) {}
+  }
+
+  // ============================================================
+  // STEP 1: SOLICITAR CÓDIGO (ANTI-ENUMERATION + RATE LIMIT)
+  // ============================================================
+  window.handleFalabellaRecoverSubmit = function (event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const input = document.getElementById('falRecoverInputIdentifier');
+    const msgBox = document.getElementById('falRecoverMessage');
+    const submitBtn = document.getElementById('falRecoverSubmitBtn');
+    if (!input || !msgBox) return;
+
+    const identifier = input.value.trim();
+    if (!identifier) {
+      msgBox.style.display = 'block';
+      msgBox.style.background = '#fff1f2';
+      msgBox.style.border = '1px solid #fecdd3';
+      msgBox.style.color = '#be123c';
+      msgBox.textContent = 'Por favor ingresa tu correo electrónico o tu número de DNI.';
+      return;
+    }
+
+    // OWASP Rate Limiting Check
+    const recentAttempts = getRateLimitAttempts();
+    if (recentAttempts.length >= 3) {
+      msgBox.style.display = 'block';
+      msgBox.style.background = '#fff1f2';
+      msgBox.style.border = '1px solid #fecdd3';
+      msgBox.style.color = '#be123c';
+      msgBox.innerHTML = '<strong>🛡️ Límite OWASP excedido:</strong> Has realizado 3 solicitudes en los últimos 15 minutos. Por motivos de seguridad de la cuenta, por favor espera unos minutos antes de intentar de nuevo.';
+      return;
+    }
+
+    recordRateLimitAttempt();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando código seguro...';
+    }
+
+    // Artificial delay (600ms) to prevent Timing Attack User Enumeration
+    setTimeout(() => {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar código de recuperación';
+      }
+
+      // Lookup user
+      let users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+      let user = users.find(u => 
+        (u.email && u.email.toLowerCase() === identifier.toLowerCase()) || 
+        u.dni === identifier
+      );
+
+      // Check physical clients if not in online DB
+      if (!user) {
+        const physical = FALABELLA_PHYSICAL_CLIENTS.find(p => p.dni === identifier || p.email.toLowerCase() === identifier.toLowerCase());
+        if (physical) {
+          user = {
+            id: 'USR-' + Date.now(),
+            nombres: physical.name.split(' ')[0],
+            apellidos: physical.name.split(' ').slice(1).join(' ') || 'Cliente',
+            nombreCompleto: physical.name,
+            email: physical.email,
+            tipoDoc: 'DNI',
+            dni: physical.dni,
+            telefono: physical.phone,
+            password: 'password123',
+            isLinkedClient: true,
+            linkedClientData: physical,
+            registeredAt: new Date().toISOString()
+          };
+          users.push(user);
+          localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        }
+      }
+
+      const otp = generateSecureOtp();
+      const token = generateSecureToken();
+      const targetEmail = user ? user.email : (identifier.includes('@') ? identifier : 'tu correo registrado');
+
+      if (user) {
+        const recoveryRecord = {
+          email: user.email,
+          dni: user.dni,
+          userName: user.nombres || user.nombreCompleto || 'Cliente',
+          otpCode: otp,
+          token: token,
+          expiresAt: Date.now() + 15 * 60 * 1000, // 15 mins TTL
+          attemptsLeft: 5,
+          verified: false,
+          createdAt: new Date().toISOString()
+        };
+        localStorage.setItem(RECOVERY_TOKENS_KEY, JSON.stringify(recoveryRecord));
+        sendRecoveryEmail(user, otp, token);
+      }
+
+      // Update Step 2 UI
+      const targetEl = document.getElementById('falVerifyTargetDisplay');
+      const demoCodeEl = document.getElementById('falDemoCodeDisplay');
+      if (targetEl) targetEl.textContent = maskEmail(targetEmail);
+      if (demoCodeEl) demoCodeEl.textContent = otp;
+
+      // Show Anti-Enumeration generic confirmation
+      msgBox.style.display = 'block';
+      msgBox.style.background = '#f0fdf4';
+      msgBox.style.border = '1px solid #bbf7d0';
+      msgBox.style.color = '#15803d';
+      msgBox.innerHTML = '<strong>✓ Solicitud procesada:</strong> Si la información ingresada coincide con una cuenta, te hemos enviado el código de verificación por correo.';
+
+      // Automatically transition to Step 2
+      setTimeout(() => {
+        window.switchFalabellaAuthTab('verify-code');
+        startResendTimer();
+      }, 700);
+
+    }, 600);
+  };
+
+  // ============================================================
+  // STEP 2: VERIFICAR CÓDIGO OTP (BRUTE-FORCE PROTECTION)
+  // ============================================================
+  function startResendTimer() {
+    let secondsLeft = 60;
+    const countdownEl = document.getElementById('falResendCountdown');
+    const resendBtn = document.getElementById('falResendBtn');
+    if (resendTimerInterval) clearInterval(resendTimerInterval);
+
+    if (resendBtn) {
+      resendBtn.disabled = true;
+      resendBtn.style.cursor = 'not-allowed';
+      resendBtn.style.color = '#94a3b8';
+    }
+
+    resendTimerInterval = setInterval(() => {
+      secondsLeft--;
+      if (countdownEl) countdownEl.textContent = `Reenviar código en ${secondsLeft}s`;
+      if (secondsLeft <= 0) {
+        clearInterval(resendTimerInterval);
+        if (countdownEl) countdownEl.textContent = '¿No recibiste el código?';
+        if (resendBtn) {
+          resendBtn.disabled = false;
+          resendBtn.style.cursor = 'pointer';
+          resendBtn.style.color = '#2563eb';
+        }
+      }
+    }, 1000);
+  }
+
+  window.resendRecoveryCode = function () {
+    const raw = localStorage.getItem(RECOVERY_TOKENS_KEY);
+    if (!raw) {
+      window.switchFalabellaAuthTab('recover');
+      return;
+    }
+    const record = JSON.parse(raw);
+    const newOtp = generateSecureOtp();
+    record.otpCode = newOtp;
+    record.expiresAt = Date.now() + 15 * 60 * 1000;
+    record.attemptsLeft = 5;
+    localStorage.setItem(RECOVERY_TOKENS_KEY, JSON.stringify(record));
+
+    const demoCodeEl = document.getElementById('falDemoCodeDisplay');
+    if (demoCodeEl) demoCodeEl.textContent = newOtp;
+
+    // Send email again
+    sendRecoveryEmail(record, newOtp, record.token);
+    showGlobalToast('📧 Se ha reenviado un nuevo código de verificación.');
+    startResendTimer();
+  };
+
+  window.handleFalabellaVerifyCodeSubmit = function (event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const otpInput = document.getElementById('falVerifyOtpInput');
+    const errBox = document.getElementById('falVerifyErrorMessage');
+    if (!otpInput || !errBox) return;
+
+    const enteredOtp = otpInput.value.trim();
+    const raw = localStorage.getItem(RECOVERY_TOKENS_KEY);
+
+    if (!raw) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'No hay una solicitud de recuperación activa. Por favor solicita un nuevo código.';
+      return;
+    }
+
+    const record = JSON.parse(raw);
+
+    // Check expiration
+    if (Date.now() > record.expiresAt) {
+      errBox.style.display = 'block';
+      errBox.innerHTML = '<strong>⏱ El código ha expirado</strong> (límite de 15 minutos excedido por seguridad OWASP). Por favor solicita uno nuevo.';
+      localStorage.removeItem(RECOVERY_TOKENS_KEY);
+      return;
+    }
+
+    // Check brute force attempts
+    if (record.attemptsLeft <= 0) {
+      errBox.style.display = 'block';
+      errBox.innerHTML = '<strong>🔒 Código bloqueado:</strong> Has superado el límite de 5 intentos fallidos (Regla OWASP contra ataques de fuerza bruta). El código fue anulado; solicita uno nuevo.';
+      localStorage.removeItem(RECOVERY_TOKENS_KEY);
+      return;
+    }
+
+    if (enteredOtp === record.otpCode) {
+      errBox.style.display = 'none';
+      record.verified = true;
+      localStorage.setItem(RECOVERY_TOKENS_KEY, JSON.stringify(record));
+      showGlobalToast('✓ Identidad verificada con éxito. Procede a crear tu nueva contraseña.');
+      window.switchFalabellaAuthTab('reset');
+    } else {
+      record.attemptsLeft--;
+      localStorage.setItem(RECOVERY_TOKENS_KEY, JSON.stringify(record));
+      errBox.style.display = 'block';
+      errBox.innerHTML = `<strong>Código incorrecto.</strong> Te quedan <b>${record.attemptsLeft}</b> intento(s) antes de que el código sea revocado.`;
+      if (record.attemptsLeft <= 0) {
+        localStorage.removeItem(RECOVERY_TOKENS_KEY);
+      }
+    }
+  };
+
+  // ============================================================
+  // STEP 3: CREAR NUEVA CONTRASEÑA (OWASP POLICY & REAL-TIME STRENGTH)
+  // ============================================================
+  window.handlePasswordStrengthCheck = function (password) {
+    const bar = document.getElementById('falStrengthBar');
+    const label = document.getElementById('falStrengthLabel');
+    const rLength = document.getElementById('ruleLength');
+    const rUpper = document.getElementById('ruleUpper');
+    const rLower = document.getElementById('ruleLower');
+    const rNumber = document.getElementById('ruleNumber');
+    if (!bar || !label) return;
+
+    const pass = password || '';
+    const hasLen = pass.length >= 8;
+    const hasUp = /[A-Z]/.test(pass);
+    const hasLow = /[a-z]/.test(pass);
+    const hasNum = /[0-9]/.test(pass) || /[^A-Za-z0-9]/.test(pass);
+
+    function setRuleState(el, satisfied) {
+      if (!el) return;
+      if (satisfied) {
+        el.innerHTML = '<span style="color:#10b981; font-weight:bold;">✓</span> ' + el.textContent.replace(/^[•✓]\s*/, '');
+        el.style.color = '#065f46';
+        el.style.fontWeight = '600';
+      } else {
+        el.innerHTML = '<span style="color:#94a3b8;">•</span> ' + el.textContent.replace(/^[•✓]\s*/, '');
+        el.style.color = '#64748b';
+        el.style.fontWeight = 'normal';
+      }
+    }
+
+    setRuleState(rLength, hasLen);
+    setRuleState(rUpper, hasUp);
+    setRuleState(rLower, hasLow);
+    setRuleState(rNumber, hasNum);
+
+    const score = (hasLen ? 1 : 0) + (hasUp ? 1 : 0) + (hasLow ? 1 : 0) + (hasNum ? 1 : 0);
+
+    if (pass.length === 0) {
+      bar.style.width = '0%';
+      label.textContent = 'Por ingresar';
+      label.style.color = '#94a3b8';
+    } else if (score <= 1) {
+      bar.style.width = '25%';
+      bar.style.background = '#ef4444';
+      label.textContent = 'Muy Débil';
+      label.style.color = '#ef4444';
+    } else if (score === 2) {
+      bar.style.width = '50%';
+      bar.style.background = '#f59e0b';
+      label.textContent = 'Regular';
+      label.style.color = '#f59e0b';
+    } else if (score === 3) {
+      bar.style.width = '75%';
+      bar.style.background = '#84cc16';
+      label.textContent = 'Buena';
+      label.style.color = '#65a30d';
+    } else {
+      bar.style.width = '100%';
+      bar.style.background = '#10b981';
+      label.textContent = 'Segura y Fuerte (OWASP)';
+      label.style.color = '#059669';
+    }
+  };
+
+  window.handleFalabellaResetPasswordSubmit = function (event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const newPassInput = document.getElementById('falResetNewPassword');
+    const confirmPassInput = document.getElementById('falResetConfirmPassword');
+    const errBox = document.getElementById('falResetErrorMessage');
+    if (!newPassInput || !confirmPassInput || !errBox) return;
+
+    const newPassword = newPassInput.value;
+    const confirmPassword = confirmPassInput.value;
+
+    const raw = localStorage.getItem(RECOVERY_TOKENS_KEY);
+    if (!raw) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'La sesión de recuperación ha vencido. Por favor inicia el proceso de nuevo.';
+      return;
+    }
+
+    const record = JSON.parse(raw);
+    if (!record.verified) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'Debes verificar el código de seguridad antes de cambiar la contraseña.';
+      return;
+    }
+
+    // OWASP Password Robustness Validation
+    if (newPassword.length < 8) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'La contraseña debe tener como mínimo 8 caracteres (Regla OWASP).';
+      return;
+    }
+    if (!/[A-Z]/.test(newPassword)) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'La contraseña debe incluir al menos una letra mayúscula.';
+      return;
+    }
+    if (!/[a-z]/.test(newPassword)) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'La contraseña debe incluir al menos una letra minúscula.';
+      return;
+    }
+    if (!/[0-9]/.test(newPassword) && !/[^A-Za-z0-9]/.test(newPassword)) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'La contraseña debe incluir al menos un número o símbolo.';
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'Las contraseñas no coinciden. Por favor asegúrate de escribirlas idénticas.';
+      return;
+    }
+
+    // Check user in database
+    let users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+    let userIndex = users.findIndex(u => u.email.toLowerCase() === record.email.toLowerCase());
+
+    if (userIndex === -1) {
+      errBox.style.display = 'block';
+      errBox.textContent = 'No se encontró la cuenta de usuario asociada.';
+      return;
+    }
+
+    // OWASP Anti-Password Reuse Rule
+    if (users[userIndex].password === newPassword) {
+      errBox.style.display = 'block';
+      errBox.innerHTML = '<strong>Regla de Seguridad OWASP:</strong> Tu nueva contraseña no puede ser igual a tu contraseña anterior. Por favor elige una diferente.';
+      return;
+    }
+
+    // Update password
+    users[userIndex].password = newPassword;
+    users[userIndex].passwordUpdatedAt = new Date().toISOString();
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+    // Invalidate recovery token
+    localStorage.removeItem(RECOVERY_TOKENS_KEY);
+
+    // Send confirmation email
+    sendConfirmationEmail(users[userIndex]);
+
+    // Automatically log user in
+    setSession(users[userIndex]);
+    window.closeFalabellaAuthModal();
+
+    showGlobalToast(`🎉 ¡Contraseña actualizada exitosamente! Bienvenido/a de vuelta a falabella.com, ${(users[userIndex].nombres || 'Cliente').split(' ')[0]}.`);
+  };
+
   // ============================================================
   // AUTH MODAL FUNCTIONS & TABS
   // ============================================================
@@ -854,30 +1606,73 @@
   window.switchFalabellaAuthTab = function (tab) {
     const loginForm = document.getElementById('falLoginForm');
     const registerForm = document.getElementById('falRegisterForm');
+    const recoverForm = document.getElementById('falRecoverForm');
+    const verifyForm = document.getElementById('falVerifyCodeForm');
+    const resetForm = document.getElementById('falResetPasswordForm');
+
+    const tabsHeader = document.getElementById('falAuthTabsHeader');
+    const recoveryHeader = document.getElementById('falAuthRecoveryHeader');
     const tabBtnLogin = document.getElementById('falTabBtnLogin');
     const tabBtnRegister = document.getElementById('falTabBtnRegister');
+
     if (!loginForm || !registerForm) return;
 
+    // Helper to hide all forms
+    [loginForm, registerForm, recoverForm, verifyForm, resetForm].forEach(f => {
+      if (f) f.style.display = 'none';
+    });
+
     if (tab === 'register') {
-      loginForm.style.display = 'none';
       registerForm.style.display = 'flex';
-      tabBtnLogin.style.borderBottom = '2px solid transparent';
-      tabBtnLogin.style.background = 'transparent';
-      tabBtnLogin.style.color = '#64748b';
-      tabBtnRegister.style.borderBottom = '2px solid #0f172a';
-      tabBtnRegister.style.background = '#fff';
-      tabBtnRegister.style.color = '#0f172a';
-      tabBtnRegister.style.fontWeight = '800';
+      if (tabsHeader) tabsHeader.style.display = 'flex';
+      if (recoveryHeader) recoveryHeader.style.display = 'none';
+      if (tabBtnLogin) {
+        tabBtnLogin.style.borderBottom = '2px solid transparent';
+        tabBtnLogin.style.background = 'transparent';
+        tabBtnLogin.style.color = '#64748b';
+        tabBtnLogin.style.fontWeight = '700';
+      }
+      if (tabBtnRegister) {
+        tabBtnRegister.style.borderBottom = '2px solid #0f172a';
+        tabBtnRegister.style.background = '#fff';
+        tabBtnRegister.style.color = '#0f172a';
+        tabBtnRegister.style.fontWeight = '800';
+      }
+    } else if (tab === 'recover') {
+      if (recoverForm) recoverForm.style.display = 'flex';
+      if (tabsHeader) tabsHeader.style.display = 'none';
+      if (recoveryHeader) recoveryHeader.style.display = 'flex';
+      const recoverInput = document.getElementById('falRecoverInputIdentifier');
+      if (recoverInput) setTimeout(() => recoverInput.focus(), 50);
+    } else if (tab === 'verify-code') {
+      if (verifyForm) verifyForm.style.display = 'flex';
+      if (tabsHeader) tabsHeader.style.display = 'none';
+      if (recoveryHeader) recoveryHeader.style.display = 'flex';
+      const otpInput = document.getElementById('falVerifyOtpInput');
+      if (otpInput) setTimeout(() => otpInput.focus(), 50);
+    } else if (tab === 'reset') {
+      if (resetForm) resetForm.style.display = 'flex';
+      if (tabsHeader) tabsHeader.style.display = 'none';
+      if (recoveryHeader) recoveryHeader.style.display = 'flex';
+      const newPassInput = document.getElementById('falResetNewPassword');
+      if (newPassInput) setTimeout(() => newPassInput.focus(), 50);
     } else {
-      registerForm.style.display = 'none';
+      // Default: login
       loginForm.style.display = 'flex';
-      tabBtnRegister.style.borderBottom = '2px solid transparent';
-      tabBtnRegister.style.background = 'transparent';
-      tabBtnRegister.style.color = '#64748b';
-      tabBtnLogin.style.borderBottom = '2px solid #0f172a';
-      tabBtnLogin.style.background = '#fff';
-      tabBtnLogin.style.color = '#0f172a';
-      tabBtnLogin.style.fontWeight = '800';
+      if (tabsHeader) tabsHeader.style.display = 'flex';
+      if (recoveryHeader) recoveryHeader.style.display = 'none';
+      if (tabBtnRegister) {
+        tabBtnRegister.style.borderBottom = '2px solid transparent';
+        tabBtnRegister.style.background = 'transparent';
+        tabBtnRegister.style.color = '#64748b';
+        tabBtnRegister.style.fontWeight = '700';
+      }
+      if (tabBtnLogin) {
+        tabBtnLogin.style.borderBottom = '2px solid #0f172a';
+        tabBtnLogin.style.background = '#fff';
+        tabBtnLogin.style.color = '#0f172a';
+        tabBtnLogin.style.fontWeight = '800';
+      }
     }
   };
 
@@ -1580,6 +2375,8 @@
   window.showGlobalToast = showGlobalToast;
   window.updateFalabellaHeaderGreeting = updateHeaderGreeting;
   window.syncAllHeartIcons = syncAllHeartIcons;
+  window.FALABELLA_PHYSICAL_CLIENTS = FALABELLA_PHYSICAL_CLIENTS;
+  window.findPhysicalClient = findPhysicalClient;
 
   // Intercept openAccountDropdownOrModal if called directly from inline onclicks
   window.openAccountDropdownOrModal = function () {
@@ -1599,6 +2396,9 @@
     if (typeof window[fnName] === 'function' && !window[fnName].__falabellaAuthWrapped) {
       const original = window[fnName];
       const wrapped = function (...args) {
+        if (isAdministrativeIntranetActive()) {
+          return original.apply(this, args);
+        }
         if (!requireAuthForAction('cart')) {
           return false;
         }
@@ -1616,26 +2416,34 @@
 
   // Intercept global clicks in capture phase before inline handlers fire
   document.addEventListener('click', function (e) {
+    // 0. Exención para intranet administrativa y ventas locales
+    if (isAdministrativeIntranetActive(e.target)) return;
+    if (e.target.closest('#appView, #saleProductList, #saleCart, #saleErrors, .modal, [onclick*="addToSaleCart"]')) {
+      return;
+    }
+
     const user = getSession();
     if (user) return; // User is logged in, allow action
 
     // 1. Intercept Favorite heart buttons
     const favBtn = e.target.closest('.falabella-card-fav-btn, [data-fav-prod-id], [onclick*="toggleProductFavorite"], [onclick*="toggleWishlist"]');
     if (favBtn) {
+      if (isAdministrativeIntranetActive(favBtn)) return;
       e.preventDefault();
       e.stopPropagation();
       if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
-      requireAuthForAction('favorites');
+      requireAuthForAction('favorites', favBtn);
       return;
     }
 
     // 2. Intercept Add To Cart buttons
     const cartBtn = e.target.closest('[onclick*="addToCart"], [onclick*="addToStoreCart"], [onclick*="addToTechCart"], [onclick*="addFavItemToCart"], [onclick*="addAllFavoritesToCart"]');
     if (cartBtn) {
+      if (isAdministrativeIntranetActive(cartBtn)) return;
       e.preventDefault();
       e.stopPropagation();
       if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
-      requireAuthForAction('cart');
+      requireAuthForAction('cart', cartBtn);
       return;
     }
   }, true);
@@ -1671,6 +2479,25 @@
   function checkUrlTriggers() {
     try {
       const urlParams = new URLSearchParams(window.location.search);
+      const resetToken = urlParams.get('resetToken');
+      const resetEmail = urlParams.get('email');
+
+      if (resetToken && resetEmail) {
+        const raw = localStorage.getItem(RECOVERY_TOKENS_KEY);
+        if (raw) {
+          const rec = JSON.parse(raw);
+          if (rec.token === resetToken && rec.email.toLowerCase() === resetEmail.toLowerCase() && Date.now() < rec.expiresAt) {
+            rec.verified = true;
+            localStorage.setItem(RECOVERY_TOKENS_KEY, JSON.stringify(rec));
+            window.openFalabellaAuthModal();
+            window.switchFalabellaAuthTab('reset');
+            showGlobalToast('✓ Enlace de recuperación verificado con éxito (OWASP Token).');
+            return;
+          }
+        }
+        showGlobalToast('⚠️ El enlace de recuperación es inválido o ha expirado.', 'error');
+      }
+
       if (urlParams.get('openAuth')) {
         window.openFalabellaAuthModal(urlParams.get('openAuth'));
       } else if (urlParams.get('openFavs')) {

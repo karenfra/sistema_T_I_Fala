@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Belleza en Falabella.com Perú - Las mejores marcas en Skincare, Perfumes, Fragancias y Maquillaje: Lancôme, The Ordinary, Victoria's Secret, Bath & Body Works, Maybelline, Benefit, Dior, Armani.">
+  <title>Belleza, Perfumes y Maquillaje | Falabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            falabella: {
+              lime: '#aad500',
+              dark: '#1e293b',
+              navy: '#0f172a',
+              rose: '#e11d48',
+              pink: '#f43f5e',
+              cherry: '#881337',
+              berry: '#9f1239'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Cabecera idéntica a Falabella.com */
+    .store-header {
+      background: #ffffff;
+      border-bottom: 1px solid #eef2f6;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    }
+    .store-topbar {
+      background: #ffffff;
+      color: #475569;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 5px 16px;
+    }
+    .store-search-wrap {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #333f48;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .store-search-wrap:focus-within {
+      border-color: #aad500;
+      box-shadow: 0 0 0 3px rgba(170,213,0,.25);
+    }
+    .store-search-input {
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      width: 100%;
+      color: #1e293b;
+      background: transparent;
+      font-family: inherit;
+    }
+    .store-search-input::placeholder {
+      color: #718096;
+    }
+    .store-search-btn {
+      background: #333f48;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, transform .1s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .store-search-btn:hover {
+      background: #1e293b;
+      transform: scale(1.03);
+    }
+
+    /* Hero Banner Carousel */
+    .belleza-carousel-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 944 / 195;
+      min-height: 195px;
+      max-height: 380px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000000;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 768px) {
+      .belleza-carousel-container {
+        aspect-ratio: 16 / 7;
+        min-height: 150px;
+        border-radius: 6px;
+      }
+    }
+    .belleza-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      cursor: pointer;
+    }
+    .belleza-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+    .belleza-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Hero Nav Arrows */
+    .belleza-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .belleza-carousel-container:hover .belleza-nav-arrow {
+      opacity: 1;
+      visibility: visible;
+    }
+    .belleza-nav-arrow:hover {
+      background: #aad500;
+      border-color: #aad500;
+      color: #0f172a;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .belleza-nav-prev { left: 14px; }
+    .belleza-nav-next { right: 14px; }
+
+    /* Carousel Dots */
+    .belleza-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      margin-bottom: 16px;
+    }
+    .belleza-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      padding: 0;
+    }
+    .belleza-dot.active {
+      background: #334155;
+      transform: scale(1.25);
+    }
+
+    /* Subcategories Bar (Image 1 replica) */
+    .subnav-tabs-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #ffffff;
+      overflow-x: auto;
+      scrollbar-width: none;
+      position: sticky;
+      top: 60px;
+      z-index: 30;
+      box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    }
+    .subnav-tabs-bar::-webkit-scrollbar { display: none; }
+    .subnav-tab-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 13px 18px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      border-right: 1px solid #f1f5f9;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      user-select: none;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+    }
+    .subnav-tab-item:last-child {
+      border-right: none;
+    }
+    .subnav-tab-item:hover {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .subnav-tab-item.active {
+      color: #0f172a;
+      background: #ffffff;
+      box-shadow: inset 0 -3.5px 0 #aad500;
+      font-weight: 800;
+    }
+
+    /* Brand Strip Logos */
+    .brand-logos-strip {
+      background: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-radius: 6px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow-x: auto;
+      gap: 20px;
+      scrollbar-width: none;
+    }
+    .brand-logos-strip::-webkit-scrollbar { display: none; }
+    .brand-logo-item {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #1e293b;
+      white-space: nowrap;
+      transition: color 0.15s, transform 0.15s;
+      cursor: pointer;
+      user-select: none;
+    }
+    .brand-logo-item:hover {
+      color: #e11d48;
+      transform: translateY(-1px);
+    }
+
+    /* Maquillaje Arched Cards (Image 4 replica) */
+    .maq-card-arch {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px 14px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .maq-card-arch:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+    .maq-arch-bg {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px 999px 12px 12px;
+      background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 8px;
+      position: relative;
+    }
+    .maq-arch-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .maq-card-arch:hover .maq-arch-bg img {
+      transform: scale(1.08);
+    }
+
+    /* Product Card */
+    .product-card-belleza {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .product-card-belleza:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px -3px rgba(0, 0, 0, 0.12);
+      border-color: #cbd5e1;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 4px solid #aad500;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] antialiased selection:bg-[#aad500] selection:text-slate-900">
+
+  <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN 1 ==================== -->
+  <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-3 sm:gap-6 justify-between">
+      
+      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-4 sm:gap-6 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
+          <span style="color:#aad500; font-size:32px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+          <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+        </a>
+
+        <!-- Botón Menú Hamburguesa -->
+        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="bellezaSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" onkeydown="if(event.key==='Enter') executeBellezaSearch(this.value)" />
+          <button type="button" onclick="executeBellezaSearch(document.getElementById('bellezaSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acciones de cabecera: Hola, Inicia sesión ⌵ | Mi cuenta, Favoritos, Carrito -->
+      <div class="flex items-center gap-4 sm:gap-6 ml-auto flex-shrink-0">
+        
+        <!-- Hola, Inicia sesión / Mi cuenta -->
+        <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
+          <div class="flex flex-col text-[11px] leading-tight">
+            <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
+            <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
+              Inicia sesión
+              <svg class="w-2.5 h-2.5 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </div>
+          <div class="border-l border-slate-300 pl-2.5 ml-1 hidden sm:flex flex-col text-[11px] leading-tight">
+            <span class="font-bold text-slate-900">Mi</span>
+            <span class="font-bold text-slate-900">cuenta</span>
+          </div>
+        </div>
+
+        <!-- Favoritos (Corazón) -->
+        <button type="button" onclick="openFalabellaFavoritesModal()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+          <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
+        </button>
+
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
+        <button onclick="openBellezaCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Bolsa de compras">
+          <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="bellezaCartBadge" style="background:#333f48; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-4px; right:-6px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN 1 -->
+    <div class="store-topbar">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 cursor-pointer text-xs" onclick="showToast('📍 Selección de ubicación de despacho activada.')">
+          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="font-medium text-slate-700">Ingresa tu ubicación</span>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-medium text-slate-600 flex-wrap">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('💳 Beneficios y promociones de Belleza con Tarjeta CMR.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer hidden md:inline" onclick="showToast('💼 Programa Vende y Comisiona Falabella.')">Vende y comisiona</span>
+          <span class="hover:text-slate-900 cursor-pointer hidden sm:flex items-center gap-1" onclick="showToast('📞 Venta Telefónica Falabella: (01) 555-0000.')">Venta telefónica <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('ℹ️ Centro de Ayuda: Asistencia en fragancias y compras online.')">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span class="hidden sm:inline">Rastrear</span>
+          </a>
+          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline" title="Acceso al sistema administrativo">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Intranet</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ) ==================== -->
+  <div id="bellezaCategoriesDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="toggleCategoriesDrawer()">
+    <div class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+        <span class="text-xl font-black text-slate-900">Categorías</span>
+        <button onclick="toggleCategoriesDrawer()" class="p-1 rounded-lg hover:bg-slate-100 text-slate-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <ul class="space-y-2 text-sm font-semibold text-slate-700">
+        <li>
+          <div class="rounded-xl bg-pink-50/70 border border-pink-100 p-2.5">
+            <a href="belleza.html" class="flex items-center justify-between text-pink-700 font-bold pb-1.5 mb-1.5 border-b border-pink-200">
+              <span class="flex items-center gap-1.5 text-sm">💄 Belleza & Cuidado</span>
+              <span class="text-[10px] bg-pink-600 text-white px-2 py-0.5 rounded-full font-black">ACTUAL</span>
+            </a>
+            <div class="space-y-1 text-xs">
+              <a href="#sec-skincare" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">🧴 Skincare Week & Cuidado Facial</a>
+              <a href="#sec-new-in" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">✨ New In - Marcas Exclusivas</a>
+              <a href="#sec-fragancias" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">🌹 Fragancias (Ellas y Ellos)</a>
+              <a href="#sec-maquillaje" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">💋 Maquillaje & Rostro</a>
+              <a href="#sec-cuidado-capilar" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">💇‍♀️ Cuidado Capilar</a>
+              <a href="#sec-catalogo" onclick="toggleCategoriesDrawer()" class="block py-1.5 px-2 rounded hover:bg-white text-slate-700 font-medium hover:text-pink-700 transition">🛍️ Ver Todo el Catálogo</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="calzado.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👟 Calzado y Zapatillas</a></li>
+        <li><a href="moda_mujer.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👗 Moda Mujer</a></li>
+        <li><a href="moda_hombre.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">👔 Moda Hombre</a></li>
+        <li><a href="tecnologia.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚡ Tecnología</a></li>
+        <li><a href="celulares.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📱 Telefonía y Celulares</a></li>
+        <li><a href="tablets.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📲 Tablets y iPads</a></li>
+        <li><a href="laptops.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">💻 Laptops</a></li>
+        <li><a href="televisores.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📺 Televisores</a></li>
+        <li><a href="camaras.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">📷 Fotografía</a></li>
+        <li><a href="deportes.html" class="block p-2.5 rounded-xl hover:bg-slate-100 transition">⚽ Deportes & Fitness</a></li>
+      </ul>
+      <div class="mt-8 pt-4 border-t border-slate-200">
+        <a href="index.html" class="w-full block text-center bg-[#0f172a] hover:bg-[#333f48] text-white py-2.5 px-4 rounded-xl font-bold text-xs transition">
+          Volver a la Portada Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+  <main class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 space-y-5">
+
+    <!-- BREADCRUMB EXACTO A LA IMAGEN 1 -->
+    <nav class="flex items-center gap-1.5 text-xs text-slate-500 select-none pb-0.5" aria-label="Breadcrumb">
+      <a href="index.html" class="hover:underline hover:text-slate-800 transition">Home</a>
+      <span class="text-slate-400 font-bold">&gt;</span>
+      <span class="text-slate-800 font-bold underline">Belleza ¡Las Mejores Marcas Están Aquí! 💄</span>
+    </nav>
+
+    <!-- ==================== 1. HERO CAROUSEL: EXACTO A LA IMAGEN 1 (LANCÔME VERY CHERRY) ==================== -->
+    <section class="belleza-carousel-container" id="bellezaHeroCarousel" onmouseenter="pauseBellezaCarousel()" onmouseleave="startBellezaCarousel()">
+      
+      <!-- Slide 1: Lancôme La vie est belle VERY CHERRY (Exacto Imagen 1) -->
+      <div class="belleza-slide active" onclick="filterByBrand('Lancôme')">
+        <img src="assets/belleza/banner_lancome_cherry.png" alt="Lancôme Paris - La vie est belle VERY CHERRY" loading="eager" />
+      </div>
+
+      <!-- Slide 2: The Ordinary Ciencia para el Cuidado de la Piel (Exacto Imagen 2) -->
+      <div class="belleza-slide" onclick="filterByBrand('The Ordinary')">
+        <img src="assets/belleza/banner_the_ordinary.png" alt="The Ordinary - Clinical Formulations with Integrity" loading="lazy" />
+      </div>
+
+      <!-- Slide 3: Victoria's Secret Pure Seduction Banner HD -->
+      <div class="belleza-slide" onclick="filterByBrand('Victoria\'s Secret')">
+        <img src="assets/belleza/hero_banner_victoria_secret.png" alt="Victoria's Secret Pure Seduction - Fragrance Mist & Body Care" loading="lazy" />
+      </div>
+
+      <!-- Flechas Prev / Next -->
+      <button type="button" class="belleza-nav-arrow belleza-nav-prev" onclick="event.stopPropagation(); moveBellezaSlide(-1);" aria-label="Banner anterior">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="belleza-nav-arrow belleza-nav-next" onclick="event.stopPropagation(); moveBellezaSlide(1);" aria-label="Banner siguiente">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </section>
+
+    <!-- Indicadores Dots del Carousel (3 puntos de navegación) -->
+    <div class="belleza-dots" id="bellezaCarouselDots">
+      <button type="button" class="belleza-dot active" onclick="setBellezaSlide(0)" aria-label="Slide 1"></button>
+      <button type="button" class="belleza-dot" onclick="setBellezaSlide(1)" aria-label="Slide 2"></button>
+      <button type="button" class="belleza-dot" onclick="setBellezaSlide(2)" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- ==================== SUB-BARRA DE NAVEGACIÓN EXACTA A LA IMAGEN 1 ==================== -->
+    <nav class="subnav-tabs-bar" id="bellezaSubnavBar" aria-label="Subnavegación de Belleza">
+      <button type="button" onclick="navigateToBellezaSection('sec-skincare', this)" class="subnav-tab-item active" data-section="sec-skincare">Skincare</button>
+      <button type="button" onclick="navigateToBellezaSection('sec-new-in', this)" class="subnav-tab-item" data-section="sec-new-in">New In - Marcas</button>
+      <button type="button" onclick="navigateToBellezaSection('sec-fragancias', this)" class="subnav-tab-item" data-section="sec-fragancias">Fragancias</button>
+      <button type="button" onclick="navigateToBellezaSection('sec-maquillaje', this)" class="subnav-tab-item" data-section="sec-maquillaje">Maquillaje</button>
+      <button type="button" onclick="navigateToBellezaSection('sec-cuidado-capilar', this)" class="subnav-tab-item" data-section="sec-cuidado-capilar">Cuidado capilar</button>
+    </nav>
+
+    <!-- ==================== 1. SECCIÓN: SKINCARE (EXACTA A LA IMAGEN 2: SKINCARE WEEK) ==================== -->
+    <section id="sec-skincare" class="pt-4 scroll-mt-28 space-y-5">
+      
+      <!-- TÍTULO EDITORIAL SKINCARE WEEK (EXACTO A LA IMAGEN 2) -->
+      <div class="text-center pt-2 pb-1">
+        <div class="inline-flex flex-col items-center">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif text-slate-800 tracking-[0.35em] font-light lowercase">
+            skincare
+          </h2>
+          <div class="w-full flex items-center justify-center gap-2 -mt-1">
+            <span class="h-[1.5px] bg-slate-500 w-16 sm:w-24"></span>
+            <span class="text-xs sm:text-sm font-serif italic tracking-[0.4em] text-slate-700 font-semibold uppercase">WEEK</span>
+            <span class="h-[1.5px] bg-slate-500 w-16 sm:w-24"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID DE 5 PASOS DE RUTINA SKINCARE (EXACTA A LA IMAGEN 2) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        
+        <!-- Paso 1: LIMPIEZA (CeraVe) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterSkincareStep('limpieza')" title="Paso 1: Limpieza Facial - Ver productos">
+          <img src="assets/belleza/skincare_step1_limpieza.png" alt="1 Limpieza Facial - CeraVe" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- Paso 2: HIDRATACIÓN (Estée Lauder) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterSkincareStep('hidratacion')" title="Paso 2: Hidratación Facial - Ver productos">
+          <img src="assets/belleza/skincare_step2_hidratacion.png" alt="2 Hidratación Facial - Estée Lauder" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- Paso 3: TRATAMIENTO DE ROSTRO (ISDIN) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterSkincareStep('rostro')" title="Paso 3: Tratamiento de Rostro - Ver productos">
+          <img src="assets/belleza/skincare_step3_rostro.png" alt="3 Tratamiento de Rostro - ISDIN" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- Paso 4: TRATAMIENTO DE OJOS (Lancôme) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterSkincareStep('ojos')" title="Paso 4: Tratamiento de Ojos - Ver productos">
+          <img src="assets/belleza/skincare_step4_ojos.png" alt="4 Tratamiento de Ojos - Lancôme Rénergie" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- Paso 5: MASK BAR (Sheet Mask) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterSkincareStep('mascarillas')" title="Paso 5: Mask Bar - Ver productos">
+          <img src="assets/belleza/skincare_step5_maskbar.png" alt="5 Mask Bar - Mascarillas Hidrogel" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+      </div>
+
+      <!-- Banner Completo The Ordinary -->
+      <div class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs cursor-pointer group mt-4" onclick="filterByBrand('The Ordinary')" title="Ver colección The Ordinary">
+        <img src="assets/belleza/banner_the_ordinary.png" alt="The Ordinary - Clinical Formulations with Integrity" class="w-full h-auto object-cover group-hover:opacity-95 transition duration-300" loading="lazy">
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. SECCIÓN: NEW IN - MARCAS ==================== -->
+    <section id="sec-new-in" class="pt-8 scroll-mt-28 space-y-4">
+      
+      <div class="text-center mb-2">
+        <h2 class="text-xl sm:text-2xl font-normal text-slate-800 tracking-[0.2em] uppercase font-sans">
+          NEW IN - MARCAS EXCLUSIVAS
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Colecciones destacadas de Victoria's Secret, Bath & Body Works y marcas oficiales</p>
+      </div>
+
+      <!-- Split Banners 2 Columnas: Victoria's Secret y Bath & Body Works -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Columna Izquierda: Victoria's Secret Pure Seduction -->
+        <div class="rounded-xl overflow-hidden border border-slate-200 bg-[#700f1c] shadow-2xs cursor-pointer group relative" onclick="filterByBrand('Victoria\'s Secret')" title="Ver colección Victoria's Secret">
+          <img src="assets/belleza/banner_victoria_secret.png" alt="Victoria's Secret Pure Seduction" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-300" loading="lazy">
+        </div>
+
+        <!-- Columna Derecha: Bath & Body Works Mists -->
+        <div class="rounded-xl overflow-hidden border border-slate-200 bg-[#7da9af] shadow-2xs cursor-pointer group relative" onclick="filterByBrand('Bath & Body Works')" title="Ver fragancias Bath & Body Works">
+          <img src="assets/belleza/banner_bath_body_works.png" alt="Bath & Body Works Fine Fragrance Mist" class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-300" loading="lazy">
+        </div>
+
+      </div>
+
+      <!-- TIRA DE MARCAS OFICIALES -->
+      <div class="brand-logos-strip shadow-2xs mt-4">
+        <span class="brand-logo-item" onclick="filterByBrand('La Mer')">LA MER</span>
+        <span class="brand-logo-item" onclick="filterByBrand('Inglot')">INGLOT</span>
+        <span class="brand-logo-item" onclick="filterByBrand('Carolina Herrera')">CAROLINA HERRERA</span>
+        <span class="brand-logo-item" style="font-family:sans-serif; font-weight:800; color:#0284c7;" onclick="filterByBrand('CeraVe')">CeraVe</span>
+        <span class="brand-logo-item" onclick="filterByBrand('Armani')">GIORGIO ARMANI</span>
+        <span class="brand-logo-item" style="font-weight:900;" onclick="filterByBrand('Bioderma')">BIODERMA</span>
+        <span class="brand-logo-item" style="font-family:sans-serif; font-weight:900; letter-spacing:0;" onclick="filterByBrand('ISDIN')">ISDIN</span>
+        <span class="brand-logo-item" onclick="filterByBrand('Dior')">Christian Dior</span>
+        <span class="brand-logo-item" onclick="filterByBrand('Clinique')">CLINIQUE</span>
+      </div>
+
+    </section>
+
+    <!-- ==================== 3. SECCIÓN: FRAGANCIAS (EXACTA A LA IMAGEN 3) ==================== -->
+    <section id="sec-fragancias" class="pt-8 scroll-mt-28">
+      
+      <!-- Título de Sección idéntico a Imagen 3 -->
+      <div class="text-center mb-6">
+        <h2 class="text-xl sm:text-2xl font-normal text-slate-800 tracking-[0.2em] uppercase font-sans">
+          FRAGANCIAS
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- Fila Superior: PARA ELLAS y PARA ELLOS (2 Columnas) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- PARA ELLAS: Armani Power of You -->
+          <article class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xs cursor-pointer group" onclick="filterByGender('ellas')" title="Fragancias Para Ellas">
+            <img src="assets/belleza/fragancia_ellas.png" alt="Fragancias Para Ellas - Emporio Armani" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+          </article>
+
+          <!-- PARA ELLOS: Azzaro Wanted -->
+          <article class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xs cursor-pointer group" onclick="filterByGender('ellos')" title="Fragancias Para Ellos">
+            <img src="assets/belleza/fragancia_ellos.png" alt="Fragancias Para Ellos - Azzaro Wanted" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+          </article>
+
+        </div>
+
+        <!-- Fila Inferior: Body mist, Eau de Toilette, Eau de Parfum (3 Columnas) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <!-- Body Mist -->
+          <article class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xs cursor-pointer group text-center" onclick="filterByPerfumeType('mist')" title="Body mist">
+            <img src="assets/belleza/fragancia_body_mist.png" alt="Hello Daise* Body Mist" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+          </article>
+
+          <!-- Eau de Toilette -->
+          <article class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xs cursor-pointer group text-center" onclick="filterByPerfumeType('edt')" title="Eau de Toilette">
+            <img src="assets/belleza/fragancia_eau_de_toilette.png" alt="L'Eau d'Issey Pour Homme Sport Eau de Toilette" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+          </article>
+
+          <!-- Eau de Parfum -->
+          <article class="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xs cursor-pointer group text-center" onclick="filterByPerfumeType('edp')" title="Eau de Parfum">
+            <img src="assets/belleza/fragancia_eau_de_parfum.png" alt="Jean Paul Gaultier Eau de Parfum" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. SECCIÓN: MAQUILLAJE (EXACTA A LA IMAGEN 4) ==================== -->
+    <section id="sec-maquillaje" class="pt-8 scroll-mt-28">
+      
+      <!-- Título de Sección idéntico a Imagen 4 -->
+      <div class="text-center mb-6">
+        <h2 class="text-xl sm:text-2xl font-normal text-slate-800 tracking-[0.2em] uppercase font-sans">
+          MAQUILLAJE
+        </h2>
+      </div>
+
+      <!-- Grid de 4 categorías con arcos pastel celeste -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        
+        <!-- 1. ROSTRO: Maybelline Cloud Topia -->
+        <div class="maq-card-arch group cursor-pointer" onclick="filterByMaqCategory('Rostro')" title="Maquillaje Rostro">
+          <span class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-800 uppercase">ROSTRO</span>
+          <div class="maq-arch-bg">
+            <img src="assets/belleza/maq_rostro.png" alt="Maquillaje Rostro Maybelline Cloud Topia" loading="lazy">
+          </div>
+          <span class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-pink-600 transition">Bases & Rubores &rarr;</span>
+        </div>
+
+        <!-- 2. LABIOS: Benefit Benetint -->
+        <div class="maq-card-arch group cursor-pointer" onclick="filterByMaqCategory('Labios')" title="Maquillaje Labios">
+          <span class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-800 uppercase">LABIOS</span>
+          <div class="maq-arch-bg">
+            <img src="assets/belleza/maq_labios.png" alt="Maquillaje Labios Benefit Benetint" loading="lazy">
+          </div>
+          <span class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-pink-600 transition">Tintes & Labiales &rarr;</span>
+        </div>
+
+        <!-- 3. OJOS: Maybelline Colossal -->
+        <div class="maq-card-arch group cursor-pointer" onclick="filterByMaqCategory('Ojos')" title="Maquillaje Ojos">
+          <span class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-800 uppercase">OJOS</span>
+          <div class="maq-arch-bg">
+            <img src="assets/belleza/maq_ojos.png" alt="Maquillaje Ojos Maybelline Colossal" loading="lazy">
+          </div>
+          <span class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-pink-600 transition">Máscaras & Sombras &rarr;</span>
+        </div>
+
+        <!-- 4. CEJAS: Dior Diorshow Brow -->
+        <div class="maq-card-arch group cursor-pointer" onclick="filterByMaqCategory('Cejas')" title="Maquillaje Cejas">
+          <span class="text-xs sm:text-sm font-bold tracking-[0.18em] text-slate-800 uppercase">CEJAS</span>
+          <div class="maq-arch-bg">
+            <img src="assets/belleza/maq_cejas.png" alt="Maquillaje Cejas Dior Diorshow" loading="lazy">
+          </div>
+          <span class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-pink-600 transition">Fijadores & Lápices &rarr;</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. SECCIÓN: CUIDADO CAPILAR (EXACTA A LAS IMÁGENES) ==================== -->
+    <section id="sec-cuidado-capilar" class="pt-8 scroll-mt-28 space-y-5">
+      
+      <!-- TÍTULO DE SECCIÓN EXACTO A LA IMAGEN 1 -->
+      <div class="text-center mb-6">
+        <h2 class="text-xl sm:text-2xl font-normal text-slate-800 tracking-[0.25em] uppercase font-sans">
+          CAPILAR
+        </h2>
+      </div>
+
+      <!-- 3 BANNERS VISUALES DE CATEGORÍA (1:1 CON IMAGEN 1) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- 1. TODO CAPILAR (Kérastase Nutritive) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterHairCategory('Todos')" title="Ver Todo Capilar">
+          <img src="assets/belleza/capilar_card1_todo.png" alt="Todo Capilar - Kérastase Nutritive" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 2. SHAMPOO & ACONDICIONADOR (L'Oréal Curl Expression) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterHairCategory('shampoo')" title="Ver Shampoos y Acondicionadores">
+          <img src="assets/belleza/capilar_card2_shampoo.png" alt="Shampoo & Acondicionador - L'Oréal Curl Expression" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+        <!-- 3. TRATAMIENTOS & MASCARILLAS (Redken One United) -->
+        <article class="group rounded-xl overflow-hidden border border-slate-200 bg-white shadow-2xs hover:shadow-md transition duration-300 cursor-pointer" onclick="filterHairCategory('mascarilla')" title="Ver Tratamientos y Mascarillas">
+          <img src="assets/belleza/capilar_card3_tratamientos.png" alt="Tratamientos & Mascarillas - Redken One United" class="w-full h-auto object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy">
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. CATÁLOGO COMPLETO DE PRODUCTOS DE BELLEZA ==================== -->
+    <section id="sec-catalogo" class="pt-10 scroll-mt-24">
+      <div class="border-b border-slate-200 pb-4 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - BELLEZA</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Skincare dermatológico, perfumes importados y maquillaje de alta gama</p>
+          </div>
+
+          <!-- Filtros de Marca en Botones Píldora -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" id="brandFilterPills">
+            <button type="button" onclick="filterByBrand('Todos')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition">Todos</button>
+            <button type="button" onclick="filterByBrand('CeraVe')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">CeraVe</button>
+            <button type="button" onclick="filterByBrand('The Ordinary')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">The Ordinary</button>
+            <button type="button" onclick="filterByBrand('ISDIN')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">ISDIN</button>
+            <button type="button" onclick="filterByBrand('Estée Lauder')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Estée Lauder</button>
+            <button type="button" onclick="filterByBrand('Lancôme')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Lancôme</button>
+            <button type="button" onclick="filterByBrand('Victoria\'s Secret')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Victoria's Secret</button>
+            <button type="button" onclick="filterByBrand('Bath & Body Works')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Bath & Body Works</button>
+            <button type="button" onclick="filterByBrand('Maybelline')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Maybelline</button>
+            <button type="button" onclick="filterByBrand('Benefit')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Benefit</button>
+            <button type="button" onclick="filterByBrand('Dior')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Dior</button>
+            <button type="button" onclick="filterByBrand('Armani')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Armani</button>
+            <button type="button" onclick="filterByBrand('Kérastase')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Kérastase</button>
+            <button type="button" onclick="filterByBrand('L\'Oréal')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">L'Oréal</button>
+            <button type="button" onclick="filterByBrand('Bioderma')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Bioderma</button>
+            <button type="button" onclick="filterByBrand('Olaplex')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Olaplex</button>
+            <button type="button" onclick="filterByBrand('Moroccanoil')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">Moroccanoil</button>
+          </div>
+        </div>
+
+        <!-- Barra secundaria de filtros rápidos (Categoría y Orden) -->
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-slate-700">Categoría:</span>
+            <select id="categorySelectFilter" onchange="filterByCategory(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+              <option value="Todos">Todas las Categorías</option>
+              <option value="Fragancias">Fragancias y Perfumes</option>
+              <option value="Skincare">Skincare y Cuidado Facial</option>
+              <option value="Maquillaje">Maquillaje</option>
+              <option value="Cuidado Capilar">Cuidado Capilar</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-slate-700">Ordenar por:</span>
+            <select id="sortSelectFilter" onchange="sortBellezaProducts(this.value)" class="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-[#aad500]">
+              <option value="featured">Recomendados</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="rating">Mejor Calificados</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Productos Renderizado Vía JavaScript -->
+      <div id="bellezaProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <!-- Render dinámico -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL DE CARRITO GLOBAL (CONECTADO A FALABELLA_STORE_CART_V2) ==================== -->
+  <div id="bellezaCartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="closeBellezaCartModal()">
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
+      
+      <!-- Cabecera de la Bolsa -->
+      <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <h3 class="text-base font-black text-slate-900">Bolsa de compras</h3>
+          <span id="cartModalItemCount" class="text-xs bg-[#333f48] text-white px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button onclick="closeBellezaCartModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Lista de Ítems del Carrito Global -->
+      <div id="bellezaCartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Pie de Carrito con Subtotal y Botón de Pago -->
+      <div class="p-4 border-t border-slate-200 bg-white">
+        <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+          <span>Envío</span>
+          <span class="text-emerald-600 font-bold">Gratis por compras &gt; S/ 199</span>
+        </div>
+        <div class="flex items-center justify-between text-base font-black text-slate-900 mb-4">
+          <span>Subtotal estimado</span>
+          <span id="bellezaCartSubtotal" class="text-rose-600 font-black text-lg">S/ 0.00</span>
+        </div>
+        <div class="space-y-2">
+          <button onclick="goToCheckout()" class="w-full py-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-lg text-sm shadow-md transition text-center block select-none cursor-pointer">
+            Continuar compra
+          </button>
+          <button onclick="closeBellezaCartModal()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs transition cursor-pointer">
+            Seguir comprando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificaciones -->
+  <div id="toastNotification" class="toast-msg">
+    <span id="toastText">Producto añadido a tu bolsa</span>
+  </div>
+
+  <!-- ==================== PIE DE PÁGINA FALABELLA OFICIAL ==================== -->
+  <footer class="bg-[#1e364b] text-white mt-16 pt-10 pb-8 text-xs border-t border-slate-700">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
+      
+      <!-- Contenedor Principal: 4 columnas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-slate-700/70">
+        
+        <!-- Columna 1: Falabella Brand -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-1 select-none">
+            <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px;">falabella</span>
+            <span style="color:#aad500; font-size:18px; font-weight:900; letter-spacing:-0.5px;">.com</span>
+          </div>
+          <p class="text-slate-300 text-[11.5px] leading-relaxed">
+            Sección oficial de Belleza y Perfumería. Las marcas más prestigiosas del mundo con garantía de autenticidad y despacho a nivel nacional.
+          </p>
+          <div class="pt-2">
+            <a href="libro-reclamaciones.html" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-lg border border-slate-700 text-xs font-semibold transition" title="Libro de Reclamaciones">
+              <svg class="w-4 h-4 text-[#aad500]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
+              <span>Libro de reclamaciones</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Servicio al Cliente -->
+        <div class="space-y-2.5">
+          <h4 class="text-white font-bold text-sm mb-3">Servicio al Cliente</h4>
+          <ul class="space-y-2 text-slate-300">
+            <li><a href="index.html" class="hover:text-[#aad500] transition">Rastrear mi pedido con DNI</a></li>
+            <li><a href="terminos-condiciones.html" class="hover:text-[#aad500] transition font-medium">Términos y Condiciones</a></li>
+            <li><a href="politica-privacidad.html" class="hover:text-[#aad500] transition font-medium">Política de Privacidad</a></li>
+            <li><a href="index.html" class="hover:text-[#aad500] transition">Políticas de cambios y devoluciones (RN-20)</a></li>
+            <li><a href="libro-reclamaciones.html" class="hover:text-[#aad500] transition">Libro de Reclamaciones Virtual</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Categorías Populares -->
+        <div class="space-y-2.5">
+          <h4 class="text-white font-bold text-sm mb-3">Categorías Populares</h4>
+          <ul class="space-y-2 text-slate-300">
+            <li><a href="belleza.html" class="text-[#aad500] font-bold">💄 Belleza y Perfumería</a></li>
+            <li><a href="moda_mujer.html" class="hover:text-[#aad500] transition">👗 Moda Mujer y Sybilla</a></li>
+            <li><a href="moda_hombre.html" class="hover:text-[#aad500] transition">👔 Moda Hombre</a></li>
+            <li><a href="tecnologia.html" class="hover:text-[#aad500] transition">⚡ Tecnología y Laptops</a></li>
+            <li><a href="celulares.html" class="hover:text-[#aad500] transition">📱 Telefonía y Smartphones</a></li>
+            <li><a href="deportes.html" class="hover:text-[#aad500] transition">⚽ Deportes y Outdoors</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Garantía y Seguridad -->
+        <div class="space-y-2.5">
+          <h4 class="text-white font-bold text-sm mb-3">Garantía Falabella</h4>
+          <p class="text-slate-300 text-[11.5px] leading-relaxed">
+            Productos 100% originales con sello de garantía oficial. Pagos cifrados con protocolo seguro SSL y certificación bancaria.
+          </p>
+          <div class="flex items-center gap-2 pt-1">
+            <span class="px-2 py-1 bg-slate-800 text-[#aad500] font-black rounded text-[10px]">100% ORIGINAL</span>
+            <span class="px-2 py-1 bg-slate-800 text-slate-200 font-bold rounded text-[10px]">CMR VISA</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra Inferior de Redes Sociales y Copyright -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11.5px] text-slate-400">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-slate-300">Síguenos en:</span>
+          <a href="https://www.instagram.com/falabella_pe/?hl=es-la" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition" aria-label="Instagram">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/sagafalabella/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition" aria-label="Facebook">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@falabella_pe?lang=es" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-black text-white flex items-center justify-center transition" aria-label="TikTok">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.42a6.34 6.34 0 0 0-.86-.06 6.34 6.34 0 1 0 6.34 6.34V8.71a8.16 8.16 0 0 0 4.77 1.52V6.78a4.85 4.85 0 0 1-1-.09z"/></svg>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="terminos-condiciones.html" class="hover:text-[#aad500] hover:underline transition">Términos y Condiciones</a>
+          <span>•</span>
+          <a href="politica-privacidad.html" class="hover:text-[#aad500] hover:underline transition">Política de Privacidad</a>
+          <span>•</span>
+          <a href="libro-reclamaciones.html" class="hover:text-[#aad500] hover:underline transition">Libro de Reclamaciones</a>
+        </div>
+
+        <div>
+          <span>falabella.com • Todos los derechos reservados • Perú</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT: CATÁLOGO DE BELLEZA Y CARRITO ==================== -->
+  <script>
+    /* -------------------------------------------------------------
+       CONSTANTE DEL CARRITO GLOBAL UNIFICADO (FALABELLA STORE V2)
+       ------------------------------------------------------------- */
+    const STORE_CART_KEY = 'falabella_store_cart_v2';
+
+    /* CATÁLOGO AUTÉNTICO DE BELLEZA (SKINCARE, FRAGANCIAS, MAQUILLAJE, CUIDADO CAPILAR) */
+    const BELLEZA_PRODUCTS = [
+      // --- FRAGANCIAS ---
+      {
+        id: 701,
+        code: 'BEL-LAN-01',
+        name: 'Lancôme Paris La vie est belle VERY CHERRY Eau de Parfum 50ml',
+        brand: 'Lancôme',
+        category: 'Fragancias',
+        subCategory: 'edp',
+        gender: 'ellas',
+        priceCmr: 389.00,
+        priceNormal: 489.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 218,
+        image: 'assets/belleza/prod_lancome_cherry.png',
+        badge: 'Lanzamiento Exclusivo'
+      },
+      {
+        id: 702,
+        code: 'BEL-VS-01',
+        name: 'Victoria\'s Secret Pure Seduction Fragrance Mist 250ml',
+        brand: 'Victoria\'s Secret',
+        category: 'Fragancias',
+        subCategory: 'mist',
+        gender: 'ellas',
+        priceCmr: 79.90,
+        priceNormal: 99.90,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 312,
+        image: 'assets/belleza/prod_vs_pure_seduction.png',
+        badge: 'Top Ventas'
+      },
+      {
+        id: 703,
+        code: 'BEL-VS-02',
+        name: 'Victoria\'s Secret Pure Seduction Shimmer Body Mist con Brillo 250ml',
+        brand: 'Victoria\'s Secret',
+        category: 'Fragancias',
+        subCategory: 'mist',
+        gender: 'ellas',
+        priceCmr: 85.00,
+        priceNormal: 109.00,
+        discount: '-22%',
+        rating: 4.8,
+        reviews: 145,
+        image: 'assets/belleza/banner_victoria_secret.png',
+        badge: 'Edición Shimmer'
+      },
+      {
+        id: 704,
+        code: 'BEL-BBW-01',
+        name: 'Bath & Body Works In The Stars Fine Fragrance Mist 236ml',
+        brand: 'Bath & Body Works',
+        category: 'Fragancias',
+        subCategory: 'mist',
+        gender: 'ellas',
+        priceCmr: 79.90,
+        priceNormal: 105.00,
+        discount: '-24%',
+        rating: 4.8,
+        reviews: 184,
+        image: 'assets/belleza/prod_bbw_in_the_stars.png',
+        badge: 'Favorito'
+      },
+      {
+        id: 705,
+        code: 'BEL-BBW-02',
+        name: 'Bath & Body Works Strawberry Snowflakes Body Mist 236ml',
+        brand: 'Bath & Body Works',
+        category: 'Fragancias',
+        subCategory: 'mist',
+        gender: 'ellas',
+        priceCmr: 79.90,
+        priceNormal: 105.00,
+        discount: '-24%',
+        rating: 4.7,
+        reviews: 96,
+        image: 'assets/belleza/banner_bath_body_works.png',
+        badge: 'Edición Limitada'
+      },
+      {
+        id: 706,
+        code: 'BEL-ARM-01',
+        name: 'Emporio Armani Power of You Eau de Parfum 50ml para Ella',
+        brand: 'Armani',
+        category: 'Fragancias',
+        subCategory: 'edp',
+        gender: 'ellas',
+        priceCmr: 369.00,
+        priceNormal: 459.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 175,
+        image: 'assets/belleza/fragancia_ellas.png',
+        badge: 'Para Ellas'
+      },
+      {
+        id: 707,
+        code: 'BEL-AZZ-01',
+        name: 'Azzaro Wanted Eau de Parfum Intense 100ml para Él',
+        brand: 'Azzaro',
+        category: 'Fragancias',
+        subCategory: 'edp',
+        gender: 'ellos',
+        priceCmr: 399.00,
+        priceNormal: 499.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 260,
+        image: 'assets/belleza/fragancia_ellos.png',
+        badge: 'Para Ellos'
+      },
+      {
+        id: 708,
+        code: 'BEL-HDA-01',
+        name: 'Hello Daise* Raspberry & Mint Fragrance Mist 100ml',
+        brand: 'Hello Daise',
+        category: 'Fragancias',
+        subCategory: 'mist',
+        gender: 'ellas',
+        priceCmr: 49.90,
+        priceNormal: 69.90,
+        discount: '-28%',
+        rating: 4.6,
+        reviews: 88,
+        image: 'assets/belleza/fragancia_body_mist.png',
+        badge: 'Body Mist'
+      },
+      {
+        id: 709,
+        code: 'BEL-ISS-01',
+        name: 'Issey Miyake L\'Eau d\'Issey Pour Homme Sport EDT 100ml',
+        brand: 'Issey Miyake',
+        category: 'Fragancias',
+        subCategory: 'edt',
+        gender: 'ellos',
+        priceCmr: 329.00,
+        priceNormal: 419.00,
+        discount: '-21%',
+        rating: 4.8,
+        reviews: 130,
+        image: 'assets/belleza/fragancia_eau_de_toilette.png',
+        badge: 'Eau de Toilette'
+      },
+      {
+        id: 710,
+        code: 'BEL-JPG-01',
+        name: 'Jean Paul Gaultier La Belle Le Parfum Eau de Parfum 100ml',
+        brand: 'Jean Paul Gaultier',
+        category: 'Fragancias',
+        subCategory: 'edp',
+        gender: 'ellas',
+        priceCmr: 479.00,
+        priceNormal: 589.00,
+        discount: '-19%',
+        rating: 5.0,
+        reviews: 340,
+        image: 'assets/belleza/fragancia_eau_de_parfum.png',
+        badge: 'Eau de Parfum'
+      },
+
+      // --- SKINCARE (SECCIÓN SKINCARE WEEK & THE ORDINARY) ---
+      {
+        id: 711,
+        code: 'BEL-CER-01',
+        name: 'CeraVe Gel Limpiador Espumoso Piel Normal a Grasa 473ml (Paso 1 Limpieza)',
+        brand: 'CeraVe',
+        category: 'Skincare',
+        subCategory: 'limpiador',
+        gender: 'unisex',
+        priceCmr: 74.90,
+        priceNormal: 94.90,
+        discount: '-21%',
+        rating: 4.9,
+        reviews: 620,
+        image: 'assets/belleza/prod_cerave_cleanser.png',
+        badge: '1 Limpieza'
+      },
+      {
+        id: 712,
+        code: 'BEL-EST-01',
+        name: 'Estée Lauder Advanced Night Repair Synchronized Serum 50ml (Paso 2 Hidratación)',
+        brand: 'Estée Lauder',
+        category: 'Skincare',
+        subCategory: 'hidratante',
+        gender: 'unisex',
+        priceCmr: 429.00,
+        priceNormal: 539.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 485,
+        image: 'assets/belleza/prod_estee_lauder_serum.png',
+        badge: '2 Hidratación'
+      },
+      {
+        id: 713,
+        code: 'BEL-ISD-01',
+        name: 'ISDIN Fotoprotector Fusion Water MAGIC SPF 50 50ml (Paso 3 Tratamiento)',
+        brand: 'ISDIN',
+        category: 'Skincare',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 89.90,
+        priceNormal: 115.00,
+        discount: '-22%',
+        rating: 4.9,
+        reviews: 580,
+        image: 'assets/belleza/prod_isdin_age_repair.png',
+        badge: '3 Rostro'
+      },
+      {
+        id: 714,
+        code: 'BEL-LAN-02',
+        name: 'Lancôme Rénergie H.P.N. 300-Peptide Crema de Ojos Antiedad 15ml (Paso 4 Ojos)',
+        brand: 'Lancôme',
+        category: 'Skincare',
+        subCategory: 'ojos',
+        gender: 'ellas',
+        priceCmr: 299.00,
+        priceNormal: 389.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 190,
+        image: 'assets/belleza/prod_lancome_renergie.png',
+        badge: '4 Ojos'
+      },
+      {
+        id: 715,
+        code: 'BEL-MSK-01',
+        name: 'Garnier SkinActive Mascarilla en Tela Hidra Bomb Granada Hidratante (Paso 5 Mask Bar)',
+        brand: 'Garnier',
+        category: 'Skincare',
+        subCategory: 'mascarilla',
+        gender: 'unisex',
+        priceCmr: 12.90,
+        priceNormal: 18.90,
+        discount: '-32%',
+        rating: 4.8,
+        reviews: 320,
+        image: 'assets/belleza/prod_mask_sheet.png',
+        badge: '5 Mask Bar'
+      },
+      {
+        id: 716,
+        code: 'BEL-ORD-01',
+        name: 'The Ordinary Ácido Glicólico 7% Toning Solution Exfoliante 240ml',
+        brand: 'The Ordinary',
+        category: 'Skincare',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 69.90,
+        priceNormal: 89.90,
+        discount: '-22%',
+        rating: 4.9,
+        reviews: 430,
+        image: 'assets/belleza/prod_the_ordinary_glycolic.png',
+        badge: 'Best Seller'
+      },
+      {
+        id: 717,
+        code: 'BEL-ORD-02',
+        name: 'The Ordinary Niacinamida 10% + Zinc 1% Sérum Purificante 30ml',
+        brand: 'The Ordinary',
+        category: 'Skincare',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 49.90,
+        priceNormal: 65.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 780,
+        image: 'assets/belleza/prod_the_ordinary_niacinamide.png',
+        badge: 'Favorito Skincare'
+      },
+      {
+        id: 718,
+        code: 'BEL-BIO-01',
+        name: 'Bioderma Sensibio H2O Agua Micelar Dermatológica Calmante 500ml',
+        brand: 'Bioderma',
+        category: 'Skincare',
+        subCategory: 'limpiador',
+        gender: 'unisex',
+        priceCmr: 79.90,
+        priceNormal: 99.90,
+        discount: '-20%',
+        rating: 5.0,
+        reviews: 512,
+        image: 'assets/belleza/prod_bioderma_micelar.png',
+        badge: 'Piel Sensible'
+      },
+      {
+        id: 719,
+        code: 'BEL-CLI-01',
+        name: 'Clinique Moisture Surge 100H Hidratante Auto-Rehidratante 50ml',
+        brand: 'Clinique',
+        category: 'Skincare',
+        subCategory: 'hidratante',
+        gender: 'unisex',
+        priceCmr: 169.00,
+        priceNormal: 219.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 240,
+        image: 'assets/belleza/prod_clinique_moisture.png',
+        badge: '100H Hidratación'
+      },
+      {
+        id: 720,
+        code: 'BEL-LAM-01',
+        name: 'La Mer Crème de la Mer Crema Hidratante Regeneradora de Lujo 60ml',
+        brand: 'La Mer',
+        category: 'Skincare',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 1399.00,
+        priceNormal: 1699.00,
+        discount: '-18%',
+        rating: 5.0,
+        reviews: 110,
+        image: 'assets/belleza/prod_la_mer_cream.png',
+        badge: 'Alta Gama'
+      },
+
+      // --- MAQUILLAJE ---
+      {
+        id: 721,
+        code: 'BEL-MAY-01',
+        name: 'Maybelline New York Cloud Topia Cream Blush Tono Red Velvet',
+        brand: 'Maybelline',
+        category: 'Maquillaje',
+        subCategory: 'Rostro',
+        gender: 'ellas',
+        priceCmr: 39.90,
+        priceNormal: 52.90,
+        discount: '-25%',
+        rating: 4.8,
+        reviews: 165,
+        image: 'assets/belleza/maq_rostro.png',
+        badge: 'Rostro'
+      },
+      {
+        id: 722,
+        code: 'BEL-BEN-01',
+        name: 'Benefit Benetint Tinte Líquido para Labios y Mejillas 6ml',
+        brand: 'Benefit',
+        category: 'Maquillaje',
+        subCategory: 'Labios',
+        gender: 'ellas',
+        priceCmr: 99.00,
+        priceNormal: 129.00,
+        discount: '-23%',
+        rating: 4.9,
+        reviews: 290,
+        image: 'assets/belleza/maq_labios.png',
+        badge: 'Labios'
+      },
+      {
+        id: 723,
+        code: 'BEL-MAY-02',
+        name: 'Maybelline Colossal Volum\' Express Máscara de Pestañas Glam Black',
+        brand: 'Maybelline',
+        category: 'Maquillaje',
+        subCategory: 'Ojos',
+        gender: 'ellas',
+        priceCmr: 34.90,
+        priceNormal: 46.90,
+        discount: '-26%',
+        rating: 4.7,
+        reviews: 410,
+        image: 'assets/belleza/maq_ojos.png',
+        badge: 'Ojos'
+      },
+      {
+        id: 724,
+        code: 'BEL-DIO-01',
+        name: 'Dior Diorshow On Set Brow Gel Fijador de Cejas Transparente',
+        brand: 'Dior',
+        category: 'Maquillaje',
+        subCategory: 'Cejas',
+        gender: 'ellas',
+        priceCmr: 159.00,
+        priceNormal: 199.00,
+        discount: '-20%',
+        rating: 4.9,
+        reviews: 140,
+        image: 'assets/belleza/maq_cejas.png',
+        badge: 'Cejas'
+      },
+
+      // --- CUIDADO CAPILAR (EXACTO A IMÁGENES DE FALABELLA) ---
+      {
+        id: 725,
+        code: 'BEL-KER-01',
+        name: 'Mascarilla Reconstructor Para Cabello Débil Masque Force Architecte...',
+        brand: 'Kérastase',
+        category: 'Cuidado Capilar',
+        subCategory: 'mascarilla',
+        gender: 'unisex',
+        priceCmr: 213.50,
+        priceNormal: null,
+        discount: '',
+        shippingTag: 'Retira mañana',
+        rating: 5.0,
+        reviews: 125,
+        image: 'assets/belleza/prod_kerastase_force.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 726,
+        code: 'BEL-LOR-01',
+        name: 'Shampoo Profesional Absolut Repair para Cabello Dañado, 500 ml',
+        brand: 'L\'Oréal Professionnel',
+        category: 'Cuidado Capilar',
+        subCategory: 'shampoo',
+        gender: 'unisex',
+        priceCmr: 140.00,
+        priceNormal: 161.00,
+        discount: '-13%',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 176,
+        image: 'assets/belleza/prod_loreal_absolut_shampoo.png',
+        badge: '',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 727,
+        code: 'BEL-KER-02',
+        name: 'Elixir Ultime Aceite Capilar Para Todo Tipo de Cabello 75ml',
+        brand: 'Kérastase',
+        category: 'Cuidado Capilar',
+        subCategory: 'oleo',
+        gender: 'unisex',
+        priceCmr: 220.50,
+        priceNormal: null,
+        discount: '',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 169,
+        image: 'assets/belleza/prod_kerastase_elixir_75.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 728,
+        code: 'BEL-LOR-02',
+        name: 'Mascarilla Capilar Absolut Repair Reestructuración Instantánea 250 ml',
+        brand: 'L\'Oréal Professionnel',
+        category: 'Cuidado Capilar',
+        subCategory: 'mascarilla',
+        gender: 'unisex',
+        priceCmr: 122.50,
+        priceNormal: null,
+        discount: '',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 263,
+        image: 'assets/belleza/prod_loreal_absolut_masque.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 729,
+        code: 'BEL-KER-03',
+        name: 'Mascarilla Fortalecedora Génesis Reconstituant Anticaída, 200 ml',
+        brand: 'Kérastase',
+        category: 'Cuidado Capilar',
+        subCategory: 'mascarilla',
+        gender: 'unisex',
+        priceCmr: 227.50,
+        priceNormal: null,
+        discount: '',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 144,
+        image: 'assets/belleza/prod_kerastase_genesis.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 730,
+        code: 'BEL-BIO-02',
+        name: 'Shampoo Node Fluide 400ml',
+        brand: 'Bioderma',
+        category: 'Cuidado Capilar',
+        subCategory: 'shampoo',
+        gender: 'unisex',
+        priceCmr: 94.41,
+        priceNormal: 104.90,
+        discount: '-10%',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 12,
+        image: 'assets/belleza/prod_bioderma_node.png',
+        badge: 'CYBER WOW',
+        promoTag: 'REGALO POR COMPRA'
+      },
+      {
+        id: 731,
+        code: 'BEL-KER-04',
+        name: 'Gel Kérastase Curl Manifesto Contour rizos y crespos definidos 150ml',
+        brand: 'Kérastase',
+        category: 'Cuidado Capilar',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 166.00,
+        priceNormal: null,
+        discount: '',
+        shippingTag: 'Retira mañana',
+        rating: 5.0,
+        reviews: 119,
+        image: 'assets/belleza/prod_kerastase_curl.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 732,
+        code: 'BEL-KER-05',
+        name: 'Mascarilla Reparadora Masque Thérapiste Resistance 200Ml',
+        brand: 'Kérastase',
+        category: 'Cuidado Capilar',
+        subCategory: 'mascarilla',
+        gender: 'unisex',
+        priceCmr: 227.50,
+        priceNormal: null,
+        discount: '',
+        shippingTag: '',
+        rating: 5.0,
+        reviews: 217,
+        image: 'assets/belleza/prod_kerastase_therapiste.png',
+        badge: 'CYBER WOW',
+        promoTag: '2DO CON 40%'
+      },
+      {
+        id: 733,
+        code: 'BEL-OLA-01',
+        name: 'Olaplex N° 3 Hair Perfector Tratamiento Fortalecedor Capilar 100ml',
+        brand: 'Olaplex',
+        category: 'Cuidado Capilar',
+        subCategory: 'tratamiento',
+        gender: 'unisex',
+        priceCmr: 149.00,
+        priceNormal: 189.00,
+        discount: '-21%',
+        shippingTag: '',
+        rating: 4.9,
+        reviews: 420,
+        image: 'assets/belleza/prod_olaplex_no3.png',
+        badge: 'Best Seller',
+        promoTag: 'ENVÍO GRATIS'
+      },
+      {
+        id: 734,
+        code: 'BEL-MOR-01',
+        name: 'Moroccanoil Tratamiento de Aceite de Argán Clásico Todo Tipo de Cabello 100ml',
+        brand: 'Moroccanoil',
+        category: 'Cuidado Capilar',
+        subCategory: 'oleo',
+        gender: 'unisex',
+        priceCmr: 189.00,
+        priceNormal: 239.00,
+        discount: '-21%',
+        shippingTag: '',
+        rating: 4.9,
+        reviews: 380,
+        image: 'assets/belleza/prod_moroccanoil.png',
+        badge: 'Original Argán',
+        promoTag: 'ENVÍO GRATIS'
+      }
+    ];
+
+    let currentFilterBrand = 'Todos';
+    let currentFilterCategory = 'Todos';
+    let currentSortOption = 'featured';
+
+    /* -------------------------------------------------------------
+       RENDERIZADO DINÁMICO DEL CATÁLOGO DE PRODUCTOS
+       ------------------------------------------------------------- */
+    function renderBellezaProducts(products) {
+      const grid = document.getElementById('bellezaProductsGrid');
+      if (!grid) return;
+
+      if (!products.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-xl border border-slate-200">
+            <svg class="w-12 h-12 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h4 class="text-base font-bold text-slate-800">No encontramos productos en esta selección</h4>
+            <p class="text-xs text-slate-500 mt-1">Prueba seleccionando otra marca o limpiando los filtros de búsqueda.</p>
+            <button onclick="filterByBrand('Todos')" class="mt-4 px-4 py-2 bg-[#0f172a] text-white text-xs font-bold rounded-lg hover:bg-[#333f48] transition">
+              Ver todos los productos de Belleza
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = products.map(product => {
+        const fullStars = Math.floor(product.rating);
+        const hasHalf = product.rating % 1 !== 0;
+        const starsHtml = '★'.repeat(fullStars) + (hasHalf ? '½' : '');
+        
+        // Badge superior (CYBER WOW en verde oscuro #004724 vs otros badges en lime green)
+        let badgeHtml = '';
+        if (product.badge) {
+          if (product.badge === 'CYBER WOW') {
+            badgeHtml = `
+              <span class="bg-[#004724] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider shadow-2xs">
+                CYBER WOW
+              </span>
+            `;
+          } else {
+            badgeHtml = `
+              <span class="bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-0.5 rounded shadow-2xs tracking-tight">
+                ${product.badge}
+              </span>
+            `;
+          }
+        }
+
+        // Formato precios
+        const formattedCmr = product.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: (product.priceCmr % 1 !== 0 ? 2 : 0), maximumFractionDigits: 2 });
+        const formattedNormal = product.priceNormal ? product.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: (product.priceNormal % 1 !== 0 ? 2 : 0), maximumFractionDigits: 2 }) : null;
+
+        return `
+          <article class="product-card-belleza group flex flex-col bg-white rounded-xl border border-slate-200 shadow-2xs hover:shadow-md transition duration-300 overflow-hidden" data-brand="${product.brand}" data-cat="${product.category}">
+            <!-- Imagen del Producto y Badges -->
+            <div class="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-3 border-b border-slate-100">
+              <img 
+                src="${product.image}" 
+                alt="${product.name}" 
+                class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                onerror="this.src='assets/belleza/strip_marcas_belleza.png'"
+              />
+              
+              <!-- Badge de Promoción / Categoría -->
+              <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start">
+                ${badgeHtml}
+              </div>
+
+              <!-- Botón Favorito (Conectado al sistema de favoritos) -->
+              <button 
+                type="button" 
+                onclick="event.stopPropagation(); toggleFalabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\\'")}', ${product.priceCmr}, '${product.image}', '${product.brand}')"
+                class="falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer"
+                title="Añadir a favoritos"
+                data-product-id="${product.id}"
+              >
+                <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </button>
+            </div>
+
+            <!-- Información y Precios -->
+            <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
+                  ${product.brand}
+                </span>
+                <h4 class="text-xs font-semibold text-slate-800 line-clamp-2 leading-snug mb-1 group-hover:text-pink-600 transition" title="${product.name}">
+                  ${product.name}
+                </h4>
+
+                <!-- Vendedor Falabella (Icono verde 1:1 con Falabella) -->
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-2 font-medium">
+                  <span>Por Falabella</span>
+                  <span class="inline-block w-2.5 h-3 bg-[#aad500] rounded-xs" title="Vendido por Falabella"></span>
+                </div>
+
+                <!-- Bloque de Precios Falabella -->
+                <div class="space-y-0.5 mb-2">
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-base font-black text-slate-900">S/ ${formattedCmr}</span>
+                    ${product.discount ? `
+                      <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-2xs">
+                        ${product.discount}
+                      </span>
+                    ` : ''}
+                  </div>
+                  ${formattedNormal && product.discount ? `
+                    <div class="text-[11px] text-slate-400 line-through">
+                      S/ ${formattedNormal}
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Tags de Envío y Promoción (Retira mañana, 2DO CON 40%, etc) -->
+                <div class="space-y-1 mb-2">
+                  ${product.shippingTag ? `
+                    <div>
+                      <span class="inline-block text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                        ${product.shippingTag}
+                      </span>
+                    </div>
+                  ` : ''}
+                  ${product.promoTag ? `
+                    <div>
+                      <span class="inline-block bg-[#222222] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-tight">
+                        ${product.promoTag}
+                      </span>
+                    </div>
+                  ` : ''}
+                </div>
+
+                <!-- Rating de Estrellas -->
+                <div class="flex items-center gap-1.5 text-xs mb-3">
+                  <span class="text-amber-400 font-bold tracking-tight text-[11px]">${starsHtml}</span>
+                  <span class="text-[11px] text-slate-400">(${product.reviews})</span>
+                </div>
+              </div>
+
+              <!-- Botón Añadir a la Bolsa -->
+              <button 
+                type="button" 
+                onclick="addToCart(${product.id})"
+                class="w-full py-2.5 px-3 bg-[#aad500] hover:bg-[#99c000] text-slate-900 font-black rounded-lg text-xs shadow-xs hover:shadow transition flex items-center justify-center gap-2 cursor-pointer select-none active:scale-[0.98]"
+              >
+                <svg class="w-4 h-4 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span>Agregar a la bolsa</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    /* -------------------------------------------------------------
+       FILTROS DE MARCA, CATEGORÍA Y ORDENAMIENTO
+       ------------------------------------------------------------- */
+    function filterByBrand(brand) {
+      currentFilterBrand = brand;
+      
+      // Actualizar píldoras de marca
+      const pills = document.querySelectorAll('#brandFilterPills button');
+      pills.forEach(p => {
+        if (p.textContent.trim().toLowerCase() === brand.toLowerCase() || (brand === 'Todos' && p.textContent.trim() === 'Todos')) {
+          p.className = 'filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#0f172a] text-white transition';
+        } else {
+          p.className = 'filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition';
+        }
+      });
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    function filterByCategory(category) {
+      currentFilterCategory = category;
+      const select = document.getElementById('categorySelectFilter');
+      if (select) select.value = category;
+
+      applyCombinedFilters();
+      scrollToCatalog();
+    }
+
+    /* Navegación fluida de la sub-barra hacia las secciones correspondientes */
+    function navigateToBellezaSection(sectionId, btn) {
+      document.querySelectorAll('.subnav-tab-item').forEach(item => item.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        const headerOffset = 110; // offset por cabecera y barra fija
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function selectSubTab(tabName, el) {
+      document.querySelectorAll('.subnav-tab-item').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+
+    /* Filtro específico por Paso de la Rutina Skincare (Imagen 2) */
+    function filterSkincareStep(step) {
+      let filtered = [];
+      let stepTitle = '';
+      if (step === 'limpieza') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare' && (p.subCategory === 'limpiador' || p.brand === 'CeraVe' || p.brand === 'Bioderma'));
+        stepTitle = 'Paso 1: Limpieza Facial';
+      } else if (step === 'hidratacion') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare' && (p.subCategory === 'hidratante' || p.brand === 'Estée Lauder' || p.brand === 'Clinique'));
+        stepTitle = 'Paso 2: Hidratación';
+      } else if (step === 'rostro') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare' && (p.subCategory === 'tratamiento' || p.brand === 'ISDIN' || p.brand === 'The Ordinary' || p.brand === 'La Mer'));
+        stepTitle = 'Paso 3: Tratamiento de Rostro';
+      } else if (step === 'ojos') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare' && (p.subCategory === 'ojos' || p.name.toLowerCase().includes('ojos')));
+        stepTitle = 'Paso 4: Tratamiento de Ojos';
+      } else if (step === 'mascarillas') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare' && (p.subCategory === 'mascarilla' || p.name.toLowerCase().includes('mascarilla')));
+        stepTitle = 'Paso 5: Mask Bar';
+      } else {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare');
+        stepTitle = 'Skincare';
+      }
+
+      renderBellezaProducts(filtered.length ? filtered : BELLEZA_PRODUCTS.filter(p => p.category === 'Skincare'));
+      scrollToCatalog();
+      showToast(`Mostrando: ${stepTitle} (${filtered.length} productos)`);
+    }
+
+    /* Filtro para Cuidado Capilar (Categorías de la Imagen 1) */
+    function filterHairCategory(type) {
+      let filtered = [];
+      let label = '';
+      if (type === 'Todos') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Cuidado Capilar');
+        label = 'Todo Cuidado Capilar';
+      } else if (type === 'shampoo') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Cuidado Capilar' && (p.subCategory === 'shampoo' || p.name.toLowerCase().includes('shampoo') || p.name.toLowerCase().includes('acondicionador')));
+        label = 'Shampoos y Acondicionadores';
+      } else if (type === 'mascarilla') {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Cuidado Capilar' && (p.subCategory === 'mascarilla' || p.subCategory === 'tratamiento' || p.subCategory === 'oleo' || p.name.toLowerCase().includes('mascarilla') || p.name.toLowerCase().includes('tratamiento') || p.name.toLowerCase().includes('force') || p.name.toLowerCase().includes('absolut') || p.name.toLowerCase().includes('elixir') || p.name.toLowerCase().includes('thérapiste') || p.name.toLowerCase().includes('curl')));
+        label = 'Tratamientos y Mascarillas';
+      } else {
+        filtered = BELLEZA_PRODUCTS.filter(p => p.category === 'Cuidado Capilar');
+        label = 'Cuidado Capilar';
+      }
+      renderBellezaProducts(filtered.length ? filtered : BELLEZA_PRODUCTS.filter(p => p.category === 'Cuidado Capilar'));
+      scrollToCatalog();
+      showToast(`Mostrando: ${label} (${filtered.length} productos)`);
+    }
+
+    function filterByGender(gender) {
+      const filtered = BELLEZA_PRODUCTS.filter(p => p.gender === gender || p.gender === 'unisex');
+      renderBellezaProducts(filtered);
+      scrollToCatalog();
+      showToast(`Mostrando fragancias para ${gender === 'ellas' ? 'Ellas 💄' : 'Ellos 👔'}`);
+    }
+
+    function filterByPerfumeType(subCat) {
+      const filtered = BELLEZA_PRODUCTS.filter(p => p.subCategory === subCat);
+      renderBellezaProducts(filtered);
+      scrollToCatalog();
+      showToast(`Mostrando fragancias tipo ${subCat.toUpperCase()}`);
+    }
+
+    function filterByMaqCategory(subCat) {
+      const filtered = BELLEZA_PRODUCTS.filter(p => p.subCategory === subCat);
+      renderBellezaProducts(filtered);
+      scrollToCatalog();
+      showToast(`Mostrando maquillaje para: ${subCat}`);
+    }
+
+    function sortBellezaProducts(criteria) {
+      currentSortOption = criteria;
+      applyCombinedFilters();
+    }
+
+    function applyCombinedFilters() {
+      let filtered = [...BELLEZA_PRODUCTS];
+
+      if (currentFilterBrand !== 'Todos') {
+        const target = currentFilterBrand.toLowerCase();
+        filtered = filtered.filter(p => p.brand.toLowerCase() === target || p.brand.toLowerCase().includes(target));
+      }
+
+      if (currentFilterCategory !== 'Todos') {
+        filtered = filtered.filter(p => p.category.toLowerCase() === currentFilterCategory.toLowerCase());
+      }
+
+      // Ordenar
+      if (currentSortOption === 'price-asc') {
+        filtered.sort((a, b) => a.priceCmr - b.priceCmr);
+      } else if (currentSortOption === 'price-desc') {
+        filtered.sort((a, b) => b.priceCmr - a.priceCmr);
+      } else if (currentSortOption === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      renderBellezaProducts(filtered);
+    }
+
+    function executeBellezaSearch(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        applyCombinedFilters();
+        return;
+      }
+      const filtered = BELLEZA_PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.brand.toLowerCase().includes(q) || 
+        p.category.toLowerCase().includes(q)
+      );
+      renderBellezaProducts(filtered);
+      scrollToCatalog();
+      showToast(`Resultados para: "${query}" (${filtered.length} encontrados)`);
+    }
+
+    function scrollToCatalog() {
+      const sec = document.getElementById('sec-catalogo');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* -------------------------------------------------------------
+       GESTIÓN DEL CARRITO GLOBAL (falabella_store_cart_v2)
+       ------------------------------------------------------------- */
+    function getStoreCart() {
+      try {
+        const stored = sessionStorage.getItem(STORE_CART_KEY) || localStorage.getItem(STORE_CART_KEY);
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoreCart(cart) {
+      try {
+        const serialized = JSON.stringify(cart);
+        sessionStorage.setItem(STORE_CART_KEY, serialized);
+        localStorage.setItem(STORE_CART_KEY, serialized);
+      } catch (e) {}
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const cart = getStoreCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || item.quantity || 1), 0);
+      const badge = document.getElementById('bellezaCartBadge');
+      const countModal = document.getElementById('cartModalItemCount');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
+      if (countModal) {
+        countModal.textContent = count;
+      }
+    }
+
+    function addToCart(productId) {
+      const product = BELLEZA_PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = getStoreCart();
+      const existing = cart.find(item => (item.id === productId || item.productId === productId));
+      const effectivePrice = product.priceCmr || product.priceNormal;
+
+      if (existing) {
+        const currentQty = existing.qty || existing.quantity || 1;
+        existing.qty = currentQty + 1;
+        existing.quantity = existing.qty;
+      } else {
+        cart.push({
+          id: product.id,
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          img: product.image,
+          price: effectivePrice,
+          originalPrice: product.priceNormal,
+          regularPrice: product.priceNormal,
+          qty: 1,
+          quantity: 1
+        });
+      }
+
+      saveStoreCart(cart);
+      showToast(`¡${product.name.slice(0, 26)}... añadido a tu bolsa!`);
+      openBellezaCartModal();
+    }
+
+    function updateCartItemQty(productId, delta) {
+      let cart = getStoreCart();
+      const item = cart.find(i => (i.id === productId || i.productId === productId));
+      if (!item) return;
+
+      const currentQty = item.qty || item.quantity || 1;
+      const newQty = currentQty + delta;
+      if (newQty <= 0) {
+        cart = cart.filter(i => (i.id !== productId && i.productId !== productId));
+      } else {
+        item.qty = newQty;
+        item.quantity = newQty;
+      }
+      saveStoreCart(cart);
+      renderBellezaCartModalContent();
+    }
+
+    function removeCartItem(productId) {
+      let cart = getStoreCart().filter(i => (i.id !== productId && i.productId !== productId));
+      saveStoreCart(cart);
+      renderBellezaCartModalContent();
+      showToast('Producto eliminado de la bolsa');
+    }
+
+    function openBellezaCartModal() {
+      const modal = document.getElementById('bellezaCartModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      renderBellezaCartModalContent();
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const panel = modal.querySelector('div');
+        if (panel) panel.style.transform = 'translateX(0)';
+      }, 10);
+    }
+
+    function closeBellezaCartModal() {
+      const modal = document.getElementById('bellezaCartModal');
+      if (!modal) return;
+      modal.classList.add('opacity-0');
+      const panel = modal.querySelector('div');
+      if (panel) panel.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    function renderBellezaCartModalContent() {
+      const container = document.getElementById('bellezaCartItemsList');
+      const subtotalEl = document.getElementById('bellezaCartSubtotal');
+      if (!container) return;
+
+      const cart = getStoreCart();
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-14 text-center text-slate-400">
+            <svg class="w-14 h-14 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <h4 class="text-sm font-bold text-slate-800">Tu bolsa de compras está vacía</h4>
+            <p class="text-xs text-slate-500 mt-1">Descubre perfumes exclusivos, serums y productos de belleza para añadir a tu bolsa.</p>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = 'S/ 0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const itemQty = item.qty || item.quantity || 1;
+        const itemPrice = item.price || 0;
+        const lineTotal = itemPrice * itemQty;
+        subtotal += lineTotal;
+        const itemId = item.id || item.productId;
+        const itemImg = item.image || item.img || 'assets/belleza/banner_lancome_cherry.png';
+        const itemName = item.name || 'Producto de Belleza';
+        const itemBrand = item.brand || 'Falabella';
+
+        return `
+          <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+            <img src="${itemImg}" alt="${itemName}" class="w-14 h-14 object-contain bg-white rounded border border-slate-200 flex-shrink-0" onerror="this.src='assets/belleza/strip_marcas_belleza.png'" />
+            <div class="flex-1 min-w-0">
+              <span class="text-[10px] font-black uppercase text-slate-500 tracking-wider block">${itemBrand}</span>
+              <h4 class="text-xs font-bold text-slate-900 truncate" title="${itemName}">${itemName}</h4>
+              <div class="text-xs font-black text-rose-600 mt-0.5">S/ ${itemPrice.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" onclick="updateCartItemQty(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, -1)" class="w-6 h-6 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center cursor-pointer">-</button>
+                <span class="text-xs font-bold text-slate-800 px-1">${itemQty}</span>
+                <button type="button" onclick="updateCartItemQty(${typeof itemId === 'string' ? `'${itemId}'` : itemId}, 1)" class="w-6 h-6 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 flex items-center justify-center cursor-pointer">+</button>
+                <button type="button" onclick="removeCartItem(${typeof itemId === 'string' ? `'${itemId}'` : itemId})" class="ml-auto text-rose-500 hover:text-rose-700 text-xs font-semibold p-1 cursor-pointer">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) {
+        subtotalEl.textContent = `S/ ${subtotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+    }
+
+    function goToCheckout() {
+      const cart = getStoreCart();
+      if (!cart.length) {
+        showToast('Tu bolsa está vacía. Agrega productos para continuar.');
+        return;
+      }
+      window.location.href = 'index.html#checkout';
+    }
+
+    /* -------------------------------------------------------------
+       HERO CAROUSEL CONTROL
+       ------------------------------------------------------------- */
+    let currentSlide = 0;
+    let carouselTimer = null;
+    const slides = document.querySelectorAll('.belleza-slide');
+    const dots = document.querySelectorAll('.belleza-dot');
+
+    function showSlide(index) {
+      if (!slides.length) return;
+      if (index >= slides.length) index = 0;
+      if (index < 0) index = slides.length - 1;
+      currentSlide = index;
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function moveBellezaSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    function setBellezaSlide(index) {
+      showSlide(index);
+    }
+
+    function startBellezaCarousel() {
+      stopBellezaCarousel();
+      carouselTimer = setInterval(() => {
+        moveBellezaSlide(1);
+      }, 5000);
+    }
+
+    function stopBellezaCarousel() {
+      if (carouselTimer) {
+        clearInterval(carouselTimer);
+        carouselTimer = null;
+      }
+    }
+
+    function pauseBellezaCarousel() {
+      stopBellezaCarousel();
+    }
+
+    /* -------------------------------------------------------------
+       DRAWER DE CATEGORÍAS
+       ------------------------------------------------------------- */
+    function toggleCategoriesDrawer() {
+      const drawer = document.getElementById('bellezaCategoriesDrawer');
+      if (!drawer) return;
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+          drawer.classList.remove('opacity-0');
+          const panel = drawer.querySelector('div');
+          if (panel) panel.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawer.classList.add('opacity-0');
+        const panel = drawer.querySelector('div');
+        if (panel) panel.classList.add('-translate-x-full');
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       TOAST DE NOTIFICACIONES
+       ------------------------------------------------------------- */
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastText');
+      if (!toast || !text) return;
+      text.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    /* -------------------------------------------------------------
+       SINCRONIZACIÓN AUTOMÁTICA DEL CARRITO ENTRE PESTAÑAS
+       ------------------------------------------------------------- */
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORE_CART_KEY) {
+        updateCartBadge();
+        const modal = document.getElementById('bellezaCartModal');
+        if (modal && !modal.classList.contains('hidden')) {
+          renderBellezaCartModalContent();
+        }
+      }
+    });
+
+    /* -------------------------------------------------------------
+       SCROLL-SPY PARA LA SUB-BARRA DE NAVEGACIÓN
+       ------------------------------------------------------------- */
+    function initSubnavScrollSpy() {
+      const sections = [
+        { id: 'sec-skincare', index: 0 },
+        { id: 'sec-new-in', index: 1 },
+        { id: 'sec-fragancias', index: 2 },
+        { id: 'sec-maquillaje', index: 3 },
+        { id: 'sec-cuidado-capilar', index: 4 }
+      ];
+
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + 160;
+        const tabs = document.querySelectorAll('.subnav-tab-item');
+        if (!tabs.length) return;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = document.getElementById(sections[i].id);
+          if (sec && sec.offsetTop <= scrollPosition) {
+            tabs.forEach((t, idx) => t.classList.toggle('active', idx === sections[i].index));
+            break;
+          }
+        }
+      }, { passive: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBellezaProducts(BELLEZA_PRODUCTS);
+      updateCartBadge();
+      startBellezaCarousel();
+      initSubnavScrollSpy();
+    });
+  </script>
+
+  <!-- Autenticación y Favoritos Oficial Falabella -->
+  <script src="assets/falabella-auth-favorites.js"></script>
+</body>
+</html>
