@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sistema de Ventas de Falabella - Propuesta académica de sistema basada en un proceso empresarial (Tecnología de Información II, USMP).">
-<title>Falabella | Sistema de Ventas</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Sistema de Ventas de Sagabella - Propuesta académica de sistema basada en un proceso empresarial (Tecnología de Información II, USMP).">
+<title>Sagabella | Sistema de Ventas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <style>
   /* ===============================================================
      Tailwind CSS v3.4
@@ -244,7 +244,7 @@
     .no-print{ display:none !important; }
   }
 
-  /* ---------- Tienda Virtual Estilo Oficial Falabella.com (Idéntico a Capturas Oficiales) ---------- */
+  /* ---------- Tienda Virtual Estilo Oficial Sagabella.com (Idéntico a Capturas Oficiales) ---------- */
   :root {
     --falabella-lime: #aad500;
     --falabella-dark: #333f48;
@@ -437,7 +437,7 @@
   }
 
   /* =========================================================================
-     Propuestas de Valor Falabella (4 Tarjetas con Ilustraciones 3D en 1 Fila)
+     Propuestas de Valor Sagabella (4 Tarjetas con Ilustraciones 3D en 1 Fila)
      ========================================================================= */
   .store-features-section {
     width: 100% !important;
@@ -580,7 +580,7 @@
   }
 
   /* =========================================================================
-     Sección de Categorías Falabella con Auto-Scroll Horizontal y Pause on Hover
+     Sección de Categorías Sagabella con Auto-Scroll Horizontal y Pause on Hover
      ========================================================================= */
   .falabella-categories-section {
     width: 100% !important;
@@ -797,7 +797,7 @@
   .store-pill.active{ background:#0f766e; color:#fff; border-color:#0f766e; box-shadow:0 2px 8px rgba(15,118,110,.25); }
   .cart-badge{ position:absolute; top:-3px; right:-5px; background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; display:flex; align-items:center; justify-content:center; padding:0 4px; border:2px solid #fff; }
 
-  /* Banner de Cookies estilo Falabella Oficial */
+  /* Banner de Cookies estilo Sagabella Oficial */
   .cookie-banner-container {
     background-color: #d8dee4;
     border-top: 1px solid #bfc7cf;
@@ -865,12 +865,12 @@
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased">
 
-<!-- ================================================== VISTA: TIENDA VIRTUAL FALABELLA.COM ================================================== -->
+<!-- ================================================== VISTA: TIENDA VIRTUAL SAGABELLA.COM ================================================== -->
 <div id="storeView" class="min-h-screen flex flex-col bg-slate-50">
 
-    <!-- Cabecera Principal (Exacta a Falabella.com) -->
+    <!-- Cabecera Principal (Exacta a Sagabella.com) -->
   
-  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ OFICIAL FALABELLA) ==================== -->
+  <!-- ==================== DRAWER LATERAL DE CATEGORÍAS (MENÚ OFICIAL SAGABELLA) ==================== -->
   <div id="storeCategoriesDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="toggleStoreCategoriesDrawer()">
     <div class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl p-6 overflow-y-auto transform -translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
       <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
@@ -963,10 +963,10 @@
   <header class="store-header">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
       
-      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <!-- Logo Oficial Sagabella (#aad500) & Botón Menú -->
       <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
-        <a href="javascript:void(0)" onclick="resetStoreFilters()" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
-          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+        <a href="javascript:void(0)" onclick="resetStoreFilters()" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="sagabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">sagabella</span>
           <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
         </a>
 
@@ -980,8 +980,8 @@
       <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
       <div class="flex-1 max-w-2xl mx-2 min-w-0">
         <div class="store-search-wrap">
-          <input type="text" id="storeSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" oninput="handleStoreSearchInput(this.value)" onkeydown="if(event.key==='Enter') executeStoreSearch()" />
-          <button type="button" onclick="executeStoreSearch()" class="store-search-btn" title="Buscar en falabella.com">
+          <input type="text" id="storeSearchInput" class="store-search-input" placeholder="Buscar en sagabella.com" oninput="handleStoreSearchInput(this.value)" onkeydown="if(event.key==='Enter') executeStoreSearch()" />
+          <button type="button" onclick="executeStoreSearch()" class="store-search-btn" title="Buscar en sagabella.com">
             <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </div>
@@ -991,7 +991,7 @@
       <div class="flex items-center gap-3 sm:gap-4 ml-auto flex-shrink-0">
         
         <!-- Hola, Inicia sesión / Mi cuenta -->
-        <div onclick="openAccountDropdownOrModal()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
+        <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
           <div class="flex flex-col text-[11px] leading-tight">
             <span class="text-slate-600 font-medium text-[10.5px]">Hola,</span>
             <span id="falabellaUserGreetingName" class="font-bold text-slate-900 text-[12px] flex items-center gap-0.5 falabella-user-greeting">
@@ -1006,12 +1006,12 @@
         </div>
 
         <!-- Favoritos (Corazón) -->
-        <button type="button" onclick="toggleStoreFavorites()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
+        <button type="button" onclick="openFalabellaFavoritesModal()" class="relative p-1 text-slate-700 hover:text-rose-600 transition cursor-pointer" title="Mis Favoritos">
           <svg class="w-5 h-5 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          <span id="storeFavsBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
+          <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
-        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
         <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
@@ -1019,7 +1019,7 @@
       </div>
     </div>
 
-    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Vende, Venta telefónica, Ayuda) -->
+    <!-- Sub-barra informativa de Sagabella (Ubicación, CMR, Vende, Venta telefónica, Ayuda) -->
     <div class="store-topbar">
       <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap">
         <button type="button" onclick="openStoreLocationModal()" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
@@ -1028,26 +1028,17 @@
         </button>
 
         <div class="flex items-center gap-4 sm:gap-6 text-xs text-slate-600 ml-auto flex-wrap">
-          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="toast('info', '💳 Tarjeta CMR: Accede a beneficios exclusivos y cuotas sin intereses.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="hover:text-slate-900 cursor-pointer hidden md:inline" onclick="toast('info', '💼 Vende y comisiona con falabella.com')">Vende y comisiona</span>
-          <span class="hover:text-slate-900 cursor-pointer hidden sm:flex items-center gap-1" onclick="toast('info', '📞 Venta telefónica Lima y provincias: (01) 512-3333')">Venta telefónica <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openCmrModal()">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openHelpDropdown(event)">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <button type="button" onclick="openTrackOrderModal()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3">
+          <button type="button" onclick="openTrackOrderModal()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
             <span class="hidden sm:inline">Rastrear</span>
           </button>
-          <button type="button" onclick="enterLogin()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3" title="Acceso al sistema administrativo">
+          <button type="button" onclick="enterLogin()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0" title="Acceso al sistema administrativo">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Intranet</span>
+            <span class="hidden sm:inline">Intranet</span>
           </button>
         </div>
-      </div>
-    </div>
-
-    <!-- Barra de Categorías / Menú horizontal -->
-    <div id="storeCategoryBarWrap" class="border-t border-slate-100 bg-white overflow-x-auto scroll-styled">
-      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 whitespace-nowrap" id="storeCategoryBar">
-        <!-- Renderizado dinámico -->
       </div>
     </div>
   </header>
@@ -1067,7 +1058,7 @@
           <div style="font-size: 13px; line-height: 1.2; display: flex; align-items: center; gap: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
             <span style="font-weight: 800; color: #0f172a;">Encuentra oportunidades únicas</span>
             <span style="opacity: 0.6;">|</span>
-            <span style="font-weight: 600; color: #1e293b;">Exclusivas con tu tarjeta CMR o Débito Banco Falabella</span>
+            <span style="font-weight: 600; color: #1e293b;">Exclusivas con tu tarjeta CMR o Débito Banco Sagabella</span>
           </div>
         </div>
         <div style="display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: #0f172a; background-color: rgba(255,255,255,0.65); padding: 4px 14px; border-radius: 9999px; flex-shrink: 0;">
@@ -1143,14 +1134,14 @@
         <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </button>
 
-      <!-- SLIDE 0: FELIZ NAVIDAD FALABELLA -->
-      <div class="hero-carousel-slide active relative overflow-hidden" id="heroSlide0" onclick="window.location.href='decohogar.html'" style="cursor: pointer;" title="Feliz Navidad para todos - Decohogar Falabella">
-        <img src="assets/banners/banner_navidad_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1543258103-a62bdc069871?w=1400&auto=format&fit=crop&q=85'" alt="Navidad Falabella" class="hero-slide-img" />
+      <!-- SLIDE 0: FELIZ NAVIDAD SAGABELLA -->
+      <div class="hero-carousel-slide active relative overflow-hidden" id="heroSlide0" onclick="window.location.href='decohogar.html'" style="cursor: pointer;" title="Feliz Navidad para todos - Decohogar Sagabella">
+        <img src="assets/banners/banner_navidad_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1543258103-a62bdc069871?w=1400&auto=format&fit=crop&q=85'" alt="Navidad Sagabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent z-1" style="width: 55%;"></div>
 
         <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 48%; max-width: 520px; padding: 24px 36px; display: flex; flex-direction: column; justify-content: center; z-index: 10; user-select: none;">
           <div style="display: inline-flex; width: fit-content; max-width: max-content; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 9999px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.25); color: #aad500; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-            <span>🎄</span> <span>Navidad Falabella</span>
+            <span>🎄</span> <span>Navidad Sagabella</span>
           </div>
           <h2 style="font-size: clamp(22px, 3.5vw, 40px); font-weight: 900; color: #ffffff; line-height: 1.1; letter-spacing: -0.5px; margin: 0 0 6px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
             Feliz Navidad <span style="color: #aad500;">para todos</span>
@@ -1171,7 +1162,7 @@
       </div>
 
       <!-- SLIDE 1: PODER MAX REDMI NOTE 17 -->
-      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide1" onclick="window.location.href='celulares.html'" style="cursor: pointer;" title="PODER MAX - Xiaomi Redmi Note 17 Series en Celulares Falabella">
+      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide1" onclick="window.location.href='celulares.html'" style="cursor: pointer;" title="PODER MAX - Xiaomi Redmi Note 17 Series en Celulares Sagabella">
         <img src="assets/banners/banner_redmi_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1400&auto=format&fit=crop&q=85'" alt="Xiaomi Redmi Note 17 Series" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
 
@@ -1200,9 +1191,9 @@
       </div>
 
       <!-- SLIDE 2: TECH & GAMING FEST (SONY PS5, SMART TV SAMSUNG 4K, AUDÍFONOS JBL) -->
-      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide2" onclick="window.location.href='tecnologia.html'" style="cursor: pointer;" title="Mundo Gaming & Tech - Consola PS5, Smart TVs y Laptops en Tecnología Falabella">
+      <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide2" onclick="window.location.href='tecnologia.html'" style="cursor: pointer;" title="Mundo Gaming & Tech - Consola PS5, Smart TVs y Laptops en Tecnología Sagabella">
         <!-- Imagen que muestra claramente la PlayStation 5 Slim blanca con DualSense, Smart TV Samsung 4K y Audífonos JBL -->
-        <img src="assets/banners/banner_gaming_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1400&auto=format&fit=crop&q=85'" alt="Gaming y Smart TVs Falabella" class="hero-slide-img" />
+        <img src="assets/banners/banner_gaming_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=1400&auto=format&fit=crop&q=85'" alt="Gaming y Smart TVs Sagabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
 
         <!-- Textos nítidos a la izquierda -->
@@ -1233,7 +1224,7 @@
       <!-- SLIDE 3: DEPORTES & SNEAKERS (NIKE REVOLUTION, ADIDAS GRAND COURT, APPLE WATCH) -->
       <div class="hero-carousel-slide relative overflow-hidden" id="heroSlide3" onclick="window.location.href='calzado.html'" style="cursor: pointer;" title="Zapatillas y Moda Deportiva - Nike, Adidas y Accesorios">
         <!-- Imagen que muestra claramente las zapatillas running Nike, urbanas Adidas y smartwatch deportivo -->
-        <img src="assets/banners/banner_deportes_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1400&auto=format&fit=crop&q=85'" alt="Deportes y Zapatillas Falabella" class="hero-slide-img" />
+        <img src="assets/banners/banner_deportes_hd.webp" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1400&auto=format&fit=crop&q=85'" alt="Deportes y Zapatillas Sagabella" class="hero-slide-img" />
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/45 to-transparent z-1" style="width: 55%;"></div>
 
         <!-- Textos nítidos a la izquierda -->
@@ -1263,7 +1254,7 @@
 
       <!-- Indicadores de diapositiva (4 Puntos interactivos) -->
       <div id="heroDotsWrap" class="hero-dots-container" style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; align-items: center; justify-content: center; gap: 8px; user-select: none;">
-        <button type="button" class="hero-dot-indicator active" onclick="event.stopPropagation(); setHeroSlide(0);" title="Navidad Falabella" aria-label="Slide 1: Navidad Falabella"></button>
+        <button type="button" class="hero-dot-indicator active" onclick="event.stopPropagation(); setHeroSlide(0);" title="Navidad Sagabella" aria-label="Slide 1: Navidad Sagabella"></button>
         <button type="button" class="hero-dot-indicator" onclick="event.stopPropagation(); setHeroSlide(1);" title="Poder Max Redmi Note 17" aria-label="Slide 2: Poder Max Redmi Note 17"></button>
         <button type="button" class="hero-dot-indicator" onclick="event.stopPropagation(); setHeroSlide(2);" title="Tech & Gaming PS5" aria-label="Slide 3: Tech & Gaming PS5"></button>
         <button type="button" class="hero-dot-indicator" onclick="event.stopPropagation(); setHeroSlide(3);" title="Deportes Nike & Adidas" aria-label="Slide 4: Deportes Nike & Adidas"></button>
@@ -1271,8 +1262,8 @@
 
     </section>
 
-    <!-- Propuestas de valor Falabella (4 Tarjetas con Ilustraciones 3D en 1 Fila) -->
-    <section class="store-features-section" aria-label="Beneficios de compra Falabella">
+    <!-- Propuestas de valor Sagabella (4 Tarjetas con Ilustraciones 3D en 1 Fila) -->
+    <section class="store-features-section" aria-label="Beneficios de compra Sagabella">
       <div class="store-features-grid">
 
         <!-- Beneficio 1: Boleta por Correo -->
@@ -1280,7 +1271,7 @@
           <div class="store-feature-img-wrap">
             <picture>
               <source srcset="assets/features/feature_boleta_correo.webp" type="image/webp">
-              <img src="assets/features/feature_boleta_correo.png" alt="Boleta por Correo Falabella" class="store-feature-img" width="68" height="68" loading="lazy" />
+              <img src="assets/features/feature_boleta_correo.png" alt="Boleta por Correo Sagabella" class="store-feature-img" width="68" height="68" loading="lazy" />
             </picture>
           </div>
           <div class="store-feature-info">
@@ -1295,7 +1286,7 @@
           <div class="store-feature-img-wrap">
             <picture>
               <source srcset="assets/features/feature_pago_seguro.webp" type="image/webp">
-              <img src="assets/features/feature_pago_seguro.png" alt="Pago Seguro Falabella" class="store-feature-img" width="68" height="68" loading="lazy" />
+              <img src="assets/features/feature_pago_seguro.png" alt="Pago Seguro Sagabella" class="store-feature-img" width="68" height="68" loading="lazy" />
             </picture>
           </div>
           <div class="store-feature-info">
@@ -1310,7 +1301,7 @@
           <div class="store-feature-img-wrap">
             <picture>
               <source srcset="assets/features/feature_rastreo_pedidos.webp" type="image/webp">
-              <img src="assets/features/feature_rastreo_pedidos.png" alt="Rastreo de Pedidos Falabella" class="store-feature-img" width="68" height="68" loading="lazy" />
+              <img src="assets/features/feature_rastreo_pedidos.png" alt="Rastreo de Pedidos Sagabella" class="store-feature-img" width="68" height="68" loading="lazy" />
             </picture>
           </div>
           <div class="store-feature-info">
@@ -1325,7 +1316,7 @@
           <div class="store-feature-img-wrap">
             <picture>
               <source srcset="assets/features/feature_garantia_30d.webp" type="image/webp">
-              <img src="assets/features/feature_garantia_30d.png" alt="Garantía 30 Días Falabella" class="store-feature-img" width="68" height="68" loading="lazy" />
+              <img src="assets/features/feature_garantia_30d.png" alt="Garantía 30 Días Sagabella" class="store-feature-img" width="68" height="68" loading="lazy" />
             </picture>
           </div>
           <div class="store-feature-info">
@@ -1339,7 +1330,7 @@
     </section>
 
     <!-- =========================================================================
-         Sección de Categorías con Scroll Horizontal Continuo (Falabella)
+         Sección de Categorías con Scroll Horizontal Continuo (Sagabella)
          ========================================================================= -->
     <section class="falabella-categories-section" aria-label="Explorar productos por categoría">
       <div class="falabella-categories-header">
@@ -1359,7 +1350,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Deportes', 4, '')" role="button" tabindex="0" title="Explorar Deporte" aria-label="Categoría Deportes">
           <picture>
             <source srcset="assets/categories/cat_deporte.webp" type="image/webp">
-            <img src="assets/categories/cat_deporte.png" alt="Categoría Deportes Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_deporte.png" alt="Categoría Deportes Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">DEPORTE<span class="cat-dot">.</span></h3>
@@ -1368,7 +1359,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Hogar', 2, '')" role="button" tabindex="0" title="Explorar Decohogar" aria-label="Categoría Hogar">
           <picture>
             <source srcset="assets/categories/cat_decohogar.webp" type="image/webp">
-            <img src="assets/categories/cat_decohogar.png" alt="Categoría Hogar Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_decohogar.png" alt="Categoría Hogar Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">DECOHOGAR<span class="cat-dot">.</span></h3>
@@ -1377,7 +1368,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Moda Mujer', 3, 'Mujer')" role="button" tabindex="0" title="Explorar Moda Mujer" aria-label="Categoría Moda Mujer">
           <picture>
             <source srcset="assets/categories/cat_moda_mujer.webp" type="image/webp">
-            <img src="assets/categories/cat_moda_mujer.png" alt="Categoría Moda Mujer Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_moda_mujer.png" alt="Categoría Moda Mujer Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">MODA.MUJER<span class="cat-dot">.</span></h3>
@@ -1386,7 +1377,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Moda Hombre', 3, 'Hombre')" role="button" tabindex="0" title="Explorar Moda Hombre" aria-label="Categoría Moda Hombre">
           <picture>
             <source srcset="assets/categories/cat_moda_hombre.webp" type="image/webp">
-            <img src="assets/categories/cat_moda_hombre.png" alt="Categoría Moda Hombre Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_moda_hombre.png" alt="Categoría Moda Hombre Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">MODA.HOMBRE<span class="cat-dot">.</span></h3>
@@ -1395,7 +1386,7 @@
         <article class="falabella-cat-card" onclick="window.location.href='calzado.html'" style="cursor: pointer;" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado">
           <picture>
             <source srcset="assets/categories/cat_calzado.webp" type="image/webp">
-            <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">CALZADO<span class="cat-dot">.</span></h3>
@@ -1404,7 +1395,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Tecnología', 1, '')" role="button" tabindex="0" title="Explorar Tecnología" aria-label="Categoría Tecnología">
           <picture>
             <source srcset="assets/categories/cat_tecnologia.webp" type="image/webp">
-            <img src="assets/categories/cat_tecnologia.png" alt="Categoría Tecnología Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_tecnologia.png" alt="Categoría Tecnología Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">TECNOLOG&Iacute;A<span class="cat-dot">.</span></h3>
@@ -1413,7 +1404,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Belleza', null, 'Belleza')" role="button" tabindex="0" title="Explorar Belleza" aria-label="Categoría Belleza">
           <picture>
             <source srcset="assets/categories/cat_belleza.webp?v=2" type="image/webp">
-            <img src="assets/categories/cat_belleza.png?v=2" alt="Categoría Belleza Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_belleza.png?v=2" alt="Categoría Belleza Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">BELLEZA<span class="cat-dot">.</span></h3>
@@ -1422,7 +1413,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Deportes', 4, '')" role="button" tabindex="0" title="Explorar Deporte" aria-label="Categoría Deportes" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_deporte.webp" type="image/webp">
-            <img src="assets/categories/cat_deporte.png" alt="Categoría Deportes Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_deporte.png" alt="Categoría Deportes Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">DEPORTE<span class="cat-dot">.</span></h3>
@@ -1431,7 +1422,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Hogar', 2, '')" role="button" tabindex="0" title="Explorar Decohogar" aria-label="Categoría Hogar" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_decohogar.webp" type="image/webp">
-            <img src="assets/categories/cat_decohogar.png" alt="Categoría Hogar Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_decohogar.png" alt="Categoría Hogar Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">DECOHOGAR<span class="cat-dot">.</span></h3>
@@ -1440,7 +1431,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Moda Mujer', 3, 'Mujer')" role="button" tabindex="0" title="Explorar Moda Mujer" aria-label="Categoría Moda Mujer" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_moda_mujer.webp" type="image/webp">
-            <img src="assets/categories/cat_moda_mujer.png" alt="Categoría Moda Mujer Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_moda_mujer.png" alt="Categoría Moda Mujer Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">MODA.MUJER<span class="cat-dot">.</span></h3>
@@ -1449,7 +1440,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Moda Hombre', 3, 'Hombre')" role="button" tabindex="0" title="Explorar Moda Hombre" aria-label="Categoría Moda Hombre" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_moda_hombre.webp" type="image/webp">
-            <img src="assets/categories/cat_moda_hombre.png" alt="Categoría Moda Hombre Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_moda_hombre.png" alt="Categoría Moda Hombre Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">MODA.HOMBRE<span class="cat-dot">.</span></h3>
@@ -1458,7 +1449,7 @@
         <article class="falabella-cat-card" onclick="window.location.href='calzado.html'" style="cursor: pointer;" role="button" tabindex="0" title="Explorar Calzado" aria-label="Categoría Calzado" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_calzado.webp" type="image/webp">
-            <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_calzado.png" alt="Categoría Calzado Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">CALZADO<span class="cat-dot">.</span></h3>
@@ -1467,7 +1458,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Tecnología', 1, '')" role="button" tabindex="0" title="Explorar Tecnología" aria-label="Categoría Tecnología" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_tecnologia.webp" type="image/webp">
-            <img src="assets/categories/cat_tecnologia.png" alt="Categoría Tecnología Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_tecnologia.png" alt="Categoría Tecnología Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">TECNOLOG&Iacute;A<span class="cat-dot">.</span></h3>
@@ -1476,7 +1467,7 @@
         <article class="falabella-cat-card" onclick="handleCategoryCardClick('Belleza', null, 'Belleza')" role="button" tabindex="0" title="Explorar Belleza" aria-label="Categoría Belleza" aria-hidden="true">
           <picture>
             <source srcset="assets/categories/cat_belleza.webp?v=2" type="image/webp">
-            <img src="assets/categories/cat_belleza.png?v=2" alt="Categoría Belleza Falabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
+            <img src="assets/categories/cat_belleza.png?v=2" alt="Categoría Belleza Sagabella" class="falabella-cat-img" width="186" height="282" loading="lazy" />
           </picture>
           <div class="falabella-cat-overlay">
             <h3 class="falabella-cat-label">BELLEZA<span class="cat-dot">.</span></h3>
@@ -1530,7 +1521,7 @@
 
   </main>
 
-  <!-- Banner de cookies al pie idéntico al original de Falabella -->
+  <!-- Banner de cookies al pie idéntico al original de Sagabella -->
   <div id="storeCookieBanner" class="cookie-banner-container fixed bottom-0 left-0 right-0 w-full z-50 py-3.5 px-4 sm:px-8 md:px-12 flex items-center justify-center transition-all duration-300">
     <div class="w-full max-w-7xl flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
       <div class="text-[#2c333a] text-xs sm:text-[13.5px] font-normal leading-relaxed">
@@ -1554,14 +1545,14 @@
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
       <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem;" class="text-[12px] leading-relaxed">
         
-        <!-- COLUMNA 1: falabella.com (Título original 1) -->
+        <!-- COLUMNA 1: sagabella.com (Título original 1) -->
         <div class="space-y-3">
           <div class="flex items-center gap-1 select-none">
-            <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,sans-serif;">falabella</span>
+            <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,sans-serif;">sagabella</span>
             <span style="color:#aad500; font-size:18px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,sans-serif;">.com</span>
           </div>
           <p class="text-slate-300 text-[11.5px] leading-relaxed">
-            Tienda virtual y sistema integral de ventas basado en el proceso empresarial de Falabella Perú. Realizada para el curso Tecnología de Información II (USMP).
+            Tienda virtual y sistema integral de ventas basado en el proceso empresarial de Sagabella Perú. Realizada para el curso Tecnología de Información II (USMP).
           </p>
           <div class="text-[11px] text-slate-400">
             Marcas oficiales: Xiaomi, Samsung, Lenovo, Apple, Sony, Nike, Adidas, Oster, JBL, Everest.
@@ -1611,7 +1602,7 @@
         <!-- COLUMNA 4: Acceso Administrativo (Título original 4) -->
         <div class="space-y-2.5">
           <h4 class="text-white font-bold text-sm mb-3">Acceso Administrativo</h4>
-          <p class="text-[11.5px] text-slate-300">¿Eres personal de Falabella? Ingresa al sistema de gestión comercial interna:</p>
+          <p class="text-[11.5px] text-slate-300">¿Eres personal de Sagabella? Ingresa al sistema de gestión comercial interna:</p>
           <button type="button" onclick="enterLogin()" class="w-full mt-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs flex items-center justify-center gap-2 transition cursor-pointer hover:border-[#aad500]">
             <svg class="w-3.5 h-3.5 text-[#aad500]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <span>Iniciar Sesión en Intranet</span>
@@ -1631,21 +1622,21 @@
           <span class="text-xs font-semibold text-slate-200">Síguenos en:</span>
           
           <!-- Instagram -->
-          <a href="https://www.instagram.com/falabella_pe/?hl=es-la" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs" title="Instagram Falabella Perú" aria-label="Instagram">
+          <a href="https://www.instagram.com/sagabella_pe/?hl=es-la" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs" title="Instagram Sagabella Perú" aria-label="Instagram">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
           </a>
 
           <!-- Facebook -->
-          <a href="https://www.facebook.com/sagafalabella/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs" title="Facebook Saga Falabella" aria-label="Facebook">
+          <a href="https://www.facebook.com/sagabella/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs" title="Facebook Sagabella" aria-label="Facebook">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
           </a>
 
           <!-- TikTok -->
-          <a href="https://www.tiktok.com/@falabella_pe?lang=es" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-black text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs border border-white/10" title="TikTok Falabella Perú" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@sagabella_pe?lang=es" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-black text-white flex items-center justify-center transition transform hover:scale-110 shadow-xs border border-white/10" title="TikTok Sagabella Perú" aria-label="TikTok">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.42a6.34 6.34 0 0 0-.86-.06 6.34 6.34 0 1 0 6.34 6.34V8.71a8.16 8.16 0 0 0 4.77 1.52V6.78a4.85 4.85 0 0 1-1-.09z"/>
             </svg>
@@ -1653,7 +1644,7 @@
 
         </div>
 
-        <!-- Copyright Falabella: con margen a la derecha (pr-28) para que el botón flotante del chatbot nunca choque ni se superponga -->
+        <!-- Copyright Sagabella: con margen a la derecha (pr-28) para que el botón flotante del chatbot nunca choque ni se superponga -->
         <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[11.5px] text-slate-300 pr-0 sm:pr-28 text-center sm:text-right">
           <div class="flex items-center gap-3">
             <a href="terminos-condiciones.html" class="hover:text-[#aad500] hover:underline transition">Términos y Condiciones</a>
@@ -1663,7 +1654,7 @@
             <a href="libro-reclamaciones.html" class="hover:text-[#aad500] hover:underline transition">Libro de Reclamaciones</a>
           </div>
           <span class="hidden sm:inline text-slate-500">|</span>
-          <span>falabella.com • Todos los derechos reservados • Perú</span>
+          <span>sagabella.com • Todos los derechos reservados • Perú</span>
         </div>
 
       </div>
@@ -1678,7 +1669,7 @@
     <!-- Barra superior para volver a la tienda -->
     <div class="flex items-center justify-between">
       <button type="button" onclick="enterStore()" class="inline-flex items-center gap-2 text-xs font-bold text-white bg-white/15 hover:bg-white/25 px-4 py-2 rounded-xl transition backdrop-blur border border-white/20 shadow-md">
-        <span>← Volver a la Tienda Falabella</span>
+        <span>← Volver a la Tienda Sagabella</span>
       </button>
       <span class="text-xs text-white/60 font-medium">Acceso Intranet / Personal</span>
     </div>
@@ -1688,11 +1679,11 @@
       <div class="hidden lg:flex flex-col gap-7 text-white pl-6">
         <div class="flex items-center gap-3.5">
           <div class="w-12 h-12 rounded-2xl bg-[#0f766e] grid place-items-center shadow-lg shadow-black/20">
-            <span class="font-black text-white text-2xl leading-none tracking-tight">f</span>
+            <span class="font-black text-white text-2xl leading-none tracking-tight">S</span>
           </div>
           <div>
             <div class="flex items-center gap-0.5">
-              <span class="text-3xl font-black tracking-tight lowercase leading-none text-white">falabella</span>
+              <span class="text-3xl font-black tracking-tight lowercase leading-none text-white">sagabella</span>
               <span class="text-2xl font-black tracking-tight lowercase leading-none text-teal-300">.com</span>
             </div>
             <div class="text-white/70 text-[13px] font-medium mt-1">Sistema Integrado de Ventas</div>
@@ -1716,7 +1707,7 @@
       <div class="bg-white rounded-2xl shadow-2xl shadow-black/30 p-7 sm:p-9 w-full max-w-md mx-auto">
         <div class="flex lg:hidden items-center justify-between gap-3 mb-6">
           <div class="flex items-center gap-1 select-none">
-            <span class="text-2xl font-black tracking-tight lowercase leading-none text-[#0f766e]">falabella</span>
+            <span class="text-2xl font-black tracking-tight lowercase leading-none text-[#0f766e]">sagabella</span>
             <span class="text-xl font-black tracking-tight lowercase leading-none text-[#0d9488]">.com</span>
           </div>
           <button type="button" onclick="enterStore()" class="btn btn-outline btn-sm !py-1 !px-2.5 text-[11px] text-emerald-800 border-emerald-300 bg-emerald-50">← Tienda</button>
@@ -1724,7 +1715,7 @@
 
       <!-- Pestañas: personal interno / portal de clientes (HU-27) -->
       <div class="flex gap-1 p-1 bg-slate-100 rounded-xl mb-5" role="tablist" aria-label="Tipo de acceso">
-        <button type="button" id="tabPersonal" class="login-tab active" role="tab" aria-selected="true" onclick="switchLoginTab('personal')">Personal Falabella</button>
+        <button type="button" id="tabPersonal" class="login-tab active" role="tab" aria-selected="true" onclick="switchLoginTab('personal')">Personal Sagabella</button>
         <button type="button" id="tabClient" class="login-tab" role="tab" aria-selected="false" onclick="switchLoginTab('client')">Portal de clientes</button>
       </div>
 
@@ -1741,7 +1732,7 @@
         <form id="loginForm" onsubmit="return handleLogin(event)" novalidate>
           <div class="mb-4">
             <label class="label" for="loginUser">Usuario</label>
-            <input class="input" id="loginUser" name="usuario" type="text" autocomplete="username" placeholder="ej. usuario.falabella" />
+            <input class="input" id="loginUser" name="usuario" type="text" autocomplete="username" placeholder="ej. usuario.sagabella" />
           </div>
           <div class="mb-5">
             <label class="label" for="loginPass">Contraseña</label>
@@ -1801,11 +1792,11 @@
   <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-brand-950 flex flex-col -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none" aria-label="Navegación principal">
     <div class="px-5 pt-6 pb-3 flex items-center gap-3">
       <div class="w-9 h-9 rounded-xl bg-brand-700 grid place-items-center flex-shrink-0 shadow-xs">
-        <span class="font-black text-white text-xl leading-none">f</span>
+        <span class="font-black text-white text-xl leading-none">S</span>
       </div>
       <div class="min-w-0">
         <div class="flex items-center gap-0.5">
-          <span class="text-white text-xl font-extrabold tracking-tight lowercase leading-none">falabella</span>
+          <span class="text-white text-xl font-extrabold tracking-tight lowercase leading-none">sagabella</span>
           <span class="text-teal-300 font-bold text-sm">.com</span>
         </div>
         <div class="text-white/60 text-[11px] font-medium mt-0.5">Intranet Administrativa</div>
@@ -1869,8 +1860,8 @@
     <!-- Pie de página (fijo al fondo) -->
     <footer class="mt-auto border-t border-slate-200 bg-white/70">
       <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] text-slate-400">
-        <span>Falabella · Sistema de Ventas — Demo académica (USMP · Tecnología de Información II · Grupo 4)</span>
-        <span>Datos simulados en el navegador · localStorage <code class="text-slate-500 bg-slate-100 rounded px-1.5 py-0.5">falabella_store_v3</code></span>
+        <span>Sagabella · Sistema de Ventas — Demo académica (USMP · Tecnología de Información II · Grupo 4)</span>
+        <span>Datos simulados en el navegador · localStorage <code class="text-slate-500 bg-slate-100 rounded px-1.5 py-0.5">sagabella_store_v3</code></span>
       </div>
     </footer>
   </div>
@@ -1881,11 +1872,11 @@
   <header class="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-[1000px] mx-auto flex items-center gap-3 px-4 sm:px-6 h-16">
       <div class="w-9 h-9 rounded-xl bg-[#0f766e] grid place-items-center flex-shrink-0 shadow-xs">
-        <span class="font-black text-white text-lg leading-none">f</span>
+        <span class="font-black text-white text-lg leading-none">S</span>
       </div>
       <div class="min-w-0">
         <div class="flex items-center gap-1.5">
-          <span class="text-xl font-black text-[#0f766e] tracking-tight lowercase leading-none">falabella<span class="text-[#0d9488] font-bold text-base">.com</span></span>
+          <span class="text-xl font-black text-[#0f766e] tracking-tight lowercase leading-none">sagabella<span class="text-[#0d9488] font-bold text-base">.com</span></span>
           <span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-teal-50 text-teal-800 border border-teal-200">Portal Clientes</span>
         </div>
         <p class="hidden sm:block text-[11px] text-slate-500 leading-tight">Consulta el estado de tus pedidos (HU-27)</p>
@@ -1906,7 +1897,7 @@
 
   <footer class="mt-auto border-t border-slate-200 bg-white/70">
     <div class="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] text-slate-400">
-      <span>Falabella · Portal de clientes — Demo académica (USMP · TI II · Grupo 4)</span>
+      <span>Sagabella · Portal de clientes — Demo académica (USMP · TI II · Grupo 4)</span>
       <span>El chatbot de preguntas frecuentes está disponible en el botón verde (HU-36)</span>
     </div>
   </footer>
@@ -1917,7 +1908,7 @@
   <span class="fab-dot"></span>
   <span id="chatFabIcon"></span>
 </button>
-<div id="chatPanel" class="hidden fixed bottom-[88px] right-5 z-[70] w-[min(384px,calc(100vw-40px))] h-[min(560px,calc(100dvh-120px))] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/25 overflow-hidden flex-col" role="dialog" aria-label="Chatbot de Falabella"></div>
+<div id="chatPanel" class="hidden fixed bottom-[88px] right-5 z-[70] w-[min(384px,calc(100vw-40px))] h-[min(560px,calc(100dvh-120px))] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/25 overflow-hidden flex-col" role="dialog" aria-label="Chatbot de Sagabella"></div>
 
 <!-- Raíces de modales y notificaciones -->
 <div id="modalRoot"></div>
@@ -1925,8 +1916,8 @@
 <script>
 'use strict';
 /* =====================================================================================================
-   SISTEMA DE VENTAS FALABELLA — Demo académica (un solo archivo HTML)
-   Fuente: TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-FALABELLA_V3.10_CHATBOT.docx
+   SISTEMA DE VENTAS SAGABELLA — Demo académica (un solo archivo HTML)
+   Fuente: TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-SAGABELLA_V3.10_CHATBOT.docx
    Épicas: EP-01..EP-09 · Historias de Usuario: HU-01..HU-36 · Reglas de negocio: RN-01..RN-27
    Excepciones: EX-01..EX-14
    ===================================================================================================== */
@@ -1983,9 +1974,9 @@ const ICONS = {
 function icon(name, cls){ cls = cls || 'w-5 h-5'; return '<svg class="'+cls+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(ICONS[name]||'')+'</svg>'; }
 
 /* ============ Constantes ============ */
-const STORE_KEY = 'falabella_store_v3';
+const STORE_KEY = 'sagabella_store_v3';
 const SESSION_KEY = 'falabella_session_user';
-const CLIENT_SESSION_KEY = 'falabella_session_client';
+const CLIENT_SESSION_KEY = 'sagabella_session_client';
 const ORDER_STATES = ['Preparando','Enviado','Entregado'];
 const PAY_METHODS = ['Efectivo','Tarjeta','Yape/Plin'];
 const RETURN_MAX_DAYS = 30;          // Plazo para devoluciones/cambios (RN-20)
@@ -2091,18 +2082,18 @@ function seedState(){
   ];
 
   const products = [
-    { id:1, code:'TEC-001', name:'Laptop Lenovo IdeaPad 3 15.6" AMD Ryzen 5', categoryId:1, brand:'Lenovo', description:'Laptop Lenovo IdeaPad 3, procesador AMD Ryzen 5, 8 GB RAM, SSD 512 GB, pantalla 15.6" Full HD antirreflejo y Windows 11', price:1899.00, originalPrice:2299.00, stock:12, minStock:4, image:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.7, reviewsCount:48, isFeatured:true, createdAt:d(30) },
-    { id:2, code:'TEC-002', name:'Audífonos Inalámbricos JBL Wave 520 Bluetooth', categoryId:1, brand:'JBL', description:'Audífonos supraurales JBL Wave 520 con sonido JBL Pure Bass, hasta 57 h de batería, carga rápida y conexión multipunto', price:129.90, originalPrice:179.90, stock:8, minStock:5, image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.8, reviewsCount:92, isFeatured:true, createdAt:d(30) },
-    { id:3, code:'DEP-001', name:'Zapatillas Running Nike Revolution 6 Next Nature', categoryId:4, brand:'Nike', description:'Zapatillas Nike Revolution 6 para running con amortiguación de espuma suave, tejido de malla transpirable y suela flexible', price:249.90, originalPrice:319.90, stock:18, minStock:6, image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.9, reviewsCount:135, isFeatured:true, createdAt:d(28) },
-    { id:4, code:'MOD-001', name:'Camisa Casual Manga Larga University Club Regular Fit', categoryId:3, brand:'University Club', description:'Camisa clásica de vestir para hombre confeccionada en 100% algodón peruano de fibra larga, cuello formal y diversos colores', price:59.90, originalPrice:89.90, stock:25, minStock:10, image:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.3, reviewsCount:24, isFeatured:false, createdAt:d(25) },
-    { id:5, code:'TEC-003', name:'Smart TV Samsung 50" Crystal UHD 4K', categoryId:1, brand:'Samsung', description:'Televisor Samsung 50 pulgadas 4K UHD, procesador Crystal 4K, HDR10+, Smart Hub Tizen con Netflix, YouTube y Disney+', price:1499.00, originalPrice:1899.00, stock:5, minStock:3, image:'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.6, reviewsCount:61, isFeatured:true, createdAt:d(25) },
+    { id:1, code:'TEC-001', name:'Laptop Lenovo IdeaPad 3 15.6" AMD Ryzen 5', categoryId:1, brand:'Lenovo', description:'Laptop Lenovo IdeaPad 3, procesador AMD Ryzen 5, 8 GB RAM, SSD 512 GB, pantalla 15.6" Full HD antirreflejo y Windows 11', price:1899.00, originalPrice:2299.00, stock:12, minStock:4, image:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.7, reviewsCount:48, isFeatured:true, createdAt:d(30) },
+    { id:2, code:'TEC-002', name:'Audífonos Inalámbricos JBL Wave 520 Bluetooth', categoryId:1, brand:'JBL', description:'Audífonos supraurales JBL Wave 520 con sonido JBL Pure Bass, hasta 57 h de batería, carga rápida y conexión multipunto', price:129.90, originalPrice:179.90, stock:8, minStock:5, image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.8, reviewsCount:92, isFeatured:true, createdAt:d(30) },
+    { id:3, code:'DEP-001', name:'Zapatillas Running Nike Revolution 6 Next Nature', categoryId:4, brand:'Nike', description:'Zapatillas Nike Revolution 6 para running con amortiguación de espuma suave, tejido de malla transpirable y suela flexible', price:249.90, originalPrice:319.90, stock:18, minStock:6, image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.9, reviewsCount:135, isFeatured:true, createdAt:d(28) },
+    { id:4, code:'MOD-001', name:'Camisa Casual Manga Larga University Club Regular Fit', categoryId:3, brand:'University Club', description:'Camisa clásica de vestir para hombre confeccionada en 100% algodón peruano de fibra larga, cuello formal y diversos colores', price:59.90, originalPrice:89.90, stock:25, minStock:10, image:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.3, reviewsCount:24, isFeatured:false, createdAt:d(25) },
+    { id:5, code:'TEC-003', name:'Smart TV Samsung 50" Crystal UHD 4K', categoryId:1, brand:'Samsung', description:'Televisor Samsung 50 pulgadas 4K UHD, procesador Crystal 4K, HDR10+, Smart Hub Tizen con Netflix, YouTube y Disney+', price:1499.00, originalPrice:1899.00, stock:5, minStock:3, image:'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.6, reviewsCount:61, isFeatured:true, createdAt:d(25) },
     { id:6, code:'HOG-001', name:'Olla Arrocera Oster 1.8L Multiuso con Vaporera', categoryId:2, brand:'Oster', description:'Olla arrocera eléctrica Oster de 1.8 litros con tazón antiadherente removible, vaporera exterior y función automática para mantener caliente', price:139.90, originalPrice:169.90, stock:9, minStock:3, image:'https://images.unsplash.com/photo-1544233726-9f1d2b27be8b?w=600&auto=format&fit=crop&q=80', origin:'OTRO', rating:4.5, reviewsCount:37, isFeatured:false, createdAt:d(22) },
-    { id:7, code:'ACC-001', name:'Mochila Urbana Everest Explorer 15.6" Impermeable', categoryId:5, brand:'Everest', description:'Mochila urbana Everest resistente a la llovizna con compartimento acolchado para laptop de hasta 15.6", puerto USB exterior y correas ergonómicas', price:89.90, originalPrice:129.90, stock:14, minStock:5, image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.4, reviewsCount:19, isFeatured:false, createdAt:d(20) },
-    { id:8, code:'TEC-004', name:'Tablet Samsung Galaxy Tab A9+ 11" 64GB', categoryId:1, brand:'Samsung', description:'Tablet Samsung Galaxy Tab A9+ con pantalla fluida de 11 pulgadas a 90Hz, 4 altavoces Dolby Atmos, 64 GB de almacenamiento expandible y batería de 7040 mAh', price:749.00, originalPrice:899.00, stock:7, minStock:3, image:'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.6, reviewsCount:42, isFeatured:false, createdAt:d(18) },
-    { id:9, code:'TEC-005', name:'Smartphone Xiaomi Redmi Note 13 256GB 8GB RAM', categoryId:1, brand:'Xiaomi', description:'Celular Xiaomi Redmi Note 13 con 256 GB, cámara triple de 108 MP, pantalla AMOLED 120Hz Full HD+, procesador Snapdragon y carga rápida 33W', price:849.00, originalPrice:1099.00, stock:15, minStock:4, image:'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.8, reviewsCount:110, isFeatured:true, createdAt:d(15) },
-    { id:10, code:'DEP-002', name:'Zapatillas Urbanas Adidas Grand Court Base 2.0', categoryId:4, brand:'Adidas', description:'Zapatillas deportivas Adidas clásicas estilo tenis con las 3 tiras emblemáticas, plantilla Cloudfoam Comfort y suela de goma vulcanizada', price:219.90, originalPrice:279.90, stock:12, minStock:5, image:'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.7, reviewsCount:78, isFeatured:true, createdAt:d(14) },
-    { id:11, code:'TEC-006', name:'Apple Watch Series 9 GPS 45mm', categoryId:1, brand:'Apple', description:'Reloj inteligente Apple Watch Series 9 con chip S9 SiP, pantalla Retina OLED siempre activa de 2000 nits, gesto de doble toque y monitor de ritmo cardíaco', price:1849.00, originalPrice:2199.00, stock:6, minStock:3, image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.9, reviewsCount:156, isFeatured:true, createdAt:d(10) },
-    { id:12, code:'TEC-007', name:'Consola Sony PlayStation 5 Slim Digital 1TB', categoryId:1, brand:'Sony', description:'Consola Sony PS5 versión Slim Digital con unidad SSD de 1TB de alta velocidad, Tempest 3D AudioTech, soporte 4K a 120Hz y mando inalámbrico DualSense', price:2399.00, originalPrice:2799.00, stock:4, minStock:2, image:'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&auto=format&fit=crop&q=80', origin:'FALABELLA', rating:4.9, reviewsCount:215, isFeatured:true, createdAt:d(8) }
+    { id:7, code:'ACC-001', name:'Mochila Urbana Everest Explorer 15.6" Impermeable', categoryId:5, brand:'Everest', description:'Mochila urbana Everest resistente a la llovizna con compartimento acolchado para laptop de hasta 15.6", puerto USB exterior y correas ergonómicas', price:89.90, originalPrice:129.90, stock:14, minStock:5, image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.4, reviewsCount:19, isFeatured:false, createdAt:d(20) },
+    { id:8, code:'TEC-004', name:'Tablet Samsung Galaxy Tab A9+ 11" 64GB', categoryId:1, brand:'Samsung', description:'Tablet Samsung Galaxy Tab A9+ con pantalla fluida de 11 pulgadas a 90Hz, 4 altavoces Dolby Atmos, 64 GB de almacenamiento expandible y batería de 7040 mAh', price:749.00, originalPrice:899.00, stock:7, minStock:3, image:'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.6, reviewsCount:42, isFeatured:false, createdAt:d(18) },
+    { id:9, code:'TEC-005', name:'Smartphone Xiaomi Redmi Note 13 256GB 8GB RAM', categoryId:1, brand:'Xiaomi', description:'Celular Xiaomi Redmi Note 13 con 256 GB, cámara triple de 108 MP, pantalla AMOLED 120Hz Full HD+, procesador Snapdragon y carga rápida 33W', price:849.00, originalPrice:1099.00, stock:15, minStock:4, image:'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.8, reviewsCount:110, isFeatured:true, createdAt:d(15) },
+    { id:10, code:'DEP-002', name:'Zapatillas Urbanas Adidas Grand Court Base 2.0', categoryId:4, brand:'Adidas', description:'Zapatillas deportivas Adidas clásicas estilo tenis con las 3 tiras emblemáticas, plantilla Cloudfoam Comfort y suela de goma vulcanizada', price:219.90, originalPrice:279.90, stock:12, minStock:5, image:'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.7, reviewsCount:78, isFeatured:true, createdAt:d(14) },
+    { id:11, code:'TEC-006', name:'Apple Watch Series 9 GPS 45mm', categoryId:1, brand:'Apple', description:'Reloj inteligente Apple Watch Series 9 con chip S9 SiP, pantalla Retina OLED siempre activa de 2000 nits, gesto de doble toque y monitor de ritmo cardíaco', price:1849.00, originalPrice:2199.00, stock:6, minStock:3, image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.9, reviewsCount:156, isFeatured:true, createdAt:d(10) },
+    { id:12, code:'TEC-007', name:'Consola Sony PlayStation 5 Slim Digital 1TB', categoryId:1, brand:'Sony', description:'Consola Sony PS5 versión Slim Digital con unidad SSD de 1TB de alta velocidad, Tempest 3D AudioTech, soporte 4K a 120Hz y mando inalámbrico DualSense', price:2399.00, originalPrice:2799.00, stock:4, minStock:2, image:'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&auto=format&fit=crop&q=80', origin:'SAGABELLA', rating:4.9, reviewsCount:215, isFeatured:true, createdAt:d(8) }
   ];
 
   const promotions = [
@@ -2270,7 +2261,7 @@ function filterDigits(el, maxLen){
   if(el.value !== v) el.value = v;
 }
 
-/* ---------- Persistencia (localStorage · clave falabella_demo_v2) ---------- */
+/* ---------- Persistencia (localStorage · clave sagabella_demo_v2) ---------- */
 function save(){
   try{ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }
   catch(e){ console.error('No se pudo guardar el estado en localStorage:', e); }
@@ -2668,7 +2659,7 @@ function showDemoCredentials(){
     '<div class="modal-body">' +
       '<div class="rounded-xl border border-teal-100 bg-teal-50/70 p-3.5 mb-4 flex items-start gap-2.5">' +
         '<span class="text-teal-700 mt-0.5">' + icon('shield','w-4 h-4') + '</span>' +
-        '<p class="text-[12px] text-slate-600 leading-relaxed">Cuentas configuradas para la demostración académica del sistema de ventas Falabella. Puedes hacer clic en «Usar» en cualquier fila para autocompletar el acceso.</p>' +
+        '<p class="text-[12px] text-slate-600 leading-relaxed">Cuentas configuradas para la demostración académica del sistema de ventas Sagabella. Puedes hacer clic en «Usar» en cualquier fila para autocompletar el acceso.</p>' +
       '</div>' +
       '<h4 class="text-[12px] font-bold uppercase tracking-wider text-slate-400 mb-2">Personal interno</h4>' +
       '<div class="tblwrap mb-4"><table class="tbl"><thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th class="num"></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
@@ -3155,7 +3146,7 @@ function productsRows(){
       '<td class="num font-bold money">' + fmtMoney(p.price) + '</td>' +
       '<td class="num"><span class="font-bold ' + (p.stock === 0 ? 'text-rose-600' : p.stock <= p.minStock ? 'text-amber-600' : 'text-slate-800') + '">' + p.stock + '</span>' +
         '<span class="text-slate-300"> / ' + p.minStock + '</span></td>' +
-      '<td><span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + (p.origin === 'FALABELLA' ? icon('store','w-3 h-3') : icon('users','w-3 h-3')) + escapeHtml(p.origin) + '</span></td>' +
+      '<td><span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? icon('store','w-3 h-3') : icon('users','w-3 h-3')) + escapeHtml(p.origin) + '</span></td>' +
       '<td><span class="badge ' + st.cls + '"><span class="dot"></span>' + st.label + '</span></td>' +
       '<td class="num"><div class="flex items-center justify-end gap-1.5">' +
         '<button class="btn btn-outline btn-icon" title="Consultar información del producto (HU-10)" onclick="openProductInfo(' + p.id + ')">' + icon('eye','w-4 h-4') + '</button>' +
@@ -3611,7 +3602,7 @@ function reportReposition(){
       html += '<tr><td><div class="font-semibold">' + escapeHtml(p.name) + '</div><div class="text-[11px] text-slate-400">' + escapeHtml(p.code) + '</div></td>' +
         '<td class="num font-bold ' + (p.stock === 0 ? 'text-rose-600' : 'text-amber-600') + '">' + p.stock + '</td>' +
         '<td class="num text-slate-400">' + p.minStock + '</td>' +
-        '<td><span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span></td>' +
+        '<td><span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span></td>' +
         '<td><span class="badge b-amber"><span class="dot"></span>Requiere reposición</span></td>' +
         (hasPerm('products.adjust') ? '<td class="num"><button class="btn btn-primary btn-sm" onclick="openAdjust(' + p.id + ')">' + icon('plus','w-3.5 h-3.5') + ' Reponer</button></td>' : '') + '</tr>';
     });
@@ -3892,7 +3883,7 @@ function renderSupport(){
     '<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">' +
       '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('clock','w-4 h-4 text-brand-700') + ' Horario</div><p class="text-[12.5px] text-slate-500">Lunes a sábado, de 9:00 a 21:00.</p></div>' +
       '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('msg','w-4 h-4 text-brand-700') + ' Chat / Tienda</div><p class="text-[12.5px] text-slate-500">Chatbot de preguntas frecuentes y módulos de gestión en tienda.</p></div>' +
-      '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('send','w-4 h-4 text-brand-700') + ' Correo</div><p class="text-[12.5px] text-slate-500">contacto@falabella.com — respuestas en 24 h hábiles.</p></div>' +
+      '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('send','w-4 h-4 text-brand-700') + ' Correo</div><p class="text-[12.5px] text-slate-500">contacto@sagabella.com — respuestas en 24 h hábiles.</p></div>' +
     '</div></div>';
 
   html += '</div>';
@@ -4043,7 +4034,7 @@ function openProduct(id){                                    /* Formulario regis
           '<option value="">Seleccionar categoría</option>' +
           DB.categories.map(c => '<option value="' + c.id + '"' + (p && p.categoryId === c.id ? ' selected' : '') + '>' + escapeHtml(c.name) + '</option>').join('') + '</select></div>' +
         '<div><label class="label" for="pfOrigin">Origen *</label><select class="select" id="pfOrigin">' +
-          '<option value="FALABELLA"' + (p && p.origin === 'FALABELLA' ? ' selected' : '') + '>FALABELLA — vendido por Falabella</option>' +
+          '<option value="SAGABELLA"' + (p && (p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? ' selected' : '') + '>SAGABELLA — vendido por Sagabella</option>' +
           '<option value="OTRO"' + (p && p.origin === 'OTRO' ? ' selected' : '') + '>OTRO — vendido por otro vendedor</option></select></div>' +
         '<div class="sm:col-span-2"><label class="label" for="pfDesc">Descripción</label><input class="input" id="pfDesc" placeholder="Descripción breve del producto" value="' + escapeHtml(p ? (p.description||'') : '') + '" /></div>' +
         '<div><label class="label" for="pfPrice">Precio (S/) *</label><input class="input money" id="pfPrice" type="number" min="0.01" step="0.01" placeholder="0.00" value="' + (p ? p.price : '') + '" /></div>' +
@@ -4106,7 +4097,7 @@ function openProductInfo(id){                                /* Consulta de info
       '<div class="flex items-start justify-between gap-3 mb-4 flex-wrap">' +
         '<div><h4 class="text-lg font-bold text-slate-900 leading-tight">' + escapeHtml(p.name) + '</h4>' +
         '<div class="flex gap-2 mt-2 flex-wrap"><span class="badge b-slate">' + escapeHtml(categoryName(p.categoryId)) + '</span>' +
-        '<span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span>' +
+        '<span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span>' +
         (promo ? '<span class="badge b-violet">' + icon('percent','w-3 h-3') + escapeHtml(promo.name) + '</span>' : '') + '</div></div>' +
         '<div class="text-right"><div class="text-2xl font-extrabold text-brand-700 money">' + fmtMoney(p.price) + '</div>' +
         (promo ? '<div class="text-[11px] text-violet-600 font-semibold">' + promo.value + '% de descuento vigente</div>' : '') + '</div>' +
@@ -4896,8 +4887,8 @@ function receiptHTML(saleId, forModal){
   const client = clientById(sale.clientId);
   const body =
     '<div class="flex items-center justify-center gap-2.5 mb-4">' +
-      '<div class="w-9 h-9 rounded-lg bg-brand-700 grid place-items-center"><span class="font-black text-white text-base leading-none">F</span></div>' +
-      '<div class="text-center"><div class="text-lg font-extrabold tracking-tight lowercase leading-none">falabella</div>' +
+      '<div class="w-9 h-9 rounded-lg bg-brand-700 grid place-items-center"><span class="font-black text-white text-base leading-none">S</span></div>' +
+      '<div class="text-center"><div class="text-lg font-extrabold tracking-tight lowercase leading-none">sagabella</div>' +
       '<div class="text-[10px] text-slate-400 tracking-wide uppercase mt-0.5">Comprobante de venta</div></div>' +
     '</div>' +
     '<div class="flex items-center justify-between gap-2 mb-3 flex-wrap">' +
@@ -4935,7 +4926,7 @@ function receiptHTML(saleId, forModal){
   return body;
 }
 /* ============ CONFIGURACIÓN Y ENVÍO POR CORREO (GOOGLE APPS SCRIPT) ============ */
-const GAS_URL_KEY = 'falabella_gas_url';
+const GAS_URL_KEY = 'sagabella_gas_url';
 const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwlv7CLHAsMvTSzfHBIR4Y0EtIfVOjiF6Fr884ckX7IqOQRDXgH42TUCimFAUm8ZeWA/exec';
 
 function getGasUrl(){
@@ -4961,7 +4952,7 @@ function viewReceipt(saleId){
   }
   const receipt = receiptBySaleId(saleId);
   openModal(
-    modalHead('Comprobante de Pago Electrónico', 'Constancia oficial de la transacción en Falabella.com', {}) +
+    modalHead('Comprobante de Pago Electrónico', 'Constancia oficial de la transacción en Sagabella.com', {}) +
     '<div class="modal-body !p-4 sm:!p-6 max-h-[75vh] overflow-y-auto scroll-styled">' +
       receiptHTML(saleId, true) +
     '</div>' +
@@ -5013,7 +5004,7 @@ function openSendEmailModal(saleId){
         '<span class="mt-0.5 ' + (hasGas ? 'text-emerald-700' : 'text-amber-700') + '">' + icon(hasGas ? 'shield' : 'alert','w-4 h-4') + '</span>' +
         '<div class="text-[12.5px] leading-relaxed">' +
           (hasGas
-            ? '<strong>Servicio Google Apps Script conectado:</strong> El comprobante se despachará como correo real con formato oficial Falabella hacia la bandeja del destinatario usando Gmail.'
+            ? '<strong>Servicio Google Apps Script conectado:</strong> El comprobante se despachará como correo real con formato oficial Sagabella hacia la bandeja del destinatario usando Gmail.'
             : '<strong>Modo simulación académica:</strong> Aún no has vinculado tu Web App de Google Apps Script. Puedes enviar en modo simulado para la demo o conectar tu script de Gmail 100% gratis.') +
         '</div>' +
       '</div>' +
@@ -5088,7 +5079,7 @@ async function executeSendEmail(saleId){
     try {
       const payload = {
         to: targetEmail,
-        subject: 'Comprobante de Pago Electrónico ' + (receipt ? receipt.code : 'C-' + pad4(sale.id)) + ' - Falabella',
+        subject: 'Comprobante de Pago Electrónico ' + (receipt ? receipt.code : 'C-' + pad4(sale.id)) + ' - Sagabella',
         receiptCode: receipt ? receipt.code : ('C-' + pad4(sale.id)),
         saleCode: sale.code,
         date: fmtDateTime(sale.at),
@@ -5261,19 +5252,19 @@ async function sendTestGasEmail(){
   try {
     const payload = {
       to: testEmail,
-      subject: 'Prueba de Conexión - Sistema de Ventas Falabella',
+      subject: 'Prueba de Conexión - Sistema de Ventas Sagabella',
       receiptCode: 'TEST-0001',
       saleCode: 'V-PRUEBA',
       date: fmtDateTime(new Date().toISOString()),
       customerName: 'Usuario de Prueba',
       customerDni: '12345678',
       seller: (session ? session.fullName : 'Administrador'),
-      paymentMethod: 'Tarjeta Falabella',
+      paymentMethod: 'Tarjeta Sagabella',
       subtotal: 100.00,
       discount: 10.00,
       total: 90.00,
       items: [
-        { name:'Producto de Demostración Falabella', code:'DEMO-001', qty:1, unitPrice:100.00, subtotal:100.00 }
+        { name:'Producto de Demostración Sagabella', code:'DEMO-001', qty:1, unitPrice:100.00, subtotal:100.00 }
       ]
     };
 
@@ -5300,7 +5291,7 @@ async function sendTestGasEmail(){
 function copyGasCode(){
   const code =
 `function doGet(e) {
-  return ContentService.createTextOutput(JSON.stringify({ status: "ok", message: "Servicio de correo Falabella activo." }))
+  return ContentService.createTextOutput(JSON.stringify({ status: "ok", message: "Servicio de correo Sagabella activo." }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -5310,12 +5301,12 @@ function doPost(e) {
     if(!raw) return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Sin datos" })).setMimeType(ContentService.MimeType.JSON);
     var d = JSON.parse(raw);
     var to = d.to;
-    var subject = d.subject || ("Comprobante de Pago " + (d.receiptCode || d.saleCode || "") + " - Falabella");
+    var subject = d.subject || ("Comprobante de Pago " + (d.receiptCode || d.saleCode || "") + " - Sagabella");
     var html = buildReceiptHtml(d);
     
-    GmailApp.sendEmail(to, subject, "Comprobante de pago Falabella adjunto.", {
+    GmailApp.sendEmail(to, subject, "Comprobante de pago Sagabella adjunto.", {
       htmlBody: html,
-      name: "Falabella - Comprobante Electrónico"
+      name: "Sagabella - Comprobante Electrónico"
     });
     
     return ContentService.createTextOutput(JSON.stringify({ status: "success", message: "Enviado a " + to }))
@@ -5340,7 +5331,7 @@ function buildReceiptHtml(d) {
   }
   return '<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f1f5f9;padding:20px;margin:0;">' +
     '<table align="center" width="100%" style="max-width:560px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;">' +
-      '<tr><td style="background:#008542;padding:24px;text-align:center;"><h1 style="color:#fff;margin:0;font-size:24px;">falabella</h1><p style="color:#dcfce7;margin:4px 0 0;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Comprobante de Pago Electrónico</p></td></tr>' +
+      '<tr><td style="background:#008542;padding:24px;text-align:center;"><h1 style="color:#fff;margin:0;font-size:24px;">sagabella</h1><p style="color:#dcfce7;margin:4px 0 0;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Comprobante de Pago Electrónico</p></td></tr>' +
       '<tr><td style="padding:24px;">' +
         '<div style="text-align:center;margin-bottom:16px;"><span style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;font-size:13px;font-weight:bold;padding:5px 12px;border-radius:16px;font-family:monospace;">' + (d.receiptCode||'COMPROBANTE') + '</span></div>' +
         '<p style="color:#334155;font-size:13px;">Estimado(a) <b>' + (d.customerName||'Cliente') + '</b>, gracias por su compra. Detalle:</p>' +
@@ -5354,7 +5345,7 @@ function buildReceiptHtml(d) {
           (d.discount ? '<tr><td style="text-align:right;color:#dc2626;">Descuento:</td><td style="text-align:right;width:110px;color:#dc2626;">-S/ ' + Number(d.discount).toFixed(2) + '</td></tr>' : '') +
           '<tr><td style="text-align:right;font-size:15px;font-weight:bold;color:#008542;border-top:2px solid #e2e8f0;padding-top:6px;">TOTAL PAGADO:</td><td style="text-align:right;font-size:18px;font-weight:900;color:#008542;border-top:2px solid #e2e8f0;padding-top:6px;">S/ ' + Number(d.total||0).toFixed(2) + '</td></tr>' +
         '</table>' +
-        '<p style="text-align:center;font-size:11px;color:#94a3b8;border-top:1px dashed #cbd5e1;padding-top:12px;margin:0;">Sistema de Ventas Falabella · Documento digital emitido conforme a ley</p>' +
+        '<p style="text-align:center;font-size:11px;color:#94a3b8;border-top:1px dashed #cbd5e1;padding-top:12px;margin:0;">Sistema de Ventas Sagabella · Documento digital emitido conforme a ley</p>' +
       '</td></tr>' +
     '</table></body></html>';
 }
@@ -5624,7 +5615,7 @@ function evaluateChecks(type, req){
   const product = type === 'return' ? productById(req.productId) : productById(req.originalProductId);
   const days = Math.floor((Date.now() - new Date(sale.at).getTime()) / 86400000);
   const okPlazo = days <= RETURN_MAX_DAYS;
-  const okOrigin = product && product.origin === 'FALABELLA';
+  const okOrigin = product && (product.origin === 'SAGABELLA' || product.origin === 'SAGABELLA');
   const okState = req.productState !== 'Dañado';
   const newProduct = type === 'change' ? productById(req.newProductId) : null;
   const okStock = type === 'change' ? (newProduct && newProduct.stock >= req.qty) : true;
@@ -5706,7 +5697,7 @@ function openEvaluate(type, id){
       '<div class="mb-4">' +
         checkLine(!!sale, 'Venta registrada en el sistema (RN-14 · RN-19)', 'La solicitud debe estar asociada a una venta existente.') +
         checkLine(checks.okPlazo, 'Dentro del plazo de ' + RETURN_MAX_DAYS + ' días (' + checks.days + ' días transcurridos)', 'RN-20: plazo según tipo de producto.') +
-        checkLine(checks.okOrigin, 'Producto vendido por Falabella', 'RN-23: el procedimiento varía según el vendedor.') +
+        checkLine(checks.okOrigin, 'Producto vendido por Sagabella', 'RN-23: el procedimiento varía según el vendedor.') +
         checkLine(checks.okState, 'Producto apto (estado: ' + escapeHtml(req.productState || '—') + ')', 'RN-21 · RN-22.') +
         (type === 'change' ? checkLine(checks.okStock, 'Disponibilidad del producto de reemplazo (' + (checks.newProduct ? checks.newProduct.stock : 0) + ' en stock)', 'HU-29.') : '') +
       '</div>' + form +
@@ -5931,7 +5922,7 @@ var Chatbot = (function(){
   /* ---- Base de conocimiento preconfigurada (RN-27: respuestas limitadas a este contenido) ---- */
   const KB = [
     { topic:'Productos', keys:['producto','productos','catalogo','articulo','articulos','que venden','que venden ustedes','venden','marca','marcas','categoria','categorias','precio','precios','cuanto cuesta','cuanto sale','oferta'],
-      answer:'En Falabella encontrarás productos de tecnología, hogar, moda, deportes y accesorios. El catálogo completo está disponible en falabella.com.pe y en tienda: cada ficha muestra precio, descripción y disponibilidad. ¿Buscas alguna categoría en particular?' },
+      answer:'En Sagabella encontrarás productos de tecnología, hogar, moda, deportes y accesorios. El catálogo completo está disponible en sagabella.com.pe y en tienda: cada ficha muestra precio, descripción y disponibilidad. ¿Buscas alguna categoría en particular?' },
     { topic:'Pedidos', keys:['pedido','pedidos','estado de mi pedido','seguimiento','donde esta mi pedido','mi orden','envio','envios','despacho','entrega','cuando llega','recojo'],
       answer:'Puedes consultar el estado de tu pedido de dos formas: con tu DNI en el «Portal de clientes» de la pantalla de inicio, o con el número de pedido (por ejemplo PD-0001) en «Atención al cliente → Consultar pedido» del sistema. Los estados son: Preparando → Enviado → Entregado, y se actualizan a medida que avanza el proceso.' },
     { topic:'Pagos', keys:['pago','pagos','metodo de pago','metodos de pago','tarjeta','efectivo','yape','plin','vuelto','cuotas','medio de pago','cancelar el pago','abonar'],
@@ -5939,13 +5930,13 @@ var Chatbot = (function(){
     { topic:'Cambios', keys:['cambio','cambios','cambiar','talla','talle','reemplazo','intercambio','cambiar talla','cambiar producto'],
       answer:'Para un cambio necesitas tu comprobante de compra: debe estar dentro del plazo establecido, con el producto en buen estado y sujeto a la disponibilidad del producto de reemplazo. La solicitud se registra en «Cambios y devoluciones» y la evalúa Atención al Cliente.' },
     { topic:'Devoluciones', keys:['devolucion','devoluciones','devolver','reembolso','reembolsos','reintegro','devolver mi dinero','devolver producto'],
-      answer:'Las devoluciones se rigen por la política: producto vendido por Falabella, dentro del plazo y en condiciones adecuadas. El reembolso se realiza por el mismo medio de pago de la compra. Los productos vendidos por otros vendedores (OTRO) siguen la política del vendedor correspondiente.' },
+      answer:'Las devoluciones se rigen por la política: producto vendido por Sagabella, dentro del plazo y en condiciones adecuadas. El reembolso se realiza por el mismo medio de pago de la compra. Los productos vendidos por otros vendedores (OTRO) siguen la política del vendedor correspondiente.' },
     { topic:'Comprobante', keys:['comprobante','boleta','factura','recibo','ticket','constancia'],
       answer:'Tu comprobante se genera automáticamente al confirmar la venta e incluye número de venta, productos, cantidades, total, método de pago y fecha. Puedes consultarlo desde el módulo «Ventas» con el número de tu compra.' },
     { topic:'Promociones', keys:['promocion','promociones','descuento','descuentos','ofertas','rebaja','cupon'],
       answer:'Las promociones vigentes se aplican automáticamente al calcular el total de tu compra y se detallan en el comprobante. Las promociones vencidas o cuyas condiciones no se cumplen no se aplican.' },
     { topic:'Atención', keys:['horario','atienden','contacto','contactar','telefono','correo','ayuda','reclamo','queja','libro de reclamaciones','humano','asesor','persona','agente'],
-      answer:'Atención al Cliente está disponible de lunes a sábado, de 9:00 a 21:00. Para ingresar un reclamo o queja formal conforme a ley, puedes acceder a nuestro <a href="libro-reclamaciones.html" class="text-brand-700 underline font-bold">Libro de Reclamaciones Virtual (Sitio Web / Tienda Física)</a> o escribir a contacto@falabella.com. Si tu consulta requiere una gestión, el equipo te atenderá personalmente.' }
+      answer:'Atención al Cliente está disponible de lunes a sábado, de 9:00 a 21:00. Para ingresar un reclamo o queja formal conforme a ley, puedes acceder a nuestro <a href="libro-reclamaciones.html" class="text-brand-700 underline font-bold">Libro de Reclamaciones Virtual (Sitio Web / Tienda Física)</a> o escribir a contacto@sagabella.com. Si tu consulta requiere una gestión, el equipo te atenderá personalmente.' }
   ];
 
   const QUICK_REPLIES = ['Productos','Pedidos','Pagos','Cambios','Devoluciones'];
@@ -5959,7 +5950,7 @@ var Chatbot = (function(){
   const ACTION_REPLY = 'Lo siento, no puedo ejecutar operaciones sobre ventas, pagos, pedidos, cambios o devoluciones: solo brindo información. Para realizar esa gestión debes comunicarte con Atención al Cliente o usar el módulo correspondiente del sistema con la autorización adecuada.';
   const RESTRICTED_REPLY = 'Lo siento, no puedo compartir información interna ni datos personales o restringidos del sistema. Esa información depende del rol de acceso de cada usuario. Si necesitas ayuda con tu compra, comunícate con Atención al Cliente.';
   const FALLBACK = 'Lo siento, no dispongo de una respuesta para esa consulta. Puedo ayudarte con preguntas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones (también puedes usar los botones rápidos). Para otros casos, comunícate con Atención al Cliente: lunes a sábado, de 9:00 a 21:00.';
-  const GREETING = '¡Hola! Soy el chatbot de Falabella. Puedo responder consultas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones. ¿En qué te ayudo?';
+  const GREETING = '¡Hola! Soy el chatbot de Sagabella. Puedo responder consultas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones. ¿En qué te ayudo?';
   const THANKS = '¡Con gusto! Si tienes otra consulta sobre productos, pedidos, pagos, cambios o devoluciones, escríbeme. Para gestiones específicas, Atención al Cliente te atenderá personalmente.';
 
   function normalizeText(t){
@@ -6030,7 +6021,7 @@ var Chatbot = (function(){
     const id = 'chat_' + Math.random().toString(36).slice(2,9);
 
     function welcome(){
-      if(!state.messages.length) pushBot('¡Hola! Soy el chatbot de Falabella. Respondo preguntas frecuentes sobre <b>productos</b>, <b>pedidos</b>, <b>pagos</b>, <b>cambios</b> y <b>devoluciones</b>. Recuerda: solo brindo información, no ejecuto operaciones.');
+      if(!state.messages.length) pushBot('¡Hola! Soy el chatbot de Sagabella. Respondo preguntas frecuentes sobre <b>productos</b>, <b>pedidos</b>, <b>pagos</b>, <b>cambios</b> y <b>devoluciones</b>. Recuerda: solo brindo información, no ejecuto operaciones.');
     }
     function pushBot(text){
       state.messages.push({ who:'bot', text:text });
@@ -6068,7 +6059,7 @@ var Chatbot = (function(){
         '<div class="flex flex-col h-full min-h-0">' +
           '<div class="bg-brand-800 px-4 py-3.5 flex items-center gap-3 flex-shrink-0">' +
             '<div class="w-9 h-9 rounded-full bg-brand-600 grid place-items-center text-white flex-shrink-0">' + icon('bot','w-5 h-5') + '</div>' +
-            '<div class="min-w-0 flex-1"><div class="text-white text-[13.5px] font-bold leading-tight">Chatbot Falabella</div>' +
+            '<div class="min-w-0 flex-1"><div class="text-white text-[13.5px] font-bold leading-tight">Chatbot Sagabella</div>' +
               '<div class="text-brand-200 text-[10.5px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>En línea · solo consultas informativas</div></div>' +
             (opts.closable ? '<button class="text-white/60 hover:text-white p-2 rounded-lg hover:bg-white/10 transition" data-close title="Cerrar chat">' + icon('x','w-4 h-4') + '</button>' : '') +
           '</div>' +
@@ -6155,7 +6146,7 @@ var Chatbot = (function(){
 })();
 
 /* =====================================================================================================
-   MÓDULO TIENDA VIRTUAL FALABELLA.COM
+   MÓDULO TIENDA VIRTUAL SAGABELLA.COM
    Catálogo público, carrito interactivo, detalle de productos, checkout conectado y rastreo por DNI
    ===================================================================================================== */
 const STORE_CART_KEY = 'falabella_store_cart_v2';
@@ -6432,7 +6423,7 @@ function renderStoreProducts(){
           '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>' +
         '</button>' +
         (discPct ? ('<span class="store-card-badge px-2 py-0.5 rounded-md text-[11px] font-black bg-rose-600 text-white shadow-sm">-' + discPct + '%</span>') : '') +
-        (p.isFeatured ? ('<span class="absolute top-2 right-2 z-10 px-2 py-0.5 rounded-md text-[10px] font-black bg-amber-400 text-slate-900 shadow-sm uppercase tracking-wider">Top Ventas</span>') : '') +
+        (p.isFeatured ? ('<span class="absolute ' + (discPct ? 'top-8' : 'top-2') + ' left-2 z-10 px-2 py-0.5 rounded-md text-[10px] font-black bg-amber-400 text-slate-900 shadow-sm uppercase tracking-wider">Top Ventas</span>') : '') +
         '<img src="' + escapeHtml(p.image || 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&auto=format&fit=crop&q=80') + '" ' +
              'alt="' + escapeHtml(p.name) + '" class="store-card-img" loading="lazy" ' +
              'onerror="this.src=\'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&auto=format&fit=crop&q=80\'" />' +
@@ -6440,7 +6431,7 @@ function renderStoreProducts(){
       '<div class="p-4 flex-1 flex flex-col justify-between gap-3">' +
         '<div>' +
           '<div class="flex items-center justify-between gap-2 mb-1.5">' +
-            '<span class="badge b-teal text-[10px] font-extrabold !py-0.5 !px-2">' + escapeHtml(p.brand || 'Falabella') + '</span>' +
+            '<span class="badge b-teal text-[10px] font-extrabold !py-0.5 !px-2">' + escapeHtml(p.brand || 'Sagabella') + '</span>' +
             '<span class="text-[11px] text-slate-400 font-medium truncate">' + escapeHtml(cat ? cat.name : '') + '</span>' +
           '</div>' +
           '<h3 class="font-bold text-slate-900 text-sm leading-snug line-clamp-2 hover:text-emerald-700 cursor-pointer transition" ' +
@@ -6479,6 +6470,7 @@ function renderStoreProducts(){
       '</div>' +
     '</div>';
   }).join('');
+      if (typeof window.syncAllHeartIcons === 'function') window.syncAllHeartIcons();
 }
 
 /* ============ Carrito de compras ============ */
@@ -6555,14 +6547,14 @@ function computeStoreCartTotals(){
       prod = {
         id: iId,
         code: item.code || ('PROD-' + iId),
-        name: item.name || 'Producto Falabella',
+        name: item.name || 'Producto Sagabella',
         price: item.price || 0,
         originalPrice: item.originalPrice || item.regularPrice || item.price || 0,
         image: item.image || item.img || 'assets/categories/cat_moda_hombre.webp',
-        brand: item.brand || 'Falabella',
+        brand: item.brand || 'Sagabella',
         stock: 99,
         categoryId: item.categoryId || 1,
-        origin: 'FALABELLA'
+        origin: 'SAGABELLA'
       };
       if(DB && DB.products && !DB.products.some(p => p.id === iId)){
         DB.products.push(prod);
@@ -6620,7 +6612,7 @@ function computeStoreCartTotals(){
 }
 
 function openStoreCartModal(){
-  const html = modalHead('Mi Carrito de Compras', 'Revisa tus productos antes de pagar · Falabella.com') +
+  const html = modalHead('Mi Carrito de Compras', 'Revisa tus productos antes de pagar · Sagabella.com') +
     '<div class="modal-body !p-4 sm:!p-6" id="storeCartModalBody">' +
     '</div>' +
     '<div class="modal-foot !p-4" id="storeCartModalFoot">' +
@@ -6660,7 +6652,7 @@ function renderStoreCartModalContent(){
            'onerror="this.src=\'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&auto=format&fit=crop&q=80\'" />' +
       '<div class="flex-1 min-w-0">' +
         '<div class="flex items-center gap-1.5">' +
-          '<span class="badge b-teal text-[9px] !py-0.2 !px-1.5">' + escapeHtml(it.product.brand || 'Falabella') + '</span>' +
+          '<span class="badge b-teal text-[9px] !py-0.2 !px-1.5">' + escapeHtml(it.product.brand || 'Sagabella') + '</span>' +
           '<span class="text-[10px] text-slate-400 font-mono">' + escapeHtml(it.product.code) + '</span>' +
         '</div>' +
         '<h4 class="text-xs sm:text-[13px] font-bold text-slate-900 truncate mt-0.5">' + escapeHtml(it.product.name) + '</h4>' +
@@ -6712,7 +6704,7 @@ function openProductDetailModal(productId){
   const discPct = hasDiscount ? Math.round((1 - p.price / p.originalPrice) * 100) : null;
   const isOutOfStock = p.stock <= 0;
 
-  const html = modalHead(p.name, (cat ? cat.name : '') + ' · Marca ' + (p.brand || 'Falabella') + ' (Oficial Falabella)') +
+  const html = modalHead(p.name, (cat ? cat.name : '') + ' · Marca ' + (p.brand || 'Sagabella') + ' (Oficial Sagabella)') +
     '<div class="modal-body !p-4 sm:!p-6 space-y-5">' +
       '<div class="grid sm:grid-cols-[1fr_1.2fr] gap-6 items-start">' +
         '<div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 relative aspect-square">' +
@@ -6722,7 +6714,7 @@ function openProductDetailModal(productId){
         '</div>' +
         '<div class="space-y-3">' +
           '<div class="flex items-center gap-2">' +
-            '<span class="badge b-teal text-xs font-extrabold !py-1 !px-2.5">Marca ' + escapeHtml(p.brand || 'Falabella') + '</span>' +
+            '<span class="badge b-teal text-xs font-extrabold !py-1 !px-2.5">Marca ' + escapeHtml(p.brand || 'Sagabella') + '</span>' +
             '<span class="text-xs text-slate-400 font-mono">Código: ' + escapeHtml(p.code) + '</span>' +
           '</div>' +
           '<h2 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug">' + escapeHtml(p.name) + '</h2>' +
@@ -6760,6 +6752,9 @@ function openProductDetailModal(productId){
           '<span>Cantidad:</span>' +
           '<input type="number" id="detailQtyInput" class="input !w-16 !py-1 !text-center !text-xs" value="1" min="1" max="' + Math.max(1, p.stock) + '" />' +
         '</div>' +
+        '<button type="button" onclick="window.toggleProductFavorite(event, ' + p.id + ')" data-fav-prod-id="' + p.id + '" class="falabella-card-fav-btn btn btn-outline !py-2 !px-3 text-slate-400 hover:text-rose-600 transition flex items-center justify-center gap-1.5" title="Guardar en favoritos">' +
+          '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>' +
+        '</button>' +
         '<button type="button" onclick="const q=parseInt(document.getElementById(\'detailQtyInput\').value,10)||1; addToStoreCart(' + p.id + ', q); closeModal();" ' +
                 (isOutOfStock ? 'disabled' : '') + ' ' +
                 'class="btn btn-primary !bg-emerald-700 hover:!bg-emerald-800 font-bold">' +
@@ -6786,7 +6781,7 @@ function openStoreCheckoutModal(){
     return;
   }
 
-  // 1. Obtener sesión activa de Falabella.com
+  // 1. Obtener sesión activa de Sagabella.com
   let sessionUser = null;
   try {
     if (typeof window.getFalabellaSession === 'function') {
@@ -6801,7 +6796,7 @@ function openStoreCheckoutModal(){
   }
 
   // 2. Base de clientes de tienda física para vinculación progresiva
-  const physicalClientsList = (typeof window !== 'undefined' && window.FALABELLA_PHYSICAL_CLIENTS) || [
+  const physicalClientsList = (typeof window !== 'undefined' && window.SAGABELLA_PHYSICAL_CLIENTS) || [
     { dni: '45879632', name: 'Ana Torres', email: 'ana.torres@gmail.com', phone: '987654321', pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
     { dni: '40219577', name: 'Luis Mendoza', email: 'luis.mendoza@hotmail.com', phone: '912345678', pointsCMR: 820, totalPurchases: 2, clientSince: '2023' },
     { dni: '71203455', name: 'Carmen Flores', email: 'carmen.flores@outlook.com', phone: '945678123', pointsCMR: 2300, totalPurchases: 6, clientSince: '2021' },
@@ -6829,14 +6824,14 @@ function openStoreCheckoutModal(){
     if (!userAddress && matchPhys.address) userAddress = matchPhys.address;
   }
 
-  const html = modalHead('Finalizar Compra · Falabella.com', 'Completa tus datos para recibir tu pedido y comprobante de compra') +
+  const html = modalHead('Finalizar Compra · Sagabella.com', 'Completa tus datos para recibir tu pedido y comprobante de compra') +
     '<div class="modal-body !p-4 sm:!p-6 space-y-5 max-h-[75vh] overflow-y-auto scroll-styled">' +
       '<div id="storeCheckoutError" class="hidden err-box mb-3" role="alert"></div>' +
       '<div id="checkoutLinkedClientAlert" class="' + (isLinked ? '' : 'hidden ') + 'p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 flex items-start gap-3 text-xs text-emerald-900 mb-4 shadow-sm">' +
         '<div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">✓</div>' +
         '<div class="flex-1">' +
           '<div class="flex items-center gap-2 flex-wrap">' +
-            '<span class="font-bold text-emerald-950">Cliente Vinculado Falabella Detectado</span>' +
+            '<span class="font-bold text-emerald-950">Cliente Vinculado Sagabella Detectado</span>' +
             '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-200 text-emerald-900 tracking-wide uppercase">Tienda Física + Online</span>' +
           '</div>' +
           '<p class="text-[11.5px] text-emerald-800 mt-0.5 leading-relaxed">' +
@@ -6958,7 +6953,7 @@ function openStoreCheckoutModal(){
           // Panel Yape
           '<div id="storePayYapeWrap" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 hidden">' +
             '<div class="text-xs font-bold text-slate-800">Pago mediante Yape o Plin</div>' +
-            '<p class="text-xs text-slate-600 leading-relaxed">Transfiere el monto total al número oficial de Falabella.com: <b>912 345 678</b> (Titular: Falabella Perú Demo).</p>' +
+            '<p class="text-xs text-slate-600 leading-relaxed">Transfiere el monto total al número oficial de Sagabella.com: <b>912 345 678</b> (Titular: Sagabella Perú Demo).</p>' +
             '<div>' +
               '<label class="label !text-[11px]" for="storeYapePhone">Tu celular Yape/Plin</label>' +
               '<input type="tel" id="storeYapePhone" class="input font-mono !py-1.5 !text-xs" placeholder="987654321" maxlength="9" value="' + escapeHtml(userPhone) + '" oninput="filterDigits(this, 9); this.dataset.manual = \'true\'" />' +
@@ -7023,7 +7018,7 @@ function openStoreCheckoutModal(){
 function handleCheckoutDniChange(dni){
   const cleanDni = String(dni || '').trim();
   if(cleanDni.length === 8){
-    const physicalClientsList = (typeof window !== 'undefined' && window.FALABELLA_PHYSICAL_CLIENTS) || [
+    const physicalClientsList = (typeof window !== 'undefined' && window.SAGABELLA_PHYSICAL_CLIENTS) || [
       { dni: '45879632', name: 'Ana Torres', email: 'ana.torres@gmail.com', phone: '987654321', pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
       { dni: '40219577', name: 'Luis Mendoza', email: 'luis.mendoza@hotmail.com', phone: '912345678', pointsCMR: 820, totalPurchases: 2, clientSince: '2023' },
       { dni: '71203455', name: 'Carmen Flores', email: 'carmen.flores@outlook.com', phone: '945678123', pointsCMR: 2300, totalPurchases: 6, clientSince: '2021' },
@@ -7281,7 +7276,7 @@ async function confirmStoreCheckout(){
     code: saleCode,
     clientId: client.id,
     userId: 0,
-    userName: 'Tienda Virtual Falabella.com',
+    userName: 'Tienda Virtual Sagabella.com',
     at: new Date().toISOString(),
     subtotal: totals.subtotal,
     discount: totals.discount,
@@ -7362,7 +7357,7 @@ async function confirmStoreCheckout(){
     items: orderItems,
     history: [{ state:'Preparando', at:new Date().toISOString(), by:'Tienda Virtual' }],
     deliveryType: deliveryType,
-    deliveryAddress: address || 'Retiro en Tienda Falabella'
+    deliveryAddress: address || 'Retiro en Tienda Sagabella'
   };
   DB.orders.push(newOrder);
 
@@ -7380,13 +7375,13 @@ async function confirmStoreCheckout(){
     if(gasUrl && email){
       const payload = {
         to: email,
-        subject: 'Comprobante de Pago Electrónico ' + recCode + ' - Falabella.com',
+        subject: 'Comprobante de Pago Electrónico ' + recCode + ' - Sagabella.com',
         receiptCode: recCode,
         saleCode: saleCode,
         date: fmtDateTime(newSale.at),
         customerName: client.name,
         customerDni: client.dni,
-        seller: 'Tienda Virtual Falabella',
+        seller: 'Tienda Virtual Sagabella',
         paymentMethod: payMethod,
         subtotal: totals.subtotal,
         discount: totals.discount,
@@ -7422,7 +7417,7 @@ function showStoreSuccessModal(sale, order, receipt, client, emailSent){
       '</div>' +
       '<div>' +
         '<h3 class="text-xl font-black text-slate-900">¡Gracias por tu compra, ' + escapeHtml(client.name.split(' ')[0]) + '!</h3>' +
-        '<p class="text-xs text-slate-500 mt-1">Hemos registrado tu pedido en Falabella.com.</p>' +
+        '<p class="text-xs text-slate-500 mt-1">Hemos registrado tu pedido en Sagabella.com.</p>' +
       '</div>' +
       '<div class="grid grid-cols-3 gap-2.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-left">' +
         '<div>' +
@@ -7577,9 +7572,9 @@ function executeTrackOrderSearch(){
 }
 
 
-/* ============ Utilidades de la Tienda Falabella ============ */
+/* ============ Utilidades de la Tienda Sagabella ============ */
 
-/* ============ Rotación Automática de Banners (Falabella.com) ============ */
+/* ============ Rotación Automática de Banners (Sagabella.com) ============ */
 /* ============ BANNER 1: Carrusel Cinta Superior (4 Slides) ============ */
 let topStripTimer = null;
 let currentTopStripIndex = 0;
@@ -7643,7 +7638,7 @@ function setHeroSlide(idx){
   resetHeroTimer();
 }
 
-/* ============ Sincronización Interactiva de Banners Falabella ============ */
+/* ============ Sincronización Interactiva de Banners Sagabella ============ */
 function filterStoreForChristmas(){
   STORE_FILTERS.query = '';
   STORE_FILTERS.category = null;
@@ -7667,7 +7662,7 @@ function handleRedmiHeroClick(e){
 }
 
 function openAccountDropdownOrModal(){
-  const html = modalHead('Mi Cuenta Falabella', 'Selecciona el tipo de acceso al sistema') +
+  const html = modalHead('Mi Cuenta Sagabella', 'Selecciona el tipo de acceso al sistema') +
     '<div class="modal-body !p-6 space-y-4">' +
       '<div class="p-4 rounded-xl border border-slate-200 hover:border-[#aad500] hover:bg-slate-50 transition cursor-pointer flex items-center justify-between" onclick="closeModal(); enterLogin();">' +
         '<div class="flex items-center gap-3">' +
@@ -7695,7 +7690,7 @@ function openAccountDropdownOrModal(){
 }
 
 function openHelpDropdown(e){
-  const html = modalHead('Centro de Ayuda Falabella', 'Estamos para ayudarte en tus compras y pedidos') +
+  const html = modalHead('Centro de Ayuda Sagabella', 'Estamos para ayudarte en tus compras y pedidos') +
     '<div class="modal-body !p-6 space-y-3 text-sm text-slate-700">' +
       '<div class="p-3 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between cursor-pointer hover:bg-slate-100" onclick="closeModal(); openTrackOrderModal();">' +
         '<span class="font-semibold text-slate-800">🔍 Rastrear mi pedido con DNI</span>' +
@@ -7906,14 +7901,14 @@ function acceptCookies(){
       el.style.display = 'none';
     }, 350);
   }
-  try { localStorage.setItem('falabella_cookies_accepted', 'true'); } catch(e){}
+  try { localStorage.setItem('sagabella_cookies_accepted', 'true'); } catch(e){}
 }
 
 function openPrivacyModal(){
   const html = modalHead('Política de Privacidad y Cookies', 'Información oficial sobre el tratamiento de tus datos personales') +
     '<div class="modal-body !p-6 space-y-4 text-xs text-slate-700 leading-relaxed max-h-[60vh] overflow-y-auto">' +
       '<div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">' +
-        '<p class="font-bold text-slate-900 text-sm">🍪 Uso de Cookies en Falabella</p>' +
+        '<p class="font-bold text-slate-900 text-sm">🍪 Uso de Cookies en Sagabella</p>' +
         '<p>Utilizamos cookies propias y de terceros para optimizar tu experiencia de compra, recordar tus preferencias, personalizar anuncios y ofertas, y analizar el tráfico de navegación.</p>' +
       '</div>' +
       '<div>' +
@@ -7980,8 +7975,13 @@ function updateStoreDistricts(dept){
 function saveStoreLocation(){
   const dist = document.getElementById('locDistSelect');
   const txt = dist ? dist.value : 'Lima - San Isidro';
-  const label = document.getElementById('storeLocationText');
-  if(label) label.textContent = txt;
+  try {
+    localStorage.setItem('sagabella_user_location', txt);
+  } catch(e){}
+  const labels = document.querySelectorAll('#storeLocationText, .store-location-text');
+  labels.forEach(l => { l.textContent = txt; });
+  window.dispatchEvent(new Event('sagabella_location_changed'));
+  window.dispatchEvent(new Event('storage'));
   closeModal();
   toast('success', 'Ubicación establecida en: ' + txt);
 }
@@ -8017,9 +8017,9 @@ function toggleStoreFavorites(){
 }
 
 function openReturnsPolicyModal(){
-  const html = modalHead('Políticas de Cambios y Devoluciones', 'Garantía oficial Falabella.com · Regla de Negocio RN-20') +
+  const html = modalHead('Políticas de Cambios y Devoluciones', 'Garantía oficial Sagabella.com · Regla de Negocio RN-20') +
     '<div class="modal-body !p-6 space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">' +
-      '<p>En <b>falabella.com</b> queremos que tu experiencia sea 100% satisfactoria. Todos nuestros productos cuentan con garantía de cambio y devolución conforme a las políticas del sistema:</p>' +
+      '<p>En <b>sagabella.com</b> queremos que tu experiencia sea 100% satisfactoria. Todos nuestros productos cuentan con garantía de cambio y devolución conforme a las políticas del sistema:</p>' +
       '<ul class="space-y-2 list-disc pl-5 text-slate-600">' +
         '<li><b>Plazo máximo:</b> Tienes hasta <b>30 días calendario</b> desde la fecha de compra para solicitar un cambio o devolución (RN-20).</li>' +
         '<li><b>Estado del producto:</b> Debe encontrarse en óptimas condiciones, sin daños imputables al mal uso y preferentemente con su empaque o sellos (RN-21, RN-22).</li>' +
@@ -8091,7 +8091,7 @@ window.addEventListener('focus', () => {
 
 /* =====================================================================================================
    MÓDULO: LIBRO DE RECLAMACIONES VIRTUAL (Normativa INDECOPI - Ley N° 29571)
-   Diferencia compras en Sitio Web (falabella.com) vs Tienda Física
+   Diferencia compras en Sitio Web (sagabella.com) vs Tienda Física
    ===================================================================================================== */
 
 let RECLAMO_STATE = {
@@ -8128,7 +8128,7 @@ function openLibroReclamacionesStep1(){
       '</div>' +
 
       '<div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">' +
-        '<span>Falabella Perú • RUC: 20100128056</span>' +
+        '<span>Sagabella Perú • RUC: 20100128056</span>' +
         '<span class="text-emerald-700 font-semibold">Ley N° 29571</span>' +
       '</div>' +
     '</div>';
@@ -8143,7 +8143,7 @@ function openLibroReclamacionesForm(channel){
   
   const today = new Date().toISOString().split('T')[0];
   const channelBadge = isOnline 
-    ? '<span class="badge b-green"><span class="dot"></span> Compra en Sitio Web (falabella.com)</span>'
+    ? '<span class="badge b-green"><span class="dot"></span> Compra en Sitio Web (sagabella.com)</span>'
     : '<span class="badge b-teal"><span class="dot"></span> Compra en Tienda Física</span>';
 
   let channelFields = '';
@@ -8153,7 +8153,7 @@ function openLibroReclamacionesForm(channel){
         '<div>' +
           '<label class="label" for="recOrderCode">N° de Pedido u Orden Web (opcional)</label>' +
           '<input type="text" id="recOrderCode" class="input font-mono uppercase" placeholder="Ej: ORD-2026-0001" />' +
-          '<p class="hint mt-1">Si cuentas con tu número de orden o compra en falabella.com.</p>' +
+          '<p class="hint mt-1">Si cuentas con tu número de orden o compra en sagabella.com.</p>' +
         '</div>' +
         '<div>' +
           '<label class="label" for="recBuyDate">Fecha de la compra web *</label>' +
@@ -8164,19 +8164,19 @@ function openLibroReclamacionesForm(channel){
     channelFields = 
       '<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">' +
         '<div>' +
-          '<label class="label" for="recStoreBranch">Tienda / Sucursal Falabella *</label>' +
+          '<label class="label" for="recStoreBranch">Tienda / Sucursal Sagabella *</label>' +
           '<select id="recStoreBranch" class="select font-medium">' +
             '<option value="">Selecciona la tienda física...</option>' +
-            '<option value="Falabella Jockey Plaza (Surco)">Falabella Jockey Plaza (Surco)</option>' +
-            '<option value="Falabella San Isidro (Las Begonias)">Falabella San Isidro (Las Begonias)</option>' +
-            '<option value="Falabella Miraflores (Av. Pardo)">Falabella Miraflores (Av. Pardo)</option>' +
-            '<option value="Falabella Plaza San Miguel">Falabella Plaza San Miguel</option>' +
-            '<option value="Falabella MegaPlaza (Independencia)">Falabella MegaPlaza (Independencia)</option>' +
-            '<option value="Falabella Mall del Sur (SJM)">Falabella Mall del Sur (SJM)</option>' +
-            '<option value="Falabella Plaza Norte">Falabella Plaza Norte</option>' +
-            '<option value="Falabella Mall Aventura Santa Anita">Falabella Santa Anita</option>' +
-            '<option value="Falabella Trujillo (Mall Plaza)">Falabella Trujillo</option>' +
-            '<option value="Falabella Arequipa (Porongoche)">Falabella Arequipa</option>' +
+            '<option value="Sagabella Jockey Plaza (Surco)">Sagabella Jockey Plaza (Surco)</option>' +
+            '<option value="Sagabella San Isidro (Las Begonias)">Sagabella San Isidro (Las Begonias)</option>' +
+            '<option value="Sagabella Miraflores (Av. Pardo)">Sagabella Miraflores (Av. Pardo)</option>' +
+            '<option value="Sagabella Plaza San Miguel">Sagabella Plaza San Miguel</option>' +
+            '<option value="Sagabella MegaPlaza (Independencia)">Sagabella MegaPlaza (Independencia)</option>' +
+            '<option value="Sagabella Mall del Sur (SJM)">Sagabella Mall del Sur (SJM)</option>' +
+            '<option value="Sagabella Plaza Norte">Sagabella Plaza Norte</option>' +
+            '<option value="Sagabella Mall Aventura Santa Anita">Sagabella Santa Anita</option>' +
+            '<option value="Sagabella Trujillo (Mall Plaza)">Sagabella Trujillo</option>' +
+            '<option value="Sagabella Arequipa (Porongoche)">Sagabella Arequipa</option>' +
           '</select>' +
         '</div>' +
         '<div>' +
@@ -8366,7 +8366,7 @@ function submitLibroReclamaciones(){
   const buyDate = document.getElementById('recBuyDate').value;
   const legalAccept = document.getElementById('recLegalAccept').checked;
 
-  let storeBranch = 'falabella.com (Tienda Online)';
+  let storeBranch = 'sagabella.com (Tienda Online)';
   let orderOrReceipt = '';
   if(isOnline){
     orderOrReceipt = (document.getElementById('recOrderCode').value || '').trim();
@@ -8376,7 +8376,7 @@ function submitLibroReclamaciones(){
   }
 
   const errors = [];
-  if(!isOnline && !storeBranch) errors.push('Selecciona la tienda física Falabella donde realizaste la compra.');
+  if(!isOnline && !storeBranch) errors.push('Selecciona la tienda física Sagabella donde realizaste la compra.');
   if(!isOnline && !orderOrReceipt) errors.push('El número de boleta o factura de la tienda física es obligatorio.');
   if(!docNum) errors.push('El número de documento es obligatorio.');
   else if(docType === 'DNI' && !/^\d{8}$/.test(docNum)) errors.push('El DNI debe tener exactamente 8 dígitos numéricos.');
@@ -8387,7 +8387,7 @@ function submitLibroReclamaciones(){
   if(!address) errors.push('La dirección domiciliaria es obligatoria.');
   if(!productDesc) errors.push('La descripción del producto o servicio es obligatoria.');
   if(!details || details.length < 10) errors.push('Describe detalladamente los hechos del reclamo o queja (mínimo 10 caracteres).');
-  if(!request || request.length < 5) errors.push('Indica concretamente lo que solicitas a Falabella (mínimo 5 caracteres).');
+  if(!request || request.length < 5) errors.push('Indica concretamente lo que solicitas a Sagabella (mínimo 5 caracteres).');
   if(!legalAccept) errors.push('Debes aceptar la declaración jurada y los términos legales.');
 
   const errBox = document.getElementById('recErrors');
@@ -8448,8 +8448,8 @@ function showHojaReclamacionSuccess(rec){
       '<div class="text-center pb-4 border-b-2 border-slate-800">' +
         '<div class="flex items-center justify-between">' +
           '<div class="text-left">' +
-            '<span style="color:#aad500; font-size:24px; font-weight:900;">falabella</span><span style="color:#aad500; font-size:18px; font-weight:900;">.com</span>' +
-            '<div class="text-[11px] text-slate-600 font-semibold mt-0.5">SAGA FALABELLA S.A. • RUC: 20100128056</div>' +
+            '<span style="color:#aad500; font-size:24px; font-weight:900;">sagabella</span><span style="color:#aad500; font-size:18px; font-weight:900;">.com</span>' +
+            '<div class="text-[11px] text-slate-600 font-semibold mt-0.5">SAGABELLA S.A. • RUC: 20100128056</div>' +
             '<div class="text-[10px] text-slate-500">Av. Paseo de la República 3220, San Isidro, Lima - Perú</div>' +
           '</div>' +
           '<div class="text-right p-3 bg-slate-50 rounded-xl border border-slate-300">' +
@@ -8521,6 +8521,8 @@ function showHojaReclamacionSuccess(rec){
 }
 
 </script>
-<script src="assets/falabella-auth-favorites.js"></script>
+<script src="assets/falabella-auth-favorites.js">
+    try { if (typeof products !== 'undefined') window.products = products; } catch (e) {}
+  </script>
 </body>
 </html>

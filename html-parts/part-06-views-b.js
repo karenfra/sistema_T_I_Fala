@@ -365,7 +365,7 @@ function reportReposition(){
       html += '<tr><td><div class="font-semibold">' + escapeHtml(p.name) + '</div><div class="text-[11px] text-slate-400">' + escapeHtml(p.code) + '</div></td>' +
         '<td class="num font-bold ' + (p.stock === 0 ? 'text-rose-600' : 'text-amber-600') + '">' + p.stock + '</td>' +
         '<td class="num text-slate-400">' + p.minStock + '</td>' +
-        '<td><span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span></td>' +
+        '<td><span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span></td>' +
         '<td><span class="badge b-amber"><span class="dot"></span>Requiere reposición</span></td>' +
         (hasPerm('products.adjust') ? '<td class="num"><button class="btn btn-primary btn-sm" onclick="openAdjust(' + p.id + ')">' + icon('plus','w-3.5 h-3.5') + ' Reponer</button></td>' : '') + '</tr>';
     });

@@ -8,9 +8,9 @@ export default function Home() {
       {/* Aplicación autocontenida embebida: ocupa todo el viewport.
           El scroll lo gestiona la app interna del iframe. */}
       <iframe
-        src="/Sistema_Ventas_Falabella.html"
-        title="Sistema de Ventas Falabella"
-        aria-label="Sistema de Ventas Falabella"
+        src="/Sistema_Ventas_Sagabella.html"
+        title="Sistema de Ventas Sagabella"
+        aria-label="Sistema de Ventas Sagabella"
         style={{
           position: 'fixed',
           inset: 0,
@@ -25,9 +25,9 @@ export default function Home() {
           ni el chatbot (abajo a la derecha). */}
       <div className="group fixed right-0 top-1/2 z-50 hidden -translate-y-1/2 sm:block">
         <a
-          href="/Sistema_Ventas_Falabella.html"
-          download="Sistema_Ventas_Falabella.html"
-          aria-label="Descargar Sistema_Ventas_Falabella.html"
+          href="/Sistema_Ventas_Sagabella.html"
+          download="Sistema_Ventas_Sagabella.html"
+          aria-label="Descargar Sistema_Ventas_Sagabella.html"
           className="flex items-center gap-2 rounded-l-xl border border-r-0 border-neutral-200 bg-white/90 py-3 pl-3 pr-3.5 text-xs font-medium text-neutral-700 shadow-md backdrop-blur transition-colors hover:bg-white hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400"
           style={{ writingMode: 'vertical-rl' }}
         >
@@ -39,7 +39,7 @@ export default function Home() {
           role="tooltip"
           className="pointer-events-none absolute right-full top-1/2 mr-2 hidden -translate-y-1/2 whitespace-nowrap rounded-md bg-neutral-900 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
         >
-          Descargar Sistema_Ventas_Falabella.html
+          Descargar Sistema_Ventas_Sagabella.html
         </span>
       </div>
     </>

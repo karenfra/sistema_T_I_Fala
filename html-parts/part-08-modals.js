@@ -112,7 +112,7 @@ function openProduct(id){                                    /* Formulario regis
           '<option value="">Seleccionar categoría</option>' +
           DB.categories.map(c => '<option value="' + c.id + '"' + (p && p.categoryId === c.id ? ' selected' : '') + '>' + escapeHtml(c.name) + '</option>').join('') + '</select></div>' +
         '<div><label class="label" for="pfOrigin">Origen *</label><select class="select" id="pfOrigin">' +
-          '<option value="FALABELLA"' + (p && p.origin === 'FALABELLA' ? ' selected' : '') + '>FALABELLA — vendido por Falabella</option>' +
+          '<option value="SAGABELLA"' + (p && (p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? ' selected' : '') + '>SAGABELLA — vendido por Sagabella</option>' +
           '<option value="OTRO"' + (p && p.origin === 'OTRO' ? ' selected' : '') + '>OTRO — vendido por otro vendedor</option></select></div>' +
         '<div class="sm:col-span-2"><label class="label" for="pfDesc">Descripción</label><input class="input" id="pfDesc" placeholder="Descripción breve del producto" value="' + escapeHtml(p ? (p.description||'') : '') + '" /></div>' +
         '<div><label class="label" for="pfPrice">Precio (S/) *</label><input class="input money" id="pfPrice" type="number" min="0.01" step="0.01" placeholder="0.00" value="' + (p ? p.price : '') + '" /></div>' +
@@ -175,7 +175,7 @@ function openProductInfo(id){                                /* Consulta de info
       '<div class="flex items-start justify-between gap-3 mb-4 flex-wrap">' +
         '<div><h4 class="text-lg font-bold text-slate-900 leading-tight">' + escapeHtml(p.name) + '</h4>' +
         '<div class="flex gap-2 mt-2 flex-wrap"><span class="badge b-slate">' + escapeHtml(categoryName(p.categoryId)) + '</span>' +
-        '<span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span>' +
+        '<span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + escapeHtml(p.origin) + '</span>' +
         (promo ? '<span class="badge b-violet">' + icon('percent','w-3 h-3') + escapeHtml(promo.name) + '</span>' : '') + '</div></div>' +
         '<div class="text-right"><div class="text-2xl font-extrabold text-brand-700 money">' + fmtMoney(p.price) + '</div>' +
         (promo ? '<div class="text-[11px] text-violet-600 font-semibold">' + promo.value + '% de descuento vigente</div>' : '') + '</div>' +
@@ -567,8 +567,8 @@ function receiptHTML(saleId, forModal){
   const client = clientById(sale.clientId);
   const body =
     '<div class="flex items-center justify-center gap-2.5 mb-4">' +
-      '<div class="w-9 h-9 rounded-lg bg-brand-700 grid place-items-center"><span class="font-black text-white text-base leading-none">F</span></div>' +
-      '<div class="text-center"><div class="text-lg font-extrabold tracking-tight lowercase leading-none">falabella</div>' +
+      '<div class="w-9 h-9 rounded-lg bg-brand-700 grid place-items-center"><span class="font-black text-white text-base leading-none">S</span></div>' +
+      '<div class="text-center"><div class="text-lg font-extrabold tracking-tight lowercase leading-none">sagabella</div>' +
       '<div class="text-[10px] text-slate-400 tracking-wide uppercase mt-0.5">Comprobante de venta</div></div>' +
     '</div>' +
     '<div class="flex items-center justify-between gap-2 mb-3 flex-wrap">' +
@@ -852,7 +852,7 @@ function evaluateChecks(type, req){
   const product = type === 'return' ? productById(req.productId) : productById(req.originalProductId);
   const days = Math.floor((Date.now() - new Date(sale.at).getTime()) / 86400000);
   const okPlazo = days <= RETURN_MAX_DAYS;
-  const okOrigin = product && product.origin === 'FALABELLA';
+  const okOrigin = product && (product.origin === 'SAGABELLA' || product.origin === 'SAGABELLA');
   const okState = req.productState !== 'Dañado';
   const newProduct = type === 'change' ? productById(req.newProductId) : null;
   const okStock = type === 'change' ? (newProduct && newProduct.stock >= req.qty) : true;
@@ -915,7 +915,7 @@ function openEvaluate(type, id){
       '<div class="mb-4">' +
         checkLine(!!sale, 'Venta registrada en el sistema (RN-14 · RN-19)', 'La solicitud debe estar asociada a una venta existente.') +
         checkLine(checks.okPlazo, 'Dentro del plazo de ' + RETURN_MAX_DAYS + ' días (' + checks.days + ' días transcurridos)', 'RN-20: plazo según tipo de producto.') +
-        checkLine(checks.okOrigin, 'Producto vendido por Falabella', 'RN-23: el procedimiento varía según el vendedor.') +
+        checkLine(checks.okOrigin, 'Producto vendido por Sagabella', 'RN-23: el procedimiento varía según el vendedor.') +
         checkLine(checks.okState, 'Producto apto (estado: ' + escapeHtml(req.productState || '—') + ')', 'RN-21 · RN-22.') +
         (type === 'change' ? checkLine(checks.okStock, 'Disponibilidad del producto de reemplazo (' + (checks.newProduct ? checks.newProduct.stock : 0) + ' en stock)', 'HU-29.') : '') +
       '</div>' + form +

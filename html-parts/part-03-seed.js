@@ -1,8 +1,8 @@
 <script>
 'use strict';
 /* =====================================================================================================
-   SISTEMA DE VENTAS FALABELLA — Demo académica (un solo archivo HTML)
-   Fuente: TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-FALABELLA_V3.10_CHATBOT.docx
+   SISTEMA DE VENTAS SAGABELLA — Demo académica (un solo archivo HTML)
+   Fuente: TEC_INF_II_COMAS_GRUPO-4_SISTEMA-DE-VENTAS-SAGABELLA_V3.10_CHATBOT.docx
    Épicas: EP-01..EP-09 · Historias de Usuario: HU-01..HU-36 · Reglas de negocio: RN-01..RN-27
    Excepciones: EX-01..EX-14
    ===================================================================================================== */
@@ -163,14 +163,14 @@ function seedState(){
   ];
 
   const products = [
-    { id:1, code:'TEC-001', name:'Lenovo IdeaPad 3 15.6', categoryId:1, description:'Laptop Lenovo IdeaPad 3, AMD Ryzen 5, 8 GB RAM, SSD 512 GB, pantalla 15.6"', price:1899.00, stock:12, minStock:4,  origin:'FALABELLA', createdAt:d(30) },
-    { id:2, code:'TEC-002', name:'Audífonos Bluetooth JBL', categoryId:1, description:'Audífonos inalámbricos JBL Tune 520BT con 57 h de autonomía', price:129.90, stock:3,  minStock:5,  origin:'FALABELLA', createdAt:d(30) },
-    { id:3, code:'DEP-001', name:'Zapatillas deportivas Nike', categoryId:4, description:'Zapatillas Nike Revolution 6 para running', price:249.90, stock:18, minStock:6, origin:'FALABELLA', createdAt:d(28) },
-    { id:4, code:'MOD-001', name:'Camisa básica manga larga', categoryId:3, description:'Camisa básica de algodón, manga larga, diversos colores', price:59.90, stock:25, minStock:10, origin:'FALABELLA', createdAt:d(25) },
-    { id:5, code:'TEC-003', name:'Smart TV Samsung 50"', categoryId:1, description:'Smart TV Samsung 50" 4K UHD, modelo AU8000', price:1499.00, stock:0,  minStock:3,  origin:'FALABELLA', createdAt:d(25) },
+    { id:1, code:'TEC-001', name:'Lenovo IdeaPad 3 15.6', categoryId:1, description:'Laptop Lenovo IdeaPad 3, AMD Ryzen 5, 8 GB RAM, SSD 512 GB, pantalla 15.6"', price:1899.00, stock:12, minStock:4,  origin:'SAGABELLA', createdAt:d(30) },
+    { id:2, code:'TEC-002', name:'Audífonos Bluetooth JBL', categoryId:1, description:'Audífonos inalámbricos JBL Tune 520BT con 57 h de autonomía', price:129.90, stock:3,  minStock:5,  origin:'SAGABELLA', createdAt:d(30) },
+    { id:3, code:'DEP-001', name:'Zapatillas deportivas Nike', categoryId:4, description:'Zapatillas Nike Revolution 6 para running', price:249.90, stock:18, minStock:6, origin:'SAGABELLA', createdAt:d(28) },
+    { id:4, code:'MOD-001', name:'Camisa básica manga larga', categoryId:3, description:'Camisa básica de algodón, manga larga, diversos colores', price:59.90, stock:25, minStock:10, origin:'SAGABELLA', createdAt:d(25) },
+    { id:5, code:'TEC-003', name:'Smart TV Samsung 50"', categoryId:1, description:'Smart TV Samsung 50" 4K UHD, modelo AU8000', price:1499.00, stock:0,  minStock:3,  origin:'SAGABELLA', createdAt:d(25) },
     { id:6, code:'HOG-001', name:'Olla arrocera Oster', categoryId:2, description:'Olla arrocera Oster de 1.8 L con función mantener caliente', price:139.90, stock:9,  minStock:3,  origin:'OTRO',     createdAt:d(22) },
-    { id:7, code:'ACC-001', name:'Mochila escolar Everest', categoryId:5, description:'Mochila Everest con compartimento para laptop 15"', price:89.90,  stock:14, minStock:5, origin:'FALABELLA', createdAt:d(20) },
-    { id:8, code:'TEC-004', name:'Tablet Samsung Galaxy Tab A8', categoryId:1, description:'Tablet Samsung Galaxy Tab A8 10.5", 32 GB', price:749.00, stock:2,  minStock:3,  origin:'FALABELLA', createdAt:d(18) }
+    { id:7, code:'ACC-001', name:'Mochila escolar Everest', categoryId:5, description:'Mochila Everest con compartimento para laptop 15"', price:89.90,  stock:14, minStock:5, origin:'SAGABELLA', createdAt:d(20) },
+    { id:8, code:'TEC-004', name:'Tablet Samsung Galaxy Tab A8', categoryId:1, description:'Tablet Samsung Galaxy Tab A8 10.5", 32 GB', price:749.00, stock:2,  minStock:3,  origin:'SAGABELLA', createdAt:d(18) }
   ];
 
   const promotions = [

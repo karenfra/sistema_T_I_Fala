@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tecnología en Falabella.com Perú - Laptops, Computadoras, Televisores, Fotografía, Audio y las mejores marcas: HP, Lenovo, ASUS, Acer, Samsung, LG, Sony.">
-  <title>Tecnología | Falabella.com Perú</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Tecnología en Sagabella.com Perú - Laptops, Computadoras, Televisores, Fotografía, Audio y las mejores marcas: HP, Lenovo, ASUS, Acer, Samsung, LG, Sony.">
+  <title>Tecnología | Sagabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,7 @@
       theme: {
         extend: {
           colors: {
-            falabella: {
+            sagabella: {
               lime: '#aad500',
               dark: '#1e293b',
               teal: '#0f766e',
@@ -36,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* Cabecera idéntica a Falabella.com */
+    /* Cabecera idéntica a Sagabella.com */
     .store-header {
       background: #ffffff;
       border-bottom: 1px solid #eef2f6;
@@ -594,22 +594,23 @@
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
     }
 </style>
+  <script src="assets/falabella-auth-favorites.js"></script>
 </head>
 <body class="bg-slate-50 antialiased selection:bg-[#aad500] selection:text-slate-900">
 
   <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN ==================== -->
-  <header class="store-header">
+    <header class="store-header">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
       
-      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
+      <!-- Logo Oficial Sagabella (#aad500) & Botón Menú -->
       <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
-        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
-          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="sagabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">sagabella</span>
           <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
         </a>
 
         <!-- Botón Menú Hamburguesa -->
-        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+        <button type="button" onclick="toggleStoreCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
           <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           <span class="text-sm font-semibold text-slate-900">Menú</span>
         </button>
@@ -618,8 +619,8 @@
       <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
       <div class="flex-1 max-w-2xl mx-2 min-w-0">
         <div class="store-search-wrap">
-          <input type="text" id="techSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" onkeydown="if(event.key==='Enter') executeTechSearch(this.value)" />
-          <button type="button" onclick="executeTechSearch(document.getElementById('techSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+          <input type="text" id="storeSearchInput" class="store-search-input" placeholder="Buscar en sagabella.com" onkeydown="if(event.key==='Enter') executeStoreSearch()" />
+          <button type="button" onclick="executeStoreSearch()" class="store-search-btn" title="Buscar en sagabella.com">
             <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </div>
@@ -649,33 +650,33 @@
           <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
-        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
-        <button onclick="openTechCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
+        <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span id="techCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+          <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
         </button>
       </div>
     </div>
 
-    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN -->
+    <!-- Sub-barra informativa de Sagabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN -->
     <div class="store-topbar">
       <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap">
-        <button type="button" onclick="showTechToast('📍 Ubicación seleccionada: Lima Metropolitana')" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
+        <button type="button" onclick="openStoreLocationModal()" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
           <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Ingresa tu ubicación</span>
+          <span id="storeLocationText">Ingresa tu ubicación</span>
         </button>
 
         <div class="flex items-center gap-4 sm:gap-6 text-xs text-slate-600 ml-auto flex-wrap">
-          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showTechToast('💳 Tarjeta CMR: Accede a beneficios exclusivos y cuotas sin intereses.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showTechToast('❓ Centro de Ayuda: Atención al cliente y estado de pedidos.')">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openCmrModal()">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openHelpDropdown(event)">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <button type="button" onclick="openTrackOrderModal()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
             <span class="hidden sm:inline">Rastrear</span>
-          </a>
-          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline" title="Acceso al sistema administrativo">
+          </button>
+          <button type="button" onclick="enterLogin()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0" title="Acceso al sistema administrativo">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Intranet</span>
-          </a>
+            <span class="hidden sm:inline">Intranet</span>
+          </button>
         </div>
       </div>
     </div>
@@ -739,17 +740,17 @@
       
       <!-- Slide 1: Laptops de Alta Gama & Inteligencia Artificial -->
       <div class="tech-slide active" onclick="window.location.href='laptops.html'">
-        <a href="laptops.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Laptops Falabella">
+        <a href="laptops.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Laptops Sagabella">
           <picture>
             <source srcset="assets/tecnologia/banner_tech_laptops_ai.webp" type="image/webp">
-            <img src="assets/tecnologia/banner_tech_laptops_ai.webp" alt="Laptops de Alta Gama con Inteligencia Artificial Falabella" loading="eager" />
+            <img src="assets/tecnologia/banner_tech_laptops_ai.webp" alt="Laptops de Alta Gama con Inteligencia Artificial Sagabella" loading="eager" />
           </picture>
         </a>
       </div>
 
       <!-- Slide 2: Tablets Pro & Creatividad Digital (Enlace a Catálogo de Tablets) -->
       <div class="tech-slide" onclick="window.location.href='tablets.html'">
-        <a href="tablets.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Tablets Falabella">
+        <a href="tablets.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de Tablets Sagabella">
           <picture>
             <source srcset="assets/tecnologia/banner_tech_tablets_pro.webp" type="image/webp">
             <img src="assets/tecnologia/banner_tech_tablets_pro.webp" alt="Tablets Pro y Stylus para Creatividad y Trabajo" loading="lazy" />
@@ -759,7 +760,7 @@
 
       <!-- Slide 3: Fotografía Profesional & Cámaras Mirrorless -->
       <div class="tech-slide" onclick="window.location.href='camaras.html'">
-        <a href="camaras.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de cámaras y fotografía Falabella">
+        <a href="camaras.html" class="block w-full h-full cursor-pointer" title="Ver catálogo oficial de cámaras y fotografía Sagabella">
           <picture>
             <source srcset="assets/tecnologia/banner_tech_camaras_pro.webp" type="image/webp">
             <img src="assets/tecnologia/banner_tech_camaras_pro.webp" alt="Cámaras Fotográficas Profesionales y Lentes de Alta Precisión" loading="lazy" />
@@ -807,7 +808,7 @@
 
     <!-- ==================== 2. SECCIÓN: LAS MEJORES MARCAS (Image 2) ==================== -->
     <section id="sec-marcas" class="pt-4 scroll-mt-24">
-      <div class="brand-section-header cursor-pointer" onclick="window.location.href='laptops.html'" title="Ver todo el catálogo de laptops Falabella">
+      <div class="brand-section-header cursor-pointer" onclick="window.location.href='laptops.html'" title="Ver todo el catálogo de laptops Sagabella">
         <h2 class="brand-section-title">
           <span class="arrows">&gt;&gt;&gt;</span>
           <span>LAS MEJORES MARCAS</span>
@@ -818,7 +819,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Marca HP -->
-        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=hp'" title="Ver catálogo oficial de laptops HP en Falabella">
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=hp'" title="Ver catálogo oficial de laptops HP en Sagabella">
           <div class="brand-deco-dots">
             <span class="brand-deco-dot"></span>
             <span class="brand-deco-dot"></span>
@@ -831,7 +832,7 @@
         </article>
 
         <!-- Marca Lenovo -->
-        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=lenovo'" title="Ver catálogo oficial de laptops Lenovo en Falabella">
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=lenovo'" title="Ver catálogo oficial de laptops Lenovo en Sagabella">
           <div class="brand-deco-dots">
             <span class="brand-deco-dot"></span>
             <span class="brand-deco-dot"></span>
@@ -844,7 +845,7 @@
         </article>
 
         <!-- Marca ASUS -->
-        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=asus'" title="Ver catálogo oficial de laptops ASUS en Falabella">
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=asus'" title="Ver catálogo oficial de laptops ASUS en Sagabella">
           <div class="brand-deco-dots">
             <span class="brand-deco-dot"></span>
             <span class="brand-deco-dot"></span>
@@ -857,7 +858,7 @@
         </article>
 
         <!-- Marca Acer -->
-        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=acer'" title="Ver catálogo oficial de laptops Acer en Falabella">
+        <article class="brand-card-box" onclick="window.location.href='laptops.html?brand=acer'" title="Ver catálogo oficial de laptops Acer en Sagabella">
           <div class="brand-deco-dots">
             <span class="brand-deco-dot"></span>
             <span class="brand-deco-dot"></span>
@@ -895,12 +896,12 @@
       <div class="w-full rounded-2xl overflow-hidden shadow-md border border-slate-200 grid grid-cols-1 md:grid-cols-2 bg-[#d2dee7]">
         
         <!-- Mitad Izquierda: Teléfonos -> celulares.html -->
-        <a href="celulares.html" class="group relative block overflow-hidden md:border-r border-white/80 cursor-pointer no-underline" title="Ver catálogo de teléfonos y celulares en falabella.com">
+        <a href="celulares.html" class="group relative block overflow-hidden md:border-r border-white/80 cursor-pointer no-underline" title="Ver catálogo de teléfonos y celulares en sagabella.com">
           <img src="assets/tecnologia/banner_telefonos_half.webp" alt="Teléfonos Samsung Galaxy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
         </a>
 
         <!-- Mitad Derecha: Tablets -> tablets.html -->
-        <a href="tablets.html" class="group relative block overflow-hidden cursor-pointer no-underline" title="Ver catálogo de tablets en falabella.com">
+        <a href="tablets.html" class="group relative block overflow-hidden cursor-pointer no-underline" title="Ver catálogo de tablets en sagabella.com">
           <img src="assets/tecnologia/banner_tablets_half.webp" alt="Tablets Samsung Galaxy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" loading="lazy">
         </a>
 
@@ -963,7 +964,7 @@
       <div class="tv-grid-container">
         
         <!-- TV Samsung -->
-        <a href="televisores.html?brand=samsung" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores Samsung en falabella.com">
+        <a href="televisores.html?brand=samsung" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores Samsung en sagabella.com">
           <span class="tv-brand-pill">Samsung</span>
           <img src="assets/tecnologia/tv_samsung.webp" alt="Smart TV Samsung QLED 4K" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
           <div class="tv-card-content">
@@ -974,7 +975,7 @@
         </a>
 
         <!-- TV LG -->
-        <a href="televisores.html?brand=lg" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores LG en falabella.com">
+        <a href="televisores.html?brand=lg" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores LG en sagabella.com">
           <span class="tv-brand-pill">LG</span>
           <img src="assets/tecnologia/tv_lg.webp" alt="Smart TV LG OLED 4K" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
           <div class="tv-card-content">
@@ -985,7 +986,7 @@
         </a>
 
         <!-- TV JVC -->
-        <a href="televisores.html?brand=jvc" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores JVC en falabella.com">
+        <a href="televisores.html?brand=jvc" class="tv-card-box cursor-pointer no-underline group" title="Ver televisores JVC en sagabella.com">
           <span class="tv-brand-pill">JVC</span>
           <img src="assets/tecnologia/tv_jvc.webp" alt="Smart TV JVC Ultra HD" loading="lazy" class="group-hover:scale-105 transition-transform duration-500">
           <div class="tv-card-content">
@@ -1072,7 +1073,7 @@
       <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
         <div>
           <h2 class="text-2xl font-black text-slate-900">Catálogo de Tecnología Destacada</h2>
-          <p class="text-xs text-slate-500">Ofertas exclusivas con despacho express y garantía Falabella</p>
+          <p class="text-xs text-slate-500">Ofertas exclusivas con despacho express y garantía Sagabella</p>
         </div>
         <div class="flex items-center gap-2">
           <button type="button" onclick="renderTechCatalogProducts('all')" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-[#0f766e] transition">Todos</button>
@@ -1102,7 +1103,7 @@
           </div>
           <div>
             <h3 class="font-extrabold text-slate-900 text-base">Mi Carrito de Compras</h3>
-            <span class="text-[11px] text-slate-500">Sincronizado con falabella.com</span>
+            <span class="text-[11px] text-slate-500">Sincronizado con sagabella.com</span>
           </div>
         </div>
         <button onclick="closeTechCartModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition">
@@ -1137,7 +1138,7 @@
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <span style="color:#aad500; font-size:28px; font-weight:900; letter-spacing:-0.5px; line-height:1;">falabella</span>
+          <span style="color:#aad500; font-size:28px; font-weight:900; letter-spacing:-0.5px; line-height:1;">sagabella</span>
           <span style="color:#aad500; font-size:20px; font-weight:900; letter-spacing:-0.5px; line-height:1;">.com</span>
           <p class="text-xs text-slate-400 mt-3 leading-relaxed">Líder en retail y tecnología en Perú. Calidad, garantía y envíos a todo el territorio nacional.</p>
         </div>
@@ -1178,7 +1179,7 @@
         <a href="libro-reclamaciones.html" class="hover:text-[#aad500] hover:underline">Libro de Reclamaciones</a>
       </div>
       <div class="mt-3 text-center text-xs text-slate-500">
-        © 2026 Falabella Perú S.A.A. Todos los derechos reservados. Sistema Académico USMP.
+        © 2026 Sagabella Perú S.A.A. Todos los derechos reservados. Sistema Académico USMP.
       </div>
     </div>
   </footer>
@@ -1192,7 +1193,7 @@
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
     /* -------------------------------------------------------------
-       1. SINCRONIZACIÓN DE CARRITO CON FALABELLA PRINCIPAL
+       1. SINCRONIZACIÓN DE CARRITO CON SAGABELLA PRINCIPAL
        ------------------------------------------------------------- */
     const STORE_CART_KEY = 'falabella_store_cart_v2';
 
@@ -1556,6 +1557,7 @@
           </div>
         </article>
       `).join('');
+      if (typeof window.syncAllHeartIcons === 'function') window.syncAllHeartIcons();
     }
 
     renderTechCatalogProducts('all');
@@ -1638,5 +1640,8 @@
     });
 </script>
 <script src="assets/falabella-auth-favorites.js"></script>
+  <script>
+    try { if (typeof TECH_PRODUCTS !== 'undefined') window.TECH_PRODUCTS = TECH_PRODUCTS; } catch (e) {}
+  </script>
 </body>
 </html>

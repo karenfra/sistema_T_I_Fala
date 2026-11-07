@@ -8,7 +8,7 @@ var Chatbot = (function(){
   /* ---- Base de conocimiento preconfigurada (RN-27: respuestas limitadas a este contenido) ---- */
   const KB = [
     { topic:'Productos', keys:['producto','productos','catalogo','articulo','articulos','que venden','que venden ustedes','venden','marca','marcas','categoria','categorias','precio','precios','cuanto cuesta','cuanto sale','oferta'],
-      answer:'En Falabella encontrarás productos de tecnología, hogar, moda, deportes y accesorios. El catálogo completo está disponible en falabella.com.pe y en tienda: cada ficha muestra precio, descripción y disponibilidad. ¿Buscas alguna categoría en particular?' },
+      answer:'En Sagabella encontrarás productos de tecnología, hogar, moda, deportes y accesorios. El catálogo completo está disponible en sagabella.com.pe y en tienda: cada ficha muestra precio, descripción y disponibilidad. ¿Buscas alguna categoría en particular?' },
     { topic:'Pedidos', keys:['pedido','pedidos','estado de mi pedido','seguimiento','donde esta mi pedido','mi orden','envio','envios','despacho','entrega','cuando llega','recojo'],
       answer:'Puedes consultar el estado de tu pedido con el número de pedido (por ejemplo PD-0001) en «Atención al cliente → Consultar pedido» del sistema. Los estados son: Preparando → Enviado → Entregado, y se actualizan a medida que avanza el proceso.' },
     { topic:'Pagos', keys:['pago','pagos','metodo de pago','metodos de pago','tarjeta','efectivo','yape','plin','vuelto','cuotas','medio de pago','cancelar el pago','abonar'],
@@ -16,13 +16,13 @@ var Chatbot = (function(){
     { topic:'Cambios', keys:['cambio','cambios','cambiar','talla','talle','reemplazo','intercambio','cambiar talla','cambiar producto'],
       answer:'Para un cambio necesitas tu comprobante de compra: debe estar dentro del plazo establecido, con el producto en buen estado y sujeto a la disponibilidad del producto de reemplazo. La solicitud se registra en «Cambios y devoluciones» y la evalúa Atención al Cliente.' },
     { topic:'Devoluciones', keys:['devolucion','devoluciones','devolver','reembolso','reembolsos','reintegro','devolver mi dinero','devolver producto'],
-      answer:'Las devoluciones se rigen por la política: producto vendido por Falabella, dentro del plazo y en condiciones adecuadas. El reembolso se realiza por el mismo medio de pago de la compra. Los productos vendidos por otros vendedores (OTRO) siguen la política del vendedor correspondiente.' },
+      answer:'Las devoluciones se rigen por la política: producto vendido por Sagabella, dentro del plazo y en condiciones adecuadas. El reembolso se realiza por el mismo medio de pago de la compra. Los productos vendidos por otros vendedores (OTRO) siguen la política del vendedor correspondiente.' },
     { topic:'Comprobante', keys:['comprobante','boleta','factura','recibo','ticket','constancia'],
       answer:'Tu comprobante se genera automáticamente al confirmar la venta e incluye número de venta, productos, cantidades, total, método de pago y fecha. Puedes consultarlo desde el módulo «Ventas» con el número de tu compra.' },
     { topic:'Promociones', keys:['promocion','promociones','descuento','descuentos','ofertas','rebaja','cupon'],
       answer:'Las promociones vigentes se aplican automáticamente al calcular el total de tu compra y se detallan en el comprobante. Las promociones vencidas o cuyas condiciones no se cumplen no se aplican.' },
     { topic:'Atención', keys:['horario','atienden','contacto','contactar','telefono','correo','ayuda','reclamo','queja','libro de reclamaciones','humano','asesor','persona','agente'],
-      answer:'Atención al Cliente está disponible de lunes a sábado, de 9:00 a 21:00, en tienda, por este chat o escribiendo a contacto@falabella.com. Si tu consulta requiere una gestión, el equipo te atenderá personalmente.' }
+      answer:'Atención al Cliente está disponible de lunes a sábado, de 9:00 a 21:00, en tienda, por este chat o escribiendo a contacto@sagabella.com. Si tu consulta requiere una gestión, el equipo te atenderá personalmente.' }
   ];
 
   const QUICK_REPLIES = ['Productos','Pedidos','Pagos','Cambios','Devoluciones'];
@@ -36,7 +36,7 @@ var Chatbot = (function(){
   const ACTION_REPLY = 'Lo siento, no puedo ejecutar operaciones sobre ventas, pagos, pedidos, cambios o devoluciones: solo brindo información. Para realizar esa gestión debes comunicarte con Atención al Cliente o usar el módulo correspondiente del sistema con la autorización adecuada.';
   const RESTRICTED_REPLY = 'Lo siento, no puedo compartir información interna ni datos personales o restringidos del sistema. Esa información depende del rol de acceso de cada usuario. Si necesitas ayuda con tu compra, comunícate con Atención al Cliente.';
   const FALLBACK = 'Lo siento, no dispongo de una respuesta para esa consulta. Puedo ayudarte con preguntas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones (también puedes usar los botones rápidos). Para otros casos, comunícate con Atención al Cliente: lunes a sábado, de 9:00 a 21:00.';
-  const GREETING = '¡Hola! Soy el chatbot de Falabella. Puedo responder consultas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones. ¿En qué te ayudo?';
+  const GREETING = '¡Hola! Soy el chatbot de Sagabella. Puedo responder consultas frecuentes sobre productos, pedidos, pagos, cambios y devoluciones. ¿En qué te ayudo?';
   const THANKS = '¡Con gusto! Si tienes otra consulta sobre productos, pedidos, pagos, cambios o devoluciones, escríbeme. Para gestiones específicas, Atención al Cliente te atenderá personalmente.';
 
   function normalizeText(t){
@@ -71,7 +71,7 @@ var Chatbot = (function(){
     const id = 'chat_' + Math.random().toString(36).slice(2,9);
 
     function welcome(){
-      if(!state.messages.length) pushBot('¡Hola! Soy el chatbot de Falabella. Respondo preguntas frecuentes sobre <b>productos</b>, <b>pedidos</b>, <b>pagos</b>, <b>cambios</b> y <b>devoluciones</b>. Recuerda: solo brindo información, no ejecuto operaciones.');
+      if(!state.messages.length) pushBot('¡Hola! Soy el chatbot de Sagabella. Respondo preguntas frecuentes sobre <b>productos</b>, <b>pedidos</b>, <b>pagos</b>, <b>cambios</b> y <b>devoluciones</b>. Recuerda: solo brindo información, no ejecuto operaciones.');
     }
     function pushBot(text){
       state.messages.push({ who:'bot', text:text });
@@ -109,7 +109,7 @@ var Chatbot = (function(){
         '<div class="flex flex-col h-full min-h-0">' +
           '<div class="bg-brand-800 px-4 py-3.5 flex items-center gap-3 flex-shrink-0">' +
             '<div class="w-9 h-9 rounded-full bg-brand-600 grid place-items-center text-white flex-shrink-0">' + icon('bot','w-5 h-5') + '</div>' +
-            '<div class="min-w-0 flex-1"><div class="text-white text-[13.5px] font-bold leading-tight">Chatbot Falabella</div>' +
+            '<div class="min-w-0 flex-1"><div class="text-white text-[13.5px] font-bold leading-tight">Chatbot Sagabella</div>' +
               '<div class="text-brand-200 text-[10.5px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>En línea · solo consultas informativas</div></div>' +
             (opts.closable ? '<button class="text-white/60 hover:text-white p-2 rounded-lg hover:bg-white/10 transition" data-close title="Cerrar chat">' + icon('x','w-4 h-4') + '</button>' : '') +
           '</div>' +

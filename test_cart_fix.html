@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Laptops y Computadoras | falabella.com</title>
-  <meta name="description" content="Encuentra las mejores Laptops Lenovo, Asus, HP, Acer y más en falabella.com. Precios exclusivos con Tarjeta CMR, envío rápido y retiro en tienda." />
+  <title>Laptops y Computadoras | sagabella.com</title>
+  <meta name="description" content="Encuentra las mejores Laptops Lenovo, Asus, HP, Acer y más en sagabella.com. Precios exclusivos con Tarjeta CMR, envío rápido y retiro en tienda." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -193,6 +193,7 @@
       opacity: 1;
     }
   </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 </head>
 <body class="bg-slate-50 antialiased selection:bg-[#aad500] selection:text-slate-900">
 
@@ -200,10 +201,10 @@
   <header class="store-header">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
       
-      <!-- Logo Oficial Falabella & Menú -->
+      <!-- Logo Oficial Sagabella & Menú -->
       <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
-        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
-          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="sagabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">sagabella</span>
           <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
         </a>
 
@@ -216,8 +217,8 @@
       <!-- Barra de búsqueda central en forma de píldora con botón circular -->
       <div class="flex-1 max-w-2xl mx-2 min-w-0">
         <div class="store-search-wrap">
-          <input type="text" id="laptopSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" oninput="handleSearch(this.value)" />
-          <button type="button" class="store-search-btn" title="Buscar en falabella.com">
+          <input type="text" id="laptopSearchInput" class="store-search-input" placeholder="Buscar en sagabella.com" oninput="handleSearch(this.value)" />
+          <button type="button" class="store-search-btn" title="Buscar en sagabella.com">
             <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </div>
@@ -233,7 +234,7 @@
         </a>
 
         <!-- Mi cuenta -->
-        <a href="#" onclick="alert('Módulo de Mi Cuenta Falabella.'); return false;" class="hidden md:block text-xs font-bold text-slate-700 hover:text-black no-underline">
+        <a href="#" onclick="alert('Módulo de Mi Cuenta Sagabella.'); return false;" class="hidden md:block text-xs font-bold text-slate-700 hover:text-black no-underline">
           Mi cuenta
         </a>
 
@@ -255,7 +256,7 @@
     </div>
   </header>
 
-  <!-- SUB-BARRA DE UBICACIÓN OFICIAL FALABELLA -->
+  <!-- SUB-BARRA DE UBICACIÓN OFICIAL SAGABELLA -->
   <div class="store-subbar py-1.5">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between">
       <div class="flex items-center gap-1.5 cursor-pointer hover:text-black">
@@ -352,7 +353,7 @@
           </div>
           <div class="flex flex-wrap gap-2" id="activeFilterChips">
             <span class="filter-tag-pill" onclick="removeSellerFilter()">
-              <span>FALABELLA</span>
+              <span>SAGABELLA</span>
               <svg class="w-3.5 h-3.5 text-slate-400 hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </span>
             <span class="filter-tag-pill" id="chipProcessorR7" onclick="toggleProcessorFilter('ryzen7')">
@@ -494,7 +495,7 @@
           </div>
         </div>
 
-        <!-- GRID DE PRODUCTOS (4 COLUMNAS COMO EN FALABELLA OFICIAL) -->
+        <!-- GRID DE PRODUCTOS (4 COLUMNAS COMO EN SAGABELLA OFICIAL) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4" id="laptopGrid">
           <!-- Renderizado dinámicamente con JavaScript -->
         </div>
@@ -560,7 +561,7 @@
     <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleCategoriesDrawer()"></div>
     <div id="techCategoriesPanel" class="absolute top-0 left-0 h-full w-full max-w-xs bg-white shadow-2xl flex flex-col transform -translate-x-full transition-transform duration-300 pointer-events-auto">
       <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
-        <span class="font-black text-sm">Categorías Falabella</span>
+        <span class="font-black text-sm">Categorías Sagabella</span>
         <button type="button" onclick="toggleCategoriesDrawer()" class="text-white hover:text-slate-300">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
@@ -586,7 +587,7 @@
   <!-- SCRIPT DE INTERACTIVIDAD COMPLETA -->
   <script>
     /* -------------------------------------------------------------
-       1. SINCRONIZACIÓN DE CARRITO CON FALABELLA PRINCIPAL
+       1. SINCRONIZACIÓN DE CARRITO CON SAGABELLA PRINCIPAL
        ------------------------------------------------------------- */
     const STORE_CART_KEY = 'falabella_store_cart_v2';
 
@@ -766,7 +767,7 @@
         processor: 'ryzen7',
         ram: '16GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_lenovo_loq.png',
         priceCmr: 4299,
         discountCmr: '-36%',
@@ -785,7 +786,7 @@
         processor: 'ryzen7',
         ram: '8GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_hp_15.png',
         priceCmr: null,
         discountCmr: null,
@@ -805,7 +806,7 @@
         processor: 'ryzen7',
         ram: '32GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_acer_nitro.png',
         priceCmr: null,
         discountCmr: null,
@@ -825,7 +826,7 @@
         processor: 'ryzen5',
         ram: '8GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_asus_vivobook.png',
         priceCmr: 1999,
         discountCmr: '-46%',
@@ -844,7 +845,7 @@
         processor: 'ryzen7',
         ram: '16GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_lenovo_ideapad.png',
         priceCmr: 3899,
         discountCmr: '-33%',
@@ -863,7 +864,7 @@
         processor: 'ryzen7',
         ram: '16GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_asus_tuf.png',
         priceCmr: 5899,
         discountCmr: '-26%',
@@ -882,7 +883,7 @@
         processor: 'ryzen9',
         ram: '16GB',
         storage: '1TB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_asus_rog.png',
         priceCmr: 9199,
         discountCmr: '-43%',
@@ -901,7 +902,7 @@
         processor: 'ryzen7',
         ram: '16GB',
         storage: '512GB',
-        seller: 'Falabella',
+        seller: 'Sagabella',
         image: 'assets/laptops/laptop_hp_victus.png',
         priceCmr: 4499,
         discountCmr: '-21%',
@@ -1011,9 +1012,9 @@
               ${p.name}
             </h3>
 
-            <!-- Por Falabella Badge -->
+            <!-- Por Sagabella Badge -->
             <div class="mb-2">
-              <span class="text-[11px] text-slate-500 font-medium">Por <span class="text-slate-800 font-bold">Falabella</span></span>
+              <span class="text-[11px] text-slate-500 font-medium">Por <span class="text-slate-800 font-bold">Sagabella</span></span>
               <span class="inline-block w-2.5 h-2.5 bg-[#aad500] rounded-sm ml-0.5"></span>
             </div>
 
@@ -1234,7 +1235,7 @@
     }
 
     function removeSellerFilter() {
-      showToast('Filtro Falabella activo por defecto.');
+      showToast('Filtro Sagabella activo por defecto.');
     }
 
     function toggleAccordion(id) {

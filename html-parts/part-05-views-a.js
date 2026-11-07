@@ -324,7 +324,7 @@ function productsRows(){
       '<td class="num font-bold money">' + fmtMoney(p.price) + '</td>' +
       '<td class="num"><span class="font-bold ' + (p.stock === 0 ? 'text-rose-600' : p.stock <= p.minStock ? 'text-amber-600' : 'text-slate-800') + '">' + p.stock + '</span>' +
         '<span class="text-slate-300"> / ' + p.minStock + '</span></td>' +
-      '<td><span class="badge ' + (p.origin === 'FALABELLA' ? 'b-teal' : 'b-slate') + '">' + (p.origin === 'FALABELLA' ? icon('store','w-3 h-3') : icon('users','w-3 h-3')) + escapeHtml(p.origin) + '</span></td>' +
+      '<td><span class="badge ' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? 'b-teal' : 'b-slate') + '">' + ((p.origin === 'SAGABELLA' || p.origin === 'SAGABELLA') ? icon('store','w-3 h-3') : icon('users','w-3 h-3')) + escapeHtml(p.origin) + '</span></td>' +
       '<td><span class="badge ' + st.cls + '"><span class="dot"></span>' + st.label + '</span></td>' +
       '<td class="num"><div class="flex items-center justify-end gap-1.5">' +
         '<button class="btn btn-outline btn-icon" title="Consultar información del producto (HU-10)" onclick="openProductInfo(' + p.id + ')">' + icon('eye','w-4 h-4') + '</button>' +

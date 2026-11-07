@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Deportes Falabella: Bicicletas montañeras, urbanas, máquinas de ejercicio, zona fitness, suplementos deportivos, zapatillas y ropa deportiva al mejor precio en falabella.com.">
-  <title>Deportes: Bicicletas, Fitness, Suplementos y Ropa Deportiva | falabella.com</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23aad500'/><text x='50%' y='68%' font-size='55' font-weight='900' fill='%23000' text-anchor='middle' font-family='Arial'>f</text></svg>">
+  <meta name="description" content="Deportes Sagabella: Bicicletas montañeras, urbanas, máquinas de ejercicio, zona fitness, suplementos deportivos, zapatillas y ropa deportiva al mejor precio en sagabella.com.">
+  <title>Deportes: Bicicletas, Fitness, Suplementos y Ropa Deportiva | sagabella.com</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -197,61 +197,40 @@
       border-color: #cbd5e1;
     }
   </style>
+  <script src="assets/falabella-auth-favorites.js"></script>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-[#aad500] selection:text-slate-900">
 
   <!-- ==================== HEADER OFICIAL ==================== -->
-  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-    
-    <!-- Top Utility Bar -->
-    <div class="hidden lg:flex items-center justify-between px-4 lg:px-8 py-1.5 bg-[#f8fafc] border-b border-slate-200 text-[11px] text-slate-600 font-medium">
-      <div class="flex items-center gap-4">
-        <span class="flex items-center gap-1 hover:text-slate-900 cursor-pointer">
-          <svg class="w-3.5 h-3.5 text-[#aad500]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-          Ingresa tu ubicación
-        </span>
-      </div>
-      <div class="flex items-center gap-5">
-        <a href="index.html" class="hover:text-slate-900">Tarjeta CMR</a>
-        <a href="index.html" class="hover:text-slate-900">Vende y comisiona</a>
-        <a href="index.html" class="hover:text-slate-900">Venta telefónica</a>
-        <a href="index.html" class="hover:text-slate-900">Ayuda</a>
-        <a href="index.html" class="flex items-center gap-1 hover:text-slate-900">
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          Rastrear
-        </a>
-      </div>
-    </div>
-
-    <!-- Main Navigation Bar -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+    <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
       
-      <!-- Brand & Menu Drawer Button -->
-      <div class="flex items-center gap-4">
-        <a href="index.html" class="flex items-center gap-1.5 focus:outline-none" title="Volver a Falabella Inicio">
-          <span class="text-2xl sm:text-3xl font-black text-[#aad500] tracking-tight hover:opacity-90 transition">falabella<span class="text-slate-900">.com</span></span>
+      <!-- Logo Oficial Sagabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="sagabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">sagabella</span>
+          <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
         </a>
 
-        <!-- Botón Menú con icono oficial -->
-        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-800 hover:bg-slate-100 transition shadow-2xs">
-          <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <span class="hidden sm:inline">Menú</span>
+        <!-- Botón Menú Hamburguesa -->
+        <button type="button" onclick="toggleStoreCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+          <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="text-sm font-semibold text-slate-900">Menú</span>
         </button>
       </div>
 
-      <!-- Barra de Búsqueda -->
-      <div class="flex-1 max-w-2xl mx-2">
-        <div class="relative">
-          <input type="text" id="deportesSearchInput" placeholder="Buscar en Deportes: bicicletas, trotadoras, proteínas, zapatillas..." onkeyup="handleDeportesSearch(event)"
-                 class="w-full py-2.5 pl-4 pr-11 text-xs sm:text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-[#aad500]/30 transition shadow-inner">
-          <button type="button" onclick="triggerDeportesSearch()" class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0f172a] text-white flex items-center justify-center hover:bg-slate-800 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
+      <div class="flex-1 max-w-2xl mx-2 min-w-0">
+        <div class="store-search-wrap">
+          <input type="text" id="storeSearchInput" class="store-search-input" placeholder="Buscar en sagabella.com" onkeydown="if(event.key==='Enter') executeStoreSearch()" />
+          <button type="button" onclick="executeStoreSearch()" class="store-search-btn" title="Buscar en sagabella.com">
+            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- User Actions & Cart -->
-      <div class="flex items-center gap-3 sm:gap-5 ml-auto flex-shrink-0">
+      <!-- Acciones de cabecera: Hola, Inicia sesión ⌵ | Mi cuenta, Favoritos, Carrito -->
+      <div class="flex items-center gap-3 sm:gap-4 ml-auto flex-shrink-0">
         
         <!-- Hola, Inicia sesión / Mi cuenta -->
         <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
@@ -274,11 +253,34 @@
           <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
-        <!-- Botón Carrito Global Falabella -->
-        <button type="button" onclick="openDeportesCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Ver bolsa de compras">
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
+        <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span id="deportesCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+          <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Sub-barra informativa de Sagabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN -->
+    <div class="store-topbar">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap">
+        <button type="button" onclick="openStoreLocationModal()" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
+          <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="storeLocationText">Ingresa tu ubicación</span>
+        </button>
+
+        <div class="flex items-center gap-4 sm:gap-6 text-xs text-slate-600 ml-auto flex-wrap">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openCmrModal()">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openHelpDropdown(event)">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <button type="button" onclick="openTrackOrderModal()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            <span class="hidden sm:inline">Rastrear</span>
+          </button>
+          <button type="button" onclick="enterLogin()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0" title="Acceso al sistema administrativo">
+            <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span class="hidden sm:inline">Intranet</span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -289,7 +291,7 @@
       <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-[#aad500]"></span>
-          <h2 class="font-black text-sm uppercase tracking-wider">Categorías Falabella</h2>
+          <h2 class="font-black text-sm uppercase tracking-wider">Categorías Sagabella</h2>
         </div>
         <button type="button" onclick="toggleCategoriesDrawer()" class="p-1 rounded-full text-slate-400 hover:text-white transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -301,8 +303,8 @@
           <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Departamentos</span>
           <ul class="mt-2 space-y-1">
             <li><a href="tecnologia.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📱 Tecnología & Smartphones</a></li>
-            <li><a href="moda_mujer.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👗 Moda Falabella Para Mujer</a></li>
-            <li><a href="moda_hombre.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👔 Moda Falabella Hombre</a></li>
+            <li><a href="moda_mujer.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👗 Moda Sagabella Para Mujer</a></li>
+            <li><a href="moda_hombre.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">👔 Moda Sagabella Hombre</a></li>
             <li><a href="deportes.html" class="block p-2 rounded-lg bg-slate-100 text-slate-900 font-bold transition">⚽ Deportes & Fitness (Actual)</a></li>
             <li><a href="televisores.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📺 Televisores & Audio</a></li>
             <li><a href="celulares.html" class="block p-2 rounded-lg hover:bg-slate-100 transition">📱 Celulares & Accesorios</a></li>
@@ -323,7 +325,7 @@
       </div>
 
       <div class="p-4 bg-slate-50 border-t border-slate-200 text-center">
-        <a href="index.html" class="block w-full py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">Ir a Portada Falabella</a>
+        <a href="index.html" class="block w-full py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800 transition">Ir a Portada Sagabella</a>
       </div>
     </div>
   </aside>
@@ -348,7 +350,7 @@
       <div class="hero-slide active cursor-pointer" data-slide="0" onclick="filterByCategory('Vestuario')">
         <picture>
           <source srcset="assets/deportes/banner_vestuario_deportivo.webp" type="image/webp">
-          <img src="assets/deportes/banner_vestuario_deportivo.png" alt="Vestuario Deportivo Falabella: Mujer y Hombre" class="w-full h-full object-cover">
+          <img src="assets/deportes/banner_vestuario_deportivo.png" alt="Vestuario Deportivo Sagabella: Mujer y Hombre" class="w-full h-full object-cover">
         </picture>
         <div class="absolute inset-0 flex items-center justify-between p-6 md:p-12 pointer-events-none">
           <div class="pointer-events-auto">
@@ -364,7 +366,7 @@
       <div class="hero-slide cursor-pointer" data-slide="1" onclick="document.getElementById('sec-zona-fitness').scrollIntoView({behavior:'smooth'})">
         <picture>
           <source srcset="assets/deportes/banner_zona_fitness.webp" type="image/webp">
-          <img src="assets/deportes/banner_zona_fitness.png" alt="Zona Fitness Falabella: Máquinas y Pesas hasta 40% Dcto" class="w-full h-full object-cover">
+          <img src="assets/deportes/banner_zona_fitness.png" alt="Zona Fitness Sagabella: Máquinas y Pesas hasta 40% Dcto" class="w-full h-full object-cover">
         </picture>
       </div>
 
@@ -372,7 +374,7 @@
       <div class="hero-slide cursor-pointer" data-slide="2" onclick="document.getElementById('sec-bicicletas').scrollIntoView({behavior:'smooth'})">
         <picture>
           <source srcset="assets/deportes/banner_mundo_bicicletas.webp" type="image/webp">
-          <img src="assets/deportes/banner_mundo_bicicletas.png" alt="Mundo Bicicletas Falabella: Montañeras y Urbanas hasta 35% Dcto" class="w-full h-full object-cover">
+          <img src="assets/deportes/banner_mundo_bicicletas.png" alt="Mundo Bicicletas Sagabella: Montañeras y Urbanas hasta 35% Dcto" class="w-full h-full object-cover">
         </picture>
       </div>
 
@@ -609,7 +611,7 @@
       <div class="relative w-full rounded-2xl overflow-hidden bg-slate-900 shadow-md aspect-[1012/379]">
         <picture>
           <source srcset="assets/deportes/zona_fitness_room.webp" type="image/webp">
-          <img src="assets/deportes/zona_fitness_room.png" alt="Zona Fitness Falabella: Sala de Máquinas de Ejercicio" class="w-full h-full object-cover">
+          <img src="assets/deportes/zona_fitness_room.png" alt="Zona Fitness Sagabella: Sala de Máquinas de Ejercicio" class="w-full h-full object-cover">
         </picture>
 
         <!-- Hotspot 1: Gimnasio Multifuerza Atletis -->
@@ -738,7 +740,7 @@
             <h3 class="text-2xl font-black text-slate-900 tracking-tight">CATÁLOGO DE PRODUCTOS - DEPORTES</h3>
             <span class="bg-[#aad500] text-slate-900 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">Oficial</span>
           </div>
-          <p class="text-xs text-slate-500 mt-1">Garantía oficial Falabella en todas las marcas deportivas, bicicletas y máquinas de fitness.</p>
+          <p class="text-xs text-slate-500 mt-1">Garantía oficial Sagabella en todas las marcas deportivas, bicicletas y máquinas de fitness.</p>
         </div>
 
         <!-- Filtros Rápidos por Categoría -->
@@ -760,7 +762,7 @@
 
   </main>
 
-  <!-- ==================== MODAL DE CARRITO GLOBAL (FALABELLA_STORE_CART_V2) ==================== -->
+  <!-- ==================== MODAL DE CARRITO GLOBAL (SAGABELLA_STORE_CART_V2) ==================== -->
   <div id="deportesCartModal" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity" onclick="closeDeportesCartModal()"></div>
 
@@ -812,7 +814,7 @@
     <span id="deportesToastMsg">Producto añadido a tu bolsa</span>
   </div>
 
-  <!-- ==================== FOOTER OFICIAL FALABELLA ==================== -->
+  <!-- ==================== FOOTER OFICIAL SAGABELLA ==================== -->
   <footer class="mt-16 bg-[#1e293b] text-slate-300 text-xs pt-12 pb-8 border-t border-slate-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
       <div>
@@ -828,7 +830,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Deportes Falabella</h4>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Deportes Sagabella</h4>
         <ul class="space-y-2">
           <li><a href="#sec-bicicletas" class="hover:text-white transition">Bicicletas Monark & Trek</a></li>
           <li><a href="#sec-zona-fitness" class="hover:text-white transition">Trotadoras y Máquinas</a></li>
@@ -846,7 +848,7 @@
         </ul>
       </div>
       <div>
-        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Garantía Falabella</h4>
+        <h4 class="font-black text-white text-sm mb-3 uppercase tracking-wider">Garantía Sagabella</h4>
         <p class="text-slate-400 leading-relaxed mb-3">Compras 100% protegidas, envíos garantizados y devoluciones sin costo en tiendas físicas a nivel nacional.</p>
         <span class="inline-block px-3 py-1 bg-slate-800 text-[#aad500] font-black rounded-md text-[11px]">Compra 100% Segura</span>
       </div>
@@ -859,7 +861,7 @@
         <span>•</span>
         <a href="libro-reclamaciones.html" class="hover:text-white hover:underline transition">Libro de reclamaciones</a>
       </div>
-      <span>© 2026 falabella.com - Todos los derechos reservados.</span>
+      <span>© 2026 sagabella.com - Todos los derechos reservados.</span>
       <span>Precios y promociones válidos para compras online.</span>
     </div>
   </footer>
@@ -1147,7 +1149,7 @@
         image: 'assets/deportes/banner_vestuario_deportivo.webp',
         badge: 'DryCELL'
       },
-      // PRODUCTOS OFICIALES DEPORTES FALABELLA (NUEVAS ADICIONES)
+      // PRODUCTOS OFICIALES DEPORTES SAGABELLA (NUEVAS ADICIONES)
       // -- Bicicletas Montañera, Rutera, Urbanas & Infantil --
       {
         id: 622,
@@ -1528,6 +1530,7 @@
           </div>
         </article>
       `).join('');
+      if (typeof window.syncAllHeartIcons === 'function') window.syncAllHeartIcons();
     }
 
     function handleDeportesSearch(event) {
@@ -1551,7 +1554,7 @@
     }
 
     /* ============================================================
-       CARRITO GLOBAL (FALABELLA_STORE_CART_V2)
+       CARRITO GLOBAL (SAGABELLA_STORE_CART_V2)
        ============================================================ */
     const STORE_CART_KEY = 'falabella_store_cart_v2';
 
@@ -1669,7 +1672,7 @@
           <div class="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl shadow-2xs">
             <img src="${img}" alt="${item.name}" class="w-16 h-16 object-contain rounded-lg bg-slate-50 border border-slate-100 flex-shrink-0">
             <div class="flex-1 min-w-0">
-              <span class="text-[10px] font-black uppercase text-slate-400 block">${item.brand || 'Falabella'}</span>
+              <span class="text-[10px] font-black uppercase text-slate-400 block">${item.brand || 'Sagabella'}</span>
               <h5 class="text-xs font-bold text-slate-800 truncate" title="${item.name}">${item.name}</h5>
               <span class="text-xs font-black text-rose-600 block mt-0.5">S/ ${price.toFixed(2)}</span>
               
@@ -1760,5 +1763,8 @@
     });
   </script>
 <script src="assets/falabella-auth-favorites.js"></script>
+  <script>
+    try { if (typeof DEPORTES_PRODUCTS !== 'undefined') window.DEPORTES_PRODUCTS = DEPORTES_PRODUCTS; } catch (e) {}
+  </script>
 </body>
 </html>

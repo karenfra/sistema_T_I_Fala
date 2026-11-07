@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Belleza en Falabella.com Perú - Las mejores marcas en Skincare, Perfumes, Fragancias y Maquillaje: Lancôme, The Ordinary, Victoria's Secret, Bath & Body Works, Maybelline, Benefit, Dior, Armani.">
-  <title>Belleza, Perfumes y Maquillaje | Falabella.com Perú</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Belleza en Sagabella.com Perú - Las mejores marcas en Skincare, Perfumes, Fragancias y Maquillaje: Lancôme, The Ordinary, Victoria's Secret, Bath & Body Works, Maybelline, Benefit, Dior, Armani.">
+  <title>Belleza, Perfumes y Maquillaje | Sagabella.com Perú</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,7 @@
       theme: {
         extend: {
           colors: {
-            falabella: {
+            sagabella: {
               lime: '#aad500',
               dark: '#1e293b',
               navy: '#0f172a',
@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* Cabecera idéntica a Falabella.com */
+    /* Cabecera idéntica a Sagabella.com */
     .store-header {
       background: #ffffff;
       border-bottom: 1px solid #eef2f6;
@@ -364,22 +364,23 @@
       opacity: 1;
     }
   </style>
+  <script src="assets/falabella-auth-favorites.js"></script>
 </head>
 <body class="bg-[#f8fafc] antialiased selection:bg-[#aad500] selection:text-slate-900">
 
   <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN 1 ==================== -->
-  <header class="store-header">
-    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 flex items-center gap-3 sm:gap-6 justify-between">
+    <header class="store-header">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 flex items-center gap-3 sm:gap-5 justify-between">
       
-      <!-- Logo Oficial Falabella (#aad500) & Botón Menú -->
-      <div class="flex items-center gap-4 sm:gap-6 select-none flex-shrink-0">
-        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="falabella.com">
-          <span style="color:#aad500; font-size:32px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">falabella</span>
-          <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
+      <!-- Logo Oficial Sagabella (#aad500) & Botón Menú -->
+      <div class="flex items-center gap-3 sm:gap-5 select-none flex-shrink-0">
+        <a href="index.html" class="flex items-center gap-0.5 cursor-pointer no-underline select-none" title="sagabella.com">
+          <span style="color:#aad500; font-size:30px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">sagabella</span>
+          <span style="color:#aad500; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">.com</span>
         </a>
 
         <!-- Botón Menú Hamburguesa -->
-        <button type="button" onclick="toggleCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
+        <button type="button" onclick="toggleStoreCategoriesDrawer()" class="flex items-center gap-2 px-2 py-1 text-slate-800 hover:text-black font-semibold text-sm rounded-lg transition cursor-pointer select-none" title="Menú de categorías">
           <svg class="w-5 h-5 text-slate-800" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           <span class="text-sm font-semibold text-slate-900">Menú</span>
         </button>
@@ -388,15 +389,15 @@
       <!-- Barra de búsqueda central en forma de píldora con botón circular oscuro -->
       <div class="flex-1 max-w-2xl mx-2 min-w-0">
         <div class="store-search-wrap">
-          <input type="text" id="bellezaSearchInput" class="store-search-input" placeholder="Buscar en falabella.com" onkeydown="if(event.key==='Enter') executeBellezaSearch(this.value)" />
-          <button type="button" onclick="executeBellezaSearch(document.getElementById('bellezaSearchInput').value)" class="store-search-btn" title="Buscar en falabella.com">
+          <input type="text" id="storeSearchInput" class="store-search-input" placeholder="Buscar en sagabella.com" onkeydown="if(event.key==='Enter') executeStoreSearch()" />
+          <button type="button" onclick="executeStoreSearch()" class="store-search-btn" title="Buscar en sagabella.com">
             <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </div>
       </div>
 
       <!-- Acciones de cabecera: Hola, Inicia sesión ⌵ | Mi cuenta, Favoritos, Carrito -->
-      <div class="flex items-center gap-4 sm:gap-6 ml-auto flex-shrink-0">
+      <div class="flex items-center gap-3 sm:gap-4 ml-auto flex-shrink-0">
         
         <!-- Hola, Inicia sesión / Mi cuenta -->
         <div onclick="openFalabellaAuthOrAccount()" class="flex items-center gap-2 cursor-pointer hover:opacity-85 text-left select-none transition py-1" title="Iniciar sesión / Mi cuenta">
@@ -419,35 +420,33 @@
           <span id="falabellaFavCountBadge" class="falabella-fav-badge absolute -top-1 -right-2 bg-rose-600 text-white font-black text-[10px] rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center border-2 border-white shadow-xs" style="display:none;">0</span>
         </button>
 
-        <!-- Carrito con indicador numérico circular oscuro idéntico a Falabella -->
-        <button onclick="openBellezaCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Bolsa de compras">
+        <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
+        <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span id="bellezaCartBadge" style="background:#333f48; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-4px; right:-6px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
+          <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
         </button>
       </div>
     </div>
 
-    <!-- Sub-barra informativa de Falabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN 1 -->
+    <!-- Sub-barra informativa de Sagabella (Ubicación, CMR, Ayuda, Rastrear, Intranet) EXACTA A LA IMAGEN -->
     <div class="store-topbar">
-      <div class="max-w-[1400px] mx-auto flex items-center justify-between flex-wrap gap-2">
-        <div class="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 cursor-pointer text-xs" onclick="showToast('📍 Selección de ubicación de despacho activada.')">
-          <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span class="font-medium text-slate-700">Ingresa tu ubicación</span>
-        </div>
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-3 flex-wrap">
+        <button type="button" onclick="openStoreLocationModal()" class="flex items-center gap-1.5 text-xs text-slate-700 hover:text-slate-900 font-semibold cursor-pointer bg-transparent border-none">
+          <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="storeLocationText">Ingresa tu ubicación</span>
+        </button>
 
-        <div class="flex items-center gap-4 text-xs font-medium text-slate-600 flex-wrap">
-          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('💳 Beneficios y promociones de Belleza con Tarjeta CMR.')">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="hover:text-slate-900 cursor-pointer hidden md:inline" onclick="showToast('💼 Programa Vende y Comisiona Falabella.')">Vende y comisiona</span>
-          <span class="hover:text-slate-900 cursor-pointer hidden sm:flex items-center gap-1" onclick="showToast('📞 Venta Telefónica Falabella: (01) 555-0000.')">Venta telefónica <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="showToast('ℹ️ Centro de Ayuda: Asistencia en fragancias y compras online.')">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline">
+        <div class="flex items-center gap-4 sm:gap-6 text-xs text-slate-600 ml-auto flex-wrap">
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openCmrModal()">Tarjeta CMR <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="hover:text-slate-900 cursor-pointer flex items-center gap-1" onclick="openHelpDropdown(event)">Ayuda <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+          <button type="button" onclick="openTrackOrderModal()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
             <span class="hidden sm:inline">Rastrear</span>
-          </a>
-          <a href="index.html" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 no-underline" title="Acceso al sistema administrativo">
+          </button>
+          <button type="button" onclick="enterLogin()" class="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1 cursor-pointer border-l border-slate-200 pl-3 bg-transparent border-t-0 border-r-0 border-b-0" title="Acceso al sistema administrativo">
             <svg class="w-3.5 h-3.5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span>Intranet</span>
-          </a>
+            <span class="hidden sm:inline">Intranet</span>
+          </button>
         </div>
       </div>
     </div>
@@ -842,7 +841,7 @@
 
   </main>
 
-  <!-- ==================== MODAL DE CARRITO GLOBAL (CONECTADO A FALABELLA_STORE_CART_V2) ==================== -->
+  <!-- ==================== MODAL DE CARRITO GLOBAL (CONECTADO A SAGABELLA_STORE_CART_V2) ==================== -->
   <div id="bellezaCartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-300 hidden opacity-0" onclick="closeBellezaCartModal()">
     <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" onclick="event.stopPropagation()">
       
@@ -890,17 +889,17 @@
     <span id="toastText">Producto añadido a tu bolsa</span>
   </div>
 
-  <!-- ==================== PIE DE PÁGINA FALABELLA OFICIAL ==================== -->
+  <!-- ==================== PIE DE PÁGINA SAGABELLA OFICIAL ==================== -->
   <footer class="bg-[#1e364b] text-white mt-16 pt-10 pb-8 text-xs border-t border-slate-700">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
       
       <!-- Contenedor Principal: 4 columnas -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-slate-700/70">
         
-        <!-- Columna 1: Falabella Brand -->
+        <!-- Columna 1: Sagabella Brand -->
         <div class="space-y-3">
           <div class="flex items-center gap-1 select-none">
-            <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px;">falabella</span>
+            <span style="color:#aad500; font-size:24px; font-weight:900; letter-spacing:-0.5px;">sagabella</span>
             <span style="color:#aad500; font-size:18px; font-weight:900; letter-spacing:-0.5px;">.com</span>
           </div>
           <p class="text-slate-300 text-[11.5px] leading-relaxed">
@@ -941,7 +940,7 @@
 
         <!-- Columna 4: Garantía y Seguridad -->
         <div class="space-y-2.5">
-          <h4 class="text-white font-bold text-sm mb-3">Garantía Falabella</h4>
+          <h4 class="text-white font-bold text-sm mb-3">Garantía Sagabella</h4>
           <p class="text-slate-300 text-[11.5px] leading-relaxed">
             Productos 100% originales con sello de garantía oficial. Pagos cifrados con protocolo seguro SSL y certificación bancaria.
           </p>
@@ -957,13 +956,13 @@
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11.5px] text-slate-400">
         <div class="flex items-center gap-3">
           <span class="font-semibold text-slate-300">Síguenos en:</span>
-          <a href="https://www.instagram.com/falabella_pe/?hl=es-la" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition" aria-label="Instagram">
+          <a href="https://www.instagram.com/sagabella_pe/?hl=es-la" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition" aria-label="Instagram">
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <a href="https://www.facebook.com/sagafalabella/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition" aria-label="Facebook">
+          <a href="https://www.facebook.com/sagabella/?locale=es_LA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition" aria-label="Facebook">
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <a href="https://www.tiktok.com/@falabella_pe?lang=es" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-black text-white flex items-center justify-center transition" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@sagabella_pe?lang=es" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-white/10 hover:bg-black text-white flex items-center justify-center transition" aria-label="TikTok">
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.42a6.34 6.34 0 0 0-.86-.06 6.34 6.34 0 1 0 6.34 6.34V8.71a8.16 8.16 0 0 0 4.77 1.52V6.78a4.85 4.85 0 0 1-1-.09z"/></svg>
           </a>
         </div>
@@ -977,7 +976,7 @@
         </div>
 
         <div>
-          <span>falabella.com • Todos los derechos reservados • Perú</span>
+          <span>sagabella.com • Todos los derechos reservados • Perú</span>
         </div>
       </div>
     </div>
@@ -986,7 +985,7 @@
   <!-- ==================== JAVASCRIPT: CATÁLOGO DE BELLEZA Y CARRITO ==================== -->
   <script>
     /* -------------------------------------------------------------
-       CONSTANTE DEL CARRITO GLOBAL UNIFICADO (FALABELLA STORE V2)
+       CONSTANTE DEL CARRITO GLOBAL UNIFICADO (SAGABELLA STORE V2)
        ------------------------------------------------------------- */
     const STORE_CART_KEY = 'falabella_store_cart_v2';
 
@@ -1382,7 +1381,7 @@
         badge: 'Cejas'
       },
 
-      // --- CUIDADO CAPILAR (EXACTO A IMÁGENES DE FALABELLA) ---
+      // --- CUIDADO CAPILAR (EXACTO A IMÁGENES DE SAGABELLA) ---
       {
         id: 725,
         code: 'BEL-KER-01',
@@ -1637,7 +1636,7 @@
               <!-- Botón Favorito (Conectado al sistema de favoritos) -->
               <button 
                 type="button" 
-                onclick="event.stopPropagation(); toggleFalabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\\'")}', ${product.priceCmr}, '${product.image}', '${product.brand}')"
+                onclick="event.stopPropagation(); toggleSagabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\\'")}', ${product.priceCmr}, '${product.image}', '${product.brand}')"
                 class="falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer"
                 title="Añadir a favoritos"
                 data-product-id="${product.id}"
@@ -1656,13 +1655,13 @@
                   ${product.name}
                 </h4>
 
-                <!-- Vendedor Falabella (Icono verde 1:1 con Falabella) -->
+                <!-- Vendedor Sagabella (Icono verde 1:1 con Sagabella) -->
                 <div class="flex items-center gap-1.5 text-[11px] text-slate-500 mb-2 font-medium">
-                  <span>Por Falabella</span>
-                  <span class="inline-block w-2.5 h-3 bg-[#aad500] rounded-xs" title="Vendido por Falabella"></span>
+                  <span>Por Sagabella</span>
+                  <span class="inline-block w-2.5 h-3 bg-[#aad500] rounded-xs" title="Vendido por Sagabella"></span>
                 </div>
 
-                <!-- Bloque de Precios Falabella -->
+                <!-- Bloque de Precios Sagabella -->
                 <div class="space-y-0.5 mb-2">
                   <div class="flex items-baseline gap-2">
                     <span class="text-base font-black text-slate-900">S/ ${formattedCmr}</span>
@@ -1717,6 +1716,7 @@
           </article>
         `;
       }).join('');
+      if (typeof window.syncAllHeartIcons === 'function') window.syncAllHeartIcons();
     }
 
     /* -------------------------------------------------------------
@@ -2034,7 +2034,7 @@
         const itemId = item.id || item.productId;
         const itemImg = item.image || item.img || 'assets/belleza/banner_lancome_cherry.png';
         const itemName = item.name || 'Producto de Belleza';
-        const itemBrand = item.brand || 'Falabella';
+        const itemBrand = item.brand || 'Sagabella';
 
         return `
           <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
@@ -2201,7 +2201,10 @@
     });
   </script>
 
-  <!-- Autenticación y Favoritos Oficial Falabella -->
+  <!-- Autenticación y Favoritos Oficial Sagabella -->
   <script src="assets/falabella-auth-favorites.js"></script>
+  <script>
+    try { if (typeof BELLEZA_PRODUCTS !== 'undefined') window.BELLEZA_PRODUCTS = BELLEZA_PRODUCTS; } catch (e) {}
+  </script>
 </body>
 </html>

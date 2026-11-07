@@ -252,7 +252,7 @@ function renderSupport(){
     '<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">' +
       '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('clock','w-4 h-4 text-brand-700') + ' Horario</div><p class="text-[12.5px] text-slate-500">Lunes a sábado, de 9:00 a 21:00.</p></div>' +
       '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('msg','w-4 h-4 text-brand-700') + ' Chat / Tienda</div><p class="text-[12.5px] text-slate-500">Chatbot de preguntas frecuentes y módulos de gestión en tienda.</p></div>' +
-      '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('send','w-4 h-4 text-brand-700') + ' Correo</div><p class="text-[12.5px] text-slate-500">contacto@falabella.com — respuestas en 24 h hábiles.</p></div>' +
+      '<div class="rounded-xl border border-slate-200 p-4"><div class="flex items-center gap-2 text-slate-800 font-semibold text-[13px] mb-1">' + icon('send','w-4 h-4 text-brand-700') + ' Correo</div><p class="text-[12.5px] text-slate-500">contacto@sagabella.com — respuestas en 24 h hábiles.</p></div>' +
     '</div></div>';
 
   html += '</div>';
