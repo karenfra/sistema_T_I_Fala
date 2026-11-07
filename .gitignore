@@ -56,3 +56,7 @@ server.log
 # large workspace archives
 workspace-*
 *.tar
+
+# browser testing & profiles
+.chrome_test_profile/
+_test_*

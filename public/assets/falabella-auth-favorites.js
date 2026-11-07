@@ -40,6 +40,41 @@
   // ============================================================
   // CONSTANTS & KEYS
   // ============================================================
+  
+  // ============================================================
+  // TRANSPARENT STORAGE PROXY FOR PER-USER ISOLATION
+  // ============================================================
+  try {
+    if (!window.__falabellaStorageProxyInstalled) {
+      window.__falabellaStorageProxyInstalled = true;
+      const _origSetItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function(key, val) {
+        _origSetItem.apply(this, arguments);
+        if (this === localStorage) {
+          try {
+            if (key === CART_KEY) {
+              const u = getSession();
+              if (u) {
+                const uKey = getUserCartKey(u);
+                if (uKey && uKey !== 'falabella_guest_cart_v1') {
+                  _origSetItem.call(localStorage, uKey, val);
+                }
+              }
+            } else if (key === ACTIVE_FAVS_KEY) {
+              const u = getSession();
+              if (u) {
+                const uKey = getUserFavsKey(u);
+                if (uKey && uKey !== 'falabella_guest_favs_v1') {
+                  _origSetItem.call(localStorage, uKey, val);
+                }
+              }
+            }
+          } catch(e) {}
+        }
+      };
+    }
+  } catch(e) {}
+
   const SESSION_KEY = 'falabella_user_session_v1';
   const USERS_KEY = 'falabella_registered_users_v1';
   const ACTIVE_FAVS_KEY = 'falabella_active_favs_v1';
@@ -74,39 +109,64 @@
   function initUsersDatabase() {
     try {
       let users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
-      if (!Array.isArray(users) || users.length === 0) {
-        users = [
-          {
-            id: 'USR-1001',
-            nombres: 'Ana',
-            apellidos: 'Torres Valdivia',
-            nombreCompleto: 'Ana Torres',
-            email: 'ana.torres@gmail.com',
-            tipoDoc: 'DNI',
-            dni: '45879632',
-            telefono: '987654321',
-            password: 'password123',
-            isLinkedClient: true,
-            linkedClientData: { pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
-            registeredAt: new Date().toISOString()
-          },
-          {
-            id: 'USR-1002',
-            nombres: 'Carlos',
-            apellidos: 'Ramírez Soto',
-            nombreCompleto: 'Carlos Ramírez',
-            email: 'carlos.ramirez@sagabella.pe',
-            tipoDoc: 'DNI',
-            dni: '72345678',
-            telefono: '912345678',
-            password: 'password123',
-            isLinkedClient: false,
-            linkedClientData: null,
-            registeredAt: new Date().toISOString()
-          }
-        ];
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-      }
+      if (!Array.isArray(users)) users = [];
+
+      const seedList = [
+        {
+          id: 'USR-1003',
+          nombres: 'Karen',
+          apellidos: 'Franco Argama',
+          nombreCompleto: 'Karen Franco Argama',
+          email: 'karenfrancoargama@gmail.com',
+          tipoDoc: 'DNI',
+          dni: '72008816',
+          telefono: '987654321',
+          password: 'password123',
+          isLinkedClient: true,
+          linkedClientData: { pointsCMR: 2150, totalPurchases: 6, clientSince: '2023' },
+          registeredAt: new Date().toISOString()
+        },
+        {
+          id: 'USR-1001',
+          nombres: 'Ana',
+          apellidos: 'Torres Valdivia',
+          nombreCompleto: 'Ana Torres',
+          email: 'ana.torres@gmail.com',
+          tipoDoc: 'DNI',
+          dni: '45879632',
+          telefono: '987654321',
+          password: 'password123',
+          isLinkedClient: true,
+          linkedClientData: { pointsCMR: 1450, totalPurchases: 4, clientSince: '2022' },
+          registeredAt: new Date().toISOString()
+        },
+        {
+          id: 'USR-1002',
+          nombres: 'Carlos',
+          apellidos: 'Ramírez Soto',
+          nombreCompleto: 'Carlos Ramírez',
+          email: 'carlos.ramirez@sagabella.pe',
+          tipoDoc: 'DNI',
+          dni: '72345678',
+          telefono: '912345678',
+          password: 'password123',
+          isLinkedClient: false,
+          linkedClientData: null,
+          registeredAt: new Date().toISOString()
+        }
+      ];
+
+      seedList.forEach(seedU => {
+        const idx = users.findIndex(u => (u.email && u.email.toLowerCase() === seedU.email.toLowerCase()) || (u.dni && u.dni === seedU.dni));
+        if (idx === -1) {
+          users.push(seedU);
+        } else {
+          users[idx].nombres = users[idx].nombres || seedU.nombres;
+          users[idx].password = users[idx].password || seedU.password;
+        }
+      });
+
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
     } catch (e) {
       console.warn('Could not init users database:', e);
     }
@@ -130,22 +190,52 @@
       localStorage.setItem(SESSION_KEY, JSON.stringify(user));
       sessionStorage.setItem(SESSION_KEY, JSON.stringify(user));
     } catch (e) {}
-    // Merge or load favorites for this user
     loadUserFavoritesOnLogin(user);
+    loadUserCartOnLogin(user);
     updateHeaderGreeting();
     updateFavoritesBadge();
+    syncAllCartBadges();
+    syncAllHeartIcons();
     window.dispatchEvent(new Event('falabella_session_changed'));
+    window.dispatchEvent(new Event('falabella_favs_updated'));
     window.dispatchEvent(new Event('storage'));
   }
 
   function clearSession() {
+    // 1. Save current active cart & favs to the logging-out user
+    const user = getSession();
+    if (user) {
+      try {
+        const uFavKey = getUserFavsKey(user);
+        const curFavs = localStorage.getItem(ACTIVE_FAVS_KEY);
+        if (curFavs !== null) {
+          localStorage.setItem(uFavKey, curFavs);
+        }
+        const uCartKey = getUserCartKey(user);
+        const curCart = localStorage.getItem(CART_KEY);
+        if (curCart !== null) {
+          localStorage.setItem(uCartKey, curCart);
+        }
+      } catch (e) {}
+    }
+
+    // 2. Wipe active state for guest
     try {
       localStorage.removeItem(SESSION_KEY);
       sessionStorage.removeItem(SESSION_KEY);
+      localStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify([]));
+      sessionStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify([]));
+      localStorage.setItem(CART_KEY, JSON.stringify([]));
+      sessionStorage.setItem(CART_KEY, JSON.stringify([]));
     } catch (e) {}
+
+    // 3. Sychronize all UI to 0
     updateHeaderGreeting();
     updateFavoritesBadge();
+    syncAllCartBadges();
+    syncAllHeartIcons();
     window.dispatchEvent(new Event('falabella_session_changed'));
+    window.dispatchEvent(new Event('falabella_favs_updated'));
     window.dispatchEvent(new Event('storage'));
   }
 
@@ -406,9 +496,111 @@
   // ============================================================
   // FAVORITES MANAGEMENT
   // ============================================================
+  
+  // ============================================================
+  // KAREN FRANCO ARGAMA (PRE-SEEDED 4 FAVORITES & CART)
+  // ============================================================
+  const KAREN_DEFAULT_FAVORITES = [
+    {
+      id: 702,
+      productId: 702,
+      name: "Victoria's Secret Pure Seduction Fragrance Mist 250ml",
+      brand: "Victoria's Secret",
+      price: 79.90,
+      priceCmr: 79.90,
+      priceNormal: 99.90,
+      originalPrice: 99.90,
+      discount: "-20%",
+      category: "Fragancias",
+      image: "assets/belleza/prod_vs_pure_seduction.png",
+      addedAt: new Date().toISOString()
+    },
+    {
+      id: 703,
+      productId: 703,
+      name: "Victoria's Secret Pure Seduction Shimmer Body Mist con Brillo 250ml",
+      brand: "Victoria's Secret",
+      price: 85.00,
+      priceCmr: 85.00,
+      priceNormal: 109.00,
+      originalPrice: 109.00,
+      discount: "-22%",
+      category: "Fragancias",
+      image: "assets/belleza/prod_vs_pure_seduction_shimmer.png",
+      addedAt: new Date().toISOString()
+    },
+    {
+      id: 841,
+      productId: 841,
+      name: "Zapatillas Urbanas Unisex Reebok Club C 85 Vintage",
+      brand: "Reebok",
+      price: 299.90,
+      priceCmr: 299.90,
+      priceNormal: 399.90,
+      originalPrice: 399.90,
+      discount: "-25%",
+      category: "Calzado",
+      image: "assets/calzado/prod_reebok_club_c.png",
+      addedAt: new Date().toISOString()
+    },
+    {
+      id: 501,
+      productId: 501,
+      name: 'LG OLED evo C4 55" 4K Smart TV 2024',
+      brand: "LG",
+      price: 3899.00,
+      priceCmr: 3899.00,
+      priceNormal: 5499.00,
+      originalPrice: 5499.00,
+      discount: "-29%",
+      category: "Televisores",
+      image: "assets/tecnologia/tv_lg_oled55c4.jpg",
+      addedAt: new Date().toISOString()
+    }
+  ];
+
+  const KAREN_DEFAULT_CART = [
+    {
+      id: 702,
+      productId: 702,
+      name: "Victoria's Secret Pure Seduction Fragrance Mist 250ml",
+      brand: "Victoria's Secret",
+      price: 79.90,
+      priceCmr: 79.90,
+      qty: 1,
+      quantity: 1,
+      image: "assets/belleza/prod_vs_pure_seduction.png"
+    },
+    {
+      id: 841,
+      productId: 841,
+      name: "Zapatillas Urbanas Unisex Reebok Club C 85 Vintage",
+      brand: "Reebok",
+      price: 299.90,
+      priceCmr: 299.90,
+      qty: 1,
+      quantity: 1,
+      image: "assets/calzado/prod_reebok_club_c.png"
+    }
+  ];
+
+  function isUserKaren(user) {
+    if (!user) return false;
+    const em = (user.email || '').toLowerCase();
+    const dni = String(user.dni || '');
+    return em.includes('karen') || dni === '72008816';
+  }
+
+  function getUserCartKey(user) {
+    if (!user) return 'falabella_guest_cart_v1';
+    const id = user.dni || user.email || user.id || 'anonymous';
+    return 'falabella_cart_usr_' + String(id).replace(/[^a-zA-Z0-9_-]/g, '_');
+  }
+
   function getUserFavsKey(user) {
     if (!user) return 'falabella_guest_favs_v1';
-    return 'falabella_favs_usr_' + (user.dni || user.id || 'anonymous');
+    const id = user.dni || user.email || user.id || 'anonymous';
+    return 'falabella_favs_usr_' + String(id).replace(/[^a-zA-Z0-9_-]/g, '_');
   }
 
   function repairFavoriteItem(item) {
@@ -462,14 +654,21 @@
   function getFavorites() {
     try {
       const user = getSession();
+      // If user is logged out, favorites is strictly empty
+      if (!user) {
+        return [];
+      }
+
       const userKey = getUserFavsKey(user);
       const userFavsRaw = localStorage.getItem(userKey);
       let list = [];
       if (userFavsRaw) {
         list = JSON.parse(userFavsRaw);
+      } else if (isUserKaren(user)) {
+        list = [...KAREN_DEFAULT_FAVORITES];
+        localStorage.setItem(userKey, JSON.stringify(list));
       } else {
-        const activeRaw = localStorage.getItem(ACTIVE_FAVS_KEY);
-        list = activeRaw ? JSON.parse(activeRaw) : [];
+        list = [];
       }
 
       // Auto-repair any generic items
@@ -496,6 +695,8 @@
   function saveFavorites(favs) {
     try {
       const user = getSession();
+      if (!user) return; // Strict guard: favorites can only be modified by logged in users
+
       const userKey = getUserFavsKey(user);
       localStorage.setItem(userKey, JSON.stringify(favs));
       localStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify(favs));
@@ -512,18 +713,47 @@
 
   function loadUserFavoritesOnLogin(user) {
     try {
+      if (!user) return;
       const userKey = getUserFavsKey(user);
-      let userFavs = JSON.parse(localStorage.getItem(userKey) || '[]');
-      const activeFavs = JSON.parse(localStorage.getItem(ACTIVE_FAVS_KEY) || '[]');
+      let userFavs = [];
+      const raw = localStorage.getItem(userKey);
+      if (raw) {
+        userFavs = JSON.parse(raw);
+      } else if (isUserKaren(user)) {
+        userFavs = [...KAREN_DEFAULT_FAVORITES];
+        localStorage.setItem(userKey, JSON.stringify(userFavs));
+      } else {
+        userFavs = [];
+        localStorage.setItem(userKey, JSON.stringify(userFavs));
+      }
 
-      // Merge active guest favorites into user favorites without duplicates
-      const mergedMap = new Map();
-      userFavs.forEach(item => mergedMap.set(item.id, item));
-      activeFavs.forEach(item => mergedMap.set(item.id, item));
+      localStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify(userFavs));
+      try {
+        sessionStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify(userFavs));
+      } catch (e) {}
+    } catch (e) {}
+  }
 
-      const merged = Array.from(mergedMap.values());
-      localStorage.setItem(userKey, JSON.stringify(merged));
-      localStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify(merged));
+  function loadUserCartOnLogin(user) {
+    try {
+      if (!user) return;
+      const userCartKey = getUserCartKey(user);
+      let userCart = [];
+      const raw = localStorage.getItem(userCartKey);
+      if (raw) {
+        userCart = JSON.parse(raw);
+      } else if (isUserKaren(user)) {
+        userCart = [...KAREN_DEFAULT_CART];
+        localStorage.setItem(userCartKey, JSON.stringify(userCart));
+      } else {
+        userCart = [];
+        localStorage.setItem(userCartKey, JSON.stringify(userCart));
+      }
+
+      localStorage.setItem(CART_KEY, JSON.stringify(userCart));
+      try {
+        sessionStorage.setItem(CART_KEY, JSON.stringify(userCart));
+      } catch (e) {}
     } catch (e) {}
   }
 
@@ -595,6 +825,16 @@
     }
 
     const triggerEl = event?.currentTarget || (event && event.target ? event.target.closest('button, [data-fav-prod-id], [data-product-id], .falabella-card-fav-btn, .falabella-fav-btn') : null);
+
+    // CRITICAL: Block heart toggle if user has not logged in
+    const user = getSession();
+    if (!user) {
+      showGlobalToast('🔒 Inicia sesión para guardar productos en tus favoritos.', 'error');
+      if (typeof window.openFalabellaAuthModal === 'function') {
+        window.openFalabellaAuthModal('login');
+      }
+      return;
+    }
 
     let product = null;
     let pid = null;
@@ -744,6 +984,7 @@
   // MODALS & DRAWER INJECTION
   // ============================================================
   function ensureModalsInDOM() {
+    if (!document.body) return;
     if (document.getElementById('falabellaAuthSuiteContainer')) return;
 
     const container = document.createElement('div');
@@ -1009,14 +1250,18 @@
               <!-- Quick Demo Login Helpers -->
               <div style="margin-top: 8px; padding-top: 12px; border-top: 1px solid #f1f5f9;">
                 <p style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; margin: 0 0 8px 0; letter-spacing: 0.5px;">Acceso rápido de prueba:</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                  <button type="button" onclick="event.stopPropagation(); window.fillDemoLogin('ana.torres@gmail.com', 'password123')" style="padding: 8px; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc; text-align: left; cursor: pointer;">
-                    <span style="font-weight: 700; font-size: 11.5px; color: #0f172a; display: block;">Ana Torres (Vinculada)</span>
-                    <span style="font-size: 10px; color: #15803d; font-weight: 600;">DNI 45879632 · 1,450 pts</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;">
+                  <button type="button" onclick="event.stopPropagation(); window.fillDemoLogin('karenfrancoargama@gmail.com', 'password123')" style="padding: 8px 6px; border-radius: 8px; border: 1px solid #fbcfe8; background: #fdf2f8; text-align: left; cursor: pointer;">
+                    <span style="font-weight: 700; font-size: 11px; color: #be185d; display: block;">Karen Franco</span>
+                    <span style="font-size: 9.5px; color: #9d174d; font-weight: 600;">4 Favoritos</span>
                   </button>
-                  <button type="button" onclick="event.stopPropagation(); window.fillDemoLogin('carlos.ramirez@sagabella.pe', 'password123')" style="padding: 8px; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc; text-align: left; cursor: pointer;">
-                    <span style="font-weight: 700; font-size: 11.5px; color: #0f172a; display: block;">Carlos Ramírez (Online)</span>
-                    <span style="font-size: 10px; color: #64748b; font-weight: 600;">DNI 72345678</span>
+                  <button type="button" onclick="event.stopPropagation(); window.fillDemoLogin('ana.torres@gmail.com', 'password123')" style="padding: 8px 6px; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc; text-align: left; cursor: pointer;">
+                    <span style="font-weight: 700; font-size: 11px; color: #0f172a; display: block;">Ana Torres</span>
+                    <span style="font-size: 9.5px; color: #15803d; font-weight: 600;">Vinculada</span>
+                  </button>
+                  <button type="button" onclick="event.stopPropagation(); window.fillDemoLogin('carlos.ramirez@sagabella.pe', 'password123')" style="padding: 8px 6px; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc; text-align: left; cursor: pointer;">
+                    <span style="font-weight: 700; font-size: 11px; color: #0f172a; display: block;">Carlos Ramírez</span>
+                    <span style="font-size: 9.5px; color: #64748b; font-weight: 600;">Online</span>
                   </button>
                 </div>
               </div>
@@ -1501,13 +1746,40 @@
           <div style="padding: 20px;">
             <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 6px;">DNI del Comprador (8 dígitos)</label>
             <div style="display: flex; gap: 8px;">
-              <input type="text" id="falTrackDniInput" class="fal-input-field" placeholder="12345678" maxlength="8" onkeydown="if(event.key==='Enter') window.executeTrackOrderSearch();" style="flex: 1; padding: 10px 14px; font-size: 14px; font-weight: 700; letter-spacing: 1px; border: 1.5px solid #cbd5e1; border-radius: 10px;" />
+              <input type="text" id="falTrackDniInput" class="fal-input-field" placeholder="12345678" maxlength="8" inputmode="numeric" autocomplete="off" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 8);" onkeypress="if(event.which < 48 || event.which > 57) event.preventDefault();" onpaste="event.preventDefault(); const t = (event.clipboardData || window.clipboardData).getData('text'); this.value = t.replace(/\D/g, '').slice(0, 8);" onkeydown="if(event.key==='Enter') window.executeTrackOrderSearch();" style="flex: 1; padding: 10px 14px; font-size: 14px; font-weight: 700; letter-spacing: 1px; border: 1.5px solid #cbd5e1; border-radius: 10px;" />
               <button type="button" onclick="window.executeTrackOrderSearch()" style="padding: 10px 20px; background: #0f172a; color: #fff; font-weight: 800; border-radius: 10px; border: none; cursor: pointer; font-size: 13.5px;">Consultar</button>
             </div>
             <div id="falTrackResults" style="margin-top: 14px;"></div>
           </div>
           <div style="padding: 12px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
             <button type="button" onclick="window.closeTrackOrderModal()" style="padding: 8px 18px; border-radius: 10px; border: 1px solid #cbd5e1; background: #fff; color: #475569; font-weight: 700; font-size: 12.5px; cursor: pointer;">Cerrar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- UNIVERSAL RETURNS POLICY MODAL (RN-20)     -->
+      <!-- ========================================== -->
+      <div id="falUniversalReturnsModal" class="fal-auth-backdrop hidden" onclick="if(event.target === this) window.closeReturnsPolicyModal()" style="display: none; z-index: 999999;">
+        <div class="fal-auth-card" onclick="event.stopPropagation()" style="max-width: 540px; box-shadow: 0 25px 60px rgba(0,0,0,0.35); border-radius: 20px; overflow: hidden; background: #fff;">
+          <div style="padding: 18px 24px; background: #fff; border-bottom: 1px solid #f1f5f9; display: flex; align-items: flex-start; justify-content: space-between;">
+            <div>
+              <h3 style="margin: 0; font-size: 17px; font-weight: 800; color: #0f172a; line-height: 1.25;">Políticas de Cambios y Devoluciones</h3>
+              <p style="margin: 3px 0 0; font-size: 12px; color: #64748b;">Garantía oficial Sagabella.com · Regla de Negocio RN-20</p>
+            </div>
+            <button type="button" onclick="window.closeReturnsPolicyModal()" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; cursor: pointer; color: #475569; font-size: 15px; display: flex; align-items: center; justify-content: center; line-height: 1; transition: all 0.15s;" title="Cerrar">✕</button>
+          </div>
+          <div style="padding: 22px 24px; font-size: 13px; color: #334155; line-height: 1.6;">
+            <p style="margin: 0 0 14px; color: #334155;">En <b>sagabella.com</b> queremos que tu experiencia sea 100% satisfactoria. Todos nuestros productos cuentan con garantía de cambio y devolución conforme a las políticas del sistema:</p>
+            <ul style="margin: 0; padding-left: 18px; list-style-type: disc; color: #475569; display: flex; flex-direction: column; gap: 10px;">
+              <li><b>Plazo máximo:</b> Tienes hasta <b>30 días calendario</b> desde la fecha de compra para solicitar un cambio o devolución (RN-20).</li>
+              <li><b>Estado del producto:</b> Debe encontrarse en óptimas condiciones, sin daños imputables al mal uso y preferentemente con su empaque o sellos (RN-21, RN-22).</li>
+              <li><b>Comprobante de compra:</b> Presenta el comprobante electrónico que llegó a tu correo o indícanos tu DNI en tienda para ubicar la venta (RN-20).</li>
+              <li><b>Atención de consultas:</b> Puedes resolver dudas de inmediato con nuestro chatbot en la esquina inferior derecha o acercarte a cualquier módulo de Atención al Cliente (RN-27).</li>
+            </ul>
+          </div>
+          <div style="padding: 16px 24px; background: #fff; border-top: 1px solid #f1f5f9;">
+            <button type="button" onclick="window.closeReturnsPolicyModal()" style="width: 100%; padding: 11px; background: #0f766e; color: #fff; font-weight: 700; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; transition: background 0.15s;">Entendido</button>
           </div>
         </div>
       </div>
@@ -2386,8 +2658,14 @@
     // Automatically log user in
     setSession(users[userIndex]);
     window.closeFalabellaAuthModal();
-
-    showGlobalToast(`🎉 ¡Contraseña actualizada exitosamente! Bienvenido/a de vuelta a sagabella.com, ${(users[userIndex].nombres || 'Cliente').split(' ')[0]}.`);
+    const welcomeMsg = `🎉 ¡Contraseña actualizada exitosamente! Bienvenido/a de vuelta a sagabella.com, ${(users[userIndex].nombres || 'Cliente').split(' ')[0]}.`;
+    showGlobalToast(welcomeMsg);
+    try {
+      sessionStorage.setItem('falabella_pending_toast', welcomeMsg);
+    } catch (e) {}
+    setTimeout(() => {
+      window.location.reload();
+    }, 700);
   };
 
   // ============================================================
@@ -2618,7 +2896,14 @@
       }
       setSession(user);
       window.closeFalabellaAuthModal();
-      showGlobalToast(`¡Bienvenido/a de nuevo, ${(user.nombres || user.name || user.nombreCompleto || 'Cliente').split(' ')[0]}! Has iniciado sesión.`);
+      const welcomeMsg = `¡Bienvenido/a de nuevo, ${(user.nombres || user.name || user.nombreCompleto || 'Cliente').split(' ')[0]}! Has iniciado sesión.`;
+      showGlobalToast(welcomeMsg);
+      try {
+        sessionStorage.setItem('falabella_pending_toast', welcomeMsg);
+      } catch (e) {}
+      setTimeout(() => {
+        window.location.reload();
+      }, 700);
     } else {
       if (errBox) {
         errBox.innerHTML = 'Credenciales incorrectas. Verifica tu correo/DNI y contraseña, o prueba una de las cuentas demo abajo.';
@@ -2750,12 +3035,16 @@
     // Save session
     setSession(newUser);
     window.closeFalabellaAuthModal();
-
-    if (isLinked) {
-      showGlobalToast(`🎉 ¡Bienvenido/a ${nombres.split(' ')[0]}! Tu cuenta ha sido vinculada a tu historial de tienda física.`);
-    } else {
-      showGlobalToast(`🎉 ¡Cuenta creada con éxito! Bienvenido/a a sagabella.com, ${nombres.split(' ')[0]}.`);
-    }
+    const welcomeMsg = isLinked
+      ? `🎉 ¡Bienvenido/a ${nombres.split(' ')[0]}! Tu cuenta ha sido vinculada a tu historial de tienda física.`
+      : `🎉 ¡Cuenta creada con éxito! Bienvenido/a a sagabella.com, ${nombres.split(' ')[0]}.`;
+    showGlobalToast(welcomeMsg);
+    try {
+      sessionStorage.setItem('falabella_pending_toast', welcomeMsg);
+    } catch (e) {}
+    setTimeout(() => {
+      window.location.reload();
+    }, 700);
   };
 
   function showFieldError(errorElementId, message) {
@@ -2810,7 +3099,14 @@
   window.logoutFalabellaUser = function () {
     window.closeFalabellaUserMenu();
     clearSession();
-    showGlobalToast('Has cerrado sesión correctamente. ¡Esperamos verte pronto!');
+    const logoutMsg = 'Has cerrado sesión correctamente. ¡Esperamos verte pronto!';
+    showGlobalToast(logoutMsg);
+    try {
+      sessionStorage.setItem('falabella_pending_toast', logoutMsg);
+    } catch (e) {}
+    setTimeout(() => {
+      window.location.reload();
+    }, 600);
   };
 
   // Combined trigger for the header button: opens menu if logged in, opens login modal if not
@@ -3338,7 +3634,17 @@
     const user = getSession();
     if (user) return; // User is logged in, allow action
 
-    // Favorites are allowed directly for seamless customer UX
+    // 1. Intercept Favorites clicks if NOT logged in (Hearts cannot be marked without login)
+    const favBtn = e.target.closest('button, [data-fav-prod-id], [data-product-id], .falabella-card-fav-btn, .falabella-fav-btn, [onclick*="toggleProductFavorite"], [onclick*="toggleSagabellaFavorite"], [onclick*="toggleWishlist"]');
+    if (favBtn && (favBtn.classList.contains('falabella-card-fav-btn') || favBtn.classList.contains('falabella-fav-btn') || favBtn.hasAttribute('data-fav-prod-id') || (favBtn.getAttribute('onclick')||'').includes('Favorite') || (favBtn.getAttribute('onclick')||'').includes('Wishlist'))) {
+      if (!isAdministrativeIntranetActive(favBtn)) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+        requireAuthForAction('favorites', favBtn);
+        return;
+      }
+    }
 
     // 2. Intercept Add To Cart buttons
     const cartBtn = e.target.closest('[onclick*="addToCart"], [onclick*="addToStoreCart"], [onclick*="addToTechCart"], [onclick*="addFavItemToCart"], [onclick*="addAllFavoritesToCart"]');
@@ -3353,14 +3659,39 @@
   }, true);
 
   function bootFalabellaSuite() {
+    initUsersDatabase();
     ensureModalsInDOM();
     applyCartInterceptors();
     syncLocationUI();
     setupUniversalSearchInputs();
+
+    const curUser = getSession();
+    if (curUser) {
+      loadUserFavoritesOnLogin(curUser);
+      loadUserCartOnLogin(curUser);
+    } else {
+      // Force empty guest state
+      try {
+        localStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify([]));
+        sessionStorage.setItem(ACTIVE_FAVS_KEY, JSON.stringify([]));
+        localStorage.setItem(CART_KEY, JSON.stringify([]));
+        sessionStorage.setItem(CART_KEY, JSON.stringify([]));
+      } catch (e) {}
+    }
     syncAllCartBadges();
     updateHeaderGreeting();
     updateFavoritesBadge();
     syncAllHeartIcons();
+
+    try {
+      const pendingToast = sessionStorage.getItem('falabella_pending_toast');
+      if (pendingToast) {
+        sessionStorage.removeItem('falabella_pending_toast');
+        setTimeout(() => {
+          showGlobalToast(pendingToast, 'success');
+        }, 300);
+      }
+    } catch (e) {}
 
     // Listen for storage changes across tabs or window events
     window.addEventListener('storage', function (e) {
@@ -3593,6 +3924,24 @@
   };
   window.toggleCategoriesDrawer = window.toggleStoreCategoriesDrawer;
 
+  window.openReturnsPolicyModal = function() {
+    ensureModalsInDOM();
+    const modal = document.getElementById('falUniversalReturnsModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+    }
+  };
+
+  window.closeReturnsPolicyModal = function() {
+    const modal = document.getElementById('falUniversalReturnsModal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+    }
+    if (typeof closeModal === 'function') closeModal();
+  };
+
   window.openTrackOrderModal = function(initialDni) {
     ensureModalsInDOM();
     const user = getSession();
@@ -3623,52 +3972,375 @@
 
   window.executeTrackOrderSearch = function() {
     const input = document.getElementById('falTrackDniInput') || document.getElementById('trackDniInput');
-    const dni = input ? input.value.trim() : '';
-    const resultsDiv = document.getElementById('falTrackResults');
-    if (!dni || dni.length < 8) {
-      showGlobalToast('Por favor ingresa un DNI válido de 8 dígitos', 'error');
+    const rawDni = input ? input.value.trim() : '';
+    const dni = rawDni.replace(/\D/g, '').slice(0, 8);
+    if (input) input.value = dni;
+
+    const resultsDiv = document.getElementById('falTrackResults') || document.getElementById('trackOrderResults');
+    if (!resultsDiv) return;
+
+    if (!dni || dni.length !== 8) {
+      resultsDiv.innerHTML = `
+        <div style="padding: 12px 14px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; color: #991b1b; font-size: 12px; font-weight: 600; text-align: center;">
+          ⚠️ Por favor ingresa un número de DNI válido de 8 dígitos numéricos.
+        </div>
+      `;
       return;
     }
-    if (resultsDiv) {
-      let foundOrders = [];
+
+    // Official System Data Fallback (in case localStorage sagabella_store_v3 was not yet initialized in this browser session)
+    const now = Date.now();
+    const DAY = 86400000;
+    const d = (days, hours) => new Date(now - days * DAY - (hours || 0) * 3600000).toISOString();
+
+    const SEED_CLIENTS = [
+      { id: 1, dni: '45879632', name: 'Ana Torres', email: 'ana.torres@gmail.com', phone: '987654321', createdAt: d(20) },
+      { id: 2, dni: '40219577', name: 'Luis Mendoza', email: 'luis.mendoza@hotmail.com', phone: '912345678', createdAt: d(15) },
+      { id: 3, dni: '71203455', name: 'Carmen Flores', email: 'carmen.flores@outlook.com', phone: '945678123', createdAt: d(9) },
+      { id: 4, dni: '09456782', name: 'Diego Salazar', email: 'diego.salazar@gmail.com', phone: '956123478', createdAt: d(4) },
+      { id: 5, dni: '45871236', name: 'Ana Torres (DNI Alt)', email: 'ana.alt@gmail.com', phone: '987654320', createdAt: d(20) }
+    ];
+
+    const SEED_SALES = [
+      { id: 1, code: 'V-0001', clientId: 1, userId: 2, userName: 'Carlos Ramírez', at: d(5), subtotal: 2028.90, discount: 202.89, total: 1826.01, paymentId: 1, status: 'Confirmada' },
+      { id: 2, code: 'V-0002', clientId: 0, userId: 2, userName: 'Carlos Ramírez', at: d(3), subtotal: 119.80, discount: 11.98, total: 107.82, paymentId: 2, status: 'Confirmada' },
+      { id: 3, code: 'V-0003', clientId: 2, userId: 2, userName: 'Carlos Ramírez', at: d(1), subtotal: 339.80, discount: 0, total: 339.80, paymentId: 3, status: 'Confirmada' },
+      { id: 4, code: 'V-0004', clientId: 1, userId: 5, userName: 'Rosa Vargas', at: d(0, 2), subtotal: 189.80, discount: 18.98, total: 170.82, paymentId: 4, status: 'Confirmada' }
+    ];
+
+    const SEED_PAYMENTS = [
+      { id: 1, saleId: 1, method: 'Tarjeta', amount: 1826.01, reference: '**** 4242', status: 'Aprobado', at: d(5) },
+      { id: 2, saleId: 2, method: 'Efectivo', amount: 107.82, received: 150.00, change: 42.18, reference: null, status: 'Aprobado', at: d(3) },
+      { id: 3, saleId: 3, method: 'Yape/Plin', amount: 339.80, reference: '912 345 678', status: 'Aprobado', at: d(1) },
+      { id: 4, saleId: 4, method: 'Tarjeta', amount: 170.82, reference: '**** 8831', status: 'Aprobado', at: d(0, 2) }
+    ];
+
+    const SEED_RECEIPTS = [
+      { id: 1, code: 'C-0001', saleId: 1, issuedAt: d(5), email: 'ana.torres@gmail.com' },
+      { id: 2, code: 'C-0002', saleId: 2, issuedAt: d(3), email: '' },
+      { id: 3, code: 'C-0003', saleId: 3, issuedAt: d(1), email: 'luis.mendoza@hotmail.com' },
+      { id: 4, code: 'C-0004', saleId: 4, issuedAt: d(0, 2), email: 'ana.torres@gmail.com' }
+    ];
+
+    const SEED_ORDERS = [
+      {
+        id: 1,
+        code: 'PD-0001',
+        saleId: 1,
+        clientId: 1,
+        at: d(5),
+        state: 'Entregado',
+        total: 1826.01,
+        items: [
+          { productId: 1, code: 'TEC-001', name: 'Laptop Lenovo IdeaPad 3 15.6"', qty: 1, unitPrice: 1899.00, subtotal: 1899.00 },
+          { productId: 2, code: 'TEC-002', name: 'Audífonos Inalámbricos JBL Wave 520', qty: 1, unitPrice: 129.90, subtotal: 129.90 }
+        ],
+        history: [
+          { state: 'Preparando', at: d(5), by: 'Sistema' },
+          { state: 'Enviado', at: d(4), by: 'Jorge Medina' },
+          { state: 'Entregado', at: d(2), by: 'Jorge Medina' }
+        ]
+      },
+      {
+        id: 2,
+        code: 'PD-0002',
+        saleId: 2,
+        clientId: 0,
+        at: d(3),
+        state: 'Enviado',
+        total: 107.82,
+        items: [
+          { productId: 4, code: 'MOD-001', name: 'Camisa Casual Manga Larga University Club', qty: 2, unitPrice: 59.90, subtotal: 119.80 }
+        ],
+        history: [
+          { state: 'Preparando', at: d(3), by: 'Sistema' },
+          { state: 'Enviado', at: d(2, 4), by: 'Lucía Castro' }
+        ]
+      },
+      {
+        id: 3,
+        code: 'PD-0003',
+        saleId: 3,
+        clientId: 2,
+        at: d(1),
+        state: 'Preparando',
+        total: 339.80,
+        items: [
+          { productId: 3, code: 'DEP-001', name: 'Zapatillas Running Nike Revolution 6', qty: 1, unitPrice: 249.90, subtotal: 249.90 },
+          { productId: 7, code: 'ACC-001', name: 'Mochila Urbana Everest Explorer 15.6"', qty: 1, unitPrice: 89.90, subtotal: 89.90 }
+        ],
+        history: [
+          { state: 'Preparando', at: d(1), by: 'Sistema' }
+        ]
+      },
+      {
+        id: 4,
+        code: 'PD-0004',
+        saleId: 4,
+        clientId: 1,
+        at: d(0, 2),
+        state: 'Preparando',
+        total: 170.82,
+        items: [
+          { productId: 2, code: 'TEC-002', name: 'Audífonos Inalámbricos JBL Wave 520', qty: 1, unitPrice: 129.90, subtotal: 129.90 },
+          { productId: 4, code: 'MOD-001', name: 'Camisa Casual Manga Larga University Club', qty: 1, unitPrice: 59.90, subtotal: 59.90 }
+        ],
+        history: [
+          { state: 'Preparando', at: d(0, 2), by: 'Sistema' }
+        ]
+      }
+    ];
+
+    // Gather from localStorage sagabella_store_v3 or window.DB
+    let dbClients = [];
+    let dbOrders = [];
+    let dbSales = [];
+    let dbPayments = [];
+    let dbReceipts = [];
+
+    try {
+      const rawStore = localStorage.getItem('sagabella_store_v3');
+      if (rawStore) {
+        const parsed = JSON.parse(rawStore);
+        if (parsed) {
+          if (Array.isArray(parsed.clients) && parsed.clients.length) dbClients = parsed.clients;
+          if (Array.isArray(parsed.orders) && parsed.orders.length) dbOrders = parsed.orders;
+          if (Array.isArray(parsed.sales) && parsed.sales.length) dbSales = parsed.sales;
+          if (Array.isArray(parsed.payments) && parsed.payments.length) dbPayments = parsed.payments;
+          if (Array.isArray(parsed.receipts) && parsed.receipts.length) dbReceipts = parsed.receipts;
+        }
+      }
+    } catch (e) {}
+
+    if (typeof window.DB === 'object' && window.DB) {
+      if (Array.isArray(window.DB.clients) && window.DB.clients.length) dbClients = window.DB.clients;
+      if (Array.isArray(window.DB.orders) && window.DB.orders.length) dbOrders = window.DB.orders;
+      if (Array.isArray(window.DB.sales) && window.DB.sales.length) dbSales = window.DB.sales;
+      if (Array.isArray(window.DB.payments) && window.DB.payments.length) dbPayments = window.DB.payments;
+      if (Array.isArray(window.DB.receipts) && window.DB.receipts.length) dbReceipts = window.DB.receipts;
+    }
+
+    // If empty, populate with official seeds
+    if (!dbClients.length) dbClients = [...SEED_CLIENTS];
+    if (!dbOrders.length) dbOrders = [...SEED_ORDERS];
+    if (!dbSales.length) dbSales = [...SEED_SALES];
+    if (!dbPayments.length) dbPayments = [...SEED_PAYMENTS];
+    if (!dbReceipts.length) dbReceipts = [...SEED_RECEIPTS];
+
+    // Registered users from website auth
+    try {
+      const rawRegUsers = localStorage.getItem('falabella_registered_users_v1');
+      if (rawRegUsers) {
+        const regUsers = JSON.parse(rawRegUsers);
+        if (Array.isArray(regUsers)) {
+          regUsers.forEach(u => {
+            if (u.dni && !dbClients.some(c => String(c.dni) === String(u.dni))) {
+              dbClients.push({
+                id: 'u_' + (u.dni || u.email),
+                dni: String(u.dni),
+                name: (u.nombres ? (u.nombres + ' ' + (u.apellidos || '')) : u.name) || 'Usuario Registrado',
+                email: u.email
+              });
+            }
+          });
+        }
+      }
+    } catch (e) {}
+
+    // Check if client exists in DB
+    const client = dbClients.find(c => String(c.dni).trim() === dni);
+
+    if (!client) {
+      // DNI NOT found in DB
+      resultsDiv.innerHTML = `
+        <div style="padding: 20px; background: #fff1f2; border: 1.5px solid #fecdd3; border-radius: 14px; text-align: center;">
+          <div style="font-size: 28px; margin-bottom: 6px;">❌</div>
+          <strong style="color: #9f1239; font-size: 14px; display: block; font-weight: 800; margin-bottom: 4px;">No hay pedidos registrados</strong>
+          <p style="font-size: 12.5px; color: #881337; margin: 0 0 6px; line-height: 1.45;">
+            No se encontraron pedidos porque el DNI <b>${escapeHtml(dni)}</b> no se encuentra registrado en nuestra base de datos.
+          </p>
+          <p style="font-size: 11.5px; color: #9f1239; margin: 0;">
+            Verifica que el número ingresado sea correcto o realiza tu primera compra en sagabella.com.
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    // Client found -> get their real orders from the database
+    let orders = dbOrders.filter(o => o.clientId === client.id || String(o.dni) === dni || (o.client && String(o.client.dni) === dni));
+
+    // Also include any orders saved under falabella_orders_v1 or falabella_sales_v1
+    try {
+      const rawStoreOrders = localStorage.getItem('falabella_orders_v1') || localStorage.getItem('falabella_sales_v1');
+      if (rawStoreOrders) {
+        const parsedO = JSON.parse(rawStoreOrders);
+        if (Array.isArray(parsedO)) {
+          parsedO.forEach(po => {
+            const poDni = String(po.dni || po.clienteDni || (po.cliente && po.cliente.dni) || '');
+            if (poDni === dni && !orders.some(ex => ex.code === (po.code || po.id))) {
+              orders.push({
+                id: po.id || orders.length + 1,
+                code: po.code || po.id || 'PD-ONLINE',
+                state: po.state || po.estado || 'Preparando',
+                total: po.total || 0,
+                at: po.at || po.fecha || new Date().toISOString(),
+                items: po.items || []
+              });
+            }
+          });
+        }
+      }
+    } catch (e) {}
+
+    // Sort descending by id so most recent order is first
+    orders.sort((a, b) => (b.id || 0) - (a.id || 0));
+
+    if (!orders.length) {
+      resultsDiv.innerHTML = `
+        <div style="padding: 18px 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; text-align: center;">
+          <div style="font-size: 26px; margin-bottom: 4px;">📦</div>
+          <strong style="color: #0f172a; font-size: 14px; display: block; font-weight: 800;">Hola, ${escapeHtml(client.name)}</strong>
+          <p style="font-size: 12.5px; color: #64748b; margin: 4px 0 0;">
+            El DNI <b>${escapeHtml(dni)}</b> está registrado, pero actualmente no registra compras activas en el sistema.
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    function formatOrderDate(dateVal) {
+      if (!dateVal) return 'Reciente';
       try {
-        const rawSales = localStorage.getItem('falabella_sales_v1') || localStorage.getItem('falabella_orders_v1');
-        if (rawSales) {
-          const sales = JSON.parse(rawSales);
-          if (Array.isArray(sales)) {
-            foundOrders = sales.filter(s => String(s.dni || s.clienteDni || (s.cliente && s.cliente.dni)) === dni);
-          }
+        const dt = new Date(dateVal);
+        if (!isNaN(dt.getTime())) {
+          const day = String(dt.getDate()).padStart(2, '0');
+          const month = String(dt.getMonth() + 1).padStart(2, '0');
+          const year = dt.getFullYear();
+          let hours = dt.getHours();
+          const mins = String(dt.getMinutes()).padStart(2, '0');
+          const ampm = hours >= 12 ? 'p. m.' : 'a. m.';
+          hours = hours % 12 || 12;
+          return `${day}/${month}/${year} ${String(hours).padStart(2, '0')}:${mins} ${ampm}`;
         }
       } catch (e) {}
-
-      if (foundOrders.length > 0) {
-        resultsDiv.innerHTML = `
-          <div style="padding: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px;">
-            <div style="font-size: 12px; font-weight: 800; color: #166534; margin-bottom: 8px;">✓ ${foundOrders.length} pedido(s) encontrado(s):</div>
-            ${foundOrders.map(o => `
-              <div style="padding: 8px 0; border-bottom: 1px solid #bbf7d0; display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-                <div>
-                  <strong style="color: #0f172a;">${escapeHtml(o.id || o.codigo || 'PD-0005')}</strong>
-                  <span style="color: #64748b; display: block; font-size: 11px;">${escapeHtml(o.fecha || 'Hoy')}</span>
-                </div>
-                <span style="padding: 3px 8px; border-radius: 99px; font-size: 11px; font-weight: 800; background: #16a34a; color: #fff;">${escapeHtml(o.estado || 'Preparando pedido')}</span>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      } else {
-        resultsDiv.innerHTML = `
-          <div style="padding: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; text-align: center;">
-            <div style="font-size: 24px; margin-bottom: 4px;">📦</div>
-            <strong style="color: #0f172a; font-size: 13.5px; display: block;">Pedido en camino: PD-0005</strong>
-            <p style="font-size: 12px; color: #64748b; margin: 4px 0 10px;">Tu compra asociada al DNI ${escapeHtml(dni)} se encuentra confirmada y en despacho a domicilio.</p>
-            <span style="display: inline-block; padding: 4px 10px; border-radius: 99px; font-size: 11.5px; font-weight: 800; background: #aad500; color: #0f172a;">
-              🟢 En reparto estimado para hoy
-            </span>
-          </div>
-        `;
-      }
+      return String(dateVal);
     }
+
+    // Render real orders from DB
+    let html = `
+      <div style="margin-bottom: 12px; padding: 10px 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 12px; font-weight: 800; color: #166534;">
+          👤 Cliente: ${escapeHtml(client.name)} · DNI: ${escapeHtml(dni)}
+        </span>
+        <span style="font-size: 11px; font-weight: 800; color: #166534; background: #dcfce7; padding: 2px 8px; border-radius: 99px;">
+          ${orders.length} pedido${orders.length === 1 ? '' : 's'}
+        </span>
+      </div>
+      <div style="max-height: 380px; overflow-y: auto; padding-right: 4px; display: flex; flex-direction: column; gap: 12px;">
+    `;
+
+    orders.forEach(o => {
+      const sale = dbSales.find(s => s.id === o.saleId);
+      const receipt = dbReceipts.find(r => r.saleId === o.saleId);
+      const pay = dbPayments.find(p => p.saleId === o.saleId);
+
+      const saleCode = sale ? sale.code : `V-${String(o.id).padStart(4, '0')}`;
+      const receiptCode = receipt ? receipt.code : `C-${String(o.id).padStart(4, '0')}`;
+      const payMethod = pay ? pay.method : 'Tarjeta';
+      const dateStr = formatOrderDate(o.at);
+
+      const st = o.state || 'Preparando';
+      let stateLabel = '🟠 Preparando';
+      let badgeBg = '#fef3c7';
+      let badgeColor = '#92400e';
+      let desc = 'Tu compra se encuentra en preparación y embalaje en el centro logístico oficial de Sagabella.';
+
+      if (st === 'Enviado' || st === 'En reparto') {
+        stateLabel = '🚚 Enviado';
+        badgeBg = '#ccfbf1';
+        badgeColor = '#0f766e';
+        desc = 'Tu paquete está en tránsito hacia tu dirección registrada con nuestro courier oficial.';
+      } else if (st === 'Entregado') {
+        stateLabel = '✅ Entregado';
+        badgeBg = '#dcfce7';
+        badgeColor = '#166534';
+        desc = 'Tu pedido ha sido entregado exitosamente a su destinatario. Comprobante electrónico emitido.';
+      }
+
+      const totalVal = typeof o.total === 'number' ? o.total : parseFloat(o.total || 0);
+
+      const isPrepDone = true;
+      const isEnvDone = st === 'Enviado' || st === 'En reparto' || st === 'Entregado';
+      const isEntDone = st === 'Entregado';
+
+      html += `
+        <div style="padding: 14px 16px; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+          
+          <!-- Top Row: Code, Badge, Date & Total -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px; font-weight: 800; color: #0f766e;">${escapeHtml(o.code || 'PD-0000')}</span>
+              <span style="font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 99px; background: ${badgeBg}; color: ${badgeColor};">
+                ${stateLabel}
+              </span>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 11px; color: #64748b; margin-right: 8px;">${escapeHtml(dateStr)}</span>
+              <span style="font-size: 13.5px; font-weight: 800; color: #0f172a;">S/ ${totalVal.toFixed(2)}</span>
+            </div>
+          </div>
+
+          <!-- Metadata: Sale, Receipt, Payment -->
+          <div style="font-size: 11px; color: #64748b; margin-bottom: 8px;">
+            Venta <b>${escapeHtml(saleCode)}</b> · Comprobante <b>${escapeHtml(receiptCode)}</b> · <span style="background: #f1f5f9; padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #475569;">💳 ${escapeHtml(payMethod)}</span>
+          </div>
+
+          <!-- Stepper Visual (Preparando -> Enviado -> Entregado) -->
+          <div style="display: flex; align-items: center; justify-content: space-between; margin: 10px 0; padding: 8px 12px; background: #f8fafc; border-radius: 8px;">
+            <div style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: ${isPrepDone ? '#059669' : '#94a3b8'};">
+              <span style="width: 18px; height: 18px; border-radius: 99px; background: ${isPrepDone ? '#d1fae5' : '#e2e8f0'}; display: flex; align-items: center; justify-content: center; font-size: 10px;">✓</span>
+              <span>Preparando</span>
+            </div>
+            <div style="flex: 1; height: 2px; margin: 0 6px; background: ${isEnvDone ? '#059669' : '#e2e8f0'};"></div>
+            <div style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: ${isEnvDone ? '#059669' : '#94a3b8'};">
+              <span style="width: 18px; height: 18px; border-radius: 99px; background: ${isEnvDone ? '#d1fae5' : '#e2e8f0'}; display: flex; align-items: center; justify-content: center; font-size: 10px;">${isEnvDone ? '✓' : '2'}</span>
+              <span>Enviado</span>
+            </div>
+            <div style="flex: 1; height: 2px; margin: 0 6px; background: ${isEntDone ? '#059669' : '#e2e8f0'};"></div>
+            <div style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: ${isEntDone ? '#059669' : '#94a3b8'};">
+              <span style="width: 18px; height: 18px; border-radius: 99px; background: ${isEntDone ? '#d1fae5' : '#e2e8f0'}; display: flex; align-items: center; justify-content: center; font-size: 10px;">${isEntDone ? '✓' : '3'}</span>
+              <span>Entregado</span>
+            </div>
+          </div>
+
+          <!-- Items in Order -->
+          <div style="border-top: 1px dashed #e2e8f0; padding-top: 8px; margin-top: 6px; font-size: 11.5px; color: #334155;">
+            ${Array.isArray(o.items) && o.items.length ? o.items.map(it => `
+              <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                <span style="max-width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                  <b>${it.qty || 1}×</b> ${escapeHtml(it.name)}
+                </span>
+                <span style="font-weight: 700; color: #475569;">
+                  S/ ${(it.subtotal || it.unitPrice || 0).toFixed(2)}
+                </span>
+              </div>
+            `).join('') : `
+              <div style="color: #64748b;">${escapeHtml(o.itemsText || '1 producto')}</div>
+            `}
+          </div>
+
+          <!-- Status Message footer -->
+          <p style="font-size: 11.5px; color: #64748b; margin: 8px 0 0; line-height: 1.4; border-top: 1px solid #f1f5f9; padding-top: 6px;">
+            ${escapeHtml(desc)}
+          </p>
+
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+    resultsDiv.innerHTML = html;
   };
 
   window.openHelpDropdown = function(e) {
@@ -3742,9 +4414,26 @@
     
     const cartDrawer = document.getElementById('cartDrawer');
     if (cartDrawer) {
+      if (typeof window.toggleCartDrawer === 'function') {
+        if (!cartDrawer.classList.contains('hidden')) {
+          window.toggleCartDrawer();
+          return;
+        }
+      }
+      if (typeof toggleCartDrawer === 'function') {
+        if (!cartDrawer.classList.contains('hidden')) {
+          toggleCartDrawer();
+          return;
+        }
+      }
+      cartDrawer.classList.add('hidden', 'opacity-0', 'pointer-events-none');
       const panel = document.getElementById('cartDrawerPanel');
-      cartDrawer.classList.add('opacity-0', 'pointer-events-none');
-      if (panel) panel.classList.add('translate-x-full');
+      if (panel) {
+        panel.classList.add('translate-x-full');
+        panel.style.transform = 'translateX(100%)';
+      }
+      const backdrop = document.getElementById('cartBackdrop');
+      if (backdrop) backdrop.classList.add('opacity-0');
       return;
     }
     const techModal = document.getElementById('techCartModalOverlay');
@@ -3791,16 +4480,40 @@
     if (typeof window.openModaCartModal === 'function') return window.openModaCartModal();
     if (typeof openModaCartModal === 'function') return openModaCartModal();
 
+    // 2. Subcategories with sliding cartDrawer (camaras, laptops, celulares, televisores, tablets)
     const cartDrawer = document.getElementById('cartDrawer');
     if (cartDrawer) {
+      if (typeof window.toggleCartDrawer === 'function') {
+        const isClosed = cartDrawer.classList.contains('hidden') || cartDrawer.classList.contains('opacity-0') || cartDrawer.style.display === 'none' || cartDrawer.classList.contains('pointer-events-none');
+        if (isClosed) {
+          window.toggleCartDrawer();
+        }
+        return;
+      }
+      if (typeof toggleCartDrawer === 'function') {
+        const isClosed = cartDrawer.classList.contains('hidden') || cartDrawer.classList.contains('opacity-0') || cartDrawer.style.display === 'none' || cartDrawer.classList.contains('pointer-events-none');
+        if (isClosed) {
+          toggleCartDrawer();
+        }
+        return;
+      }
+      cartDrawer.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+      cartDrawer.style.display = 'block';
       const panel = document.getElementById('cartDrawerPanel');
-      cartDrawer.classList.remove('opacity-0', 'pointer-events-none');
-      if (panel) panel.classList.remove('translate-x-full');
-      if (typeof renderCartDrawerItems === 'function') renderCartDrawerItems();
+      if (panel) {
+        panel.classList.remove('translate-x-full');
+        panel.style.transform = 'translateX(0)';
+      }
+      const backdrop = document.getElementById('cartBackdrop');
+      if (backdrop) {
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+      }
+      if (typeof renderCartItems === 'function') renderCartItems();
+      else if (typeof renderCartDrawer === 'function') renderCartDrawer();
+      else if (typeof renderCartDrawerItems === 'function') renderCartDrawerItems();
       return;
     }
-    if (typeof window.toggleCartDrawer === 'function') return window.toggleCartDrawer();
-    if (typeof toggleCartDrawer === 'function') return toggleCartDrawer();
 
     const techModal = document.getElementById('techCartModalOverlay');
     if (techModal) {
@@ -3851,6 +4564,7 @@
       window.location.href = 'index.html?openCart=1';
     }
   };
+
 
 
   // ============================================================

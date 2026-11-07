@@ -363,9 +363,40 @@
       transform: translateY(0);
       opacity: 1;
     }
+  
+    /* Corazones Favoritos Sagabella */
+    .falabella-card-fav-btn.is-favorited svg,
+    .falabella-card-fav-btn.active svg,
+    .falabella-fav-btn.is-favorited svg,
+    .falabella-fav-btn.active svg,
+    [data-fav-prod-id].is-favorited svg,
+    [data-fav-prod-id].active svg,
+    .falabella-card-fav-btn.text-rose-600 svg {
+      fill: #e11d48 !important;
+      stroke: #e11d48 !important;
+      color: #e11d48 !important;
+    }
+    .falabella-card-fav-btn.is-favorited svg path,
+    .falabella-card-fav-btn.active svg path,
+    .falabella-fav-btn.is-favorited svg path,
+    .falabella-fav-btn.active svg path,
+    [data-fav-prod-id].is-favorited svg path,
+    [data-fav-prod-id].active svg path,
+    .falabella-card-fav-btn.text-rose-600 svg path {
+      fill: #e11d48 !important;
+      stroke: #e11d48 !important;
+    }
+    .falabella-card-fav-btn.is-favorited,
+    .falabella-card-fav-btn.active,
+    .falabella-fav-btn.is-favorited,
+    .falabella-fav-btn.active,
+    [data-fav-prod-id].is-favorited,
+    [data-fav-prod-id].active,
+    .falabella-card-fav-btn.text-rose-600 {
+      color: #e11d48 !important;
+    }
   </style>
-  <script src="assets/falabella-auth-favorites.js"></script>
-</head>
+  </head>
 <body class="bg-[#f8fafc] antialiased selection:bg-[#aad500] selection:text-slate-900">
 
   <!-- ==================== HEADER OFICIAL EXACTO A LA IMAGEN 1 ==================== -->
@@ -890,6 +921,7 @@
   </div>
 
   <!-- ==================== PIE DE PÁGINA SAGABELLA OFICIAL ==================== -->
+    <!-- ==================== PIE DE PÁGINA SAGABELLA OFICIAL ==================== -->
   <footer class="bg-[#1e364b] text-white mt-16 pt-10 pb-8 text-xs border-t border-slate-700">
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6">
       
@@ -917,24 +949,25 @@
         <div class="space-y-2.5">
           <h4 class="text-white font-bold text-sm mb-3">Servicio al Cliente</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="index.html" class="hover:text-[#aad500] transition">Rastrear mi pedido con DNI</a></li>
+            <li><a href="javascript:void(0)" onclick="openTrackOrderModal()" class="hover:text-[#aad500] transition">Rastrear mi pedido con DNI</a></li>
             <li><a href="terminos-condiciones.html" class="hover:text-[#aad500] transition font-medium">Términos y Condiciones</a></li>
             <li><a href="politica-privacidad.html" class="hover:text-[#aad500] transition font-medium">Política de Privacidad</a></li>
-            <li><a href="index.html" class="hover:text-[#aad500] transition">Políticas de cambios y devoluciones (RN-20)</a></li>
+            <li><a href="javascript:void(0)" onclick="openReturnsPolicyModal()" class="hover:text-[#aad500] transition">Políticas de cambios y devoluciones (RN-20)</a></li>
             <li><a href="libro-reclamaciones.html" class="hover:text-[#aad500] transition">Libro de Reclamaciones Virtual</a></li>
           </ul>
         </div>
 
-        <!-- Columna 3: Categorías Populares -->
+        <!-- Columna 3: Las 7 Categorías Oficiales -->
         <div class="space-y-2.5">
           <h4 class="text-white font-bold text-sm mb-3">Categorías Populares</h4>
           <ul class="space-y-2 text-slate-300">
-            <li><a href="belleza.html" class="text-[#aad500] font-bold">💄 Belleza y Perfumería</a></li>
-            <li><a href="moda_mujer.html" class="hover:text-[#aad500] transition">👗 Moda Mujer y Sybilla</a></li>
-            <li><a href="moda_hombre.html" class="hover:text-[#aad500] transition">👔 Moda Hombre</a></li>
-            <li><a href="tecnologia.html" class="hover:text-[#aad500] transition">⚡ Tecnología y Laptops</a></li>
-            <li><a href="celulares.html" class="hover:text-[#aad500] transition">📱 Telefonía y Smartphones</a></li>
-            <li><a href="deportes.html" class="hover:text-[#aad500] transition">⚽ Deportes y Outdoors</a></li>
+            <li><a href="belleza.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-pink-400">💄</span> Belleza & Cuidado Personal</a></li>
+            <li><a href="tecnologia.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-cyan-400">⚡</span> Tecnología</a></li>
+            <li><a href="moda_mujer.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-rose-400">👗</span> Moda Mujer</a></li>
+            <li><a href="moda_hombre.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-blue-400">👔</span> Moda Hombre</a></li>
+            <li><a href="calzado.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-amber-400">👟</span> Calzado & Zapatillas</a></li>
+            <li><a href="decohogar.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-emerald-400">🛋️</span> Decohogar & Muebles</a></li>
+            <li><a href="deportes.html" class="hover:text-[#aad500] transition flex items-center gap-1.5 font-medium"><span class="text-[#aad500]">⚽</span> Deportes & Fitness</a></li>
           </ul>
         </div>
 
@@ -1616,6 +1649,7 @@
         const formattedCmr = product.priceCmr.toLocaleString('es-PE', { minimumFractionDigits: (product.priceCmr % 1 !== 0 ? 2 : 0), maximumFractionDigits: 2 });
         const formattedNormal = product.priceNormal ? product.priceNormal.toLocaleString('es-PE', { minimumFractionDigits: (product.priceNormal % 1 !== 0 ? 2 : 0), maximumFractionDigits: 2 }) : null;
 
+                const isFav = typeof window.isProductFavorited === 'function' ? window.isProductFavorited(product.id) : false;
         return `
           <article class="product-card-belleza group flex flex-col bg-white rounded-xl border border-slate-200 shadow-2xs hover:shadow-md transition duration-300 overflow-hidden" data-brand="${product.brand}" data-cat="${product.category}">
             <!-- Imagen del Producto y Badges -->
@@ -1636,12 +1670,17 @@
               <!-- Botón Favorito (Conectado al sistema de favoritos) -->
               <button 
                 type="button" 
-                onclick="event.stopPropagation(); toggleSagabellaFavorite(${product.id}, '${product.name.replace(/'/g, "\\'")}', ${product.priceCmr}, '${product.image}', '${product.brand}')"
-                class="falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer"
-                title="Añadir a favoritos"
+                onclick="event.stopPropagation(); if(typeof window.toggleProductFavorite==='function'){window.toggleProductFavorite(event, ${product.id});}else{window.toggleSagabellaFavorite(${product.id});}"
+                class="${isFav ? 'falabella-card-fav-btn falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-rose-600 is-favorited active border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer z-10' : 'falabella-card-fav-btn falabella-fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-slate-400 hover:text-rose-600 border border-slate-200 flex items-center justify-center transition shadow-xs cursor-pointer z-10'}"
+                style="${isFav ? 'color: #e11d48;' : ''}"
+                title="${isFav ? 'Eliminar de favoritos' : 'Añadir a favoritos'}"
+                data-fav-prod-id="${product.id}"
                 data-product-id="${product.id}"
               >
-                <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                ${isFav 
+                  ? '<svg class="w-4 h-4 fill-rose-600 text-rose-600" style="fill:#e11d48;stroke:#e11d48;" viewBox="0 0 24 24" stroke-width="2"><path fill="#e11d48" stroke="#e11d48" style="fill:#e11d48;stroke:#e11d48;" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>'
+                  : '<svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>'
+                }
               </button>
             </div>
 

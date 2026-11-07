@@ -272,8 +272,7 @@
       background-color: #004724;
     }
   </style>
-  <script src="assets/falabella-auth-favorites.js"></script>
-</head>
+  </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- ==================== TOPBAR ==================== -->
@@ -349,7 +348,7 @@
         </button>
 
         <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
-        <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
+        <button onclick="if(typeof toggleCartDrawer==='function'){toggleCartDrawer();}else if(typeof window.toggleCartDrawer==='function'){window.toggleCartDrawer();}else{openStoreCartModal();}" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
         </button>
@@ -1844,7 +1843,7 @@
 
     function updateCartBadge() {
       const cart = getStoreCart();
-      const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const totalCount = cart.reduce((sum, item) => sum + (item.quantity || item.qty || 1), 0);
       const badges = document.querySelectorAll('#falabellaCartCount');
       badges.forEach(b => b.textContent = totalCount);
     }
@@ -1880,7 +1879,7 @@
       const item = cart.find(p => p.id === id);
       if (!item) return;
 
-      item.quantity = (item.quantity || 1) + delta;
+      item.quantity = (item.quantity || item.qty || 1) + delta;
       if (item.quantity <= 0) {
         saveStoreCart(cart.filter(p => p.id !== id));
       } else {
@@ -1899,16 +1898,25 @@
       const panel = document.getElementById('cartDrawerPanel');
       if (!drawer || !panel) return;
 
-      const isHidden = drawer.classList.contains('opacity-0');
+      const isHidden = drawer.classList.contains('opacity-0') || drawer.classList.contains('hidden') || drawer.style.display === 'none';
       if (isHidden) {
-        renderCartDrawerItems();
-        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        if (typeof renderCartDrawerItems === 'function') renderCartDrawerItems();
+        drawer.classList.remove('opacity-0', 'pointer-events-none', 'hidden');
+        drawer.style.display = 'block';
         panel.classList.remove('translate-x-full');
+        panel.style.transform = 'translateX(0)';
       } else {
         drawer.classList.add('opacity-0', 'pointer-events-none');
         panel.classList.add('translate-x-full');
+        panel.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          drawer.classList.add('hidden');
+          drawer.style.display = 'none';
+        }, 300);
       }
     }
+    window.toggleCartDrawer = toggleCartDrawer;
+    window.renderCartDrawerItems = renderCartDrawerItems;
 
     function renderCartDrawerItems() {
       const list = document.getElementById('cartItemsList');
@@ -1929,7 +1937,7 @@
 
       let subtotal = 0;
       list.innerHTML = cart.map(item => {
-        const itemTotal = (item.priceCmr || item.price) * (item.quantity || 1);
+        const itemTotal = (item.priceCmr || item.price) * (item.quantity || item.qty || 1);
         subtotal += itemTotal;
 
         return `
@@ -2061,6 +2069,7 @@
       updateUserNavState();
       closeAuthModal();
       showToast(`¡Bienvenido de vuelta, ${userName}!`);
+      setTimeout(() => { window.location.reload(); }, 700);
     }
 
     function handleRegisterSubmit(e) {
@@ -2071,6 +2080,7 @@
       updateUserNavState();
       closeAuthModal();
       showToast(`¡Cuenta creada con éxito! Bienvenido, ${name}`);
+      setTimeout(() => { window.location.reload(); }, 700);
     }
 
     function updateUserNavState() {

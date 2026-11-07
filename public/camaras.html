@@ -213,8 +213,7 @@
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23aad500'/%3E%3Ctext x='16' y='24' font-family='sans-serif' font-size='22' font-weight='900' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-  <script src="assets/falabella-auth-favorites.js"></script>
-</head>
+  </head>
 <body class="bg-slate-50 antialiased selection:bg-[#aad500] selection:text-slate-900">
 
   <!-- HEADER OFICIAL EXACTO -->
@@ -270,7 +269,7 @@
         </button>
 
         <!-- Carrito con indicador numérico circular oscuro idéntico a Sagabella -->
-        <button onclick="openStoreCartModal()" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
+        <button type="button" onclick="if(typeof toggleCartDrawer==='function'){toggleCartDrawer();}else if(typeof window.toggleCartDrawer==='function'){window.toggleCartDrawer();}else if(typeof openStoreCartModal==='function'){openStoreCartModal();}" class="relative p-1 text-slate-800 hover:text-slate-900 transition cursor-pointer" title="Carrito de compras">
           <svg class="w-6 h-6 text-[#333f48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <span id="storeCartBadge" class="cart-badge" style="background:#1e293b; color:#fff; font-size:10px; font-weight:800; border-radius:999px; min-width:18px; height:18px; position:absolute; top:-3px; right:-5px; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">0</span>
         </button>
@@ -701,27 +700,39 @@
       setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-        function toggleCartDrawer() {
+        window.toggleCartDrawer = toggleCartDrawer;
+    function toggleCartDrawer() {
       const drawer = document.getElementById('cartDrawer');
       const backdrop = document.getElementById('cartBackdrop');
       const panel = document.getElementById('cartDrawerPanel');
       if(!drawer || !panel) return;
 
-      const isHidden = drawer.classList.contains('hidden');
+      const isHidden = drawer.classList.contains('hidden') || drawer.style.display === 'none';
       if(isHidden) {
-        renderCartItems();
+        if(typeof renderCartItems === 'function') renderCartItems();
         drawer.classList.remove('hidden');
+        drawer.style.display = 'block';
         void drawer.offsetWidth;
-        if(backdrop) backdrop.classList.remove('opacity-0');
+        if(backdrop) {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+        }
+        panel.classList.remove('translate-x-full');
         panel.style.transform = 'translateX(0)';
       } else {
-        if(backdrop) backdrop.classList.add('opacity-0');
+        if(backdrop) {
+          backdrop.classList.remove('opacity-100');
+          backdrop.classList.add('opacity-0');
+        }
+        panel.classList.add('translate-x-full');
         panel.style.transform = 'translateX(100%)';
         setTimeout(() => {
           drawer.classList.add('hidden');
+          drawer.style.display = 'none';
         }, 300);
       }
     }
+    window.toggleCartDrawer = toggleCartDrawer;
 
     function renderCartItems() {
       const container = document.getElementById('cartItemsContainer');
